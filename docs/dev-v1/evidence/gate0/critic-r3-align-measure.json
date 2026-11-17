@@ -1,0 +1,122 @@
+[
+ {
+  "vp": "1440x900@1",
+  "frame": {
+   "x": 523.828125,
+   "y": 24,
+   "w": 392.3441162109375,
+   "h": 852
+  },
+  "screen": {
+   "x": 540.4111328125,
+   "y": 39.66091537475586,
+   "w": 359.6103515625,
+   "h": 822.032470703125
+  },
+  "hScroll": false,
+  "vScroll": false,
+  "bg": "rgb(227, 235, 241)",
+  "centerX": 720.0001831054688,
+  "centerY": 450,
+  "insideN": 289007,
+  "gapFullyTransparentNotMagenta": 8,
+  "magentaOutsideInterior": 26,
+  "magentaWhereMockupFullyTransparentOutsideInterior": 0
+ },
+ {
+  "vp": "1440x900@2",
+  "frame": {
+   "x": 523.828125,
+   "y": 24,
+   "w": 392.3441162109375,
+   "h": 852
+  },
+  "screen": {
+   "x": 540.4111328125,
+   "y": 39.66091537475586,
+   "w": 359.6103515625,
+   "h": 822.032470703125
+  },
+  "hScroll": false,
+  "vScroll": false,
+  "bg": "rgb(227, 235, 241)",
+  "centerX": 720.0001831054688,
+  "centerY": 450,
+  "insideN": 1158773,
+  "gapFullyTransparentNotMagenta": 2,
+  "magentaOutsideInterior": 12,
+  "magentaWhereMockupFullyTransparentOutsideInterior": 0
+ },
+ {
+  "vp": "1280x720@1",
+  "frame": {
+   "x": 485.265625,
+   "y": 24,
+   "w": 309.45458984375,
+   "h": 672
+  },
+  "screen": {
+   "x": 498.3451843261719,
+   "y": 36.352272033691406,
+   "w": 283.6363830566406,
+   "h": 648.3636474609375
+  },
+  "hScroll": false,
+  "vScroll": false,
+  "bg": "rgb(227, 235, 241)",
+  "centerX": 639.992919921875,
+  "centerY": 360,
+  "insideN": 179800,
+  "gapFullyTransparentNotMagenta": 0,
+  "magentaOutsideInterior": 592,
+  "magentaWhereMockupFullyTransparentOutsideInterior": 0
+ },
+ {
+  "vp": "1920x1080@1",
+  "frame": {
+   "x": 747.25,
+   "y": 78,
+   "w": 425.5,
+   "h": 924
+  },
+  "screen": {
+   "x": 765.234375,
+   "y": 94.984375,
+   "w": 390,
+   "h": 891.5
+  },
+  "hScroll": false,
+  "vScroll": false,
+  "bg": "rgb(227, 235, 241)",
+  "centerX": 960,
+  "centerY": 540,
+  "insideN": 340561,
+  "gapFullyTransparentNotMagenta": 0,
+  "magentaOutsideInterior": 0,
+  "magentaWhereMockupFullyTransparentOutsideInterior": 0
+ },
+ {
+  "vp": "800x600@1",
+  "frame": {
+   "x": 272.90625,
+   "y": 24,
+   "w": 254.19482421875,
+   "h": 552
+  },
+  "screen": {
+   "x": 283.650146484375,
+   "y": 34.146507263183594,
+   "w": 232.98699951171875,
+   "h": 532.5844116210938
+  },
+  "hScroll": false,
+  "vScroll": false,
+  "bg": "rgb(227, 235, 241)",
+  "centerX": 400.003662109375,
+  "centerY": 300,
+  "insideN": 121315,
+  "gapFullyTransparentNotMagenta": 0,
+  "magentaOutsideInterior": 325,
+  "magentaWhereMockupFullyTransparentOutsideInterior": 0
+ }
+]

@@ -4,7 +4,7 @@
 
 ## 현재 상태
 
-- 단계: **Gate 0 진행 중**
+- 단계: **Gate 0 FAIL (Critic r4: 9개 조건 중 8 PASS, 조건 7 report.md 없음만 P0). 스캐폴드 커밋 후 Gate 1 착수 가능**
 - 개발 서버: `pnpm dev:pocs` → http://localhost:3101 (로그 `logs/pocs-dev.log`)
 - 원격 저장소 없음 → push 는 BLOCKED (커밋만)
 
@@ -37,11 +37,11 @@ Plan → Build → Independent Critic → Fix → Recheck → PASS
 |---|---|---|
 | 기존 프로젝트·제공 파일 확인 | PASS | `logs/scaffold.md` |
 | Codex CLI · Claude CLI 실행 확인 | PASS | `logs/cli-model-smoke.md` |
-| 오케스트레이션 준비 (도구·스킬 조사) | 진행 중 | `tools.md`, `logs/tools-research.md` |
-| 모델·API 접근 확인 | 부분 | OpenAI PASS / Anthropic API 한도 초과 / Gemini 타임아웃 (`logs/cli-model-smoke.md`) |
+| 오케스트레이션 준비 (도구·스킬 조사) | PASS | `tools.md`, `logs/tools-research.md`, `.claude/skills/` 7종 (Critic r1 PASS) |
+| 모델·API 접근 확인 | PASS (OpenAI) / Anthropic BLOCKED (외부, 12/1 복구) / Gemini 보류 | 결정: Gate 1 직접 API 는 OpenAI 만 사용 (텍스트 gpt-6-astra → gpt-6.1-sol, 이미지 gpt-image-2). 상세는 `report.md` 2장. 측정: `logs/cli-model-smoke.md`, `evidence/gate0/critic-r2-raw.txt` |
 | 개발 서버 실행 | PASS | `/api/health`, `/pocs`, `/pocs/screens` 200 |
 | 최소 API 계약 정의 | PASS | `api.md` ↔ `packages/core/src/schemas.ts`, `pnpm test` 4/4 |
-| 하네스 생성 | 부분 | `run.md`, `api.md` 완료. `report.md` 는 서브에이전트 쓰기 거부 → 초안이 `logs/scaffold.md` 하단, 메인이 옮길 것 |
+| 하네스 생성 | FAIL (P0: report.md 없음, 4라운드째) | `run.md`, `api.md` 완료. `report.md` 최종 본문은 준비됨(`logs/fix-gate0-r3.md` 참고). 서브에이전트 쓰기는 하네스가 거부 → 메인이 저장하면 PASS |
 | 데스크톱 목업 정렬 · 모바일 전체화면 | PASS | `evidence/gate0/screens-desktop.png`, `screens-desktop-align.png`, `screens-mobile.png` |
 | 키 노출 검사 (레포·클라이언트 청크) | PASS | 0건 (`logs/scaffold.md`) |
 
@@ -70,18 +70,35 @@ Plan → Build → Independent Critic → Fix → Recheck → PASS
 - [x] PhoneFrame (목업 실측 정렬, 모바일 safe-area)
 - [x] `/api/health`, 최소 API 계약, 스키마 테스트
 - [x] Playwright 스크린샷 스크립트 (`pnpm shot`)
-- [ ] 마스코트·에셋 (`logs/mascot-assets.md`)
-- [ ] `report.md` 생성 (`logs/scaffold.md` 의 'report.md 초안' 옮기기)
-- [ ] Gate 0 독립 Critic (gpt-6.1-sol) → PASS 판정
-- [ ] Gate 0 커밋
+- [x] 마스코트·에셋 (`logs/mascot-assets.md`, Critic r1 PASS)
+- [ ] `report.md` 저장 (메인 세션. 본문: `logs/fix-gate0-r1.md` + `logs/fix-gate0-r2.md` 변경 3줄 적용본, `logs/fix-gate0-r3.md` 참고)
+- [x] Gate 0 독립 Critic r4 실행 (판정 FAIL, `evidence/gate0/critic-r4-gate0.md`)
+- [x] Gate 0 커밋 (chore(gate0): monorepo scaffold, mockup shell, harness, assets)
 - [ ] Gate 1: `/pocs/analysis`, `/pocs/persona`, `/pocs/chat`, `/pocs/screens` 5개 화면
 
 ## 마지막 검증
 
 - 2026-11-17 scaffold: `pnpm typecheck` / `pnpm lint` / `pnpm test`(4) / `pnpm build` 통과, dev 3101 기동, health 200 (`providers` 모두 true), 스크린샷 4장 + 정렬 검증 1장.
+- 2026-11-17 Gate 0 Critic r2: health/pocs/screens 200, 실제 키 값 바이트 검색 802파일 0건, OpenAI gpt-6-astra 200(3.2s) / Anthropic 400 한도 / Gemini 503 (`evidence/gate0/critic-r2-raw.txt`). report.md 반영 후 조건 3·4·7 갱신.
+- 2026-11-17 Gate 0 Critic r3 probe: OpenAI gpt-6-astra 200(3.5s) / Anthropic claude-haiku-5-5 400 월 한도(2026-12-01 복구) / Gemini 3.5-flash 45s 타임아웃 (`evidence/gate0/critic-r3-raw.txt`). 결론 변화 없음: 직접 API 는 OpenAI 만 사용.
+
+- 2026-11-17 Gate 0 Critic r4: 타입체크 3패키지 통과, 테스트 4/4, 키 값 바이트 검색 834파일 0건, 목업 정렬 6개 뷰포트 오차 0.01px 미만, Codex 독립 판정 PASS. 유일한 P0는 report.md 없음.
+
+## P2 목록
+
+- 스키마 길이 제한(Persona.id ≤64, Event.date ≤40, situation ≤2000, me ≤40)이 api.md 에 없음
+- 카카오톡 TXT 파서(packages/core), 03 '고개 내민' 마스코트, 01 하트 말풍선 에셋 없음 (Gate 1)
+- safe-area 는 Chromium 에뮬레이션에서 0px 라 실기기 확인 필요 (Gate 3)
+- Anthropic 월 한도(12/1 복구), Gemini 45초 타임아웃: 외부 요인, Gate 1 은 OpenAI 사용
+
+## BLOCKED
+
+- git push: 원격 저장소와 gh CLI 없음
+- report.md 저장: 서브에이전트 쓰기가 하네스에서 거부됨. 메인 세션이 `logs/fix-gate0-r3.md` 의 sed+python 명령으로 만들어야 하며, 그 뒤 조건 7을 PASS 로 바꾼다
 
 ## 다음 작업
 
-1. Gate 0 독립 Critic: 실행 화면·health·키 노출 재확인
-2. Anthropic API 한도·Gemini 타임아웃 대응 결정 (`logs/cli-model-smoke.md`)
-3. Gate 0 커밋 후 Gate 1 착수
+1. 메인 세션이 report.md 저장 후 Gate 0 조건 7 PASS 처리
+2. Gate 1: `/pocs/analysis`, `/pocs/persona`, `/pocs/chat` PoC 3종과 `/pocs/screens` 5개 화면 프론트엔드
+3. Anthropic 은 2026-12-01 복구 후 재측정하고, Gemini 는 쿼터·지연 해소 후 재측정한다 (결정: `report.md` 2장)
+4. 위 P2 항목은 Gate 1 에서 처리

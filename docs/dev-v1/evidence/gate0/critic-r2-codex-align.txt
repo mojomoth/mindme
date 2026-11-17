@@ -1,0 +1,104 @@
+# critic-r2 Codex 정렬 판정 (codex exec -m gpt-6.1-sol -s read-only, 2026-11-17)
+# 입력: assets/mockup-iphone.png, critic-r2-pocs-screens-desktop.png, critic-r2-align-magenta-1440.png, critic-r2-pocs-screens-mobile.png
+OpenAI Codex v0.169.0
+--------
+workdir: /Users/jyl/work/repo/ai-agent-live-1117/mindme
+model: gpt-6.1-sol
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: medium
+reasoning summaries: none
+session id: 01a1e9ab-f0b6-7ba1-bb91-ba4ed4a117d0
+--------
+codex
+첨부 이미지의 좌표와 경계, 모서리 곡선 및 다이내믹 아일랜드 주변을 확인해 항목별로 판정하겠습니다.
+
+/bin/zsh -lc "python -c 'from PIL import Image; paths=[\"assets/mockup-iphone.png\",\"docs/dev-v1/evidence/gate0/critic-r2-pocs-screens-desktop.png\",\"docs/dev-v1/evidence/gate0/critic-r2-align-magenta-1440.png\",\"docs/dev-v1/evidence/gate0/critic-r2-pocs-screens-mobile.png\"]; ims=[Image.open(p).convert(\"RGBA\") for p in paths]; print([(p,im.size) for p,im in zip(paths,ims)]); a=ims[0].getchannel(\"A\"); print(\"alpha bbox\",a.getbbox()); im=ims[2]; pts=[(x,y) for y in range(im.height) for x in range(im.width) if im.getpixel((x,y))[:3]==(255,0,255)]; print(\"magenta bbox\",(min(x for x,y in pts),min(y for x,y in pts),max(x for x,y in pts),max(y for x,y in pts)))'" in /Users/jyl/work/repo/ai-agent-live-1117/mindme
+ succeeded in 280ms:
+[('assets/mockup-iphone.png', (851, 1848)), ('docs/dev-v1/evidence/gate0/critic-r2-pocs-screens-desktop.png', (1440, 900)), ('docs/dev-v1/evidence/gate0/critic-r2-align-magenta-1440.png', (1440, 900)), ('docs/dev-v1/evidence/gate0/critic-r2-pocs-screens-mobile.png', (1170, 2532))]
+alpha bbox (0, 0, 851, 1848)
+magenta bbox (542, 41, 899, 859)
+
+/bin/zsh -lc "python -c 'from PIL import Image; a=Image.open(\"assets/mockup-iphone.png\").convert(\"RGBA\"); b=Image.open(\"docs/dev-v1/evidence/gate0/critic-r2-align-magenta-1440.png\").convert(\"RGB\"); bg=b.getpixel((0,0)); print(\"bg\",bg); print(\"phone bbox\",Image.eval(b.convert(\"L\"),lambda x:x).getbbox());
+for y in [0,35,50,90,130,200,900,1700,1800,1815,1847]:
+ xs=[x for x in range(100,750) if a.getpixel((x,y))[3]<10]; print(\"src\",y,(min(xs),max(xs)) if xs else None)
+for y in [25,40,41,45,50,65,83,90,100,450,800,840,850,859,860,875]:
+ xs=[x for x in range(500,940) if b.getpixel((x,y))==(255,0,255)]; non=[x for x in range(500,940) if b.getpixel((x,y))"'!=bg]; print("dst",y,"mag",(min(xs),max(xs)) if xs else None,"nonbg",(min(non),max(non)) if non else None)
+'"'" in /Users/jyl/work/repo/ai-agent-live-1117/mindme
+ succeeded in 0ms:
+bg (227, 235, 241)
+phone bbox (0, 0, 1440, 900)
+src 0 (100, 749)
+src 35 (158, 696)
+src 50 (100, 749)
+src 90 (100, 749)
+src 130 (100, 749)
+src 200 (100, 749)
+src 900 (100, 749)
+src 1700 (100, 749)
+src 1800 (100, 749)
+src 1815 (246, 667)
+src 1847 (100, 749)
+dst 25 mag None nonbg (582, 861)
+dst 40 mag None nonbg (548, 892)
+dst 41 mag (593, 848) nonbg (547, 893)
+dst 45 mag (573, 859) nonbg (543, 897)
+dst 50 mag (567, 874) nonbg (539, 901)
+dst 65 mag (550, 887) nonbg (531, 909)
+dst 83 mag (546, 896) nonbg (524, 916)
+dst 90 mag (545, 896) nonbg (524, 916)
+dst 100 mag (542, 897) nonbg (524, 916)
+dst 450 mag (542, 899) nonbg (524, 916)
+dst 800 mag (544, 895) nonbg (524, 916)
+dst 840 mag (554, 888) nonbg (533, 907)
+dst 850 mag (562, 878) nonbg (539, 901)
+dst 859 mag (586, 851) nonbg (547, 893)
+dst 860 mag None nonbg (548, 891)
+dst 875 mag None nonbg (581, 863)
+
+/bin/zsh -lc "python -c 'from PIL import Image; a=Image.open(\"assets/mockup-iphone.png\").convert(\"RGBA\"); b=Image.open(\"docs/dev-v1/evidence/gate0/critic-r2-align-magenta-1440.png\").convert(\"RGB\");
+for y in [35,50,90,130,200,900,1700,1800,1815]:
+ runs=[]; st=None
+ for x in range(a.width+1):
+  ok=x<a.width and a.getpixel((x,y))[3]<10
+  if ok and st is None: st=x
+  if not ok and st is not None:
+   if x-st>3:runs.append((st,x-1))
+   st=None
+ print(y,runs)
+pts=[(x,y) for y in range(900) for x in range(500,940) if b.getpixel((x,y))"'!=(227,235,241)]; print("nonbg bbox",min(x for x,y in pts),min(y for x,y in pts),max(x for x,y in pts),max(y for x,y in pts))
+'"'" in /Users/jyl/work/repo/ai-agent-live-1117/mindme
+ succeeded in 76ms:
+35 [(0, 56), (158, 497), (504, 628), (630, 696), (796, 850)]
+50 [(0, 40), (92, 759), (811, 850)]
+90 [(0, 16), (53, 304), (547, 799), (835, 850)]
+130 [(0, 6), (39, 811), (845, 850)]
+200 [(0, 3), (37, 814), (847, 850)]
+900 [(0, 3), (37, 814)]
+1700 [(0, 4), (37, 813)]
+1800 [(0, 42), (92, 758), (809, 850)]
+1815 [(0, 57), (246, 255), (310, 331), (435, 444), (500, 508), (658, 667), (794, 850)]
+nonbg bbox 524 24 916 875
+
+codex
+A) **PASS** — 목업 외곽은 약 x=524~916, y=24~875이며, 중심은 (720, 449.5)입니다. 뷰포트 중심 (720, 450)과 사실상 일치합니다.
+
+B) **PASS** — 마젠타 화면이 프레임 내부 곡선을 따라 채워져 있고, 프레임 밖 넘침이나 화면 안쪽의 흰색·배경색 틈은 관찰되지 않습니다. 네 모서리, 다이내믹 아일랜드 주변과 하단도 자연스럽게 연결됩니다.
+
+C) **PASS** — 모바일 이미지 전체 1170×2532(390×844@3x)를 앱 배경이 채우며, 목업 프레임이나 데스크톱 바깥 배경은 보이지 않습니다.
+
+D) **PASS** — 9:41과 우측 상태 아이콘은 다이내믹 아일랜드 양옆에 겹침 없이 배치되어 있습니다. 아일랜드의 위치·비율이 원본과 어울리고, 홈 인디케이터도 화면 하단 중앙에서 적절한 여백을 유지합니다.
+
+VERDICT: PASS
+tokens used
+28,082
+A) **PASS** — 목업 외곽은 약 x=524~916, y=24~875이며, 중심은 (720, 449.5)입니다. 뷰포트 중심 (720, 450)과 사실상 일치합니다.
+
+B) **PASS** — 마젠타 화면이 프레임 내부 곡선을 따라 채워져 있고, 프레임 밖 넘침이나 화면 안쪽의 흰색·배경색 틈은 관찰되지 않습니다. 네 모서리, 다이내믹 아일랜드 주변과 하단도 자연스럽게 연결됩니다.
+
+C) **PASS** — 모바일 이미지 전체 1170×2532(390×844@3x)를 앱 배경이 채우며, 목업 프레임이나 데스크톱 바깥 배경은 보이지 않습니다.
+
+D) **PASS** — 9:41과 우측 상태 아이콘은 다이내믹 아일랜드 양옆에 겹침 없이 배치되어 있습니다. 아일랜드의 위치·비율이 원본과 어울리고, 홈 인디케이터도 화면 하단 중앙에서 적절한 여백을 유지합니다.
+
+VERDICT: PASS

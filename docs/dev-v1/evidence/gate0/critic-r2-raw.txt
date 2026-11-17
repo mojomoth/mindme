@@ -1,0 +1,14 @@
+# critic-r2 원시 실행 출력 (2026-11-17)
+## curl
+/api/health 200 70B
+/pocs 200 17450B
+/pocs/screens 200 16976B
+health body: {"ok":true,"providers":{"anthropic":true,"openai":true,"google":true}}
+## .env 실제 값 바이트 검색 (레포 전체 .next 포함, node_modules/.git/cache 제외 + 응답 본문 + git log -p --all)
+{"values":6,"filesScanned":802,"hits":[]}
+## 직접 API probe (키 비출력)
+anthropic claude-haiku-5-5: HTTP 400 364ms You have reached your specified API usage limits. You will regain access on 2026-12-01 at 00:00 UTC.
+openai gpt-6-astra: HTTP 200 3189ms 
+google gemini-3.5-flash: HTTP 503 19174ms This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.
+## report.md
+ls: docs/dev-v1/report.md: No such file or directory

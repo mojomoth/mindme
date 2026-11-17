@@ -1,0 +1,31 @@
+# critic-r3 원시 실행 출력 (2026-11-17)
+## dev 서버
+3101 LISTEN pid 86133 (기동 중, 재기동 불필요)
+## curl
+/api/health 200 body: {"ok":true,"providers":{"anthropic":true,"openai":true,"google":true}}
+/pocs 200
+/pocs/screens 200
+## pnpm typecheck
+packages/core, packages/ui, pocs: Done (exit 0)
+## pnpm test
+tests 4 / pass 4 / fail 0
+## 키 패턴 grep (sk-ant | sk-[16+] | AIza[20+] | apik), .env·node_modules·.git·.next 제외 + pocs/.next/static
+레포: 문자열 'sk-ant' 2건 (logs/scaffold.md:62, evidence/gate0/critic-r1-gate0.md:18 — 둘 다 grep 명령 설명문, 실제 키 아님)
+apik: 'apiKey' 식별자/설명문만 (packages/core/src/server/ai.ts 등). 실제 값 없음
+pocs/.next/static (2.8M): 패턴 0건, 키 이름(CLAUDE_API_KEY/OPENAI_API_KEY/GOOGLE_API_KEY/apik) 0건
+## .env 실제 값 바이트 검색 (값 비출력)
+{"values":6,"filesScanned":803,"hits":[]}
+git log -p --all 값 hit: 0
+.env git 추적 안 됨 (.gitignore:2)
+## CLI
+codex-cli 0.169.0 / claude 2.1.326 (Claude Code)
+## 직접 API probe (키 비출력)
+anthropic claude-haiku-5-5 HTTP 400 535ms You have reached your specified API usage limits. You will regain access on 2026-12-01 at 00:00 UTC.
+openai gpt-6-astra HTTP 200 3529ms 
+google gemini-3.5-flash ERR TimeoutError 45003ms
+## 하네스
+docs/dev-v1/run.md 존재 / docs/dev-v1/report.md 없음 (ls: No such file or directory) / git 이력에도 없음
+## 정렬 측정
+critic-r3-align-measure.json, critic-r3-align-magenta-1440.png, critic-r3-align-corners.png
+## Codex 독립 판정
+critic-r3-codex-align.txt (gpt-6.1-sol, VERDICT: PASS)

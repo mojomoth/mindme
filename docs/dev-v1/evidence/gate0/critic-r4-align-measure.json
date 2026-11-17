@@ -1,0 +1,146 @@
+[
+ {
+  "vp": "1440x900@1",
+  "frameCenter": [
+   720.0001831054688,
+   450.0
+  ],
+  "vpCenter": [
+   720.0,
+   450.0
+  ],
+  "scroll": [
+   1440,
+   900
+  ],
+  "gapPx": 0,
+  "overflowIntoOuterTransparentPx": 0,
+  "visibleMagentaOutsideHolePx": 0,
+  "screenCss": {
+   "x": 540.4111328125,
+   "y": 39.66091537475586,
+   "w": 359.6103515625,
+   "h": 822.032470703125
+  }
+ },
+ {
+  "vp": "1440x900@2",
+  "frameCenter": [
+   720.0001831054688,
+   450.0
+  ],
+  "vpCenter": [
+   720.0,
+   450.0
+  ],
+  "scroll": [
+   1440,
+   900
+  ],
+  "gapPx": 0,
+  "overflowIntoOuterTransparentPx": 0,
+  "visibleMagentaOutsideHolePx": 0,
+  "screenCss": {
+   "x": 540.4111328125,
+   "y": 39.66091537475586,
+   "w": 359.6103515625,
+   "h": 822.032470703125
+  }
+ },
+ {
+  "vp": "1280x720@1",
+  "frameCenter": [
+   639.992919921875,
+   360.0
+  ],
+  "vpCenter": [
+   640.0,
+   360.0
+  ],
+  "scroll": [
+   1280,
+   720
+  ],
+  "gapPx": 0,
+  "overflowIntoOuterTransparentPx": 0,
+  "visibleMagentaOutsideHolePx": 0,
+  "screenCss": {
+   "x": 498.3451843261719,
+   "y": 36.352272033691406,
+   "w": 283.6363830566406,
+   "h": 648.3636474609375
+  }
+ },
+ {
+  "vp": "1920x1080@1",
+  "frameCenter": [
+   960.0,
+   540.0
+  ],
+  "vpCenter": [
+   960.0,
+   540.0
+  ],
+  "scroll": [
+   1920,
+   1080
+  ],
+  "gapPx": 0,
+  "overflowIntoOuterTransparentPx": 0,
+  "visibleMagentaOutsideHolePx": 0,
+  "screenCss": {
+   "x": 765.234375,
+   "y": 94.984375,
+   "w": 390,
+   "h": 891.5
+  }
+ },
+ {
+  "vp": "1024x768@2",
+  "frameCenter": [
+   511.99798583984375,
+   384.0
+  ],
+  "vpCenter": [
+   512.0,
+   384.0
+  ],
+  "scroll": [
+   1024,
+   768
+  ],
+  "gapPx": 0,
+  "overflowIntoOuterTransparentPx": 0,
+  "visibleMagentaOutsideHolePx": 0,
+  "screenCss": {
+   "x": 360.2325439453125,
+   "y": 37.23457717895508,
+   "w": 303.8961181640625,
+   "h": 694.6753540039062
+  }
+ },
+ {
+  "vp": "601x900@1",
+  "frameCenter": [
+   300.5001983642578,
+   450.0
+  ],
+  "vpCenter": [
+   300.5,
+   450.0
+  ],
+  "scroll": [
+   601,
+   900
+  ],
+  "gapPx": 0,
+  "overflowIntoOuterTransparentPx": 0,
+  "visibleMagentaOutsideHolePx": 0,
+  "screenCss": {
+   "x": 120.91111755371094,
+   "y": 39.66091537475586,
+   "w": 359.6103515625,
+   "h": 822.032470703125
+  }
+ }
+]

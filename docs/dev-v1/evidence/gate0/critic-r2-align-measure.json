@@ -1,0 +1,241 @@
+[
+ {
+  "vp": "1440x900@1",
+  "frame": {
+   "x": 523.828125,
+   "y": 24,
+   "w": 392.3441162109375,
+   "h": 852
+  },
+  "screen": {
+   "x": 540.4111328125,
+   "y": 39.66091537475586,
+   "w": 359.6103515625,
+   "h": 822.032470703125
+  },
+  "centerX": 720.0001831054688,
+  "centerY": 450,
+  "hScroll": false,
+  "vScroll": false,
+  "W": 1440,
+  "H": 900,
+  "insideN": 289672,
+  "gap0": 951,
+  "gap2": 0,
+  "gapStageColor": 0,
+  "magentaOutsideMask": 466,
+  "overflowVisible": 0,
+  "bg": [
+   227,
+   235,
+   241
+  ]
+ },
+ {
+  "vp": "1440x900@2",
+  "frame": {
+   "x": 523.828125,
+   "y": 24,
+   "w": 392.3441162109375,
+   "h": 852
+  },
+  "screen": {
+   "x": 540.4111328125,
+   "y": 39.66091537475586,
+   "w": 359.6103515625,
+   "h": 822.032470703125
+  },
+  "centerX": 720.0001831054688,
+  "centerY": 450,
+  "hScroll": false,
+  "vScroll": false,
+  "W": 2880,
+  "H": 1800,
+  "insideN": 1157580,
+  "gap0": 2328,
+  "gap2": 0,
+  "gapStageColor": 0,
+  "magentaOutsideMask": 2674,
+  "overflowVisible": 0,
+  "bg": [
+   227,
+   235,
+   241
+  ]
+ },
+ {
+  "vp": "1280x720@1",
+  "frame": {
+   "x": 485.265625,
+   "y": 24,
+   "w": 309.45458984375,
+   "h": 672
+  },
+  "screen": {
+   "x": 498.3451843261719,
+   "y": 36.352272033691406,
+   "w": 283.6363830566406,
+   "h": 648.3636474609375
+  },
+  "centerX": 639.992919921875,
+  "centerY": 360,
+  "hScroll": false,
+  "vScroll": false,
+  "W": 1280,
+  "H": 720,
+  "insideN": 180303,
+  "gap0": 332,
+  "gap2": 0,
+  "gapStageColor": 0,
+  "magentaOutsideMask": 345,
+  "overflowVisible": 0,
+  "bg": [
+   227,
+   235,
+   241
+  ]
+ },
+ {
+  "vp": "1920x1080@1",
+  "frame": {
+   "x": 747.25,
+   "y": 78,
+   "w": 425.5,
+   "h": 924
+  },
+  "screen": {
+   "x": 765.234375,
+   "y": 94.984375,
+   "w": 390,
+   "h": 891.5
+  },
+  "centerX": 960,
+  "centerY": 540,
+  "hScroll": false,
+  "vScroll": false,
+  "W": 1920,
+  "H": 1080,
+  "insideN": 340534,
+  "gap0": 233,
+  "gap2": 0,
+  "gapStageColor": 0,
+  "magentaOutsideMask": 221,
+  "overflowVisible": 0,
+  "bg": [
+   227,
+   235,
+   241
+  ]
+ },
+ {
+  "vp": "1024x640@1",
+  "frame": {
+   "x": 375.6875,
+   "y": 24,
+   "w": 272.61474609375,
+   "h": 592
+  },
+  "screen": {
+   "x": 387.2099609375,
+   "y": 34.88176345825195,
+   "w": 249.8701171875,
+   "h": 571.177490234375
+  },
+  "centerX": 511.994873046875,
+  "centerY": 320,
+  "hScroll": false,
+  "vScroll": false,
+  "W": 1024,
+  "H": 640,
+  "insideN": 139864,
+  "gap0": 651,
+  "gap2": 0,
+  "gapStageColor": 0,
+  "magentaOutsideMask": 181,
+  "overflowVisible": 0,
+  "bg": [
+   227,
+   235,
+   241
+  ]
+ },
+ {
+  "vp": "800x600@1",
+  "frame": {
+   "x": 272.90625,
+   "y": 24,
+   "w": 254.19482421875,
+   "h": 552
+  },
+  "screen": {
+   "x": 283.650146484375,
+   "y": 34.146507263183594,
+   "w": 232.98699951171875,
+   "h": 532.5844116210938
+  },
+  "centerX": 400.003662109375,
+  "centerY": 300,
+  "hScroll": false,
+  "vScroll": false,
+  "W": 800,
+  "H": 600,
+  "insideN": 121639,
+  "gap0": 306,
+  "gap2": 0,
+  "gapStageColor": 0,
+  "magentaOutsideMask": 122,
+  "overflowVisible": 0,
+  "bg": [
+   227,
+   235,
+   241
+  ]
+ },
+ {
+  "vp": "601x900@1",
+  "frame": {
+   "x": 104.328125,
+   "y": 24,
+   "w": 392.3441467285156,
+   "h": 852
+  },
+  "screen": {
+   "x": 120.91111755371094,
+   "y": 39.66091537475586,
+   "w": 359.6103515625,
+   "h": 822.032470703125
+  },
+  "centerX": 300.5001983642578,
+  "centerY": 450,
+  "hScroll": false,
+  "vScroll": false,
+  "W": 601,
+  "H": 900,
+  "insideN": 288942,
+  "gap0": 216,
+  "gap2": 0,
+  "gapStageColor": 0,
+  "magentaOutsideMask": 475,
+  "overflowVisible": 0,
+  "bg": [
+   227,
+   235,
+   241
+  ]
+ },
+ {
+  "vp": "mobile 390x844",
+  "frameDisplay": "none",
+  "statusBarDisplay": "none",
+  "homeDisplay": "none",
+  "screen": {
+   "x": 0,
+   "y": 0,
+   "w": 390,
+   "h": 844
+  },
+  "sw": 390,
+  "sh": 844,
+  "viewportMeta": "width=device-width, initial-scale=1, viewport-fit=cover"
+ }
+]
