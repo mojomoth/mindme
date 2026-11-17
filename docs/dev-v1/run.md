@@ -4,9 +4,9 @@
 
 ## 현재 상태
 
-- 단계: **Gate 0 FAIL (Critic r4: 9개 조건 중 8 PASS, 조건 7 report.md 없음만 P0). 스캐폴드 커밋 후 Gate 1 착수 가능**
+- 단계: **Gate 0 PASS (Critic r4 8/9 + 메인이 report.md 저장해 조건 7 해소) → Gate 1 진행 중**
 - 개발 서버: `pnpm dev:pocs` → http://localhost:3101 (로그 `logs/pocs-dev.log`)
-- 원격 저장소 없음 → push 는 BLOCKED (커밋만)
+- 원격: `origin = github.com/mojomoth/mindme` (public, 사용자가 추가). 검증 통과 단위마다 커밋·push
 
 ## 루프
 
@@ -41,7 +41,7 @@ Plan → Build → Independent Critic → Fix → Recheck → PASS
 | 모델·API 접근 확인 | PASS (OpenAI) / Anthropic BLOCKED (외부, 12/1 복구) / Gemini 보류 | 결정: Gate 1 직접 API 는 OpenAI 만 사용 (텍스트 gpt-6-astra → gpt-6.1-sol, 이미지 gpt-image-2). 상세는 `report.md` 2장. 측정: `logs/cli-model-smoke.md`, `evidence/gate0/critic-r2-raw.txt` |
 | 개발 서버 실행 | PASS | `/api/health`, `/pocs`, `/pocs/screens` 200 |
 | 최소 API 계약 정의 | PASS | `api.md` ↔ `packages/core/src/schemas.ts`, `pnpm test` 4/4 |
-| 하네스 생성 | FAIL (P0: report.md 없음, 4라운드째) | `run.md`, `api.md` 완료. `report.md` 최종 본문은 준비됨(`logs/fix-gate0-r3.md` 참고). 서브에이전트 쓰기는 하네스가 거부 → 메인이 저장하면 PASS |
+| 하네스 생성 | PASS | `run.md`, `report.md`, `api.md` (report.md 는 서브에이전트 쓰기가 거부돼 메인 세션이 저장) |
 | 데스크톱 목업 정렬 · 모바일 전체화면 | PASS | `evidence/gate0/screens-desktop.png`, `screens-desktop-align.png`, `screens-mobile.png` |
 | 키 노출 검사 (레포·클라이언트 청크) | PASS | 0건 (`logs/scaffold.md`) |
 
@@ -93,12 +93,11 @@ Plan → Build → Independent Critic → Fix → Recheck → PASS
 
 ## BLOCKED
 
-- git push: 원격 저장소와 gh CLI 없음
-- report.md 저장: 서브에이전트 쓰기가 하네스에서 거부됨. 메인 세션이 `logs/fix-gate0-r3.md` 의 sed+python 명령으로 만들어야 하며, 그 뒤 조건 7을 PASS 로 바꾼다
+- Anthropic API: 월 사용 한도 소진(2026-12-01 복구). 앱 AI 는 OpenAI 로 진행
+- 서브에이전트는 `report.md` 파일을 쓸 수 없음 → report.md 반영은 메인 세션이 한다 (서브에이전트는 `logs/` 에 초안)
 
 ## 다음 작업
 
-1. 메인 세션이 report.md 저장 후 Gate 0 조건 7 PASS 처리
-2. Gate 1: `/pocs/analysis`, `/pocs/persona`, `/pocs/chat` PoC 3종과 `/pocs/screens` 5개 화면 프론트엔드
-3. Anthropic 은 2026-12-01 복구 후 재측정하고, Gemini 는 쿼터·지연 해소 후 재측정한다 (결정: `report.md` 2장)
-4. 위 P2 항목은 Gate 1 에서 처리
+1. Gate 1: `/pocs/analysis`, `/pocs/persona`, `/pocs/chat` PoC 3종과 `/pocs/screens` 5개 화면 프론트엔드
+2. Anthropic 은 2026-12-01 복구 후 재측정하고, Gemini 는 쿼터·지연 해소 후 재측정한다 (결정: `report.md` 2장)
+3. 위 P2 항목은 Gate 1 에서 처리
