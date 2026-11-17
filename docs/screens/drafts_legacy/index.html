@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#eff5f8">
+  <title>Mindme · 나를 만나는 다정한 시간</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <svg class="icon-defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></symbol>
+    <symbol id="i-back" viewBox="0 0 24 24"><path d="m14 6-6 6 6 6"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 15V4m-4 4 4-4 4 4M5 14v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M13 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9l-6-6Zm0 0v6h6M8 13h8m-8 4h5"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><path d="m8 6 1.5-2h5L16 6h4v14H4V6Z"/><circle cx="12" cy="13" r="3.5"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path d="M12 19V5m-6 6 6-6 6 6"/></symbol>
+    <symbol id="i-exit" viewBox="0 0 24 24"><path d="M10 4H5v16h5m0-8h11m-4-4 4 4-4 4"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 3 2.3 6.7L21 12l-6.7 2.3L12 21l-2.3-6.7L3 12l6.7-2.3Z"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20 5c-2-2-6-1-8 2C10 4 6 3 4 5c-5 5 3 11 8 15 5-4 13-10 8-15Z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+  </defs></svg>
+
+  <header class="board-header">
+    <a href="index.html" class="board-brand" aria-label="Mindme 디자인 보드"><span class="brand-flower">✳</span> mindme<span class="board-divider"></span><small>SCREEN DESIGN 01</small></a>
+    <a class="preview-link" href="?mode=prototype">프로토타입 열기 <svg class="icon"><use href="#i-arrow"/></svg></a>
+  </header>
+  <main class="design-board">
+    <section class="board-intro">
+      <div><div class="eyebrow">A LITTLE CLOSER TO MYSELF</div><h1>나를 만나는, 가장 다정한 방법.</h1><p>서로 다른 시간 속의 나와 마주 앉아, 미처 전하지 못한 마음을 나눠요.</p></div>
+      <div class="palette"><div><i style="--swatch:#eff5f8"></i><span>마음의 여백</span></div><div><i style="--swatch:#ff704f"></i><span>다정한 시작</span></div><div><i style="--swatch:#f8df88"></i><span>작은 온기</span></div></div>
+    </section>
+    <div class="screen-grid" id="screen-grid"></div>
+    <footer class="board-footer"><span>MINDME · MOBILE EXPERIENCE</span><span>390 × 844 · 레퍼런스 & 스케치 기반 시안</span><span>나의 모든 순간에게, 안녕.</span></footer>
+  </main>
+  <div class="prototype-chrome"><a href="index.html">← 전체 시안</a><span>클릭해서 화면 흐름을 확인하세요</span><button class="reset-prototype">처음으로 ↻</button></div>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>

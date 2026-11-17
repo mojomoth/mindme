@@ -1,0 +1,18 @@
+.placeholder {
+  min-height: 100%;
+  display: grid;
+  place-content: center;
+  gap: 10px;
+  padding: var(--mm-safe-top) var(--mm-gutter) var(--mm-safe-bottom);
+  text-align: center;
+}
+
+.placeholder strong {
+  font-size: var(--mm-fs-title);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.placeholder p {
+  color: var(--mm-text-sub);
+}

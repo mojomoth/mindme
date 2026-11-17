@@ -1,0 +1,142 @@
+/*
+ * 목업 실측값 (assets/mockup-iphone.png, 851x1848, PIL 로 측정 — docs/dev-v1/logs/scaffold.md)
+ * - 화면(투명) 영역: 중앙에서 alpha<128 플러드필 → bbox x 36..815, y 34..1816 (780x1783)
+ *     left 36/851 = 4.2303%   top 34/1848 = 1.8398%
+ *     width 780/851 = 91.6569%  height 1783/1848 = 96.4827%
+ * - 코너 반경: 실측 약 113~116px → 틈이 보이지 않게 112px 사용
+ *     112/780 = 14.359% (가로), 112/1783 = 6.282% (세로)
+ * - Dynamic Island: x 306..545, y 54..128 → 화면 기준 y 20..94 (논리 10..47px)
+ * - 기본 크기: 이미지의 1/2 = 425.5x924 논리px → 화면이 정확히 390x891.5 (드래프트 390 폭과 동일)
+ */
+
+.stage {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: var(--mm-stage);
+}
+
+.device {
+  /* 뷰포트에 맞춘 배율. tan(atan2(길이, 길이)) 로 길이 비율을 숫자로 만든다. 최대 1배. */
+  --s: min(1, tan(atan2(100dvh - 48px, 924px)), tan(atan2(100vw - 48px, 425.5px)));
+  position: relative;
+  width: calc(425.5px * var(--s));
+  height: calc(924px * var(--s));
+}
+
+.scaler {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 425.5px;
+  height: 924px;
+  transform: scale(var(--s));
+  transform-origin: 0 0;
+}
+
+.screen {
+  position: absolute;
+  left: 4.2303%;
+  top: 1.8398%;
+  width: 91.6569%;
+  height: 96.4827%;
+  border-radius: 14.359% / 6.282%;
+  overflow: hidden;
+  background: var(--mm-bg);
+  /* 목업 안에서는 iPhone 15 Pro 안전 영역 값을 흉내 낸다 */
+  --mm-safe-top: 59px;
+  --mm-safe-bottom: 34px;
+  --mm-safe-left: 0px;
+  --mm-safe-right: 0px;
+  /* position: fixed 자손(모달 등)을 화면 안에 가둔다 */
+  contain: layout paint;
+}
+
+.content {
+  position: relative;
+  height: 100%;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+/* 프레임은 앱 위에 겹쳐 그린다 (화면 영역만 투명) */
+.frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  user-select: none;
+  z-index: 3;
+}
+
+.statusBar {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 2;
+  height: 57px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px 0 46px;
+  pointer-events: none;
+  color: var(--mm-text);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+}
+
+.statusIcons {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.homeIndicator {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  bottom: 8px;
+  width: 134px;
+  height: 5px;
+  margin-left: -67px;
+  border-radius: 3px;
+  background: var(--mm-text);
+  pointer-events: none;
+}
+
+/* 모바일: 목업 제거, 전체 화면 + 실제 안전 영역 */
+@media (max-width: 600px) {
+  .stage {
+    display: block;
+    padding: 0;
+    background: var(--mm-bg);
+  }
+
+  .device,
+  .scaler,
+  .screen {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    transform: none;
+    border-radius: 0;
+  }
+
+  .screen {
+    --mm-safe-top: env(safe-area-inset-top, 0px);
+    --mm-safe-bottom: env(safe-area-inset-bottom, 0px);
+    --mm-safe-left: env(safe-area-inset-left, 0px);
+    --mm-safe-right: env(safe-area-inset-right, 0px);
+  }
+
+  .frame,
+  .statusBar,
+  .homeIndicator {
+    display: none;
+  }
+}
