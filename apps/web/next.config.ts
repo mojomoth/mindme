@@ -12,6 +12,10 @@ const nextConfig: NextConfig = {
   outputFileTracingRoot: root,
   turbopack: { root },
   devIndicators: false,
+  // 사진은 카메라·앨범 선택(<input accept="image/*">)으로만 받는다. 마이크·위치는 쓰지 않는다.
+  async headers() {
+    return [{ source: '/:path*', headers: [{ key: 'Permissions-Policy', value: 'camera=(self), microphone=(), geolocation=()' }] }];
+  },
 };
 
 export default nextConfig;

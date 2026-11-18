@@ -2,5 +2,3 @@ packages:
   - packages/*
   - pocs
   - apps/*
-allowBuilds:
-  protobufjs: false

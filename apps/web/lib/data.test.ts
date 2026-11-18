@@ -4,7 +4,7 @@ import type { TimelineEvent } from '@mindme/core';
 
 // data.ts 는 @mindme/ui(tsx)에서 webNative 만 쓴다. node 는 tsx 를 못 읽으니 막아 둔다.
 mock.module('@mindme/ui', { namedExports: { webNative: { storage: {} } } });
-const { nearestEvent } = await import('./data.ts');
+const { nearestEvent, plainName } = await import('./data.ts');
 
 const profile = { name: '홍길동', currentAge: 26 };
 const relay: TimelineEvent = {
@@ -16,4 +16,9 @@ test('nearestEvent: 1살 차 사건은 고르고, 2살 차 사건은 고르지 �
   const situation = '친구 서진과 계주 때문에 다툰 일';
   assert.equal(nearestEvent(situation, 14, [relay], profile)?.id, 'evt_01');
   assert.equal(nearestEvent(situation, 15, [relay], profile), undefined);
+});
+
+test('plainName: 사건 제목이 잘린 이름만 나이 이름으로 바꾼다', () => {
+  assert.equal(plainName({ name: '졸업하며 서진과 헤어짐을 아쉬워…의 홍길동', kind: 'past', age: 17 }, '홍길동'), '17살의 홍길동');
+  assert.equal(plainName({ name: '첫 출근 날의 홍길동', kind: 'past', age: 25 }, '홍길동'), '첫 출근 날의 홍길동');
 });

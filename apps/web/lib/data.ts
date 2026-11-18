@@ -1,5 +1,5 @@
 // 클라이언트 저장(NativeAdapter.storage 경유)과 페르소나 계획(어떤 시점의 나를 만들지).
-import { eventAgeOf, sortByTime, type Persona, type PersonaKind, type Profile, type TimelineEvent } from '@mindme/core';
+import { eventAgeOf, personaName, sortByTime, type Persona, type PersonaKind, type Profile, type TimelineEvent } from '@mindme/core';
 import { webNative } from '@mindme/ui';
 
 export type StoredMessage = { role: 'user' | 'assistant'; content: string; at: number };
@@ -38,6 +38,13 @@ export const kindOf = (age: number, currentAge: number): PersonaKind =>
   age < currentAge ? 'past' : age === currentAge ? 'present' : 'future';
 
 export const AVATAR_BG: Record<PersonaKind, string> = { past: '#dceaf8', present: '#fef1c5', future: '#fedfd2' };
+
+/**
+ * core 가 40자에 맞추려고 사건 제목을 '…'로 자른 이름('졸업하며 서진과 헤어짐을 아쉬워…의 홍길동')은 '17살의 홍길동'으로 바꾼다.
+ * 화면이 긴 이름 끝을 한 번 더 말줄임하면 '…'가 두 번 보이기 때문이다.
+ */
+export const plainName = (p: Pick<Persona, 'name' | 'kind' | 'age'>, me: string) =>
+  p.name.includes('…의 ') ? personaName(p.kind, p.age, me) : p.name;
 
 const weight = (e: TimelineEvent) => e.emotions.length + (e.selfAtTime?.quotes.length ?? 0) + (e.people.length ? 1 : 0);
 

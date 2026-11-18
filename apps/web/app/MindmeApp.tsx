@@ -3,7 +3,9 @@
 // Mindme 앱: 한 화면씩 상태로 바꾼다 (01 랜딩 → 02 만들기 → 진행 → 03 목록(+04 모달) → 05 대화(+프로필 시트)).
 // 화면은 @mindme/ui 그대로, 기능은 @mindme/core 와 /api/* 를 쓴다. 저장은 브라우저(NativeAdapter.storage)에만 한다.
 import {
+  MAX_INPUT_CHARS,
   parseKakao,
+  personaName,
   PersonaSchema,
   type AnalyzeRequest,
   type AnalyzeResponse,
@@ -31,11 +33,10 @@ import {
 } from '@mindme/ui';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { errorText, postJson, streamChat } from '../lib/api.ts';
-import { AVATAR_BG, kindOf, mergeEvents, nearestEvent, pickEvents, store, type MeProfile, type StoredMessage } from '../lib/data.ts';
+import { AVATAR_BG, kindOf, mergeEvents, nearestEvent, pickEvents, plainName, store, type MeProfile, type StoredMessage } from '../lib/data.ts';
 
 type Screen = 'landing' | 'create' | 'working' | 'list' | 'chat';
 
-const MAX_TEXT = 300_000;
 const STATUS: Record<PersonaKind, string> = { past: '그때의 나와 대화 중', present: '지금의 나와 대화 중', future: '미래의 나와 대화 중' };
 const KIND_LABEL: Record<PersonaKind, string> = { past: '과거의 나', present: '지금의 나', future: '미래의 나' };
 const CALL_STEP: Record<PersonaKind, string> = {
@@ -49,6 +50,7 @@ const AGE_NOTE: Record<PersonaKind, string> = {
   future: '미래의 나를 만나요. 바라는 모습이나 이루고 싶은 일을 적어 주세요.',
 };
 const DRAW_STEP = '얼굴을 그리는 중';
+const NO_REPLY = '답을 받지 못했어요.';
 
 const clockOf = (at: number) => new Date(at).toLocaleTimeString('ko-KR', { hour: 'numeric', minute: '2-digit' });
 const dayOf = (at: number) => {
@@ -65,16 +67,29 @@ async function drawAvatar(age: number, kind: PersonaKind, photo: string): Promis
   return blobToDataUrl(await shrinkImage(blob, 256, 'image/webp', 0.9));
 }
 
+// 다시 시도할 때 이미 그렸거나 그리는 중인 아바타는 다시 그리지 않는다(약 30초·이미지 비용).
+// 페르소나가 만들어지면 지운다. 실패한 그림은 다음 시도에서 다시 그린다.
+const avatars = new Map<string, Promise<string | undefined>>();
+function avatarFor(age: number, kind: PersonaKind, photo: string) {
+  const key = `${kind}:${age}:${photo.length}:${photo.slice(-40)}`;
+  let pending = avatars.get(key);
+  if (!pending) {
+    const p = drawAvatar(age, kind, photo).catch(() => undefined);
+    p.then((src) => !src && avatars.get(key) === p && avatars.delete(key));
+    avatars.set(key, (pending = p));
+  }
+  return { key, pending };
+}
+
 /** 페르소나와 아바타를 동시에 만든다. 아바타가 실패하면 기본 캐릭터로 둔다. */
 async function makePersona(req: PersonaGenerateRequest, photo: string | null, onPersona: () => void, onAvatar: () => void) {
-  const avatar = photo
-    ? drawAvatar(req.age, req.kind, photo)
-        .catch(() => undefined)
-        .finally(onAvatar)
-    : undefined;
+  const draw = photo ? avatarFor(req.age, req.kind, photo) : undefined;
+  const avatar = draw?.pending.finally(onAvatar);
   const { persona } = await postJson<{ persona: Persona }>('/api/persona', req).finally(onPersona);
   const src = await avatar;
-  return src ? { ...persona, avatar: src } : persona;
+  if (draw) avatars.delete(draw.key);
+  const made = { ...persona, name: plainName(persona, req.profile.name) };
+  return src ? { ...made, avatar: src } : made;
 }
 
 export default function MindmeApp() {
@@ -90,12 +105,14 @@ export default function MindmeApp() {
   const [story, setStory] = useState(() => profile?.story ?? '');
   const [file, setFile] = useState<{ name: string; text: string }>();
   const [notice, setNotice] = useState<string>();
-  const analysis = useRef<{ key: string; events: typeof events; me?: string }>(undefined);
+  const analysis = useRef<{ key: string; events: typeof events; owner?: AnalyzeResponse['owner']; me?: string }>(undefined);
 
   // 진행 화면 · 03 목록 · 04 모달
   const [job, setJob] = useState<WorkingProps>();
   const [newIds, setNewIds] = useState<string[]>([]);
-  const [modal, setModal] = useState<{ situation: string; age: number }>();
+  // existing: 같은 이름의 페르소나가 이미 있을 때 그 id (모달이 이어갈지 묻는다)
+  const [modal, setModal] = useState<{ situation: string; age: number; existing?: string }>();
+  const jobId = useRef(0);
 
   // 05 대화
   const [chatId, setChatId] = useState<string>();
@@ -122,7 +139,12 @@ export default function MindmeApp() {
   /** 진행 화면 표시. states 는 steps 와 같은 순서. */
   function progress(labels: string[], base: Omit<WorkingProps, 'title' | 'steps'>) {
     let states: WorkingStep['state'][] = labels.map(() => 'todo');
+    const id = ++jobId.current;
+    let failed = false;
     return (next: Partial<Record<number, WorkingStep['state']>>, error?: string) => {
+      // 실패 화면이나 다시 시도한 새 진행을, 늦게 끝난 이전 작업(아바타 등)이 덮어쓰지 않게 한다.
+      if (id !== jobId.current || failed) return;
+      failed = Boolean(error);
       states = states.map((s, i) => next[i] ?? s);
       setJob({
         ...base,
@@ -141,7 +163,7 @@ export default function MindmeApp() {
     if (!picked) return;
     const text = (await picked.text()).trim();
     if (!text) return setNotice('빈 파일이에요. 다른 파일을 골라 주세요.');
-    if (text.length > MAX_TEXT) return setNotice('파일이 너무 길어요. 30만 자 이하로 나눠서 올려 주세요.');
+    if (text.length > MAX_INPUT_CHARS) return setNotice('파일이 너무 길어요. 30만 자 이하로 나눠서 올려 주세요.');
     setNotice(undefined);
     setFile({ name: picked.name, text });
   }
@@ -158,7 +180,6 @@ export default function MindmeApp() {
   }
 
   async function createFirst() {
-    const currentAge = Number(age);
     const labels = ['기억을 읽는 중', '그때의 나를 불러오는 중', ...(photo ? [DRAW_STEP] : [])];
     const show = progress(labels, {
       hint: '1~2분쯤 걸려요. 화면을 켜 둔 채 기다려 주세요.',
@@ -181,12 +202,33 @@ export default function MindmeApp() {
         }
         if (story.trim()) reqs.push({ source: 'prompt', text: story.trim() });
         const results = await Promise.all(reqs.map((r) => postJson<AnalyzeResponse>('/api/analyze', r)));
-        read = { key, events: mergeEvents(results.map((r) => r.events)), me: results.find((r) => r.meta?.me)?.meta?.me };
+        read = {
+          key,
+          events: mergeEvents(results.map((r) => r.events)),
+          // 기록이 둘(파일·이야기)이면 이름·나이를 각각 먼저 찾은 쪽에서 가져온다.
+          owner: {
+            name: results.map((r) => r.owner?.name).find(Boolean) ?? null,
+            currentAge: results.map((r) => r.owner?.currentAge).find(Boolean) ?? null,
+          },
+          me: results.find((r) => r.meta?.me)?.meta?.me,
+        };
         analysis.current = read;
       }
+
+      // 이름·나이를 비워 두었으면 기록에서 읽은 값(owner)을 쓴다. 나이를 끝내 모르면 입력 화면에서 묻는다.
+      const currentAge = age ? Number(age) : read.owner?.currentAge;
+      if (!currentAge) {
+        setNotice('기록에서 지금 나이를 찾지 못했어요. 지금 나이를 적어 주세요.');
+        return setScreen('create');
+      }
+      if (!age) setAge(String(currentAge));
       show({ 0: 'done', 1: 'active', 2: 'active' });
 
-      const me: MeProfile = { name: (name.trim() || read.me || '나').slice(0, 20), currentAge, ...(story.trim() ? { story: story.trim() } : {}) };
+      const me: MeProfile = {
+        name: (name.trim() || read.owner?.name || read.me || '나').slice(0, 20),
+        currentAge,
+        ...(story.trim() ? { story: story.trim() } : {}),
+      };
       const targets: PersonaGenerateRequest[] = pickEvents(read.events, me).map(({ event, age }) => ({
         kind: 'past',
         age,
@@ -229,6 +271,15 @@ export default function MindmeApp() {
     if (!profile) return setScreen('create'); // 지금 나이를 모르면 생성 화면에서 받는다
     setNewIds([]);
     setModal({ situation: '', age: clamp(profile.currentAge - 10, 5, 80) });
+  }
+
+  /** 만들 페르소나와 이름이 같은 페르소나. 있으면 새로 만들기 전에 그 대화를 이어갈지 묻는다. */
+  function sameNamed(situation: string, at: number) {
+    if (!profile) return undefined;
+    const kind = kindOf(at, profile.currentAge);
+    const event = kind === 'past' ? nearestEvent(situation, at, events, profile) : undefined;
+    const name = plainName({ name: personaName(kind, at, profile.name, event?.title), kind, age: at }, profile.name);
+    return personas.find((p) => p.name === name);
   }
 
   async function createFromModal(situation: string, at: number) {
@@ -280,10 +331,12 @@ export default function MindmeApp() {
       saved = [{ role: 'assistant', content: p.greeting, at: Date.now() }];
       store.saveChat(id, saved);
     }
+    setModal(undefined);
     setChatId(id);
     setMessages(saved);
     setDraft('');
-    setChatError(undefined);
+    // 답을 받기 전에 나간 질문이면 '다시 받기'를 띄운다.
+    setChatError(saved.at(-1)?.role === 'user' ? NO_REPLY : undefined);
     setNewIds((ids) => ids.filter((x) => x !== id));
     setScreen('chat');
   }
@@ -356,7 +409,8 @@ export default function MindmeApp() {
   // ── 화면 ────────────────────────────────────────────────
 
   const ageNum = Number(age);
-  const canCreate = (Boolean(file) || story.trim().length > 0) && Number.isInteger(ageNum) && ageNum >= 1 && ageNum <= 120;
+  // 나이는 비워 둘 수 있다(기록에서 읽는다).
+  const canCreate = (Boolean(file) || story.trim().length > 0) && (!age || (Number.isInteger(ageNum) && ageNum >= 1 && ageNum <= 120));
   const avatarOf = (p: Persona) => ({ avatarSrc: p.avatar ?? characters.guideAvatar, avatarBg: AVATAR_BG[p.kind] });
 
   let view: ReactNode;
@@ -410,12 +464,19 @@ export default function MindmeApp() {
           {modal && profile && (
             <PersonaModal
               situation={modal.situation}
-              onSituationChange={(situation) => setModal({ ...modal, situation })}
+              onSituationChange={(situation) => setModal({ situation, age: modal.age })}
               age={modal.age}
-              onAgeChange={(a) => setModal({ ...modal, age: a })}
+              onAgeChange={(a) => setModal({ situation: modal.situation, age: a })}
               ageNote={AGE_NOTE[kindOf(modal.age, profile.currentAge)]}
+              existingName={personas.find((p) => p.id === modal.existing)?.name}
+              onOpenExisting={() => modal.existing && openChat(modal.existing)}
               onClose={() => setModal(undefined)}
-              onSubmit={() => createFromModal(modal.situation.trim(), modal.age)}
+              onSubmit={() => {
+                const situation = modal.situation.trim();
+                const same = modal.existing ? undefined : sameNamed(situation, modal.age);
+                if (same) return setModal({ ...modal, existing: same.id });
+                createFromModal(situation, modal.age);
+              }}
             />
           )}
         </PersonaList>
