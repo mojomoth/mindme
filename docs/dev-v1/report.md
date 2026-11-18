@@ -50,6 +50,27 @@
 - 회귀: typecheck 4패키지, test 40/40, `next build` 성공, 3100·3101 주요 경로 200, 키 값 검색 0건(`evidence/gate2/web-keyscan.txt`).
 - Gate 1 P2 중 자동 스크롤, 모달 Esc, 기본 아바타 경로, zod 영어 문구 등은 해결.
 
+### Gate 3 배포 구성 (2026-11-19)
+
+- 주소: https://mindme-rho.vercel.app (Vercel 프로젝트 mindme). Root Directory `apps/web`, `sourceFilesOutsideRootDirectory` 켬, install `pnpm install --frozen-lockfile`.
+- Node 24.x: 로컬 v26 은 Vercel 이 지원하지 않아 `apps/web` 의 engines 를 24.x 로 두었다.
+- 환경 변수는 `OPENAI_API_KEY`(production, sensitive) 하나다. 모델 이름은 코드 기본값(gpt-6-astra, gpt-image-2)을 쓴다. 보호 설정(ssoProtection)은 해제했다.
+- fluid compute, 함수 리전 iad1, 기본 함수 시간 300초. 랜딩은 정적이라 CDN 캐시에서 나간다.
+- 루트 `pnpm build` 는 pocs 를 빌드하므로 배포는 `apps/web` 기준으로만 한다.
+
+### Gate 3 배포 제약 실측
+
+| 항목 | 결과 |
+|---|---|
+| analyze 30만 자 | 200, 32.3초, 7구간 요약 (한도 300초) |
+| avatar | 생성 25.8~29.8초, 요청 전체 27.5~31.6초 (한도 120초). 로컬 1회는 74초가 나온 적 있다 |
+| 요청 본문 | 4.4MB 는 함수까지 도달, 4.7MB 는 Vercel 413. 사진은 클라이언트에서 줄여 약 128KB 를 보낸다 |
+| 스트리밍 | 청크 단위 도착. 첫 호출 5.46초, 이후 2.2초 안팎(첫 글자 1.3~5.5초) |
+| 서버 상태 | 파일 쓰기 0건. 기록은 모두 localStorage. 처음 보는 persona id 도 200 |
+| 브라우저 권한 | https 보안 컨텍스트, `Permissions-Policy: camera=(self), microphone=(), geolocation=()`. 사진 선택 정상 |
+| 로컬과 비교 | 화면 10쌍(5화면 x 데스크톱·모바일) 차이 픽셀 0 |
+| 미확인 | 함수별 `maxDuration` 적용값(배포 API 가 값을 돌려주지 않음) |
+
 ## 2. 중요 결정
 
 ### AI 공급자 (Gate 1)
@@ -90,11 +111,11 @@
 |---|---|---|
 | typescript | 6.0.3 (7.0.2 아님) | typescript-eslint 8.x 가 `<6.1` 만 지원 |
 | eslint | 9.39.5 (10 아님) | eslint-config-next 16.4 플러그인 피어가 ≤9 |
-| @anthropic-ai/sdk | 1.8.0 | 1.9.0 은 공개 1일 미만이라 pnpm `minimumReleaseAge` 위반. 예외를 두지 않음 |
-| @google/genai | 3.3.0 | 위와 같음 |
+| ~~@anthropic-ai/sdk~~ | 제거됨 (Gate 3) | 앱이 쓰지 않아 의존성 삭제 |
+| ~~@google/genai~~ | 제거됨 (Gate 3) | 앱이 쓰지 않아 의존성 삭제 |
 | openai | 7.57.0 | 정책 통과 |
 | zod 4.6.7, @playwright/test 1.65.1, server-only 0.0.1 | — | 최신 |
-| protobufjs 설치 스크립트 | 차단 | 필요 없음 |
+| ~~protobufjs 설치 스크립트~~ | 제거됨 (Gate 3) | 앱이 쓰지 않아 의존성 삭제 |
 
 ### Gate 2 결정
 
@@ -104,6 +125,18 @@
 - 현재 나이는 생성 때 받는다. 모달은 나이로 과거·현재·미래를 정한다.
 - 저장은 localStorage, 서버는 무상태. AI 는 OpenAI 만 쓴다.
 - 새 외부 의존성 없음. 이미지 도우미를 `packages/ui` 로 옮겼다.
+
+### Gate 3 결정과 보안 조치
+
+- analyze `maxDuration` 60 → 300초. 구간 요약을 모두 동시 실행해 최악 지연을 약 500초에서 약 250초로 줄였다(30만 자 실측 29.9~32초). 순간 토큰이 커서 계정 TPM 이 낮으면 429 가 날 수 있다.
+- analyze 응답에서 `meta.llm`(AI 원시 출력) 제거. pocs 만 `includeLlm` 으로 받는다.
+- 키 없음·본문 초과·JSON 오류 문구를 해요체로 바꾸고, 키 사유는 서버 로그에만 남긴다(키 이름만, 값 없음).
+- 남용 방지(apps/web 만): `Content-Length` 로 본문을 읽기 전에 413, IP 별 10분 고정 창 속도 제한(analyze 10·persona 30·avatar 15·chat 100)과 429 + `Retry-After`. 새 의존성 없음. 인스턴스 메모리라 완벽하지 않다.
+- 미사용 공급자 제거: `@anthropic-ai/sdk`·`@google/genai`, `getAnthropic`·`getGoogle`, protobufjs 설정. `/api/health` 는 `{ ok, configured: { openai } }`. 12/1 이후 Claude 전환은 `env.ts`·`ai.ts`·`llm.ts` 세 곳에 분기만 더한다.
+- 정리: 안 쓰는 마스코트 PNG·복사본 함수·중복 상수·미사용 스키마와 export 를 삭제(추가 39·삭제 93줄).
+- 클라이언트: 대화 중 나가기 처리(취소 + '다시 받기'), 같은 이름 확인, 아바타 재사용 재시도, 03·02 모바일 여백, 입력란 스크롤 잘림, 프로필 시트 재구성.
+- 키 검사: 작업 트리 1004파일·git 이력 115MB·빌드 산출물·배포 HTML·정적 파일·브라우저 응답 본문 모두 0건. `NEXT_PUBLIC_` 0. 소스맵은 403.
+- '버전 고정' 표의 `@anthropic-ai/sdk`·`@google/genai`·protobufjs 항목은 제거됨으로 표시했다.
 
 ## 3. 미해결 문제
 
@@ -117,7 +150,7 @@
 | `NativeAdapter.storage` 가 동기 API (P2) | 열림 | Capacitor Preferences 는 비동기라 Gate 1 에서 async 로 바꾸고, 카메라 어댑터 추가 |
 | 생성 에셋이 아직 `packages/ui` 로 옮겨지지 않음, 로고용 '빼꼼' 변형 없음 (P2) | 열림 | Gate 1 |
 | gpt-image-2 투명 배경 출력 | 미검증 | Gate 1 아바타 PoC 에서 확인 |
-| 모바일 safe-area 는 Chromium 에뮬레이션에서 0 | 열림 | 실기기 확인(Gate 3) |
+| 모바일 safe-area 는 Chromium 에뮬레이션에서 0 | 열림 | 실기기 확인(Capacitor 포팅 시) |
 | git 작성자 정보 미설정 | 우회 | 기존 이력과 같은 `JY <jyl@JYui-MacBookAir.local>` 를 커밋마다 `-c` 로 지정 (전역 설정은 바꾸지 않음) |
 | 페르소나 이름이 명사형 사건 제목과 붙어 어색함 ('…다툼의 홍길동') (P2) | 열림 | Gate 2 |
 | 과거 페르소나에 선택한 사건 나이가 맞지 않아도 통과 → 미래 지식이 샐 수 있음 (P2) | 열림 | Gate 2 |
@@ -130,3 +163,8 @@
 - analyze 60초 한도 대비 입력 상한 30만 자, 응답에 `meta.llm` 포함.
 - 시각 P2: 긴 이름 말줄임 이중, 03 하단 안내 가림, 입력란 내부 스크롤 시 반쯤 보이는 줄, 프로필 시트가 설정 폼 느낌.
 - 실제 카톡 파일·실기기 safe-area·Vercel 시간 한도는 Gate 3 에서 확인.
+
+### Gate 3 이후 (P2)
+
+- P2 전체는 `run.md` 'P2 목록'. 사용자에게 영향이 큰 것: 함수 리전(iad1), 아바타 나이 차이, 제목 서체·CTA·배경 질감, 사진 localStorage 평문, 속도 제한의 한계.
+- 다음: HIL(`hil-gate3.md`), 12/1 이후 Claude 전환 검토, 실기기 safe-area·Capacitor 포팅, 서울 리전·Firewall·OpenAI 월 한도.
