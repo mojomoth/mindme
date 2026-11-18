@@ -1,0 +1,14 @@
+3100 persona 15살 + evt_01(나이 차 2, core 거절 기대 400) -> [400] 25ms {"error":{"code":"invalid_request","message":"선택한 사건은 13살 때 일이에요. 나이를 13살로 맞춰 주세요."}}
+3100 persona 14살 + evt_01(나이 차 1, 200 기대) -> [200] 15155ms {"name":"체육대회 계주로 서진과 다툰 날의 홍길동"}
+3100 persona 15살 사건 없음(200 기대) -> [200] 18503ms {"name":"15살의 홍길동"}
+3100 analyze 빈 본문 {} -> [400] 13ms {"error":{"code":"invalid_request","message":"기록 내용을 읽지 못했어요. 파일이나 이야기를 다시 확인해 주세요."}}
+3101 analyze 빈 본문 {} (zod 한국어) -> [400] 14ms {"error":{"code":"invalid_request","message":"기록 종류 값이 올바르지 않아요."}}
+3101 persona age 문자열 -> [400] 6ms {"error":{"code":"invalid_request","message":"나이 형식이 올바르지 않아요."}}
+3101 chat messages 없음 -> [400] 5ms {"error":{"code":"invalid_request","message":"대화를 입력해 주세요."}}
+3100 chat JSON 아님 -> [400] 4ms {"error":{"code":"invalid_request","message":"JSON 형식이 아닙니다."}}
+3100 chat 본문 1.2MB -> [413] 4ms {"error":{"code":"payload_too_large","message":"요청 본문이 너무 큽니다."}}
+3100 avatar chunked 6MB(content-length 없음) -> [413] 9ms {"error":{"code":"payload_too_large","message":"사진이 너무 커요. 더 작은 사진으로 해 주세요."}}
+3100 avatar 사진 없음(기본 캐릭터) -> [200] 3ms {"avatar":"/_next/static/media/guide-face-512.2xq36pa6ny4xc.png","source":"default"}
+3100 avatar 잘못된 사진 -> [400] 3ms {"error":{"code":"invalid_request","message":"사진 형식을 확인해 주세요. JPG·PNG·WEBP 사진만 쓸 수 있어요."}}
+3100 health 200
+3101 health 200

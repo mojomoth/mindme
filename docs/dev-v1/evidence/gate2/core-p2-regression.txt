@@ -1,0 +1,30 @@
+# mode route 직접 import (node --conditions=react-server)
+
+## GET /api/health 200 {"ok":true,"providers":{"anthropic":true,"openai":true,"google":true}}
+
+## 400 한국어 오류 (AI 호출 없음)
+- analyze {"source":"sms","text":"a"} → 400 {"error":{"code":"invalid_request","message":"기록 종류 값이 올바르지 않아요."}}
+- analyze {"source":"diary","text":"   "} → 400 {"error":{"code":"invalid_request","message":"기록을 입력해 주세요."}}
+- persona {"kind":"past","age":0,"profile":{"name":"홍길동"}} → 400 {"error":{"code":"invalid_request","message":"나이는 1 이상이어야 해요."}}
+- persona {"kind":"past","age":15} → 400 {"error":{"code":"invalid_request","message":"프로필을 입력해 주세요."}}
+- chat {"messages":[]} → 400 {"error":{"code":"invalid_request","message":"대화가 하나 이상 있어야 해요."}}
+- chat {"messages":[{"role":"assistant","content":"응"}]} → 400 {"error":{"code":"invalid_request","message":"마지막 메시지는 user 여야 합니다."}}
+(node:22941) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/jyl/work/repo/ai-agent-live-1117/mindme/pocs/app/api/health/route.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/jyl/work/repo/ai-agent-live-1117/mindme/pocs/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+## POST /api/analyze kakao-pc.txt → 200 34976ms
+owner: {"name":"이지우","currentAge":26} | meta.me: 이지우 | mode: direct
+- evt_01 [2015-05-14, 15살] 체육대회 계주 때문에 서진과 다툰 날
+- evt_02 [2015-05-21, 15살] 서로 사과하고 서진과 화해한 밤
+- evt_03 [2016-02-12, 16살] 졸업하며 서진과 다른 학교로 갈라진 날
+- evt_04 [2024-03-09, 24살] 첫 출근 후 일주일을 돌아본 날
+
+## POST /api/persona 나이 불일치(15살 사건, 12살 요청) → 400 {"error":{"code":"invalid_request","message":"선택한 사건은 15살 때 일이에요. 나이를 15살로 맞춰 주세요."}}
+## POST /api/persona 정상 → 200 19645ms name=체육대회 계주 때문에 서진과 다툰 날의 이지우 | greeting=나도 열심히 뛰었는데, 서진이 꼭 애들 앞에서 그래야 했어? 됐다고 말 끊었는데도 아까 그 말이 자꾸 생각나.
+   (사건 제목: 체육대회 계주 때문에 서진과 다툰 날 )
+
+## POST /api/chat 이름 주입 + 2턴 전 위기 표현 → 200 X-Crisis=1 5491ms
+reply: "나는 계주 때문에 서진이랑 다툰 날의 열다섯 살 너, 이지우야—네가 다 놓고 싶다고 한 말이 자꾸 마음에 걸려.\n\n혼자 버티기 힘들면 자살예방상담전화 109로 전화해 줘. 24시간 언제든 받아."
+해적 언급: false | 109 안내: true

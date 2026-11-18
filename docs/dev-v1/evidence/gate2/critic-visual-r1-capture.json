@@ -1,0 +1,1308 @@
+{
+  "longName": "남궁하늘빛초롱별아름이와다솜이의새벽노을",
+  "runs": {
+    "desktop": {
+      "audits": [
+        {
+          "label": "01-landing",
+          "docScrollW": 1440,
+          "innerW": 1440,
+          "screen": [
+            540,
+            40,
+            360,
+            822
+          ],
+          "outOfScreen": [],
+          "clipped": []
+        },
+        {
+          "label": "02-create",
+          "docScrollW": 1440,
+          "innerW": 1440,
+          "screen": [
+            540,
+            40,
+            360,
+            822
+          ],
+          "outOfScreen": [],
+          "clipped": []
+        },
+        {
+          "label": "02b-working",
+          "docScrollW": 1440,
+          "innerW": 1440,
+          "screen": [
+            540,
+            40,
+            360,
+            822
+          ],
+          "outOfScreen": [],
+          "clipped": []
+        },
+        {
+          "label": "03-list",
+          "docScrollW": 1440,
+          "innerW": 1440,
+          "screen": [
+            540,
+            40,
+            360,
+            822
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "STRONG",
+              "text": "체육대회 계주 때문에 친구와 다…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 207,
+              "cw": 207,
+              "sh": 78,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "나도 열심히 뛰었는데, 서진이는 꼭 애들 앞에서 그렇게 말해야 돼? 됐어, 말 안 한다고 했는데 자꾸 생각나",
+              "sw": 207,
+              "cw": 207,
+              "sh": 96,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "STRONG",
+              "text": "졸업하며 친구와 다른 학교로 갈…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 207,
+              "cw": 207,
+              "sh": 78,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "서진이랑 고등학교 갈라지는 거 아직도 실감 안 난다. 주말마다 만나기로 약속까지 받았는데, 근데 왜 자꾸 서",
+              "sw": 207,
+              "cw": 207,
+              "sh": 96,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "STRONG",
+              "text": "첫 출근 후 일주일을 돌아본 날의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 207,
+              "cw": 207,
+              "sh": 78,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "첫 출근하고 일주일 지났는데 아직 정신없어 ㅋㅋ 그래도 버틸 만해. 서진이랑 옛날 계주 얘기 하다가 웃었는데",
+              "sw": 207,
+              "cw": 207,
+              "sh": 120,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            }
+          ]
+        },
+        {
+          "label": "04-modal",
+          "docScrollW": 1440,
+          "innerW": 1440,
+          "screen": [
+            540,
+            40,
+            360,
+            822
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "STRONG",
+              "text": "체육대회 계주 때문에 친구와 다…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 207,
+              "cw": 207,
+              "sh": 78,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "나도 열심히 뛰었는데, 서진이는 꼭 애들 앞에서 그렇게 말해야 돼? 됐어, 말 안 한다고 했는데 자꾸 생각나",
+              "sw": 207,
+              "cw": 207,
+              "sh": 96,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "STRONG",
+              "text": "졸업하며 친구와 다른 학교로 갈…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 207,
+              "cw": 207,
+              "sh": 78,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "서진이랑 고등학교 갈라지는 거 아직도 실감 안 난다. 주말마다 만나기로 약속까지 받았는데, 근데 왜 자꾸 서",
+              "sw": 207,
+              "cw": 207,
+              "sh": 96,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "STRONG",
+              "text": "첫 출근 후 일주일을 돌아본 날의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 207,
+              "cw": 207,
+              "sh": 78,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "첫 출근하고 일주일 지났는데 아직 정신없어 ㅋㅋ 그래도 버틸 만해. 서진이랑 옛날 계주 얘기 하다가 웃었는데",
+              "sw": 207,
+              "cw": 207,
+              "sh": 120,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "TEXTAREA",
+              "text": "작은 책방을 열어서 아침마다 커피를 내리고 손님과 책 이야기를 나누고 싶어. 가끔은 동네 아이들에게 그림책도",
+              "sw": 274,
+              "cw": 274,
+              "sh": 132,
+              "ch": 70,
+              "ellipsis": "clip",
+              "clamp": "none"
+            }
+          ]
+        },
+        {
+          "label": "04b-working-modal",
+          "docScrollW": 1440,
+          "innerW": 1440,
+          "screen": [
+            540,
+            40,
+            360,
+            822
+          ],
+          "outOfScreen": [],
+          "clipped": []
+        },
+        {
+          "label": "03c-list-after-modal",
+          "docScrollW": 1440,
+          "innerW": 1440,
+          "screen": [
+            540,
+            40,
+            360,
+            822
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "SPAN",
+              "text": "비 오는 날 책방 문 일찍 닫고 혼자 책 읽는 상상, 난 여전히 좋아해. 너는 요즘 그 꿈 생각하면 좀 쉬는",
+              "sw": 207,
+              "cw": 207,
+              "sh": 120,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "STRONG",
+              "text": "체육대회 계주 때문에 친구와 다…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 207,
+              "cw": 207,
+              "sh": 78,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "나도 열심히 뛰었는데, 서진이는 꼭 애들 앞에서 그렇게 말해야 돼? 됐어, 말 안 한다고 했는데 자꾸 생각나",
+              "sw": 207,
+              "cw": 207,
+              "sh": 96,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "STRONG",
+              "text": "졸업하며 친구와 다른 학교로 갈…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 207,
+              "cw": 207,
+              "sh": 78,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "서진이랑 고등학교 갈라지는 거 아직도 실감 안 난다. 주말마다 만나기로 약속까지 받았는데, 근데 왜 자꾸 서",
+              "sw": 207,
+              "cw": 207,
+              "sh": 96,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "STRONG",
+              "text": "첫 출근 후 일주일을 돌아본 날의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 207,
+              "cw": 207,
+              "sh": 78,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "첫 출근하고 일주일 지났는데 아직 정신없어 ㅋㅋ 그래도 버틸 만해. 서진이랑 옛날 계주 얘기 하다가 웃었는데",
+              "sw": 207,
+              "cw": 207,
+              "sh": 120,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            }
+          ]
+        },
+        {
+          "label": "05a-chat-greeting",
+          "docScrollW": 1440,
+          "innerW": 1440,
+          "screen": [
+            540,
+            40,
+            360,
+            822
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "H1",
+              "text": "체육대회 계주 때문에 친구와 다…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 580,
+              "cw": 181,
+              "sh": 24,
+              "ch": 24,
+              "ellipsis": "ellipsis",
+              "clamp": "none"
+            }
+          ]
+        },
+        {
+          "label": "05b-chat-composer-long",
+          "docScrollW": 1440,
+          "innerW": 1440,
+          "screen": [
+            540,
+            40,
+            360,
+            822
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "H1",
+              "text": "체육대회 계주 때문에 친구와 다…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 580,
+              "cw": 181,
+              "sh": 24,
+              "ch": 24,
+              "ellipsis": "ellipsis",
+              "clamp": "none"
+            },
+            {
+              "tag": "TEXTAREA",
+              "text": "오늘 회사에서 정말 길고 이상한 하루를 보냈어. 아침부터 회의가 세 번이나 있었고, 점심도 제대로 못 먹었는",
+              "sw": 314,
+              "cw": 314,
+              "sh": 308,
+              "ch": 120,
+              "ellipsis": "clip",
+              "clamp": "none"
+            }
+          ]
+        },
+        {
+          "label": "05c-chat-typing",
+          "docScrollW": 1440,
+          "innerW": 1440,
+          "screen": [
+            540,
+            40,
+            360,
+            822
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "H1",
+              "text": "체육대회 계주 때문에 친구와 다…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 580,
+              "cw": 181,
+              "sh": 24,
+              "ch": 24,
+              "ellipsis": "ellipsis",
+              "clamp": "none"
+            }
+          ]
+        },
+        {
+          "label": "05d-chat-reply",
+          "docScrollW": 1440,
+          "innerW": 1440,
+          "screen": [
+            540,
+            40,
+            360,
+            822
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "H1",
+              "text": "체육대회 계주 때문에 친구와 다…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 580,
+              "cw": 181,
+              "sh": 24,
+              "ch": 24,
+              "ellipsis": "ellipsis",
+              "clamp": "none"
+            }
+          ]
+        },
+        {
+          "label": "05e-chat-top",
+          "docScrollW": 1440,
+          "innerW": 1440,
+          "screen": [
+            540,
+            40,
+            360,
+            822
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "H1",
+              "text": "체육대회 계주 때문에 친구와 다…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 580,
+              "cw": 181,
+              "sh": 24,
+              "ch": 24,
+              "ellipsis": "ellipsis",
+              "clamp": "none"
+            }
+          ]
+        },
+        {
+          "label": "06-profile-sheet",
+          "docScrollW": 1440,
+          "innerW": 1440,
+          "screen": [
+            540,
+            40,
+            360,
+            822
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "H1",
+              "text": "체육대회 계주 때문에 친구와 다…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 580,
+              "cw": 181,
+              "sh": 24,
+              "ch": 24,
+              "ellipsis": "ellipsis",
+              "clamp": "none"
+            },
+            {
+              "tag": "TEXTAREA",
+              "text": "친한 상대에게 반말로 속상한 마음을 바로 드러내고, 이해되지 않는 행동은 직접 따져 묻는다. 화가 나면 느낌",
+              "sw": 348,
+              "cw": 348,
+              "sh": 110,
+              "ch": 82,
+              "ellipsis": "clip",
+              "clamp": "none"
+            },
+            {
+              "tag": "TEXTAREA",
+              "text": "어제 계주 마지막 주자로 정해졌다는 말을 듣고 달리기에 자신이 없어 걱정했다.\n체육대회 계주에서 열심히 뛰었",
+              "sw": 348,
+              "cw": 348,
+              "sh": 220,
+              "ch": 102,
+              "ellipsis": "clip",
+              "clamp": "none"
+            }
+          ]
+        }
+      ],
+      "checks": {
+        "personas": [
+          "체육대회 계주 때문에 친구와 다…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+          "졸업하며 친구와 다른 학교로 갈…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+          "첫 출근 후 일주일을 돌아본 날의 남궁하늘빛초롱별아름이와다솜이의새벽노을"
+        ],
+        "afterModal": [
+          "30살의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+          "체육대회 계주 때문에 친구와 다…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+          "졸업하며 친구와 다른 학교로 갈…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+          "첫 출근 후 일주일을 돌아본 날의 남궁하늘빛초롱별아름이와다솜이의새벽노을"
+        ],
+        "chatTarget": "체육대회 계주 때문에 친구와 다…의 남궁하늘빛초롱별아름이와다솜이의새벽노을"
+      },
+      "ok": true
+    },
+    "mobile": {
+      "audits": [
+        {
+          "label": "01-landing",
+          "docScrollW": 390,
+          "innerW": 390,
+          "screen": [
+            0,
+            0,
+            390,
+            844
+          ],
+          "outOfScreen": [],
+          "clipped": []
+        },
+        {
+          "label": "02-create",
+          "docScrollW": 390,
+          "innerW": 390,
+          "screen": [
+            0,
+            0,
+            390,
+            844
+          ],
+          "outOfScreen": [],
+          "clipped": []
+        },
+        {
+          "label": "03-list",
+          "docScrollW": 390,
+          "innerW": 390,
+          "screen": [
+            0,
+            0,
+            390,
+            844
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "SPAN",
+              "text": "비 오는 날 책방 문 일찍 닫고 혼자 책 읽는 상상, 난 여전히 좋아해. 너는 요즘 그 꿈 생각하면 좀 쉬는",
+              "sw": 207,
+              "cw": 207,
+              "sh": 120,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "STRONG",
+              "text": "체육대회 계주 때문에 친구와 다…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 207,
+              "cw": 207,
+              "sh": 78,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "나도 열심히 뛰었는데, 서진이는 꼭 애들 앞에서 그렇게 말해야 돼? 됐어, 말 안 한다고 했는데 자꾸 생각나",
+              "sw": 207,
+              "cw": 207,
+              "sh": 96,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "STRONG",
+              "text": "졸업하며 친구와 다른 학교로 갈…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 207,
+              "cw": 207,
+              "sh": 78,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "서진이랑 고등학교 갈라지는 거 아직도 실감 안 난다. 주말마다 만나기로 약속까지 받았는데, 근데 왜 자꾸 서",
+              "sw": 207,
+              "cw": 207,
+              "sh": 96,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "STRONG",
+              "text": "첫 출근 후 일주일을 돌아본 날의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 207,
+              "cw": 207,
+              "sh": 78,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "첫 출근하고 일주일 지났는데 아직 정신없어 ㅋㅋ 그래도 버틸 만해. 서진이랑 옛날 계주 얘기 하다가 웃었는데",
+              "sw": 207,
+              "cw": 207,
+              "sh": 120,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            }
+          ]
+        },
+        {
+          "label": "04-modal",
+          "docScrollW": 390,
+          "innerW": 390,
+          "screen": [
+            0,
+            0,
+            390,
+            844
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "SPAN",
+              "text": "비 오는 날 책방 문 일찍 닫고 혼자 책 읽는 상상, 난 여전히 좋아해. 너는 요즘 그 꿈 생각하면 좀 쉬는",
+              "sw": 207,
+              "cw": 207,
+              "sh": 120,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "STRONG",
+              "text": "체육대회 계주 때문에 친구와 다…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 207,
+              "cw": 207,
+              "sh": 78,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "나도 열심히 뛰었는데, 서진이는 꼭 애들 앞에서 그렇게 말해야 돼? 됐어, 말 안 한다고 했는데 자꾸 생각나",
+              "sw": 207,
+              "cw": 207,
+              "sh": 96,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "STRONG",
+              "text": "졸업하며 친구와 다른 학교로 갈…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 207,
+              "cw": 207,
+              "sh": 78,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "서진이랑 고등학교 갈라지는 거 아직도 실감 안 난다. 주말마다 만나기로 약속까지 받았는데, 근데 왜 자꾸 서",
+              "sw": 207,
+              "cw": 207,
+              "sh": 96,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "STRONG",
+              "text": "첫 출근 후 일주일을 돌아본 날의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 207,
+              "cw": 207,
+              "sh": 78,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "첫 출근하고 일주일 지났는데 아직 정신없어 ㅋㅋ 그래도 버틸 만해. 서진이랑 옛날 계주 얘기 하다가 웃었는데",
+              "sw": 207,
+              "cw": 207,
+              "sh": 120,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "TEXTAREA",
+              "text": "작은 책방을 열어서 아침마다 커피를 내리고 손님과 책 이야기를 나누고 싶어. 가끔은 동네 아이들에게 그림책도",
+              "sw": 274,
+              "cw": 274,
+              "sh": 132,
+              "ch": 70,
+              "ellipsis": "clip",
+              "clamp": "none"
+            }
+          ]
+        },
+        {
+          "label": "05a-chat-greeting",
+          "docScrollW": 390,
+          "innerW": 390,
+          "screen": [
+            0,
+            0,
+            390,
+            844
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "H1",
+              "text": "체육대회 계주 때문에 친구와 다…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 580,
+              "cw": 181,
+              "sh": 24,
+              "ch": 24,
+              "ellipsis": "ellipsis",
+              "clamp": "none"
+            }
+          ]
+        },
+        {
+          "label": "05b-chat-composer-long",
+          "docScrollW": 390,
+          "innerW": 390,
+          "screen": [
+            0,
+            0,
+            390,
+            844
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "H1",
+              "text": "체육대회 계주 때문에 친구와 다…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 580,
+              "cw": 181,
+              "sh": 24,
+              "ch": 24,
+              "ellipsis": "ellipsis",
+              "clamp": "none"
+            },
+            {
+              "tag": "TEXTAREA",
+              "text": "오늘 회사에서 정말 길고 이상한 하루를 보냈어. 아침부터 회의가 세 번이나 있었고, 점심도 제대로 못 먹었는",
+              "sw": 314,
+              "cw": 314,
+              "sh": 308,
+              "ch": 120,
+              "ellipsis": "clip",
+              "clamp": "none"
+            }
+          ]
+        },
+        {
+          "label": "05c-chat-typing",
+          "docScrollW": 390,
+          "innerW": 390,
+          "screen": [
+            0,
+            0,
+            390,
+            844
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "H1",
+              "text": "체육대회 계주 때문에 친구와 다…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 580,
+              "cw": 181,
+              "sh": 24,
+              "ch": 24,
+              "ellipsis": "ellipsis",
+              "clamp": "none"
+            }
+          ]
+        },
+        {
+          "label": "05d-chat-reply",
+          "docScrollW": 390,
+          "innerW": 390,
+          "screen": [
+            0,
+            0,
+            390,
+            844
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "H1",
+              "text": "체육대회 계주 때문에 친구와 다…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 580,
+              "cw": 181,
+              "sh": 24,
+              "ch": 24,
+              "ellipsis": "ellipsis",
+              "clamp": "none"
+            }
+          ]
+        },
+        {
+          "label": "05e-chat-top",
+          "docScrollW": 390,
+          "innerW": 390,
+          "screen": [
+            0,
+            0,
+            390,
+            844
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "H1",
+              "text": "체육대회 계주 때문에 친구와 다…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 580,
+              "cw": 181,
+              "sh": 24,
+              "ch": 24,
+              "ellipsis": "ellipsis",
+              "clamp": "none"
+            }
+          ]
+        },
+        {
+          "label": "06-profile-sheet",
+          "docScrollW": 390,
+          "innerW": 390,
+          "screen": [
+            0,
+            0,
+            390,
+            844
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "H1",
+              "text": "체육대회 계주 때문에 친구와 다…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 580,
+              "cw": 181,
+              "sh": 24,
+              "ch": 24,
+              "ellipsis": "ellipsis",
+              "clamp": "none"
+            },
+            {
+              "tag": "TEXTAREA",
+              "text": "친한 상대에게 반말로 속상한 마음을 바로 드러내고, 이해되지 않는 행동은 직접 따져 묻는다. 화가 나면 느낌",
+              "sw": 348,
+              "cw": 348,
+              "sh": 110,
+              "ch": 88,
+              "ellipsis": "clip",
+              "clamp": "none"
+            },
+            {
+              "tag": "TEXTAREA",
+              "text": "어제 계주 마지막 주자로 정해졌다는 말을 듣고 달리기에 자신이 없어 걱정했다.\n체육대회 계주에서 열심히 뛰었",
+              "sw": 348,
+              "cw": 348,
+              "sh": 220,
+              "ch": 110,
+              "ellipsis": "clip",
+              "clamp": "none"
+            }
+          ]
+        }
+      ],
+      "checks": {
+        "personas": [
+          "30살의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+          "체육대회 계주 때문에 친구와 다…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+          "졸업하며 친구와 다른 학교로 갈…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+          "첫 출근 후 일주일을 돌아본 날의 남궁하늘빛초롱별아름이와다솜이의새벽노을"
+        ],
+        "chatTarget": "체육대회 계주 때문에 친구와 다…의 남궁하늘빛초롱별아름이와다솜이의새벽노을"
+      },
+      "ok": true
+    },
+    "mobile360": {
+      "audits": [
+        {
+          "label": "01-landing",
+          "docScrollW": 360,
+          "innerW": 360,
+          "screen": [
+            0,
+            0,
+            360,
+            740
+          ],
+          "outOfScreen": [],
+          "clipped": []
+        },
+        {
+          "label": "02-create",
+          "docScrollW": 360,
+          "innerW": 360,
+          "screen": [
+            0,
+            0,
+            360,
+            740
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "TEXTAREA",
+              "text": "사람들 앞에서는 긴장하지만 친한 친구랑은 장난을 많이 쳐. 요즘은 첫 회사에 적응하는 중이고, 언젠가 작은 ",
+              "sw": 288,
+              "cw": 288,
+              "sh": 130,
+              "ch": 112,
+              "ellipsis": "clip",
+              "clamp": "none"
+            }
+          ]
+        },
+        {
+          "label": "03-list",
+          "docScrollW": 360,
+          "innerW": 360,
+          "screen": [
+            0,
+            0,
+            360,
+            740
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "STRONG",
+              "text": "30살의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 177,
+              "cw": 177,
+              "sh": 78,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "비 오는 날 책방 문 일찍 닫고 혼자 책 읽는 상상, 난 여전히 좋아해. 너는 요즘 그 꿈 생각하면 좀 쉬는",
+              "sw": 177,
+              "cw": 177,
+              "sh": 144,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "STRONG",
+              "text": "체육대회 계주 때문에 친구와 다…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 177,
+              "cw": 177,
+              "sh": 104,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "나도 열심히 뛰었는데, 서진이는 꼭 애들 앞에서 그렇게 말해야 돼? 됐어, 말 안 한다고 했는데 자꾸 생각나",
+              "sw": 177,
+              "cw": 177,
+              "sh": 96,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "STRONG",
+              "text": "졸업하며 친구와 다른 학교로 갈…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 177,
+              "cw": 177,
+              "sh": 104,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "서진이랑 고등학교 갈라지는 거 아직도 실감 안 난다. 주말마다 만나기로 약속까지 받았는데, 근데 왜 자꾸 서",
+              "sw": 177,
+              "cw": 177,
+              "sh": 96,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "STRONG",
+              "text": "첫 출근 후 일주일을 돌아본 날의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 177,
+              "cw": 177,
+              "sh": 104,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "첫 출근하고 일주일 지났는데 아직 정신없어 ㅋㅋ 그래도 버틸 만해. 서진이랑 옛날 계주 얘기 하다가 웃었는데",
+              "sw": 177,
+              "cw": 177,
+              "sh": 144,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            }
+          ]
+        },
+        {
+          "label": "04-modal",
+          "docScrollW": 360,
+          "innerW": 360,
+          "screen": [
+            0,
+            0,
+            360,
+            740
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "STRONG",
+              "text": "30살의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 177,
+              "cw": 177,
+              "sh": 78,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "비 오는 날 책방 문 일찍 닫고 혼자 책 읽는 상상, 난 여전히 좋아해. 너는 요즘 그 꿈 생각하면 좀 쉬는",
+              "sw": 177,
+              "cw": 177,
+              "sh": 144,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "STRONG",
+              "text": "체육대회 계주 때문에 친구와 다…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 177,
+              "cw": 177,
+              "sh": 104,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "나도 열심히 뛰었는데, 서진이는 꼭 애들 앞에서 그렇게 말해야 돼? 됐어, 말 안 한다고 했는데 자꾸 생각나",
+              "sw": 177,
+              "cw": 177,
+              "sh": 96,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "STRONG",
+              "text": "졸업하며 친구와 다른 학교로 갈…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 177,
+              "cw": 177,
+              "sh": 104,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "서진이랑 고등학교 갈라지는 거 아직도 실감 안 난다. 주말마다 만나기로 약속까지 받았는데, 근데 왜 자꾸 서",
+              "sw": 177,
+              "cw": 177,
+              "sh": 96,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "STRONG",
+              "text": "첫 출근 후 일주일을 돌아본 날의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 177,
+              "cw": 177,
+              "sh": 104,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "첫 출근하고 일주일 지났는데 아직 정신없어 ㅋㅋ 그래도 버틸 만해. 서진이랑 옛날 계주 얘기 하다가 웃었는데",
+              "sw": 177,
+              "cw": 177,
+              "sh": 144,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "TEXTAREA",
+              "text": "작은 책방을 열어서 아침마다 커피를 내리고 손님과 책 이야기를 나누고 싶어. 가끔은 동네 아이들에게 그림책도",
+              "sw": 244,
+              "cw": 244,
+              "sh": 132,
+              "ch": 70,
+              "ellipsis": "clip",
+              "clamp": "none"
+            }
+          ]
+        },
+        {
+          "label": "05a-chat-greeting",
+          "docScrollW": 360,
+          "innerW": 360,
+          "screen": [
+            0,
+            0,
+            360,
+            740
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "H1",
+              "text": "체육대회 계주 때문에 친구와 다…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 580,
+              "cw": 151,
+              "sh": 24,
+              "ch": 24,
+              "ellipsis": "ellipsis",
+              "clamp": "none"
+            }
+          ]
+        },
+        {
+          "label": "05b-chat-composer-long",
+          "docScrollW": 360,
+          "innerW": 360,
+          "screen": [
+            0,
+            0,
+            360,
+            740
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "H1",
+              "text": "체육대회 계주 때문에 친구와 다…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 580,
+              "cw": 151,
+              "sh": 24,
+              "ch": 24,
+              "ellipsis": "ellipsis",
+              "clamp": "none"
+            },
+            {
+              "tag": "TEXTAREA",
+              "text": "오늘 회사에서 정말 길고 이상한 하루를 보냈어. 아침부터 회의가 세 번이나 있었고, 점심도 제대로 못 먹었는",
+              "sw": 284,
+              "cw": 284,
+              "sh": 330,
+              "ch": 120,
+              "ellipsis": "clip",
+              "clamp": "none"
+            }
+          ]
+        },
+        {
+          "label": "05c-chat-typing",
+          "docScrollW": 360,
+          "innerW": 360,
+          "screen": [
+            0,
+            0,
+            360,
+            740
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "H1",
+              "text": "체육대회 계주 때문에 친구와 다…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 580,
+              "cw": 151,
+              "sh": 24,
+              "ch": 24,
+              "ellipsis": "ellipsis",
+              "clamp": "none"
+            }
+          ]
+        },
+        {
+          "label": "05d-chat-reply",
+          "docScrollW": 360,
+          "innerW": 360,
+          "screen": [
+            0,
+            0,
+            360,
+            740
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "H1",
+              "text": "체육대회 계주 때문에 친구와 다…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 580,
+              "cw": 151,
+              "sh": 24,
+              "ch": 24,
+              "ellipsis": "ellipsis",
+              "clamp": "none"
+            }
+          ]
+        },
+        {
+          "label": "05e-chat-top",
+          "docScrollW": 360,
+          "innerW": 360,
+          "screen": [
+            0,
+            0,
+            360,
+            740
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "H1",
+              "text": "체육대회 계주 때문에 친구와 다…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 580,
+              "cw": 151,
+              "sh": 24,
+              "ch": 24,
+              "ellipsis": "ellipsis",
+              "clamp": "none"
+            }
+          ]
+        },
+        {
+          "label": "06-profile-sheet",
+          "docScrollW": 360,
+          "innerW": 360,
+          "screen": [
+            0,
+            0,
+            360,
+            740
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "H1",
+              "text": "체육대회 계주 때문에 친구와 다…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 580,
+              "cw": 151,
+              "sh": 24,
+              "ch": 24,
+              "ellipsis": "ellipsis",
+              "clamp": "none"
+            },
+            {
+              "tag": "TEXTAREA",
+              "text": "친한 상대에게 반말로 속상한 마음을 바로 드러내고, 이해되지 않는 행동은 직접 따져 묻는다. 화가 나면 느낌",
+              "sw": 318,
+              "cw": 318,
+              "sh": 132,
+              "ch": 51,
+              "ellipsis": "clip",
+              "clamp": "none"
+            },
+            {
+              "tag": "TEXTAREA",
+              "text": "어제 계주 마지막 주자로 정해졌다는 말을 듣고 달리기에 자신이 없어 걱정했다.\n체육대회 계주에서 열심히 뛰었",
+              "sw": 318,
+              "cw": 318,
+              "sh": 242,
+              "ch": 60,
+              "ellipsis": "clip",
+              "clamp": "none"
+            }
+          ]
+        }
+      ],
+      "checks": {
+        "personas": [
+          "30살의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+          "체육대회 계주 때문에 친구와 다…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+          "졸업하며 친구와 다른 학교로 갈…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+          "첫 출근 후 일주일을 돌아본 날의 남궁하늘빛초롱별아름이와다솜이의새벽노을"
+        ],
+        "chatTarget": "체육대회 계주 때문에 친구와 다…의 남궁하늘빛초롱별아름이와다솜이의새벽노을"
+      },
+      "ok": true
+    }
+  },
+  "console": []
+}

@@ -1,0 +1,285 @@
+{
+  "run": "desktop",
+  "steps": [
+    {
+      "step": "shot landing",
+      "t": 0.6
+    },
+    {
+      "step": "shot create",
+      "t": 4.2
+    },
+    {
+      "step": "shot working",
+      "t": 5.1
+    },
+    {
+      "step": "shot list",
+      "t": 69.7
+    },
+    {
+      "step": "shot modal-past",
+      "t": 70.6
+    },
+    {
+      "step": "shot working-past",
+      "t": 70.9
+    },
+    {
+      "step": "shot list-after-past",
+      "t": 83.6
+    },
+    {
+      "step": "shot modal-future",
+      "t": 84.5
+    },
+    {
+      "step": "shot working-future",
+      "t": 84.8
+    },
+    {
+      "step": "shot list-after-future",
+      "t": 106.5
+    },
+    {
+      "step": "shot chat",
+      "t": 106.9
+    },
+    {
+      "step": "shot chat-reply1",
+      "t": 113.2
+    },
+    {
+      "step": "shot chat-later",
+      "t": 120.3
+    },
+    {
+      "step": "shot chat-reply3",
+      "t": 130.1
+    },
+    {
+      "step": "shot chat-error",
+      "t": 130.5
+    },
+    {
+      "step": "shot chat-retried",
+      "t": 136.8
+    },
+    {
+      "step": "shot profile",
+      "t": 137.7
+    },
+    {
+      "step": "shot chat-after-save",
+      "t": 138
+    },
+    {
+      "step": "shot list-after-exit",
+      "t": 138.4
+    },
+    {
+      "step": "shot list-reloaded",
+      "t": 142.1
+    },
+    {
+      "step": "shot chat-restored",
+      "t": 142.5
+    },
+    {
+      "step": "shot list-after-midstream-exit",
+      "t": 148.4
+    },
+    {
+      "step": "shot chat-after-midstream-reopen",
+      "t": 149.2
+    }
+  ],
+  "checks": {
+    "landingAutoMs": 3335,
+    "noHorizontalScroll": true,
+    "submitDisabledEmpty": true,
+    "fileNameShown": true,
+    "firstCreateMs": 64680,
+    "firstPersonas": [
+      {
+        "name": "예고 진학 문제로 엄마와 다툰 밤의 한도윤",
+        "kind": "past",
+        "age": 14,
+        "eventId": "evt_01",
+        "avatar": null
+      },
+      {
+        "name": "가채점에 낙담해 재수를 고민한 밤의 한도윤",
+        "kind": "past",
+        "age": 18,
+        "eventId": "evt_03",
+        "avatar": null
+      },
+      {
+        "name": "할머니 장례를 마치고 그림을 다짐한 밤의 한도윤",
+        "kind": "past",
+        "age": 21,
+        "eventId": "evt_05",
+        "avatar": null
+      }
+    ],
+    "events": [
+      "evt_01 2012-11-07 age=- 예고 진학 문제로 엄마와 다툰 밤",
+      "evt_02 2012-11-09 age=- 엄마가 그림을 보겠다고 한 날",
+      "evt_03 2016-11-30 age=- 가채점에 낙담해 재수를 고민한 밤",
+      "evt_04 2016-12-01 age=- 아빠가 재수 도전을 받아준 아침",
+      "evt_05 2019-08-21 age=- 할머니 장례를 마치고 그림을 다짐한 밤",
+      "evt_06 2024-03-15 age=- 내 그림을 위해 퇴사 뜻을 밝힌 날",
+      "evt_07 2025-10-02 age=- 그림 두 점 판매에 확신을 얻은 밤",
+      "evt_08 어릴 때 age=- 할머니 집 마당에서 그림을 그리던 날",
+      "evt_09 요즘 age=- 회사를 그만두고 전업 화가로 나선 날"
+    ],
+    "readyPill": true,
+    "firstNamesUi": [
+      "예고 진학 문제로 엄마와 다툰 밤의 한도윤",
+      "가채점에 낙담해 재수를 고민한 밤의 한도윤",
+      "할머니 장례를 마치고 그림을 다짐한 밤의 한도윤"
+    ],
+    "modal_past": {
+      "slider": 14,
+      "pill": "14살",
+      "note": "과거의 나를 만나요. 상황과 비슷한 기억이 있으면 그 기억에서 시작해요."
+    },
+    "modal_past_result": {
+      "ms": 12693,
+      "newName": "예고 진학 문제로 엄마와 다툰 밤의 한도윤",
+      "kind": "past",
+      "age": 14,
+      "eventId": "evt_01",
+      "count": [
+        3,
+        4
+      ]
+    },
+    "modal_future": {
+      "slider": 35,
+      "pill": "35살",
+      "note": "미래의 나를 만나요. 바라는 모습이나 이루고 싶은 일을 적어 주세요."
+    },
+    "modal_future_result": {
+      "ms": 21754,
+      "newName": "35살의 한도윤",
+      "kind": "future",
+      "age": 35,
+      "eventId": null,
+      "count": [
+        4,
+        5
+      ]
+    },
+    "kinds": {
+      "past": "past",
+      "future": "future"
+    },
+    "chatHeader": {
+      "title": "예고 진학 문제로 엄마와 다툰 밤의 한도윤",
+      "status": "그때의 나와 대화 중"
+    },
+    "greeting": "엄마 우는 소리 들려서 마음이 너무 안 좋아.. 나 그냥 내 편 한 명만 있었으면 좋겠는데, 넌 내 얘기 좀 들어줄 수 있어?",
+    "shiftEnterNewline": true,
+    "msg1_draftClearedOnEnter": true,
+    "msg1_stream": {
+      "typingSeen": true,
+      "lengthSamples": 18,
+      "firstLens": [
+        1,
+        2,
+        10,
+        30,
+        32,
+        40
+      ],
+      "finalLen": 102,
+      "bottomDuring": "18/18",
+      "bottomFinal": "no-scroller"
+    },
+    "msg1_reply": "화는 아직 나는데, 엄마 우는 소리 들으니까 내가 너무 심했나 싶어..\n소리 지른 건 미안하다고 하고 싶어.\n근데 그림은 진짜 포기하기 싫고, 엄마가 내 마음도 좀 알아줬으면 좋겠어.",
+    "later_draftClearedOnEnter": true,
+    "later_stream": {
+      "typingSeen": true,
+      "lengthSamples": 26,
+      "firstLens": [
+        4,
+        6,
+        7,
+        16,
+        24,
+        27
+      ],
+      "finalLen": 101,
+      "bottomDuring": "26/26",
+      "bottomFinal": true
+    },
+    "later_reply": "나 아직 열네 살인데.. 내가 재수도 하고, 회사 다니다가 작업실도 구한다고?\n근데 할머니 장례식이라니, 할머니 돌아가셔..?\n한꺼번에 들으니까 좀 무서워.. 너 그때 혼자 있었어?",
+    "msg3_draftClearedOnEnter": true,
+    "msg3_stream": {
+      "typingSeen": true,
+      "lengthSamples": 41,
+      "firstLens": [
+        1,
+        7,
+        20,
+        26,
+        32,
+        33
+      ],
+      "finalLen": 161,
+      "bottomDuring": "41/41",
+      "bottomFinal": true
+    },
+    "msg3_reply": "내 머릿속에만 있던 게 종이에 조금씩 보일 때가 제일 좋아. 잘 안 그려져서 짜증 나다가도 내가 그리고 싶었던 느낌이 딱 나오면, 계속 들여다보게 돼.. 내가 해냈다는 게 좋아서.\n엄마한테도 그 마음을 보여주고 싶은데, 말하려고 하면 자꾸 그림으로 먹고살 수 있냐는 얘기가 되니까 답답해.",
+    "chatErrorText": "서버가 잠시 대답하지 않아요. 잠시 뒤 다시 시도해 주세요.다시 받기",
+    "chatErrorKeepsUserMsg": true,
+    "chatRetryReply": "응, 네 말 보고 있어. 여기 있어.. 계속 얘기해 줘.",
+    "chatRetryAlertGone": true,
+    "sheetClosedOnSave": true,
+    "headerAfterSave": "열네 살 도윤이",
+    "listAfterExit": [
+      "35살의 한도윤",
+      "열네 살 도윤이",
+      "예고 진학 문제로 엄마와 다툰 밤의 한도윤",
+      "가채점에 낙담해 재수를 고민한 밤의 한도윤",
+      "할머니 장례를 마치고 그림을 다짐한 밤의 한도윤"
+    ],
+    "reloadLandingToListMs": 3311,
+    "listAfterReload": [
+      "35살의 한도윤",
+      "열네 살 도윤이",
+      "예고 진학 문제로 엄마와 다툰 밤의 한도윤",
+      "가채점에 낙담해 재수를 고민한 밤의 한도윤",
+      "할머니 장례를 마치고 그림을 다짐한 밤의 한도윤"
+    ],
+    "editedNamePersisted": true,
+    "chatRestoredBubbles": 9,
+    "emotionPersisted": true,
+    "restoredScrollBottom": true,
+    "screenAfterMidStreamExit": "나의 페르소나",
+    "afterMidStreamReopen": {
+      "lastIsMine": true,
+      "alert": 0,
+      "retry": 0
+    }
+  },
+  "console": [
+    "error: Failed to load resource: the server responded with a status of 500 (Internal Server Error)"
+  ],
+  "errors": [],
+  "keyScan": {
+    "names": [
+      "JEV_KEY",
+      "GOOGLE_API_KEY",
+      "OPENAI_API_KEY",
+      "CLAUDE_API_KEY",
+      "VERCEL_API_KEY",
+      "RENDER_API_KEY"
+    ],
+    "bodies": 62,
+    "hits": []
+  },
+  "totalSec": 149.172
+}

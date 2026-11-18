@@ -1,0 +1,2 @@
+modal age 15 kind past -> nearestEvent evt_01 event age 13
+POST /api/persona (3100) -> 400 {"error":{"code":"invalid_request","message":"선택한 사건은 13살 때 일이에요. 나이를 13살로 맞춰 주세요."}}

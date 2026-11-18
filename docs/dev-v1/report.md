@@ -31,6 +31,18 @@
 
 결론: 지금 직접 API 로 쓸 수 있는 공급자는 **OpenAI 하나뿐**이다. `/api/health` 의 `providers` 는 키가 있는지만 보므로 `anthropic:true`, `google:true` 가 실제 호출 가능 여부와 다르다(P2, 아래 미해결 참고).
 
+### Gate 1 PoC 실측 (2026-11-19, Gate 1 최종 Critic)
+
+| 기능 | 모델 | 결과 | 지연 |
+|---|---|---|---|
+| 카카오톡·일기·프롬프트 분석 `/api/analyze` | gpt-6-astra (structured output) | 사건 3개 시간순 추출, 스키마 일치 | 약 22s |
+| 페르소나 생성 `/api/persona` | gpt-6-astra | 과거(사건 직후) 생성, 이름 형식 일치 | 약 15s |
+| 아바타 `/api/persona/avatar` | gpt-image-2 (사진 있을 때만) | 사진 없으면 기본 캐릭터 반환 | 11ms (기본) |
+| 대화 `/api/chat` | gpt-6-astra 스트리밍 | 35청크, 위기 신호 시 109 안내 | 첫 청크 1.6~2.7s, 전체 약 4.7s |
+
+- 검사: typecheck 3패키지, test 32/32, lint, next build 통과. 키 값 바이트 검색 677파일 0건.
+- 1차 실행은 DNS 장애(ENOTFOUND)로 에이전트 7개가 중단됐다. 남은 파일을 이어받아 재개했다.
+
 ## 2. 중요 결정
 
 ### AI 공급자 (Gate 1)
@@ -90,3 +102,7 @@
 | 생성 에셋이 아직 `packages/ui` 로 옮겨지지 않음, 로고용 '빼꼼' 변형 없음 (P2) | 열림 | Gate 1 |
 | gpt-image-2 투명 배경 출력 | 미검증 | Gate 1 아바타 PoC 에서 확인 |
 | 모바일 safe-area 는 Chromium 에뮬레이션에서 0 | 열림 | 실기기 확인(Gate 3) |
+| git 작성자 정보 미설정 | 우회 | 기존 이력과 같은 `JY <jyl@JYui-MacBookAir.local>` 를 커밋마다 `-c` 로 지정 (전역 설정은 바꾸지 않음) |
+| 페르소나 이름이 명사형 사건 제목과 붙어 어색함 ('…다툼의 홍길동') (P2) | 열림 | Gate 2 |
+| 과거 페르소나에 선택한 사건 나이가 맞지 않아도 통과 → 미래 지식이 샐 수 있음 (P2) | 열림 | Gate 2 |
+| chat: persona.name 짧은 주입 지시가 먹힘, 돌려 말한 위기 표현은 감지 못 함 (P2) | 열림 | Gate 2 |

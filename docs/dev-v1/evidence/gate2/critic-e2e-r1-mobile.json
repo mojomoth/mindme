@@ -1,0 +1,294 @@
+{
+  "run": "mobile",
+  "steps": [
+    {
+      "step": "shot landing",
+      "t": 0.7
+    },
+    {
+      "step": "shot create",
+      "t": 4.2
+    },
+    {
+      "step": "shot working",
+      "t": 5.2
+    },
+    {
+      "step": "shot error-analyze",
+      "t": 5.5
+    },
+    {
+      "step": "shot list",
+      "t": 65
+    },
+    {
+      "step": "shot modal-past",
+      "t": 65.9
+    },
+    {
+      "step": "shot working-past",
+      "t": 66.3
+    },
+    {
+      "step": "shot list-after-past",
+      "t": 83
+    },
+    {
+      "step": "shot modal-future",
+      "t": 83.9
+    },
+    {
+      "step": "shot working-future",
+      "t": 84.3
+    },
+    {
+      "step": "shot list-after-future",
+      "t": 101.5
+    },
+    {
+      "step": "shot chat",
+      "t": 101.9
+    },
+    {
+      "step": "shot chat-reply1",
+      "t": 108.9
+    },
+    {
+      "step": "shot chat-later",
+      "t": 115.9
+    },
+    {
+      "step": "shot chat-reply3",
+      "t": 125.1
+    },
+    {
+      "step": "shot chat-offline",
+      "t": 125.4
+    },
+    {
+      "step": "shot chat-retried",
+      "t": 131.8
+    },
+    {
+      "step": "shot profile",
+      "t": 132.7
+    },
+    {
+      "step": "shot chat-after-save",
+      "t": 133.1
+    },
+    {
+      "step": "shot list-after-exit",
+      "t": 133.4
+    },
+    {
+      "step": "shot list-reloaded",
+      "t": 137.2
+    },
+    {
+      "step": "shot chat-restored",
+      "t": 137.6
+    },
+    {
+      "step": "shot list-after-midstream-exit",
+      "t": 143.5
+    },
+    {
+      "step": "shot chat-after-midstream-reopen",
+      "t": 144.4
+    }
+  ],
+  "checks": {
+    "landingAutoMs": 3367,
+    "noHorizontalScroll": true,
+    "submitDisabledEmpty": true,
+    "fileNameShown": true,
+    "analyzeErrorText": "서버가 잠시 대답하지 않아요. 잠시 뒤 다시 시도해 주세요.",
+    "analyzeErrorButtons": [
+      "다시 시도",
+      "입력 화면으로"
+    ],
+    "firstCreateMs": 59985,
+    "firstPersonas": [
+      {
+        "name": "예고 진학 문제로 엄마와 다툰 밤의 한도윤",
+        "kind": "past",
+        "age": 14,
+        "eventId": "evt_01",
+        "avatar": null
+      },
+      {
+        "name": "가채점에 낙담해 재수를 고민한 밤의 한도윤",
+        "kind": "past",
+        "age": 18,
+        "eventId": "evt_03",
+        "avatar": null
+      },
+      {
+        "name": "할머니 장례를 마치고 그림을 다짐한 밤의 한도윤",
+        "kind": "past",
+        "age": 21,
+        "eventId": "evt_05",
+        "avatar": null
+      }
+    ],
+    "events": [
+      "evt_01 2012-11-07 age=14 예고 진학 문제로 엄마와 다툰 밤",
+      "evt_02 2012-11-09 age=14 엄마가 포트폴리오를 보자고 한 날",
+      "evt_03 2016-11-30 age=18 가채점에 낙담해 재수를 고민한 밤",
+      "evt_04 2016-12-01 age=18 아빠가 재수 도전을 받아준 아침",
+      "evt_05 2019-08-21 age=21 할머니 장례를 마치고 그림을 다짐한 밤",
+      "evt_06 2024-03-15 age=26 내 그림을 위해 퇴사 의사를 밝힌 날",
+      "evt_07 2025-10-02 age=27 그림 판매 소식에 내 길을 믿게 된 밤",
+      "evt_08 어릴 때 age=- 할머니 집 마당에서 그림 그리던 날",
+      "evt_09 요즘 age=- 회사를 그만두고 전업 화가가 된 날"
+    ],
+    "readyPill": true,
+    "firstNamesUi": [
+      "예고 진학 문제로 엄마와 다툰 밤의 한도윤",
+      "가채점에 낙담해 재수를 고민한 밤의 한도윤",
+      "할머니 장례를 마치고 그림을 다짐한 밤의 한도윤"
+    ],
+    "modal_past": {
+      "slider": 14,
+      "pill": "14살",
+      "note": "과거의 나를 만나요. 상황과 비슷한 기억이 있으면 그 기억에서 시작해요."
+    },
+    "modal_past_result": {
+      "ms": 16745,
+      "newName": "예고 진학 문제로 엄마와 다툰 밤의 한도윤",
+      "kind": "past",
+      "age": 14,
+      "eventId": "evt_01",
+      "count": [
+        3,
+        4
+      ]
+    },
+    "modal_future": {
+      "slider": 35,
+      "pill": "35살",
+      "note": "미래의 나를 만나요. 바라는 모습이나 이루고 싶은 일을 적어 주세요."
+    },
+    "modal_future_result": {
+      "ms": 17257,
+      "newName": "35살의 한도윤",
+      "kind": "future",
+      "age": 35,
+      "eventId": null,
+      "count": [
+        4,
+        5
+      ]
+    },
+    "kinds": {
+      "past": "past",
+      "future": "future"
+    },
+    "chatHeader": {
+      "title": "예고 진학 문제로 엄마와 다툰 밤의 한도윤",
+      "status": "그때의 나와 대화 중"
+    },
+    "greeting": "엄마 우는 소리 들려서 마음이 너무 안 좋아.. 나 그냥 내 편 한 명만 있었으면 좋겠는데, 너는 내 얘기 좀 들어줄 거야?",
+    "shiftEnterNewline": true,
+    "msg1_draftClearedOnEnter": true,
+    "msg1_stream": {
+      "typingSeen": true,
+      "lengthSamples": 24,
+      "firstLens": [
+        1,
+        4,
+        7,
+        10,
+        22,
+        25
+      ],
+      "finalLen": 119,
+      "bottomDuring": "24/24",
+      "bottomFinal": "no-scroller"
+    },
+    "msg1_reply": "아직 서운한데, 엄마 우는 소리 들으니까 내가 너무 심했나 싶어..\n소리 지른 건 미안하다고 말하고 싶어.\n근데 그림으로 어떻게 먹고살지 나도 무서우니까, 안 된다고만 하지 말고 내 얘기도 좀 들어줬으면 좋겠어..",
+    "later_draftClearedOnEnter": true,
+    "later_stream": {
+      "typingSeen": true,
+      "lengthSamples": 26,
+      "firstLens": [
+        4,
+        6,
+        7,
+        12,
+        19,
+        25
+      ],
+      "finalLen": 116,
+      "bottomDuring": "26/26",
+      "bottomFinal": true
+    },
+    "later_reply": "나 아직 열네 살인데, 재수도 하고 회사도 다녔다고..?\n할머니 돌아가셨다는 건 듣기 싫어.. 난 아직 할머니 집 마당에서 그림 그리던 게 제일 좋은데.\n작업실 구했다는 건, 나 나중에도 그림 안 놓은 거야?",
+    "msg3_draftClearedOnEnter": true,
+    "msg3_stream": {
+      "typingSeen": true,
+      "lengthSamples": 40,
+      "firstLens": [
+        1,
+        4,
+        8,
+        16,
+        22,
+        25
+      ],
+      "finalLen": 166,
+      "bottomDuring": "40/40",
+      "bottomFinal": true
+    },
+    "msg3_reply": "내가 머릿속으로 생각한 게 종이에 조금씩 나타날 때가 제일 좋아. 마음에 안 들어서 자꾸 고치다가 딱 내가 원하던 느낌이 나오면, 아무한테도 안 보여줘도 혼자 좋음..\n할머니 집 마당에서 그릴 때도 그냥 그리는 게 좋았는데, 엄마한테는 자꾸 이걸 왜 해야 하는지 증명해야 하는 것 같아서 속상해..",
+    "chatOfflineText": "연결이 잠깐 끊겼어요. 인터넷 연결을 확인하고 다시 시도해 주세요.다시 받기",
+    "chatRetryReply": "응, 네 말 보여. 나 여기 있어..\n아까 내 얘기 너무 많이 했나 싶었어. 너는 지금 괜찮아?",
+    "sheetClosedOnSave": true,
+    "headerAfterSave": "열네 살 도윤이",
+    "listAfterExit": [
+      "35살의 한도윤",
+      "열네 살 도윤이",
+      "예고 진학 문제로 엄마와 다툰 밤의 한도윤",
+      "가채점에 낙담해 재수를 고민한 밤의 한도윤",
+      "할머니 장례를 마치고 그림을 다짐한 밤의 한도윤"
+    ],
+    "reloadLandingToListMs": 3313,
+    "listAfterReload": [
+      "35살의 한도윤",
+      "열네 살 도윤이",
+      "예고 진학 문제로 엄마와 다툰 밤의 한도윤",
+      "가채점에 낙담해 재수를 고민한 밤의 한도윤",
+      "할머니 장례를 마치고 그림을 다짐한 밤의 한도윤"
+    ],
+    "editedNamePersisted": true,
+    "chatRestoredBubbles": 9,
+    "emotionPersisted": true,
+    "restoredScrollBottom": true,
+    "screenAfterMidStreamExit": "나의 페르소나",
+    "afterMidStreamReopen": {
+      "lastIsMine": true,
+      "alert": 0,
+      "retry": 0
+    }
+  },
+  "console": [
+    "error: Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+    "error: Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+    "error: Failed to load resource: net::ERR_INTERNET_DISCONNECTED"
+  ],
+  "errors": [],
+  "keyScan": {
+    "names": [
+      "JEV_KEY",
+      "GOOGLE_API_KEY",
+      "OPENAI_API_KEY",
+      "CLAUDE_API_KEY",
+      "VERCEL_API_KEY",
+      "RENDER_API_KEY"
+    ],
+    "bodies": 63,
+    "hits": []
+  },
+  "totalSec": 144.409
+}

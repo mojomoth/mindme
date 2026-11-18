@@ -1,0 +1,19 @@
+너는 독립 시각 검수자다. 모바일 앱 'mindme' 의 원본 디자인 드래프트와 실제 실행 화면 캡처를 비교한다.
+실제 캡처는 실제 AI 로 만든 실제 데이터(사용자 이름 20자 '남궁하늘빛초롱별아름이와다솜이의새벽노을', 긴 메시지 포함)라서 드래프트의 예시 문구·아바타와 내용이 다른 것은 감점하지 않는다. 구성·배치·색·크기·간격·시각 언어가 맞는지, 그리고 구성요소 누락, 텍스트 잘림/겹침, 목업(아이폰 프레임) 밖으로 넘침, 긴 데이터로 레이아웃 깨짐이 있는지 본다.
+데스크톱 캡처는 1440x900 화면 가운데 아이폰 목업 안에 앱이 있고, 모바일 캡처는 390x844 전체 화면(실기기라 가짜 상태바 없음)이다.
+지난 라운드에서 '데스크톱 목업에서 스크롤한 내용이 상태바(9:41)·다이내믹 아일랜드와 겹친다'는 결함이 있었다. 이번 라운드에서 그 결함이 사라졌는지 02·03 데스크톱 스크롤 캡처로 특히 확인하라.
+각 화면마다 아래 파일을 직접 열어(Read/이미지 보기) 비교하라.
+
+화면 01 랜딩: 드래프트 /Users/jyl/work/repo/ai-agent-live-1117/mindme/docs/screens/drafts/01-landing.png / 데스크톱 /Users/jyl/work/repo/ai-agent-live-1117/mindme/docs/dev-v1/evidence/gate2/critic-visual-r2-desktop-01-landing.png / 모바일 /Users/jyl/work/repo/ai-agent-live-1117/mindme/docs/dev-v1/evidence/gate2/critic-visual-r2-mobile-01-landing.png
+화면 02 페르소나 만들기(폼 입력을 마친 상태): 드래프트 /Users/jyl/work/repo/ai-agent-live-1117/mindme/docs/screens/drafts/02-persona-create.png / 데스크톱 /Users/jyl/work/repo/ai-agent-live-1117/mindme/docs/dev-v1/evidence/gate2/critic-visual-r2-desktop-02-create.png / 데스크톱 휠 60px 스크롤 /Users/jyl/work/repo/ai-agent-live-1117/mindme/docs/dev-v1/evidence/gate2/critic-visual-r2-desktop-02s-wheel60.png / 모바일 /Users/jyl/work/repo/ai-agent-live-1117/mindme/docs/dev-v1/evidence/gate2/critic-visual-r2-mobile-02-create.png
+화면 03 페르소나 목록: 드래프트 /Users/jyl/work/repo/ai-agent-live-1117/mindme/docs/screens/drafts/03-persona-list.png / 데스크톱 /Users/jyl/work/repo/ai-agent-live-1117/mindme/docs/dev-v1/evidence/gate2/critic-visual-r2-desktop-03-list.png / 데스크톱 맨 아래로 스크롤 /Users/jyl/work/repo/ai-agent-live-1117/mindme/docs/dev-v1/evidence/gate2/critic-visual-r2-desktop-03s-bottom.png / 모바일 /Users/jyl/work/repo/ai-agent-live-1117/mindme/docs/dev-v1/evidence/gate2/critic-visual-r2-mobile-03-list.png
+화면 04 페르소나 생성 모달: 드래프트 /Users/jyl/work/repo/ai-agent-live-1117/mindme/docs/screens/drafts/04-persona-modal.png / 데스크톱 /Users/jyl/work/repo/ai-agent-live-1117/mindme/docs/dev-v1/evidence/gate2/critic-visual-r2-desktop-04-modal.png / 모바일 /Users/jyl/work/repo/ai-agent-live-1117/mindme/docs/dev-v1/evidence/gate2/critic-visual-r2-mobile-04-modal.png
+화면 05 대화: 드래프트 /Users/jyl/work/repo/ai-agent-live-1117/mindme/docs/screens/drafts/05-conversation.png / 데스크톱 /Users/jyl/work/repo/ai-agent-live-1117/mindme/docs/dev-v1/evidence/gate2/critic-visual-r2-desktop-05d-chat-reply.png / 모바일 /Users/jyl/work/repo/ai-agent-live-1117/mindme/docs/dev-v1/evidence/gate2/critic-visual-r2-mobile-05d-chat-reply.png / 데스크톱 첫 화면(인사) /Users/jyl/work/repo/ai-agent-live-1117/mindme/docs/dev-v1/evidence/gate2/critic-visual-r2-desktop-05a-chat-greeting.png
+새 화면(드래프트 없음, 드래프트 시각 언어와 어울리는지와 상투적 UI·문구만 판정): 진행 화면 /Users/jyl/work/repo/ai-agent-live-1117/mindme/docs/dev-v1/evidence/gate2/critic-visual-r2-desktop-02b-working.png / 프로필 시트 /Users/jyl/work/repo/ai-agent-live-1117/mindme/docs/dev-v1/evidence/gate2/critic-visual-r2-desktop-06-profile-sheet.png, /Users/jyl/work/repo/ai-agent-live-1117/mindme/docs/dev-v1/evidence/gate2/critic-visual-r2-mobile-06-profile-sheet.png
+
+출력 형식(한국어, 간결하게):
+- 화면별: '0N 데스크톱 점수/10, 모바일 점수/10' 다음 줄에 주요 차이 3개 이내(가장 큰 것부터), 결함이 있으면 [결함] 표시
+- 상태바 겹침 결함: '해소됨' 또는 '남음'과 근거 한 줄
+- 새 화면: 어울림 점수/10, 상투적 UI·문구 지적
+- 마지막 줄: 가장 심각한 문제 1개
+파일을 수정하지 마라.

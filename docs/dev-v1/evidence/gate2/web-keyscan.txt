@@ -1,0 +1,3 @@
+keys checked: 6 (names only: JEV_KEY, GOOGLE_API_KEY, OPENAI_API_KEY, CLAUDE_API_KEY, VERCEL_API_KEY, RENDER_API_KEY)
+files scanned: 321
+hits: 0

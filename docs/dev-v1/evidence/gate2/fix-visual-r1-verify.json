@@ -1,0 +1,69 @@
+{
+  "create_top": {
+    "scrollTop": 0,
+    "clientH": 892,
+    "scrollH": 992,
+    "barBg": "rgb(240, 246, 250)",
+    "hits": [
+      "MAIN.shared-module__umoTfq__screen",
+      "NAV.shared-module__umoTfq__nav",
+      "H1.shared-module__umoTfq__navTitl"
+    ]
+  },
+  "create_wheel60": {
+    "scrollTop": 60,
+    "clientH": 892,
+    "scrollH": 992,
+    "barBg": "rgb(240, 246, 250)",
+    "hits": [
+      "NAV.shared-module__umoTfq__nav",
+      "IMG.",
+      "H1.shared-module__umoTfq__navTitl",
+      "DIV.PersonaCreate-module__JQQtNq__"
+    ]
+  },
+  "create_bottom": {
+    "scrollTop": 100,
+    "clientH": 892,
+    "scrollH": 992,
+    "barBg": "rgb(240, 246, 250)",
+    "hits": [
+      "IMG.",
+      "DIV.PersonaCreate-module__JQQtNq__",
+      "P.PersonaCreate-module__JQQtNq__"
+    ]
+  },
+  "list_top": {
+    "scrollTop": 0,
+    "clientH": 892,
+    "scrollH": 993,
+    "barBg": "rgb(240, 246, 250)",
+    "hits": [
+      "MAIN.shared-module__umoTfq__screen",
+      "NAV.shared-module__umoTfq__nav",
+      "H1.shared-module__umoTfq__navTitl"
+    ]
+  },
+  "list_bottom": {
+    "scrollTop": 101,
+    "clientH": 892,
+    "scrollH": 993,
+    "barBg": "rgb(240, 246, 250)",
+    "hits": [
+      "SECTION.PersonaList-module__pERuZa__he",
+      "H2.PersonaList-module__pERuZa__ti"
+    ]
+  },
+  "chat": {
+    "scrollTop": 0,
+    "clientH": 892,
+    "scrollH": 892,
+    "barBg": "rgba(0, 0, 0, 0)",
+    "hits": [
+      "HEADER.Conversation-module__dq0IDW__h",
+      "H1.",
+      "BUTTON.Conversation-module__dq0IDW__e"
+    ]
+  },
+  "mobile_statusBarDisplay": "none"
+}

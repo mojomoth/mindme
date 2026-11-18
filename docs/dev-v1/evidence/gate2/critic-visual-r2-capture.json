@@ -1,0 +1,1535 @@
+{
+  "longName": "남궁하늘빛초롱별아름이와다솜이의새벽노을",
+  "runs": {
+    "desktop": {
+      "audits": [
+        {
+          "label": "01-landing",
+          "docScrollW": 1440,
+          "innerW": 1440,
+          "screen": [
+            540,
+            40,
+            360,
+            822
+          ],
+          "outOfScreen": [],
+          "clipped": []
+        },
+        {
+          "label": "02-create",
+          "docScrollW": 1440,
+          "innerW": 1440,
+          "screen": [
+            540,
+            40,
+            360,
+            822
+          ],
+          "outOfScreen": [],
+          "clipped": []
+        },
+        {
+          "label": "02s-wheel60",
+          "docScrollW": 1440,
+          "innerW": 1440,
+          "screen": [
+            540,
+            40,
+            360,
+            822
+          ],
+          "outOfScreen": [],
+          "clipped": []
+        },
+        {
+          "label": "02s-bottom",
+          "docScrollW": 1440,
+          "innerW": 1440,
+          "screen": [
+            540,
+            40,
+            360,
+            822
+          ],
+          "outOfScreen": [],
+          "clipped": []
+        },
+        {
+          "label": "02b-working",
+          "docScrollW": 1440,
+          "innerW": 1440,
+          "screen": [
+            540,
+            40,
+            360,
+            822
+          ],
+          "outOfScreen": [],
+          "clipped": []
+        },
+        {
+          "label": "03-list",
+          "docScrollW": 1440,
+          "innerW": 1440,
+          "screen": [
+            540,
+            40,
+            360,
+            822
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "STRONG",
+              "text": "체육대회 계주로 서진과 다툰 날의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 207,
+              "cw": 207,
+              "sh": 78,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "나도 열심히 뛰었단 말이야. 바통 놓친 건 아는데, 꼭 애들 앞에서 그렇게 말해야 했어?",
+              "sw": 207,
+              "cw": 207,
+              "sh": 72,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "STRONG",
+              "text": "졸업하며 서진과 헤어짐을 아쉬워…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 207,
+              "cw": 207,
+              "sh": 78,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "근데 서진이랑 고등학교 갈라지는 거 아직도 실감 안 난다. 3년 내내 붙어 다녔는데, 주말마다 만나자는 약속",
+              "sw": 207,
+              "cw": 207,
+              "sh": 96,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "STRONG",
+              "text": "첫 직장 생활을 시작한 날의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 207,
+              "cw": 207,
+              "sh": 78,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "아직 정신없어 ㅋㅋ 그래도 버틸 만해. 서진이랑 옛날 얘기하면서 웃긴 했는데, 그때 서운했던 마음도 조금 생",
+              "sw": 207,
+              "cw": 207,
+              "sh": 96,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            }
+          ]
+        },
+        {
+          "label": "03s-wheel60",
+          "docScrollW": 1440,
+          "innerW": 1440,
+          "screen": [
+            540,
+            40,
+            360,
+            822
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "STRONG",
+              "text": "체육대회 계주로 서진과 다툰 날의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 207,
+              "cw": 207,
+              "sh": 78,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "나도 열심히 뛰었단 말이야. 바통 놓친 건 아는데, 꼭 애들 앞에서 그렇게 말해야 했어?",
+              "sw": 207,
+              "cw": 207,
+              "sh": 72,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "STRONG",
+              "text": "졸업하며 서진과 헤어짐을 아쉬워…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 207,
+              "cw": 207,
+              "sh": 78,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "근데 서진이랑 고등학교 갈라지는 거 아직도 실감 안 난다. 3년 내내 붙어 다녔는데, 주말마다 만나자는 약속",
+              "sw": 207,
+              "cw": 207,
+              "sh": 96,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "STRONG",
+              "text": "첫 직장 생활을 시작한 날의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 207,
+              "cw": 207,
+              "sh": 78,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "아직 정신없어 ㅋㅋ 그래도 버틸 만해. 서진이랑 옛날 얘기하면서 웃긴 했는데, 그때 서운했던 마음도 조금 생",
+              "sw": 207,
+              "cw": 207,
+              "sh": 96,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            }
+          ]
+        },
+        {
+          "label": "03s-bottom",
+          "docScrollW": 1440,
+          "innerW": 1440,
+          "screen": [
+            540,
+            40,
+            360,
+            822
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "STRONG",
+              "text": "체육대회 계주로 서진과 다툰 날의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 207,
+              "cw": 207,
+              "sh": 78,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "나도 열심히 뛰었단 말이야. 바통 놓친 건 아는데, 꼭 애들 앞에서 그렇게 말해야 했어?",
+              "sw": 207,
+              "cw": 207,
+              "sh": 72,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "STRONG",
+              "text": "졸업하며 서진과 헤어짐을 아쉬워…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 207,
+              "cw": 207,
+              "sh": 78,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "근데 서진이랑 고등학교 갈라지는 거 아직도 실감 안 난다. 3년 내내 붙어 다녔는데, 주말마다 만나자는 약속",
+              "sw": 207,
+              "cw": 207,
+              "sh": 96,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "STRONG",
+              "text": "첫 직장 생활을 시작한 날의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 207,
+              "cw": 207,
+              "sh": 78,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "아직 정신없어 ㅋㅋ 그래도 버틸 만해. 서진이랑 옛날 얘기하면서 웃긴 했는데, 그때 서운했던 마음도 조금 생",
+              "sw": 207,
+              "cw": 207,
+              "sh": 96,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            }
+          ]
+        },
+        {
+          "label": "04-modal",
+          "docScrollW": 1440,
+          "innerW": 1440,
+          "screen": [
+            540,
+            40,
+            360,
+            822
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "STRONG",
+              "text": "체육대회 계주로 서진과 다툰 날의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 207,
+              "cw": 207,
+              "sh": 78,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "나도 열심히 뛰었단 말이야. 바통 놓친 건 아는데, 꼭 애들 앞에서 그렇게 말해야 했어?",
+              "sw": 207,
+              "cw": 207,
+              "sh": 72,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "STRONG",
+              "text": "졸업하며 서진과 헤어짐을 아쉬워…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 207,
+              "cw": 207,
+              "sh": 78,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "근데 서진이랑 고등학교 갈라지는 거 아직도 실감 안 난다. 3년 내내 붙어 다녔는데, 주말마다 만나자는 약속",
+              "sw": 207,
+              "cw": 207,
+              "sh": 96,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "STRONG",
+              "text": "첫 직장 생활을 시작한 날의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 207,
+              "cw": 207,
+              "sh": 78,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "아직 정신없어 ㅋㅋ 그래도 버틸 만해. 서진이랑 옛날 얘기하면서 웃긴 했는데, 그때 서운했던 마음도 조금 생",
+              "sw": 207,
+              "cw": 207,
+              "sh": 96,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "TEXTAREA",
+              "text": "작은 책방을 열어서 아침마다 커피를 내리고 손님과 책 이야기를 나누고 싶어. 가끔은 동네 아이들에게 그림책도",
+              "sw": 274,
+              "cw": 274,
+              "sh": 132,
+              "ch": 70,
+              "ellipsis": "clip",
+              "clamp": "none"
+            }
+          ]
+        },
+        {
+          "label": "04b-working-modal",
+          "docScrollW": 1440,
+          "innerW": 1440,
+          "screen": [
+            540,
+            40,
+            360,
+            822
+          ],
+          "outOfScreen": [],
+          "clipped": []
+        },
+        {
+          "label": "03c-list-after-modal",
+          "docScrollW": 1440,
+          "innerW": 1440,
+          "screen": [
+            540,
+            40,
+            360,
+            822
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "SPAN",
+              "text": "나도 책방에서 보낼 아침을 자꾸 생각해. 너는 요즘 '버틸 만해' 쪽이야, 아니면 좀 벅찬 쪽이야?",
+              "sw": 207,
+              "cw": 207,
+              "sh": 72,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "STRONG",
+              "text": "체육대회 계주로 서진과 다툰 날의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 207,
+              "cw": 207,
+              "sh": 78,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "나도 열심히 뛰었단 말이야. 바통 놓친 건 아는데, 꼭 애들 앞에서 그렇게 말해야 했어?",
+              "sw": 207,
+              "cw": 207,
+              "sh": 72,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "STRONG",
+              "text": "졸업하며 서진과 헤어짐을 아쉬워…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 207,
+              "cw": 207,
+              "sh": 78,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "근데 서진이랑 고등학교 갈라지는 거 아직도 실감 안 난다. 3년 내내 붙어 다녔는데, 주말마다 만나자는 약속",
+              "sw": 207,
+              "cw": 207,
+              "sh": 96,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "STRONG",
+              "text": "첫 직장 생활을 시작한 날의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 207,
+              "cw": 207,
+              "sh": 78,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "아직 정신없어 ㅋㅋ 그래도 버틸 만해. 서진이랑 옛날 얘기하면서 웃긴 했는데, 그때 서운했던 마음도 조금 생",
+              "sw": 207,
+              "cw": 207,
+              "sh": 96,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            }
+          ]
+        },
+        {
+          "label": "05a-chat-greeting",
+          "docScrollW": 1440,
+          "innerW": 1440,
+          "screen": [
+            540,
+            40,
+            360,
+            822
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "H1",
+              "text": "졸업하며 서진과 헤어짐을 아쉬워…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 592,
+              "cw": 181,
+              "sh": 24,
+              "ch": 24,
+              "ellipsis": "ellipsis",
+              "clamp": "none"
+            }
+          ]
+        },
+        {
+          "label": "05b-chat-composer-long",
+          "docScrollW": 1440,
+          "innerW": 1440,
+          "screen": [
+            540,
+            40,
+            360,
+            822
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "H1",
+              "text": "졸업하며 서진과 헤어짐을 아쉬워…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 592,
+              "cw": 181,
+              "sh": 24,
+              "ch": 24,
+              "ellipsis": "ellipsis",
+              "clamp": "none"
+            },
+            {
+              "tag": "TEXTAREA",
+              "text": "오늘 회사에서 정말 길고 이상한 하루를 보냈어. 아침부터 회의가 세 번이나 있었고, 점심도 제대로 못 먹었는",
+              "sw": 314,
+              "cw": 314,
+              "sh": 308,
+              "ch": 120,
+              "ellipsis": "clip",
+              "clamp": "none"
+            }
+          ]
+        },
+        {
+          "label": "05c-chat-typing",
+          "docScrollW": 1440,
+          "innerW": 1440,
+          "screen": [
+            540,
+            40,
+            360,
+            822
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "H1",
+              "text": "졸업하며 서진과 헤어짐을 아쉬워…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 592,
+              "cw": 181,
+              "sh": 24,
+              "ch": 24,
+              "ellipsis": "ellipsis",
+              "clamp": "none"
+            }
+          ]
+        },
+        {
+          "label": "05d-chat-reply",
+          "docScrollW": 1440,
+          "innerW": 1440,
+          "screen": [
+            540,
+            40,
+            360,
+            822
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "H1",
+              "text": "졸업하며 서진과 헤어짐을 아쉬워…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 592,
+              "cw": 181,
+              "sh": 24,
+              "ch": 24,
+              "ellipsis": "ellipsis",
+              "clamp": "none"
+            }
+          ]
+        },
+        {
+          "label": "05e-chat-top",
+          "docScrollW": 1440,
+          "innerW": 1440,
+          "screen": [
+            540,
+            40,
+            360,
+            822
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "H1",
+              "text": "졸업하며 서진과 헤어짐을 아쉬워…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 592,
+              "cw": 181,
+              "sh": 24,
+              "ch": 24,
+              "ellipsis": "ellipsis",
+              "clamp": "none"
+            }
+          ]
+        },
+        {
+          "label": "06-profile-sheet",
+          "docScrollW": 1440,
+          "innerW": 1440,
+          "screen": [
+            540,
+            40,
+            360,
+            822
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "H1",
+              "text": "졸업하며 서진과 헤어짐을 아쉬워…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 592,
+              "cw": 181,
+              "sh": 24,
+              "ch": 24,
+              "ellipsis": "ellipsis",
+              "clamp": "none"
+            },
+            {
+              "tag": "TEXTAREA",
+              "text": "친한 친구에게 말하듯 짧고 편한 반말을 쓴다. 장난스럽게 투덜댈 때는 'ㅡㅡ', 마음이 풀리면 'ㅋㅋㅋ'를 ",
+              "sw": 348,
+              "cw": 348,
+              "sh": 132,
+              "ch": 82,
+              "ellipsis": "clip",
+              "clamp": "none"
+            },
+            {
+              "tag": "TEXTAREA",
+              "text": "체육대회 계주에서 바통을 놓친 뒤, 서진이가 친구들 앞에서 한 말에 서운해서 다투고 일주일 동안 피해 다녔다",
+              "sw": 348,
+              "cw": 348,
+              "sh": 286,
+              "ch": 102,
+              "ellipsis": "clip",
+              "clamp": "none"
+            }
+          ]
+        }
+      ],
+      "checks": {
+        "02-wheel60": {
+          "top": 60,
+          "h": 892,
+          "sh": 992,
+          "statusBg": "rgb(240, 246, 250)",
+          "statusZ": "2",
+          "underStatusBar": [
+            "BUTTON:",
+            "H1:페르소나 만들기",
+            "IMG:"
+          ],
+          "screenTop": 40
+        },
+        "02-bottom": {
+          "top": 100,
+          "h": 892,
+          "sh": 992,
+          "statusBg": "rgb(240, 246, 250)",
+          "statusZ": "2",
+          "underStatusBar": [
+            "IMG:",
+            "P:안녕! 너의 이야기를 들려줘."
+          ],
+          "screenTop": 40
+        },
+        "personas": [
+          "체육대회 계주로 서진과 다툰 날의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+          "졸업하며 서진과 헤어짐을 아쉬워…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+          "첫 직장 생활을 시작한 날의 남궁하늘빛초롱별아름이와다솜이의새벽노을"
+        ],
+        "03-wheel60": {
+          "top": 60,
+          "h": 892,
+          "sh": 990,
+          "statusBg": "rgb(240, 246, 250)",
+          "statusZ": "2",
+          "underStatusBar": [
+            "H1:나의 페르소나",
+            "BUTTON:",
+            "P:페르소나가 준비됐어요",
+            "SPAN:"
+          ],
+          "screenTop": 40
+        },
+        "03-bottom": {
+          "top": 98,
+          "h": 892,
+          "sh": 990,
+          "statusBg": "rgb(240, 246, 250)",
+          "statusZ": "2",
+          "underStatusBar": [
+            "P:페르소나가 준비됐어요",
+            "SPAN:",
+            "SPAN:",
+            "IMG:"
+          ],
+          "screenTop": 40
+        },
+        "afterModal": [
+          "30살의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+          "체육대회 계주로 서진과 다툰 날의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+          "졸업하며 서진과 헤어짐을 아쉬워…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+          "첫 직장 생활을 시작한 날의 남궁하늘빛초롱별아름이와다솜이의새벽노을"
+        ],
+        "chatTarget": "졸업하며 서진과 헤어짐을 아쉬워…의 남궁하늘빛초롱별아름이와다솜이의새벽노을"
+      },
+      "ok": true
+    },
+    "mobile": {
+      "audits": [
+        {
+          "label": "01-landing",
+          "docScrollW": 390,
+          "innerW": 390,
+          "screen": [
+            0,
+            0,
+            390,
+            844
+          ],
+          "outOfScreen": [],
+          "clipped": []
+        },
+        {
+          "label": "02-create",
+          "docScrollW": 390,
+          "innerW": 390,
+          "screen": [
+            0,
+            0,
+            390,
+            844
+          ],
+          "outOfScreen": [],
+          "clipped": []
+        },
+        {
+          "label": "03-list",
+          "docScrollW": 390,
+          "innerW": 390,
+          "screen": [
+            0,
+            0,
+            390,
+            844
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "SPAN",
+              "text": "나도 책방에서 보낼 아침을 자꾸 생각해. 너는 요즘 '버틸 만해' 쪽이야, 아니면 좀 벅찬 쪽이야?",
+              "sw": 207,
+              "cw": 207,
+              "sh": 72,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "STRONG",
+              "text": "체육대회 계주로 서진과 다툰 날의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 207,
+              "cw": 207,
+              "sh": 78,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "나도 열심히 뛰었단 말이야. 바통 놓친 건 아는데, 꼭 애들 앞에서 그렇게 말해야 했어?",
+              "sw": 207,
+              "cw": 207,
+              "sh": 72,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "STRONG",
+              "text": "졸업하며 서진과 헤어짐을 아쉬워…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 207,
+              "cw": 207,
+              "sh": 78,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "근데 서진이랑 고등학교 갈라지는 거 아직도 실감 안 난다. 3년 내내 붙어 다녔는데, 주말마다 만나자는 약속",
+              "sw": 207,
+              "cw": 207,
+              "sh": 96,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "STRONG",
+              "text": "첫 직장 생활을 시작한 날의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 207,
+              "cw": 207,
+              "sh": 78,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "아직 정신없어 ㅋㅋ 그래도 버틸 만해. 서진이랑 옛날 얘기하면서 웃긴 했는데, 그때 서운했던 마음도 조금 생",
+              "sw": 207,
+              "cw": 207,
+              "sh": 96,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            }
+          ]
+        },
+        {
+          "label": "04-modal",
+          "docScrollW": 390,
+          "innerW": 390,
+          "screen": [
+            0,
+            0,
+            390,
+            844
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "SPAN",
+              "text": "나도 책방에서 보낼 아침을 자꾸 생각해. 너는 요즘 '버틸 만해' 쪽이야, 아니면 좀 벅찬 쪽이야?",
+              "sw": 207,
+              "cw": 207,
+              "sh": 72,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "STRONG",
+              "text": "체육대회 계주로 서진과 다툰 날의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 207,
+              "cw": 207,
+              "sh": 78,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "나도 열심히 뛰었단 말이야. 바통 놓친 건 아는데, 꼭 애들 앞에서 그렇게 말해야 했어?",
+              "sw": 207,
+              "cw": 207,
+              "sh": 72,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "STRONG",
+              "text": "졸업하며 서진과 헤어짐을 아쉬워…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 207,
+              "cw": 207,
+              "sh": 78,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "근데 서진이랑 고등학교 갈라지는 거 아직도 실감 안 난다. 3년 내내 붙어 다녔는데, 주말마다 만나자는 약속",
+              "sw": 207,
+              "cw": 207,
+              "sh": 96,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "STRONG",
+              "text": "첫 직장 생활을 시작한 날의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 207,
+              "cw": 207,
+              "sh": 78,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "아직 정신없어 ㅋㅋ 그래도 버틸 만해. 서진이랑 옛날 얘기하면서 웃긴 했는데, 그때 서운했던 마음도 조금 생",
+              "sw": 207,
+              "cw": 207,
+              "sh": 96,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "TEXTAREA",
+              "text": "작은 책방을 열어서 아침마다 커피를 내리고 손님과 책 이야기를 나누고 싶어. 가끔은 동네 아이들에게 그림책도",
+              "sw": 274,
+              "cw": 274,
+              "sh": 132,
+              "ch": 70,
+              "ellipsis": "clip",
+              "clamp": "none"
+            }
+          ]
+        },
+        {
+          "label": "05a-chat-greeting",
+          "docScrollW": 390,
+          "innerW": 390,
+          "screen": [
+            0,
+            0,
+            390,
+            844
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "H1",
+              "text": "졸업하며 서진과 헤어짐을 아쉬워…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 592,
+              "cw": 181,
+              "sh": 24,
+              "ch": 24,
+              "ellipsis": "ellipsis",
+              "clamp": "none"
+            }
+          ]
+        },
+        {
+          "label": "05b-chat-composer-long",
+          "docScrollW": 390,
+          "innerW": 390,
+          "screen": [
+            0,
+            0,
+            390,
+            844
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "H1",
+              "text": "졸업하며 서진과 헤어짐을 아쉬워…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 592,
+              "cw": 181,
+              "sh": 24,
+              "ch": 24,
+              "ellipsis": "ellipsis",
+              "clamp": "none"
+            },
+            {
+              "tag": "TEXTAREA",
+              "text": "오늘 회사에서 정말 길고 이상한 하루를 보냈어. 아침부터 회의가 세 번이나 있었고, 점심도 제대로 못 먹었는",
+              "sw": 314,
+              "cw": 314,
+              "sh": 308,
+              "ch": 120,
+              "ellipsis": "clip",
+              "clamp": "none"
+            }
+          ]
+        },
+        {
+          "label": "05c-chat-typing",
+          "docScrollW": 390,
+          "innerW": 390,
+          "screen": [
+            0,
+            0,
+            390,
+            844
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "H1",
+              "text": "졸업하며 서진과 헤어짐을 아쉬워…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 592,
+              "cw": 181,
+              "sh": 24,
+              "ch": 24,
+              "ellipsis": "ellipsis",
+              "clamp": "none"
+            }
+          ]
+        },
+        {
+          "label": "05d-chat-reply",
+          "docScrollW": 390,
+          "innerW": 390,
+          "screen": [
+            0,
+            0,
+            390,
+            844
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "H1",
+              "text": "졸업하며 서진과 헤어짐을 아쉬워…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 592,
+              "cw": 181,
+              "sh": 24,
+              "ch": 24,
+              "ellipsis": "ellipsis",
+              "clamp": "none"
+            }
+          ]
+        },
+        {
+          "label": "05e-chat-top",
+          "docScrollW": 390,
+          "innerW": 390,
+          "screen": [
+            0,
+            0,
+            390,
+            844
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "H1",
+              "text": "졸업하며 서진과 헤어짐을 아쉬워…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 592,
+              "cw": 181,
+              "sh": 24,
+              "ch": 24,
+              "ellipsis": "ellipsis",
+              "clamp": "none"
+            }
+          ]
+        },
+        {
+          "label": "06-profile-sheet",
+          "docScrollW": 390,
+          "innerW": 390,
+          "screen": [
+            0,
+            0,
+            390,
+            844
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "H1",
+              "text": "졸업하며 서진과 헤어짐을 아쉬워…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 592,
+              "cw": 181,
+              "sh": 24,
+              "ch": 24,
+              "ellipsis": "ellipsis",
+              "clamp": "none"
+            },
+            {
+              "tag": "TEXTAREA",
+              "text": "친한 친구에게 말하듯 짧고 편한 반말을 쓴다. 장난스럽게 투덜댈 때는 'ㅡㅡ', 마음이 풀리면 'ㅋㅋㅋ'를 ",
+              "sw": 348,
+              "cw": 348,
+              "sh": 132,
+              "ch": 88,
+              "ellipsis": "clip",
+              "clamp": "none"
+            },
+            {
+              "tag": "TEXTAREA",
+              "text": "체육대회 계주에서 바통을 놓친 뒤, 서진이가 친구들 앞에서 한 말에 서운해서 다투고 일주일 동안 피해 다녔다",
+              "sw": 348,
+              "cw": 348,
+              "sh": 286,
+              "ch": 110,
+              "ellipsis": "clip",
+              "clamp": "none"
+            }
+          ]
+        }
+      ],
+      "checks": {
+        "personas": [
+          "30살의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+          "체육대회 계주로 서진과 다툰 날의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+          "졸업하며 서진과 헤어짐을 아쉬워…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+          "첫 직장 생활을 시작한 날의 남궁하늘빛초롱별아름이와다솜이의새벽노을"
+        ],
+        "chatTarget": "졸업하며 서진과 헤어짐을 아쉬워…의 남궁하늘빛초롱별아름이와다솜이의새벽노을"
+      },
+      "ok": true
+    },
+    "mobile360": {
+      "audits": [
+        {
+          "label": "01-landing",
+          "docScrollW": 360,
+          "innerW": 360,
+          "screen": [
+            0,
+            0,
+            360,
+            740
+          ],
+          "outOfScreen": [],
+          "clipped": []
+        },
+        {
+          "label": "02-create",
+          "docScrollW": 360,
+          "innerW": 360,
+          "screen": [
+            0,
+            0,
+            360,
+            740
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "TEXTAREA",
+              "text": "사람들 앞에서는 긴장하지만 친한 친구랑은 장난을 많이 쳐. 요즘은 첫 회사에 적응하는 중이고, 언젠가 작은 ",
+              "sw": 288,
+              "cw": 288,
+              "sh": 130,
+              "ch": 112,
+              "ellipsis": "clip",
+              "clamp": "none"
+            }
+          ]
+        },
+        {
+          "label": "03-list",
+          "docScrollW": 360,
+          "innerW": 360,
+          "screen": [
+            0,
+            0,
+            360,
+            740
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "STRONG",
+              "text": "30살의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 177,
+              "cw": 177,
+              "sh": 78,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "나도 책방에서 보낼 아침을 자꾸 생각해. 너는 요즘 '버틸 만해' 쪽이야, 아니면 좀 벅찬 쪽이야?",
+              "sw": 177,
+              "cw": 177,
+              "sh": 96,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "STRONG",
+              "text": "체육대회 계주로 서진과 다툰 날의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 177,
+              "cw": 177,
+              "sh": 104,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "나도 열심히 뛰었단 말이야. 바통 놓친 건 아는데, 꼭 애들 앞에서 그렇게 말해야 했어?",
+              "sw": 177,
+              "cw": 177,
+              "sh": 72,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "STRONG",
+              "text": "졸업하며 서진과 헤어짐을 아쉬워…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 177,
+              "cw": 177,
+              "sh": 104,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "근데 서진이랑 고등학교 갈라지는 거 아직도 실감 안 난다. 3년 내내 붙어 다녔는데, 주말마다 만나자는 약속",
+              "sw": 177,
+              "cw": 177,
+              "sh": 120,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "STRONG",
+              "text": "첫 직장 생활을 시작한 날의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 177,
+              "cw": 177,
+              "sh": 78,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "아직 정신없어 ㅋㅋ 그래도 버틸 만해. 서진이랑 옛날 얘기하면서 웃긴 했는데, 그때 서운했던 마음도 조금 생",
+              "sw": 177,
+              "cw": 177,
+              "sh": 120,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            }
+          ]
+        },
+        {
+          "label": "04-modal",
+          "docScrollW": 360,
+          "innerW": 360,
+          "screen": [
+            0,
+            0,
+            360,
+            740
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "STRONG",
+              "text": "30살의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 177,
+              "cw": 177,
+              "sh": 78,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "나도 책방에서 보낼 아침을 자꾸 생각해. 너는 요즘 '버틸 만해' 쪽이야, 아니면 좀 벅찬 쪽이야?",
+              "sw": 177,
+              "cw": 177,
+              "sh": 96,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "STRONG",
+              "text": "체육대회 계주로 서진과 다툰 날의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 177,
+              "cw": 177,
+              "sh": 104,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "나도 열심히 뛰었단 말이야. 바통 놓친 건 아는데, 꼭 애들 앞에서 그렇게 말해야 했어?",
+              "sw": 177,
+              "cw": 177,
+              "sh": 72,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "STRONG",
+              "text": "졸업하며 서진과 헤어짐을 아쉬워…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 177,
+              "cw": 177,
+              "sh": 104,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "근데 서진이랑 고등학교 갈라지는 거 아직도 실감 안 난다. 3년 내내 붙어 다녔는데, 주말마다 만나자는 약속",
+              "sw": 177,
+              "cw": 177,
+              "sh": 120,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "STRONG",
+              "text": "첫 직장 생활을 시작한 날의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 177,
+              "cw": 177,
+              "sh": 78,
+              "ch": 52,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "SPAN",
+              "text": "아직 정신없어 ㅋㅋ 그래도 버틸 만해. 서진이랑 옛날 얘기하면서 웃긴 했는데, 그때 서운했던 마음도 조금 생",
+              "sw": 177,
+              "cw": 177,
+              "sh": 120,
+              "ch": 48,
+              "ellipsis": "clip",
+              "clamp": "2"
+            },
+            {
+              "tag": "TEXTAREA",
+              "text": "작은 책방을 열어서 아침마다 커피를 내리고 손님과 책 이야기를 나누고 싶어. 가끔은 동네 아이들에게 그림책도",
+              "sw": 244,
+              "cw": 244,
+              "sh": 132,
+              "ch": 70,
+              "ellipsis": "clip",
+              "clamp": "none"
+            }
+          ]
+        },
+        {
+          "label": "05a-chat-greeting",
+          "docScrollW": 360,
+          "innerW": 360,
+          "screen": [
+            0,
+            0,
+            360,
+            740
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "H1",
+              "text": "졸업하며 서진과 헤어짐을 아쉬워…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 592,
+              "cw": 151,
+              "sh": 24,
+              "ch": 24,
+              "ellipsis": "ellipsis",
+              "clamp": "none"
+            }
+          ]
+        },
+        {
+          "label": "05b-chat-composer-long",
+          "docScrollW": 360,
+          "innerW": 360,
+          "screen": [
+            0,
+            0,
+            360,
+            740
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "H1",
+              "text": "졸업하며 서진과 헤어짐을 아쉬워…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 592,
+              "cw": 151,
+              "sh": 24,
+              "ch": 24,
+              "ellipsis": "ellipsis",
+              "clamp": "none"
+            },
+            {
+              "tag": "TEXTAREA",
+              "text": "오늘 회사에서 정말 길고 이상한 하루를 보냈어. 아침부터 회의가 세 번이나 있었고, 점심도 제대로 못 먹었는",
+              "sw": 284,
+              "cw": 284,
+              "sh": 330,
+              "ch": 120,
+              "ellipsis": "clip",
+              "clamp": "none"
+            }
+          ]
+        },
+        {
+          "label": "05c-chat-typing",
+          "docScrollW": 360,
+          "innerW": 360,
+          "screen": [
+            0,
+            0,
+            360,
+            740
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "H1",
+              "text": "졸업하며 서진과 헤어짐을 아쉬워…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 592,
+              "cw": 151,
+              "sh": 24,
+              "ch": 24,
+              "ellipsis": "ellipsis",
+              "clamp": "none"
+            }
+          ]
+        },
+        {
+          "label": "05d-chat-reply",
+          "docScrollW": 360,
+          "innerW": 360,
+          "screen": [
+            0,
+            0,
+            360,
+            740
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "H1",
+              "text": "졸업하며 서진과 헤어짐을 아쉬워…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 592,
+              "cw": 151,
+              "sh": 24,
+              "ch": 24,
+              "ellipsis": "ellipsis",
+              "clamp": "none"
+            }
+          ]
+        },
+        {
+          "label": "05e-chat-top",
+          "docScrollW": 360,
+          "innerW": 360,
+          "screen": [
+            0,
+            0,
+            360,
+            740
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "H1",
+              "text": "졸업하며 서진과 헤어짐을 아쉬워…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 592,
+              "cw": 151,
+              "sh": 24,
+              "ch": 24,
+              "ellipsis": "ellipsis",
+              "clamp": "none"
+            }
+          ]
+        },
+        {
+          "label": "06-profile-sheet",
+          "docScrollW": 360,
+          "innerW": 360,
+          "screen": [
+            0,
+            0,
+            360,
+            740
+          ],
+          "outOfScreen": [],
+          "clipped": [
+            {
+              "tag": "H1",
+              "text": "졸업하며 서진과 헤어짐을 아쉬워…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+              "sw": 592,
+              "cw": 151,
+              "sh": 24,
+              "ch": 24,
+              "ellipsis": "ellipsis",
+              "clamp": "none"
+            },
+            {
+              "tag": "TEXTAREA",
+              "text": "친한 친구에게 말하듯 짧고 편한 반말을 쓴다. 장난스럽게 투덜댈 때는 'ㅡㅡ', 마음이 풀리면 'ㅋㅋㅋ'를 ",
+              "sw": 318,
+              "cw": 318,
+              "sh": 132,
+              "ch": 51,
+              "ellipsis": "clip",
+              "clamp": "none"
+            },
+            {
+              "tag": "TEXTAREA",
+              "text": "체육대회 계주에서 바통을 놓친 뒤, 서진이가 친구들 앞에서 한 말에 서운해서 다투고 일주일 동안 피해 다녔다",
+              "sw": 318,
+              "cw": 318,
+              "sh": 286,
+              "ch": 60,
+              "ellipsis": "clip",
+              "clamp": "none"
+            }
+          ]
+        }
+      ],
+      "checks": {
+        "personas": [
+          "30살의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+          "체육대회 계주로 서진과 다툰 날의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+          "졸업하며 서진과 헤어짐을 아쉬워…의 남궁하늘빛초롱별아름이와다솜이의새벽노을",
+          "첫 직장 생활을 시작한 날의 남궁하늘빛초롱별아름이와다솜이의새벽노을"
+        ],
+        "chatTarget": "졸업하며 서진과 헤어짐을 아쉬워…의 남궁하늘빛초롱별아름이와다솜이의새벽노을"
+      },
+      "ok": true
+    }
+  },
+  "console": []
+}

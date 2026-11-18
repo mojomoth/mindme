@@ -1,0 +1,10 @@
+       7 apps/web/app/api/analyze/route.ts
+       6 apps/web/app/api/persona/route.ts
+       9 apps/web/app/api/persona/avatar/route.ts
+       6 apps/web/app/api/chat/route.ts
+       6 pocs/app/api/analyze/route.ts
+       5 pocs/app/api/persona/route.ts
+      11 pocs/app/api/persona/avatar/route.ts
+       6 pocs/app/api/chat/route.ts
+      87 packages/core/src/server/routes.ts
+     143 total

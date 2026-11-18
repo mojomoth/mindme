@@ -1,0 +1,16 @@
+# apps/web/.next/static 서버 흔적 검색 (파일 수 기준)
+OPENAI_API_KEY: 0
+process.env: 0
+api.openai.com: 0
+server-only: 0
+너는 : 0
+자살예방: 0
+CRISIS_PATTERNS: 0
+PERSONA_SYSTEM: 0
+ANALYZE_SYSTEM: 0
+페르소나 작가: 0
+generateObject: 0
+gpt-image: 0
+openai: 0
+# 클라이언트 쪽 @mindme/core/server import
+(위에 줄이 없으면 0건)

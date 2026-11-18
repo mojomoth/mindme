@@ -1,0 +1,132 @@
+{
+  "run": "photo",
+  "steps": [
+    {
+      "step": "shot landing",
+      "t": 0.6
+    },
+    {
+      "step": "shot create",
+      "t": 4.3
+    },
+    {
+      "step": "shot working",
+      "t": 5.2
+    },
+    {
+      "step": "shot list",
+      "t": 87.4
+    },
+    {
+      "step": "shot error-persona",
+      "t": 88.1
+    },
+    {
+      "step": "shot list-after-retry",
+      "t": 116.9
+    },
+    {
+      "step": "shot chat-photo",
+      "t": 117.2
+    },
+    {
+      "step": "shot profile-photo",
+      "t": 117.6
+    },
+    {
+      "step": "shot list-reloaded",
+      "t": 121.3
+    }
+  ],
+  "checks": {
+    "landingAutoMs": 3335,
+    "noHorizontalScroll": true,
+    "submitDisabledEmpty": true,
+    "fileNameShown": true,
+    "firstCreateMs": 82278,
+    "firstPersonas": [
+      {
+        "name": "예고 진학 문제로 엄마와 싸운 밤의 한도윤",
+        "kind": "past",
+        "age": 14,
+        "eventId": "evt_01",
+        "avatar": "data:image/webp;base64"
+      },
+      {
+        "name": "가채점 뒤 재수를 고민한 밤의 한도윤",
+        "kind": "past",
+        "age": 18,
+        "eventId": "evt_03",
+        "avatar": "data:image/webp;base64"
+      },
+      {
+        "name": "할머니 장례를 마치고 다짐한 밤의 한도윤",
+        "kind": "past",
+        "age": 21,
+        "eventId": "evt_05",
+        "avatar": "data:image/webp;base64"
+      }
+    ],
+    "events": [
+      "evt_01 2012-11-07 age=- 예고 진학 문제로 엄마와 싸운 밤",
+      "evt_02 2012-11-09 age=- 엄마가 포트폴리오를 보자고 한 날",
+      "evt_03 2016-11-30 age=- 가채점 뒤 재수를 고민한 밤",
+      "evt_04 2016-12-01 age=- 아빠에게 재수 지지를 받은 아침",
+      "evt_05 2019-08-21 age=- 할머니 장례를 마치고 다짐한 밤",
+      "evt_06 2024-03-15 age=- 내 그림을 위해 퇴사 의사를 밝힌 날",
+      "evt_07 2025-10-02 age=- 그림 판매 소식에 내 길을 확신한 밤",
+      "evt_08 어릴 때 age=- 할머니 집 마당에서 그림 그리던 날",
+      "evt_09 요즘 age=- 회사를 그만두고 전업 화가가 된 날"
+    ],
+    "readyPill": true,
+    "firstNamesUi": [
+      "예고 진학 문제로 엄마와 싸운 밤의 한도윤",
+      "가채점 뒤 재수를 고민한 밤의 한도윤",
+      "할머니 장례를 마치고 다짐한 밤의 한도윤"
+    ],
+    "photoListAvatars": [
+      "data:image/webp;base64,UklGRkY",
+      "data:image/webp;base64,UklGRiI",
+      "data:image/webp;base64,UklGRmg"
+    ],
+    "personaErrorText": "서버가 잠시 대답하지 않아요. 잠시 뒤 다시 시도해 주세요.",
+    "personaRetry": {
+      "ms": 28510,
+      "name": "가채점 뒤 재수를 고민한 밤의 한도윤",
+      "kind": "past",
+      "age": 18,
+      "eventId": "evt_03",
+      "avatar": "data:image/webp;base64"
+    },
+    "chatHeaderAvatar": {
+      "header": "data:image/webp;base64",
+      "bubble": "data:image/webp;base64",
+      "sameAsStored": true
+    },
+    "sheetAvatar": "data:image/webp;base64",
+    "photoAvatarsAfterReload": [
+      "data:image/webp;base64",
+      "data:image/webp;base64",
+      "data:image/webp;base64",
+      "data:image/webp;base64"
+    ],
+    "photoStored": true
+  },
+  "console": [
+    "error: Failed to load resource: the server responded with a status of 500 (Internal Server Error)"
+  ],
+  "errors": [],
+  "keyScan": {
+    "names": [
+      "JEV_KEY",
+      "GOOGLE_API_KEY",
+      "OPENAI_API_KEY",
+      "CLAUDE_API_KEY",
+      "VERCEL_API_KEY",
+      "RENDER_API_KEY"
+    ],
+    "bodies": 61,
+    "hits": []
+  },
+  "totalSec": 121.287
+}

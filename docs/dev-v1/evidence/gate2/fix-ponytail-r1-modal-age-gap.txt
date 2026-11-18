@@ -1,0 +1,2 @@
+modal age 15 -> nearestEvent none -> POST /api/persona [200] 19455ms {"name":"15살의 홍길동","greeting":"어른이 된 나랑 얘기한다니까 좀 이상하다. 넌 요즘 뭐 하고 지내?"}
+modal age 14 -> nearestEvent evt_01 -> POST /api/persona [200] 16587ms {"name":"친구와 다툰 날의 홍길동","greeting":"서진이랑 다툰 거 자꾸 생각나서 좀 그래. 넌 나니까, 내가 왜 서운한지 알아줄 것 같아서."}

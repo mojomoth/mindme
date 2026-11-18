@@ -1,0 +1,5 @@
+keys checked: ['JEV_KEY', 'GOOGLE_API_KEY', 'OPENAI_API_KEY', 'CLAUDE_API_KEY', 'VERCEL_API_KEY', 'RENDER_API_KEY']
+repo (excl node_modules,.git,.next): files=715 hits=0
+apps/web/.next/static: files=25 hits=0
+apps/web/.next (all, incl server/dev): files=607 hits=0
+pocs/.next/static: files=36 hits=0

@@ -4,9 +4,9 @@
 
 ## 현재 상태
 
-- 단계: **Gate 0 PASS → Gate 1 구현·검증 PASS (4개 작업 Critic PASS, Integrate 회귀 통과) → HIL 대기(기다리지 않고 Gate 2 진행) → Gate 2**
+- 단계: **Gate 0 PASS → Gate 1 PASS(HIL 대기) → Gate 2 PASS(HIL 대기, `hil-gate2.md`) → Gate 3(배포) 대기**
 - 2026-11-19: Gate 1 1차 실행이 네트워크 장애(ENOTFOUND)로 중단되어, 남은 미커밋 작업을 살려 이어서 진행했다(persona·screens 는 이어받아 마무리).
-- 개발 서버: `pnpm dev:pocs` → http://localhost:3101 (로그 `logs/pocs-dev.log`)
+- 개발 서버: `pnpm dev:pocs` → http://localhost:3101 (로그 `logs/pocs-dev.log`), `pnpm dev:web` → http://localhost:3100 (로그 `logs/web-dev.log`)
 - 원격: `origin = github.com/mojomoth/mindme` (public, 사용자가 추가). 검증 통과 단위마다 커밋·push
 
 ## 루프
@@ -72,6 +72,16 @@ Plan → Build → Independent Critic → Fix → Recheck → PASS
 - 전체 화면 이동 플로우 확인
 - 워크플로우 진행 내역을 기획 문서에 반영
 
+| 조건 | 상태 | 근거 |
+|---|---|---|
+| `apps/web` 통합 구현 (packages 재사용, route 얇게) | PASS | `logs/gate2-web.md`, `logs/gate2-core.md` |
+| 전체 플로우 (데스크톱·모바일, 실제 AI) | PASS (e2e Critic r1, P2 3) | `logs/gate2-critic-e2e-r1.md`, `evidence/gate2/critic-e2e-r1-*` |
+| 원본 드래프트 ↔ 화면 비교 | PASS (visual r2, P2 7) | `logs/gate2-critic-visual-r2.md` |
+| 코드 품질 | PASS (ponytail r2, P2 6) | `logs/gate2-critic-ponytail-r2.md`, `logs/gate2-fix-*.md` |
+| 최종 회귀 | PASS | typecheck 4패키지, test 40/40, `next build`(web) 성공, 3100·3101 주요 경로 200 |
+| 워크플로우 내역 기획 문서 반영 | PASS | `workflow.md`, `MINDME_CONTEXT.md` '구현 반영' |
+| HIL (사람 확인) | 대기 (무중단 원칙) | `hil-gate2.md` |
+
 ### Gate 3 — 완성 및 배포
 
 - 원본 디자인 ↔ 실제 화면 비교, 데스크톱 검증, 핵심 인터랙션 동작
@@ -91,9 +101,14 @@ Plan → Build → Independent Critic → Fix → Recheck → PASS
 - [x] Gate 1 Integrate: API 분리, `api.md` 실측 반영, `features.md`, `hil-gate1.md`, 회귀 (`logs/gate1-integrate.md`)
 - [ ] Gate 1 HIL(대기, Gate 2 는 기다리지 않고 진행): 사람이 `hil-gate1.md` 체크 (특히 실제 카카오톡 내보내기 파일, 내 얼굴 아바타, 03 목록 2행 아바타)
 - [x] Gate 1 커밋 (Commit 단계)
-- [ ] Gate 2: `apps/web`(3100) 통합 구현
+- [x] Gate 2: `apps/web`(3100) 통합 구현, Critic 3종 PASS, 회귀, `workflow.md`
+- [ ] Gate 2 HIL(대기): 사람이 `hil-gate2.md` 체크
+- [ ] Gate 2 커밋 (Commit 단계)
+- [ ] Gate 3: Vercel 배포, 키 등록, 배포 URL 재검증
 
 ## 마지막 검증
+
+- 2026-11-19 Gate 2 최종 회귀: `pnpm typecheck` 4패키지, `pnpm test` 40/40, `next build`(apps/web) 성공, 3100 `/`·`/api/health` 200, 3101 `/pocs`·`/pocs/screens`·`/api/health` 200.
 
 - 2026-11-17 scaffold: `pnpm typecheck` / `pnpm lint` / `pnpm test`(4) / `pnpm build` 통과, dev 3101 기동, health 200 (`providers` 모두 true), 스크린샷 4장 + 정렬 검증 1장.
 - 2026-11-17 Gate 0 Critic r2: health/pocs/screens 200, 실제 키 값 바이트 검색 802파일 0건, OpenAI gpt-6-astra 200(3.2s) / Anthropic 400 한도 / Gemini 503 (`evidence/gate0/critic-r2-raw.txt`). report.md 반영 후 조건 3·4·7 갱신.
@@ -104,7 +119,31 @@ Plan → Build → Independent Critic → Fix → Recheck → PASS
 
 ## P2 목록
 
-Gate 1 (Critic r1b·Integrate 기준, Gate 2 에서 처리할 후보)
+Gate 2 (Critic 최종 라운드 기준, Gate 3 후보)
+
+- e2e 대화: 스트리밍 중 '나가기'를 누르면 보낸 질문이 답 없이 남고, 다시 들어가도 안내·'다시 받기'가 없다
+- e2e 모달: 이미 페르소나가 있는 사건으로 만들면 이름이 같은 페르소나가 또 생긴다(목록에서는 미리보기로만 구별)
+- e2e 재시도: `/api/persona` 만 실패해도 '다시 시도'가 이미 성공한 아바타까지 다시 그린다(약 30초·이미지 비용)
+- visual: 긴 이름(20자)은 말줄임이 이름 가운데에 두 번 들어간다
+- visual: 03 목록 페르소나 3개 이상이면 하단 안내가 생성 버튼에 가린다(스크롤하면 보임)
+- visual: 02 만들기 모바일 첫 화면에서 사진 카드가 생성 버튼 뒤에 있다(360x740 은 이름·나이 줄까지)
+- visual: 04 모달 상황 설명·프로필 시트 입력란이 안에서 스크롤될 때 위아래 줄이 반쯤 보인다(Codex 가 가장 심각하게 봄)
+- visual: 프로필 시트가 입력 칸 5개를 이은 설정 폼처럼 보인다(어울림 Sonnet 6, Codex 8)
+- visual: 데스크톱 02 에서 폼을 다 채우면 마스코트 발·말풍선 아래가 상태바 경계에서 잘려 보인다
+- visual: 새 화면 CSS 에 hex 리터럴 색이 남아 있다
+- ponytail: core analysis 가 만드는 `owner` 를 apps/web 이 쓰지 않는다
+- ponytail: pocs PersonaPoc 의 `shrink`·`toDataUrl` 이 `packages/ui/src/image.ts` 와 같은 코드다
+- ponytail: core 의 `getAnthropic`·`getGoogle` 호출처가 없고 두 SDK 는 health 표시에만 쓴다
+- ponytail: `server/http.ts` 공통 오류 문구가 합쇼체이거나 필드 이름을 드러낸다. 배포 환경에 키가 없으면 'AI 공급자 키가 설정되지 않았습니다.' 가 그대로 보인다
+- ponytail: analyze `maxDuration` 60초인데 입력 상한은 30만 자다(4만 자 초과 시 배포에서 초과 가능)
+- ponytail: analyze 응답의 `meta.llm`(AI 원시 출력)이 클라이언트까지 내려간다. 앱은 `meta.me` 만 쓴다
+
+Gate 1 (Gate 2 에서 처리한 것은 취소선. 나머지는 Gate 3 후보)
+
+- ~~screens 05 자동 스크롤, 04 모달 Esc, 03 360px 히어로·02 하단 간격, 기본 아바타 해시 경로, 화면 zod 영어 문구~~ → Gate 2 해결 (`logs/gate2-web.md`, `logs/gate2-core.md`)
+- 해결 여부를 이번에 다시 확인하지 않은 항목은 아래 원문 목록을 기준으로 한다(Gate 1 목록 전체는 git 이력의 이전 run.md 참고)
+
+Gate 1 원문 (Critic r1b·Integrate 기준)
 
 - analysis 파서(`packages/core/src/analysis/parse.ts`): 여러 줄 메시지 중간에 날짜 구분선과 같은 모양의 줄('2019년 3월 2일 토요일')이 있으면 구분선으로 인식해, 그 뒤에 이어지던 줄이 사라진다
 - analysis 입력 UX: 30만 자를 넘는 파일을 올리면 버튼만 꺼지고 할 수 있는 일을 안내하지 않는다. 다른 파일을 올려도 이전 오류 문구가 남는다
@@ -144,7 +183,7 @@ Gate 0
 
 ## 다음 작업
 
-1. Gate 1 HIL: 사람이 `hil-gate1.md` 를 체크한다. 승인되면 Commit 단계에서 Gate 1 커밋
-2. **Gate 2**: `apps/web`(포트 3100)에 목표 서비스 구현. `packages/ui/src/screens/*` 화면에 F1~F4(`features.md`)를 연결하고, `packages/core` 를 그대로 재사용한다(다시 쓰지 않음)
-3. Gate 2 에서 처리할 P2 우선순위: 05 대화 자동 스크롤, chat 이름 필드 주입, past 사건 나이 검사, 기본 아바타 경로, zod 영어 오류 문구, analysis 다시 분석 확인
+1. Gate 2 HIL: 사람이 `hil-gate2.md` 를 체크한다. 이어서 Commit 단계에서 Gate 2 커밋
+2. **Gate 3 (배포)**: Vercel 배포, 환경 변수에 OpenAI 키 등록(서버 전용), 배포 URL 에서 핵심 시나리오 재검증(함수 시간 한도: avatar 120초·analyze 60초, 파일 저장, 브라우저 권한)
+3. Gate 3 에서 처리할 P2: 위 Gate 2 목록 중 e2e 3건, `http.ts` 문구, analyze 시간 상한, `meta.llm` 제거
 4. Anthropic 은 2026-12-01 복구 후 재측정하고, Gemini 는 쿼터·지연 해소 후 재측정한다 (결정: `report.md` 2장)

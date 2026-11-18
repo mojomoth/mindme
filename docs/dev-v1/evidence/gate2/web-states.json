@@ -1,0 +1,17 @@
+{
+  "retryCalls": 2,
+  "errorText": "기록을 분석하지 못했어요. 잠시 뒤 다시 시도해 주세요.",
+  "backToCreateKeepsStory": true,
+  "overlap360": [
+    {
+      "text": "어떤 나와이야기할까요?",
+      "hit": false
+    },
+    {
+      "text": "만나고 싶은 페르소나를 선택해 주세요",
+      "hit": true
+    }
+  ],
+  "hScroll360": false,
+  "chatOfflineText": "연결이 잠깐 끊겼어요. 인터넷 연결을 확인하고 다시 시도해 주세요.다시 받기"
+}

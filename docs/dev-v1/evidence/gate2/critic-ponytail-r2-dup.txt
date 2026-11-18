@@ -1,0 +1,23 @@
+# route.ts 줄 수 (주석 포함)
+       7 apps/web/app/api/analyze/route.ts
+       6 apps/web/app/api/chat/route.ts
+       8 apps/web/app/api/health/route.ts
+       6 apps/web/app/api/persona/route.ts
+       9 apps/web/app/api/persona/avatar/route.ts
+       6 pocs/app/api/analyze/route.ts
+       6 pocs/app/api/chat/route.ts
+       8 pocs/app/api/health/route.ts
+       5 pocs/app/api/persona/route.ts
+      11 pocs/app/api/persona/avatar/route.ts
+      72 total
+# route.ts 에 남은 로직 키워드(parseRequest|hasKey|fail\(|try|catch|safeParse)
+0건
+# 클라이언트 도우미 중복
+58:async function shrink(file: Blob, max: number, type = 'image/jpeg', quality = 0.88): Promise<Blob> {
+71:const toDataUrl = (b: Blob) =>
+4:export async function shrinkImage(file: Blob, max: number, type = 'image/jpeg', quality = 0.88): Promise<Blob> {
+17:export const blobToDataUrl = (b: Blob) =>
+# owner 사용처(apps/web)
+0건
+# getAnthropic/getGoogle 호출처
+0건

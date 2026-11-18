@@ -1,0 +1,37 @@
+{
+  "create_initial": {
+    "top": 0,
+    "h": 892,
+    "sh": 992
+  },
+  "create_afterFile": {
+    "top": 0,
+    "h": 892,
+    "sh": 992
+  },
+  "create_afterName": {
+    "top": 0,
+    "h": 892,
+    "sh": 992
+  },
+  "create_afterAge": {
+    "top": 0,
+    "h": 892,
+    "sh": 992
+  },
+  "create_wheel60": {
+    "top": 60,
+    "h": 892,
+    "sh": 992
+  },
+  "list_initial": {
+    "top": 0,
+    "h": 892,
+    "sh": 991
+  },
+  "list_bottom": {
+    "top": 99,
+    "h": 892,
+    "sh": 991
+  }
+}

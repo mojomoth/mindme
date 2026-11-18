@@ -1,0 +1,60 @@
+Scope: 4 of 5 workspace projects
+apps/web build$ next build
+pocs build$ next build
+apps/web build: ▲ Next.js 16.4.6 (Turbopack)
+pocs build: ▲ Next.js 16.4.6 (Turbopack)
+pocs build: ✓ Running next.config.ts took 12ms
+apps/web build: ✓ Running next.config.ts took 12ms
+apps/web build:   Creating an optimized production build ...
+pocs build:   Creating an optimized production build ...
+apps/web build: ✓ Compiled successfully in 1534ms
+apps/web build:   Running TypeScript ...
+pocs build: ✓ Compiled successfully in 1675ms
+pocs build:   Running TypeScript ...
+apps/web build:   Finished TypeScript in 934ms ...
+apps/web build:   Collecting page data using 9 workers ...
+pocs build:   Finished TypeScript in 884ms ...
+pocs build:   Collecting page data using 9 workers ...
+apps/web build:   Generating static pages using 9 workers (0/3) ...
+pocs build:   Generating static pages using 9 workers (0/12) ...
+apps/web build: ✓ Generating static pages using 9 workers (3/3) in 167ms
+pocs build:   Generating static pages using 9 workers (3/12) 
+apps/web build:   Finalizing page optimization ...
+pocs build:   Generating static pages using 9 workers (6/12) 
+apps/web build: Route (app)
+apps/web build: ┌ ○ /
+apps/web build: ├ ○ /_not-found
+apps/web build: ├ ƒ /api/analyze
+apps/web build: ├ ƒ /api/chat
+apps/web build: ├ ƒ /api/health
+apps/web build: ├ ƒ /api/persona
+apps/web build: └ ƒ /api/persona/avatar
+apps/web build: ○  (Static)   prerendered as static content
+apps/web build: ƒ  (Dynamic)  server-rendered on demand
+pocs build:   Generating static pages using 9 workers (9/12) 
+pocs build: ✓ Generating static pages using 9 workers (12/12) in 157ms
+pocs build:   Finalizing page optimization ...
+pocs build: Route (app)
+pocs build: ┌ ○ /
+pocs build: ├ ○ /_not-found
+pocs build: ├ ƒ /api/analyze
+pocs build: ├ ƒ /api/chat
+pocs build: ├ ƒ /api/health
+pocs build: ├ ƒ /api/persona
+pocs build: ├ ƒ /api/persona/avatar
+pocs build: ├ ○ /pocs
+pocs build: ├ ƒ /pocs/analysis
+pocs build: ├ ○ /pocs/chat
+pocs build: ├ ○ /pocs/persona
+pocs build: ├ ○ /pocs/screens
+pocs build: └   /pocs/screens/[screen]
+pocs build:   ├ ● /pocs/screens/landing
+pocs build:   ├ ● /pocs/screens/create
+pocs build:   ├ ● /pocs/screens/list
+pocs build:   └ ● [+2 more paths]
+pocs build: ○  (Static)   prerendered as static content
+pocs build: ●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+pocs build: ƒ  (Dynamic)  server-rendered on demand
+apps/web build: Done
+pocs build: Done
+EXIT 0

@@ -1,0 +1,5 @@
+repo (node_modules, .next, .git 제외): files=838 keys=JEV_KEY,GOOGLE_API_KEY,OPENAI_API_KEY,CLAUDE_API_KEY,VERCEL_API_KEY,RENDER_API_KEY hits=0
+apps/web/.next: files=643 keys=JEV_KEY,GOOGLE_API_KEY,OPENAI_API_KEY,CLAUDE_API_KEY,VERCEL_API_KEY,RENDER_API_KEY hits=0
+apps/web/.next/static: files=25 keys=JEV_KEY,GOOGLE_API_KEY,OPENAI_API_KEY,CLAUDE_API_KEY,VERCEL_API_KEY,RENDER_API_KEY hits=0
+pocs/.next/static: files=36 keys=JEV_KEY,GOOGLE_API_KEY,OPENAI_API_KEY,CLAUDE_API_KEY,VERCEL_API_KEY,RENDER_API_KEY hits=0
+git log -p --all (3513503 bytes): keys=6 hits=0
