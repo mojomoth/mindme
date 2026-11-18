@@ -2,9 +2,9 @@ import Link from 'next/link';
 import styles from './pocs.module.css';
 
 const POCS = [
-  { href: '/pocs/analysis', title: '기록 분석', desc: '카카오톡 TXT·일기·프롬프트에서 사건 타임라인 추출', ready: false },
-  { href: '/pocs/persona', title: '페르소나 생성', desc: '과거·현재·미래의 나 — 성격·말투·기억·감정 설정', ready: false },
-  { href: '/pocs/chat', title: '대화', desc: '페르소나와 스트리밍 대화', ready: false },
+  { href: '/pocs/analysis', title: '기록 분석', desc: '카카오톡 TXT·일기·프롬프트에서 사건 타임라인 추출', ready: true },
+  { href: '/pocs/persona', title: '페르소나 생성', desc: '과거·현재·미래의 나 — 성격·말투·기억·감정 설정', ready: true },
+  { href: '/pocs/chat', title: '대화', desc: '페르소나와 스트리밍 대화', ready: true },
   { href: '/pocs/screens', title: '화면', desc: '5개 화면 프론트엔드 (목업 셸)', ready: true },
 ] as const;
 

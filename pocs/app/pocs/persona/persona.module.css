@@ -1,0 +1,251 @@
+.page {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: calc(32px + var(--mm-safe-top)) var(--mm-gutter) calc(48px + var(--mm-safe-bottom));
+  display: grid;
+  gap: 16px;
+  overflow-x: clip;
+}
+
+.head {
+  display: grid;
+  gap: 6px;
+}
+
+.back {
+  color: var(--mm-text-sub);
+  font-size: var(--mm-fs-label);
+  text-decoration: none;
+  width: fit-content;
+}
+
+.title {
+  margin: 0;
+  font-size: var(--mm-fs-title);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.lead {
+  margin: 0;
+  color: var(--mm-text-sub);
+}
+
+.card {
+  display: grid;
+  gap: 14px;
+  padding: 20px;
+  border-radius: var(--mm-radius-card);
+  background: var(--mm-surface);
+  box-shadow: var(--mm-shadow-card);
+  min-width: 0;
+}
+
+.h2 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 96px;
+  gap: 12px;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+.label {
+  font-size: var(--mm-fs-label);
+  color: var(--mm-text-sub);
+}
+
+.age {
+  color: var(--mm-primary);
+  margin-left: 4px;
+}
+
+.hint {
+  margin: 0;
+  font-size: var(--mm-fs-caption);
+  color: var(--mm-text-muted);
+}
+
+.input,
+.textarea,
+.nameInput {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--mm-line);
+  border-radius: var(--mm-radius-field);
+  background: var(--mm-bg);
+}
+
+.textarea {
+  resize: vertical;
+  field-sizing: content;
+  min-height: 3lh;
+  line-height: 1.55;
+}
+
+.range {
+  width: 100%;
+  accent-color: var(--mm-primary);
+}
+
+.segment {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: 6px;
+  padding: 4px;
+  border-radius: var(--mm-radius-pill);
+  background: var(--mm-bg);
+}
+
+.segBtn {
+  padding: 9px 6px;
+  border: 0;
+  border-radius: var(--mm-radius-pill);
+  background: transparent;
+  color: var(--mm-text-sub);
+  font-size: var(--mm-fs-label);
+  cursor: pointer;
+}
+
+.segBtn[aria-checked='true'] {
+  background: var(--mm-surface);
+  color: var(--mm-text);
+  font-weight: 700;
+  box-shadow: var(--mm-shadow-card);
+}
+
+.primary,
+.ghost {
+  border: 0;
+  border-radius: var(--mm-radius-pill);
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.primary {
+  padding: 15px 20px;
+  background: var(--mm-primary);
+  color: var(--mm-on-primary);
+  font-size: 16px;
+}
+
+.primary:active {
+  background: var(--mm-primary-pressed);
+}
+
+.ghost {
+  padding: 10px 16px;
+  background: var(--mm-bg);
+  color: var(--mm-text);
+  font-size: var(--mm-fs-label);
+}
+
+.primary:disabled,
+.ghost:disabled {
+  opacity: 0.55;
+  cursor: progress;
+}
+
+.link {
+  border: 0;
+  padding: 0;
+  background: none;
+  color: var(--mm-primary);
+  font-size: var(--mm-fs-label);
+  text-decoration: none;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.segBtn:focus-visible,
+.primary:focus-visible,
+.ghost:focus-visible,
+.link:focus-visible,
+.back:focus-visible,
+.input:focus-visible,
+.textarea:focus-visible,
+.nameInput:focus-visible,
+.range:focus-visible {
+  outline: 2px solid var(--mm-primary);
+  outline-offset: 2px;
+}
+
+.avatarRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.photo,
+.avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--mm-bg);
+}
+
+.avatarActions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.resultHead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatarSm {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex: none;
+}
+
+.nameInput {
+  flex: 1;
+  min-width: 0;
+  font-size: 18px;
+  font-weight: 700;
+  background: transparent;
+  border-color: transparent;
+  padding-left: 4px;
+}
+
+.nameInput:hover {
+  border-color: var(--mm-line);
+}
+
+.error {
+  margin: 0;
+  color: var(--mm-primary-pressed);
+  font-size: var(--mm-fs-label);
+}
+
+.saved {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.saved li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}

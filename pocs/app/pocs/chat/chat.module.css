@@ -1,0 +1,131 @@
+.page {
+  max-width: 560px;
+  height: 100dvh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: calc(24px + var(--mm-safe-top)) var(--mm-gutter) calc(16px + var(--mm-safe-bottom));
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.controls {
+  display: flex;
+  gap: 8px;
+}
+
+.select,
+.input {
+  font: inherit;
+  border: 1px solid var(--mm-line);
+  border-radius: var(--mm-radius-field);
+  background: var(--mm-surface);
+  color: var(--mm-text);
+}
+
+.select {
+  padding: 8px 12px;
+}
+
+.ghost,
+.send {
+  font: inherit;
+  font-weight: 600;
+  border: 0;
+  border-radius: var(--mm-radius-pill);
+  cursor: pointer;
+}
+
+.ghost {
+  padding: 8px 14px;
+  background: var(--mm-line);
+  color: var(--mm-text-sub);
+}
+
+.list {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  border-radius: var(--mm-radius-card);
+  background: var(--mm-surface);
+  box-shadow: var(--mm-shadow-card);
+}
+
+.me,
+.them {
+  max-width: 80%;
+  margin: 0;
+  padding: 10px 14px;
+  border-radius: 18px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.me {
+  align-self: flex-end;
+  background: var(--mm-primary);
+  color: var(--mm-on-primary);
+  border-bottom-right-radius: 6px;
+}
+
+.them {
+  align-self: flex-start;
+  background: var(--mm-bg);
+  border-bottom-left-radius: 6px;
+}
+
+.typing {
+  color: var(--mm-text-muted);
+}
+
+.error {
+  margin: 0;
+  color: var(--mm-primary-pressed);
+  font-size: var(--mm-fs-label);
+}
+
+.timing {
+  margin: 0;
+  color: var(--mm-text-muted);
+  font-size: var(--mm-fs-caption);
+}
+
+.form {
+  display: flex;
+  gap: 8px;
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  padding: 12px 16px;
+}
+
+.send {
+  padding: 0 20px;
+  background: var(--mm-primary);
+  color: var(--mm-on-primary);
+}
+
+.send:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
