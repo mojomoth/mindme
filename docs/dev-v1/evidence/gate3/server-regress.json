@@ -1,0 +1,151 @@
+{
+  "ip": "203.0.113.95",
+  "at": "2026-11-18T17:18:00.364Z",
+  "calls": [
+    {
+      "name": "health",
+      "status": 200,
+      "ms": 27,
+      "contentType": "application/json",
+      "body": {
+        "ok": true,
+        "configured": {
+          "openai": true
+        }
+      }
+    },
+    {
+      "name": "analyze",
+      "status": 200,
+      "ms": 30709,
+      "contentType": "application/json",
+      "events": [
+        "evt_01 2015-05-14 체육대회 계주로 서진과 다툰 날 (15살)",
+        "evt_02 2015-05-21 일주일 만에 서진과 화해한 밤 (15살)",
+        "evt_03 2016-02-12 중학교를 졸업하고 만남을 약속한 날 (16살)",
+        "evt_04 2024-03-09 첫 출근 일주일을 돌아본 날 (24살)"
+      ],
+      "owner": {
+        "name": "이지우",
+        "currentAge": 26
+      },
+      "meta": {
+        "mode": "direct",
+        "chunks": 1,
+        "units": 33,
+        "participants": [
+          "박서진",
+          "이지우"
+        ],
+        "me": "이지우"
+      },
+      "hasMetaLlm": false
+    },
+    {
+      "name": "persona",
+      "status": 200,
+      "ms": 16994,
+      "contentType": "application/json",
+      "persona": {
+        "name": "체육대회 계주로 서진과 다툰 날의 이지우",
+        "age": 15,
+        "greeting": "서진이는 왜 꼭 애들 앞에서 그런 말을 해? 나도 열심히 뛰었는데, 됐다고 해 놓고도 자꾸 생각나."
+      }
+    },
+    {
+      "name": "avatar",
+      "status": 200,
+      "ms": 73887,
+      "contentType": "application/json",
+      "source": "generated",
+      "avatarPrefix": "data:image/webp;base64,UklGRlL",
+      "avatarChars": 74555
+    },
+    {
+      "name": "chat",
+      "status": 200,
+      "ms": 4600,
+      "contentType": "text/plain; charset=utf-8",
+      "xCrisis": "0",
+      "reply": "애들 앞에서 그러니까 창피하고, 내가 일부러 못 뛴 것처럼 느껴져서 억울했어. 학원 때문에 연습 못 간다고 미리 말했잖아!! 바통 놓친 건 나도 속상한데, 서진이가 내 사정은 좀 알아줬으면 했어."
+    },
+    {
+      "name": "analyze-bad-1",
+      "status": 400,
+      "ms": 8,
+      "contentType": "application/json"
+    },
+    {
+      "name": "analyze-bad-2",
+      "status": 400,
+      "ms": 4,
+      "contentType": "application/json"
+    },
+    {
+      "name": "analyze-bad-3",
+      "status": 400,
+      "ms": 6,
+      "contentType": "application/json"
+    },
+    {
+      "name": "analyze-bad-4",
+      "status": 400,
+      "ms": 5,
+      "contentType": "application/json"
+    },
+    {
+      "name": "analyze-bad-5",
+      "status": 400,
+      "ms": 6,
+      "contentType": "application/json"
+    },
+    {
+      "name": "analyze-bad-6",
+      "status": 400,
+      "ms": 3,
+      "contentType": "application/json"
+    },
+    {
+      "name": "analyze-bad-7",
+      "status": 400,
+      "ms": 3,
+      "contentType": "application/json"
+    },
+    {
+      "name": "analyze-bad-8",
+      "status": 400,
+      "ms": 3,
+      "contentType": "application/json"
+    },
+    {
+      "name": "analyze-bad-9",
+      "status": 400,
+      "ms": 3,
+      "contentType": "application/json"
+    },
+    {
+      "name": "analyze-limited",
+      "status": 400,
+      "ms": 3,
+      "contentType": "application/json",
+      "body": {
+        "error": {
+          "code": "invalid_request",
+          "message": "보낸 내용을 읽지 못했어요. 다시 시도해 주세요."
+        }
+      }
+    },
+    {
+      "name": "analyze-other-ip",
+      "status": 400,
+      "ms": 2,
+      "contentType": "application/json",
+      "body": {
+        "error": {
+          "code": "invalid_request",
+          "message": "보낸 내용을 읽지 못했어요. 다시 시도해 주세요."
+        }
+      }
+    }
+  ]
+}

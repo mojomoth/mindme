@@ -1,0 +1,47 @@
+# critic-local-r1 rate limit 2026-11-19 02:45:14 apps/web 3100 (잘못된 JSON "{" 로 AI 호출 없이 횟수만 소모)
+## /api/analyze 한도 10, IP 198.18.7.52 로 11회:   10 400    1 429 | 마지막 429
+### 12번째 응답
+HTTP/1.1 429 Too Many Requests
+retry-after: 600
+{"error":{"code":"rate_limited","message":"짧은 시간에 요청이 많았어요. 10분쯤 뒤에 다시 시도해 주세요."}}
+
+## /api/persona 한도 30, IP 198.18.7.53 로 31회:   30 400    1 429 | 마지막 429
+### 32번째 응답
+HTTP/1.1 429 Too Many Requests
+retry-after: 600
+{"error":{"code":"rate_limited","message":"짧은 시간에 요청이 많았어요. 10분쯤 뒤에 다시 시도해 주세요."}}
+
+## /api/persona/avatar 한도 15, IP 198.18.7.54 로 16회:   15 400    1 429 | 마지막 429
+### 17번째 응답
+HTTP/1.1 429 Too Many Requests
+retry-after: 600
+{"error":{"code":"rate_limited","message":"짧은 시간에 요청이 많았어요. 10분쯤 뒤에 다시 시도해 주세요."}}
+
+## /api/chat 한도 100, IP 198.18.7.55 로 101회:  100 400    1 429 | 마지막 429
+### 102번째 응답
+HTTP/1.1 429 Too Many Requests
+retry-after: 600
+{"error":{"code":"rate_limited","message":"짧은 시간에 요청이 많았어요. 10분쯤 뒤에 다시 시도해 주세요."}}
+
+## 다른 IP(198.18.7.56) analyze: 400
+# 크기 제한
+chat 본문 바이트 3300056
+## /api/chat 3.3MB (Content-Length 선검사):
+HTTP/1.1 100 Continue
+HTTP/1.1 413 Payload Too Large
+{"error":{"code":"payload_too_large","message":"보낸 내용이 너무 길어요. 조금 줄여서 다시 보내 주세요."}}
+
+analyze 본문 바이트 750041 (ASCII 75만 자: 바이트 상한 210만 아래, 글자 상한 70만 위)
+## /api/analyze 75만 자 ASCII:
+HTTP/1.1 413 Payload Too Large
+{"error":{"code":"payload_too_large","message":"입력이 너무 길어요. 30만 자 이하로 줄여 주세요."}}
+
+## /api/analyze 30만1 자 (스키마 상한):
+HTTP/1.1 400 Bad Request
+{"error":{"code":"invalid_request","message":"기록 내용을 읽지 못했어요. 파일이나 이야기를 다시 확인해 주세요."}}
+
+## /api/persona/avatar 6MB:
+HTTP/1.1 100 Continue
+HTTP/1.1 413 Payload Too Large
+{"error":{"code":"payload_too_large","message":"사진이 너무 커요. 더 작은 사진으로 해 주세요."}}
+

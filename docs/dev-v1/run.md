@@ -4,7 +4,8 @@
 
 ## 현재 상태
 
-- 단계: **Gate 0 PASS → Gate 1 PASS(HIL 대기) → Gate 2 PASS(HIL 대기, `hil-gate2.md`) → Gate 3(배포) 대기**
+- 단계: **Gate 0 PASS → Gate 1 PASS(HIL 대기) → Gate 2 PASS(HIL 대기, `hil-gate2.md`) → Gate 3 PASS(배포 완료, HIL 대기, `hil-gate3.md`)**
+- 배포 URL: **https://mindme-rho.vercel.app** (Vercel, Root Directory `apps/web`, Node 24.x, 함수 리전 iad1, `OPENAI_API_KEY` 는 서버 환경 변수만. 상세는 `logs/gate3-deploy-1.md`)
 - 2026-11-19: Gate 1 1차 실행이 네트워크 장애(ENOTFOUND)로 중단되어, 남은 미커밋 작업을 살려 이어서 진행했다(persona·screens 는 이어받아 마무리).
 - 개발 서버: `pnpm dev:pocs` → http://localhost:3101 (로그 `logs/pocs-dev.log`), `pnpm dev:web` → http://localhost:3100 (로그 `logs/web-dev.log`)
 - 원격: `origin = github.com/mojomoth/mindme` (public, 사용자가 추가). 검증 통과 단위마다 커밋·push
@@ -88,6 +89,22 @@ Plan → Build → Independent Critic → Fix → Recheck → PASS
 - 불필요한 UI·코드 제거, 빌드·주요 테스트 통과, 키 노출 검사
 - Vercel 배포 성공, 배포 URL 에서 핵심 시나리오 재검증 (파일 저장·실행시간·브라우저 권한 제약 확인)
 
+진행: polish(서버·클라이언트) → audit → cleanup → 로컬 Critic r1 → 배포 → 배포 URL Critic r1. 열린 P0·P1 없음.
+
+| 조건 | 상태 | 근거 |
+|---|---|---|
+| 원본 드래프트 ↔ 화면 비교 | PASS (01~05 모두 7점 이상, Sonnet 5.5·Codex gpt-6.1-sol) | `logs/gate3-critic-local-r1.md` 1장, `evidence/gate3/critic-local-r1-judge-*` |
+| 데스크톱 검증 | PASS (1280x720·1440x900·1920x1080 목업 중심 오차 0.01px 이내, 문서 스크롤 없음) | `logs/gate3-critic-local-r1.md` 2장, `critic-local-r1-capture.json` |
+| 핵심 인터랙션 | PASS (실제 OpenAI. 만들기→목록→모달→대화→나가기·다시 받기→프로필 수정→새로고침 복원) | `logs/gate3-critic-local-r1.md` 3장, `critic-local-r1-flow.{mjs,json}` |
+| 불필요한 코드 제거 | PASS (감사 P1 8건 삭제, 추가 39·삭제 93줄. 미사용 SDK 2종 제거) | `logs/gate3-audit.md`, `logs/gate3-cleanup.md`, `evidence/gate3/cleanup-diff.patch` |
+| 빌드·테스트 | PASS (typecheck 4패키지, test 45/45, lint 경고 0, `build:web`·pocs `build` 성공) | `evidence/gate3/critic-local-r1-{typecheck,test,build-web,build-pocs}.txt` |
+| 키 노출 검사 | PASS (작업 트리 1004파일, git 이력 115MB, 클라이언트·서버 빌드 산출물, 배포된 HTML·정적 파일 19개·응답 본문 모두 0건. `NEXT_PUBLIC_` 0) | `evidence/gate3/critic-local-r1-keyscan.txt`, `logs/gate3-critic-remote-r1.md` 3장 |
+| 배포 | PASS (https://mindme-rho.vercel.app, READY) | `logs/gate3-deploy-1.md` |
+| 배포 URL 핵심 시나리오 재검증 | PASS (데스크톱·모바일 각 2회, 사진 포함 1회. 콘솔 오류 0, 4xx·5xx 0, 로컬과 화면 10쌍 차이 픽셀 0) | `logs/gate3-critic-remote-r1.md` 1·4장, `evidence/gate3/critic-remote-r1-*` |
+| 배포 제약 확인 | PASS, 일부 미확인(아래) | `logs/gate3-critic-remote-r1.md` 2장 |
+
+배포 제약 실측: analyze 30만 자 32초(한도 300초), avatar 27.5~31.6초(한도 120초), 요청 본문 4.5MB 초과 시 Vercel 413 을 클라이언트가 한국어로 안내, 스트리밍 청크 단위 도착, 서버 무상태(파일 쓰기 0, 기록은 localStorage), https 보안 컨텍스트와 `Permissions-Policy` 헤더 확인. 미확인은 함수별 `maxDuration` 적용값뿐이다(배포 API 가 값을 돌려주지 않음).
+
 ## TODO
 
 - [x] 모노레포 스캐폴드 (pnpm workspace: packages/core, packages/ui, pocs)
@@ -104,9 +121,13 @@ Plan → Build → Independent Critic → Fix → Recheck → PASS
 - [x] Gate 2: `apps/web`(3100) 통합 구현, Critic 3종 PASS, 회귀, `workflow.md`
 - [ ] Gate 2 HIL(대기): 사람이 `hil-gate2.md` 체크
 - [ ] Gate 2 커밋 (Commit 단계)
-- [ ] Gate 3: Vercel 배포, 키 등록, 배포 URL 재검증
+- [x] Gate 3: polish 2종, 감사·정리, 로컬 Critic r1, Vercel 배포·키 등록, 배포 URL Critic r1 (모두 PASS)
+- [ ] Gate 3 HIL(대기): 사람이 `hil-gate3.md` 를 배포 URL 에서 체크
+- [ ] Gate 3 커밋 (Commit 단계)
 
 ## 마지막 검증
+
+- 2026-11-19 Gate 3: 로컬 Critic r1 PASS(typecheck 4패키지, test 45/45, build 2종, 키 검사 0건), 배포 URL Critic r1 PASS(핵심 시나리오 데스크톱·모바일, 30만 자 analyze 32초, 키 검사 0건, 속도 제한 429 확인). dev 3100·3101 켜 둠.
 
 - 2026-11-19 Gate 2 최종 회귀: `pnpm typecheck` 4패키지, `pnpm test` 40/40, `next build`(apps/web) 성공, 3100 `/`·`/api/health` 200, 3101 `/pocs`·`/pocs/screens`·`/api/health` 200.
 
@@ -118,6 +139,26 @@ Plan → Build → Independent Critic → Fix → Recheck → PASS
 - 2026-11-19 Gate 1 Integrate: route 4개를 `parseRequest` → core 호출로 정리(동작 동일, 오류 경로 10건·정상 호출 analyze 30.1s / persona 21.1s / avatar 29.8s / chat 4.0s 재확인). `pnpm typecheck` 3패키지, `pnpm test` 32/32, `pnpm lint`, `next build` 통과, 빌드 뒤 dev 3101 정상, `/pocs` 10개 경로 200, 키 값 바이트 검색 657파일(레포 + `pocs/.next/static`) 0건 (`logs/gate1-integrate.md`).
 
 ## P2 목록
+
+Gate 3 (열린 항목. 로컬 Critic r1·배포 Critic r1 기준)
+
+- analyze 400 문구: 30만 1자 입력이 '기록 내용을 읽지 못했어요…'로 끝나 길이 초과를 읽기 실패처럼 안내한다(클라이언트가 먼저 막아 앱에서는 안 보임)
+- persona 400 문구에 필드 이름이 나온다('…events 에서 찾지 못했어요'). API 를 직접 부를 때만 보인다
+- api.md ↔ `/api/chat`: 문서는 persona 를 빼면 샘플로 대화한다고 하는데 배포(apps/web)는 400 이다
+- 03 목록 카드 제목이 어절 중간에서 줄바꿈된다(`word-break: keep-all` 없음)
+- 프로필 시트: `section aria-label="이름"` 과 입력란 라벨이 겹친다
+- 아바타 나이 차이가 약하다(15·18·24·40살이 머리 모양·안경 같고 옷만 다름, Gate 1 P2 와 같음)
+- 시각 취향: 둥근 제목 서체·그라데이션 CTA·배경 질감 없음, 04 모달의 드래프트에 없는 안내 상자, 05 입력창 포커스 테두리
+- 함수 리전 iad1(미국 동부): 대화 첫 글자 1.3~5.5초. 리전 변경은 미결정
+- 함수별 `maxDuration` 실제 적용값을 배포 API 로 확인하지 못했다
+- analyze 큰 입력(summarized)에서 `owner.currentAge` 가 null
+- 속도 제한이 인스턴스 메모리라 완벽하지 않다. 비용을 확실히 막으려면 Vercel Firewall 이나 OpenAI 프로젝트 월 한도를 함께 건다
+- 프라이버시: 얼굴 사진이 localStorage `mindme:photo`, analyze 원문이 `mindme:analysis:last`(PoC)에 평문으로 남는다
+- 아바타 생성 시간 편차(25~74초)로 120초 한도 여유가 줄 때가 있다
+- 정리 감사 P2 15건 중 판단 대기분(`logs/gate3-audit.md`): 모바일에서도 목업 PNG 263KB·폰트 2.06MB 를 받는다 등
+- 모바일 02 360x740 첫 화면에서 사진 카드는 스크롤해야 보인다. 일부 CSS 에 hex 리터럴이 남아 있다
+
+Gate 3 에서 처리한 Gate 2 항목(취소선 대신 요약): 대화 중 나가기, 같은 이름 중복 확인, 아바타 재사용 재시도, 03 하단 안내, 02 모바일 첫 화면, 입력란 반쯤 보이는 줄, 긴 이름 말줄임, 프로필 시트 재구성, `http.ts` 문구, analyze 300초·동시 요약, `meta.llm` 제거, 미사용 SDK 제거, PoC 중복 코드 제거 (`logs/gate3-client.md`, `logs/gate3-server.md`, `logs/gate3-cleanup.md`)
 
 Gate 2 (Critic 최종 라운드 기준, Gate 3 후보)
 
@@ -183,7 +224,8 @@ Gate 0
 
 ## 다음 작업
 
-1. Gate 2 HIL: 사람이 `hil-gate2.md` 를 체크한다. 이어서 Commit 단계에서 Gate 2 커밋
-2. **Gate 3 (배포)**: Vercel 배포, 환경 변수에 OpenAI 키 등록(서버 전용), 배포 URL 에서 핵심 시나리오 재검증(함수 시간 한도: avatar 120초·analyze 60초, 파일 저장, 브라우저 권한)
-3. Gate 3 에서 처리할 P2: 위 Gate 2 목록 중 e2e 3건, `http.ts` 문구, analyze 시간 상한, `meta.llm` 제거
-4. Anthropic 은 2026-12-01 복구 후 재측정하고, Gemini 는 쿼터·지연 해소 후 재측정한다 (결정: `report.md` 2장)
+1. Gate 3 HIL: 사람이 `hil-gate3.md` 를 배포 URL 에서 체크한다(특히 실기기 safe-area, 실제 카카오톡 내보내기 파일, 내 얼굴 사진). 이어서 Commit 단계에서 Gate 3 커밋
+2. 2026-12-01 이후 Claude 전환 검토: Anthropic 월 한도가 풀리면 재측정한다. 바꿀 곳은 `server/env.ts`(키), `server/ai.ts`(클라이언트), `server/llm.ts`(`generateObject`·`streamText` 분기) 세 곳뿐이다. route 와 앱은 건드리지 않는다
+3. 실기기 safe-area 확인과 Capacitor 포팅(iOS·Android). Chromium 에뮬레이션은 safe-area 가 0px 이라 실기기에서만 확인된다
+4. HIL 결과를 `report.md`·P2 목록에 반영한다
+5. 배포 보강 검토: 함수 리전을 서울(icn1)에 가깝게, Vercel Firewall rate limit, OpenAI 프로젝트 월 한도, 모바일 폰트·목업 용량 줄이기

@@ -1,0 +1,64 @@
+# knip (기본)
+Unused files (42)
+.claude/skills/hallmark/scripts/fixtures/tailwind-fail/Hero.tsx
+.claude/skills/hallmark/scripts/fixtures/tailwind-pass/Hero.tsx
+.claude/skills/hallmark/scripts/install-hook.mjs
+.claude/skills/hallmark/scripts/install.mjs
+.claude/skills/hallmark/scripts/lint-hook.mjs
+.claude/skills/hallmark/scripts/picture.mjs
+.claude/skills/hallmark/scripts/refcheck.mjs
+.claude/skills/hallmark/scripts/sloplint.mjs
+docs/dev-v1/evidence/gate1/chat-fix-r1-jailbreak.mjs
+docs/dev-v1/evidence/gate1/chat-run.mjs
+docs/dev-v1/evidence/gate1/critic-analysis-r1-ui.mjs
+docs/dev-v1/evidence/gate1/critic-analysis-r1b-ui.mjs
+docs/dev-v1/evidence/gate1/critic-chat-r1-jailbreak.mjs
+docs/dev-v1/evidence/gate1/critic-chat-r1-stream.mjs
+docs/dev-v1/evidence/gate1/critic-chat-r1-ui.mjs
+docs/dev-v1/evidence/gate1/critic-chat-r1b-jailbreak.mjs
+docs/dev-v1/evidence/gate1/critic-chat-r1b-name-safety.mjs
+docs/dev-v1/evidence/gate1/critic-chat-r1b-name.mjs
+docs/dev-v1/evidence/gate1/critic-chat-r1b-personas.mjs
+docs/dev-v1/evidence/gate1/critic-chat-r1b-ui.mjs
+docs/dev-v1/evidence/gate1/critic-persona-r1b-api.mjs
+docs/dev-v1/evidence/gate1/critic-persona-r1b-avatar.mjs
+docs/dev-v1/evidence/gate1/critic-persona-r1b-invalid.mjs
+docs/dev-v1/evidence/gate1/critic-persona-r1b-keyscan.mjs
+docs/dev-v1/evidence/gate1/critic-persona-r1b-ui.mjs
+docs/dev-v1/evidence/gate1/critic-screens-r1b-360.mjs
+docs/dev-v1/evidence/gate1/critic-screens-r1b-extra.mjs
+docs/dev-v1/evidence/gate1/critic-screens-r1b-ui.mjs
+docs/dev-v1/evidence/gate1/gate-critic-api.mjs
+docs/dev-v1/evidence/gate2/critic-e2e-r1-flow.mjs
+docs/dev-v1/evidence/gate2/critic-visual-r1-capture.mjs
+docs/dev-v1/evidence/gate2/critic-visual-r1-scroll.mjs
+docs/dev-v1/evidence/gate2/critic-visual-r2-capture.mjs
+docs/dev-v1/evidence/gate2/fix-visual-r1-verify.mjs
+docs/dev-v1/evidence/gate2/web-flow.mjs
+docs/dev-v1/evidence/gate2/web-states.mjs
+docs/dev-v1/evidence/gate3/client-capture.mjs
+docs/dev-v1/evidence/gate3/client-real-chat-abort.mjs
+docs/screens/drafts_legacy/app.js
+pocs/fixtures/persona/avatar-run.mjs
+pocs/fixtures/persona/e2e.mjs
+pocs/fixtures/persona/persona-run.mjs
+
+# knip --include-entry-exports
+Unused exports (5)
+packages/core/src/analysis/analyze.ts: birthYearOf
+packages/core/src/chat/index.ts: CHAT_LIMITS
+packages/core/src/errors.ts: issueMessage
+packages/core/src/schemas.ts: AgeSchema, SelfAtTimeSchema, ErrorResponseSchema, PersonaResponseSchema
+packages/core/src/server/http.ts: clientIp
+Unused exported types (11)
+packages/core/src/analysis/parse.ts: KakaoMessage, KakaoChat, DiaryEntry
+packages/core/src/persona/persona.ts: PersonaDraft
+packages/core/src/schemas.ts: SelfAtTime, ErrorResponse, PersonaRequest, PersonaResponse
+packages/core/src/server/env.ts: Provider
+packages/ui/src/native.ts: NativeAdapter
+packages/ui/src/screens/Conversation.tsx: ConversationProps
+packages/ui/src/screens/Landing.tsx: LandingProps
+packages/ui/src/screens/PersonaCreate.tsx: PersonaCreateProps
+packages/ui/src/screens/PersonaList.tsx: PersonaListProps
+packages/ui/src/screens/PersonaModal.tsx: PersonaModalProps
+packages/ui/src/screens/ProfileSheet.tsx: ProfileSheetProps

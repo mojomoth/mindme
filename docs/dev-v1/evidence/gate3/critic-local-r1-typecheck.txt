@@ -1,0 +1,16 @@
+## typecheck
+$ pnpm -r typecheck
+Scope: 4 of 5 workspace projects
+packages/core typecheck$ tsc -p tsconfig.json
+packages/ui typecheck$ tsc -p tsconfig.json
+packages/ui typecheck: Done
+packages/core typecheck: Done
+apps/web typecheck$ next typegen && tsc -p tsconfig.json
+pocs typecheck$ next typegen && tsc -p tsconfig.json
+apps/web typecheck: Generating route types...
+pocs typecheck: Generating route types...
+apps/web typecheck: ✓ Types generated successfully
+pocs typecheck: ✓ Types generated successfully
+apps/web typecheck: Done
+pocs typecheck: Done
+EXIT 0

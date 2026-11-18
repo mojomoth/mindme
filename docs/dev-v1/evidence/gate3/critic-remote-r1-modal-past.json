@@ -1,0 +1,18 @@
+{
+  "console": [],
+  "bad": [],
+  "pill": "20살",
+  "duplicateAsked": false,
+  "ms": 29596,
+  "made": {
+    "name": "20살의 서하린",
+    "kind": "past",
+    "age": 20,
+    "greeting": "혼자 와 놓고 길 잃으니까 진짜 무섭다... 너는 오늘 어땠어, 나랑 잠깐 얘기할래?",
+    "avatar": "data:image/webp;base64"
+  },
+  "count": {
+    "before": 4,
+    "after": 5
+  }
+}

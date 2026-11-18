@@ -1,0 +1,443 @@
+--- a/apps/web/app/MindmeApp.tsx
++++ b/apps/web/app/MindmeApp.tsx
+@@ -3,6 +3,7 @@
+ // Mindme 앱: 한 화면씩 상태로 바꾼다 (01 랜딩 → 02 만들기 → 진행 → 03 목록(+04 모달) → 05 대화(+프로필 시트)).
+ // 화면은 @mindme/ui 그대로, 기능은 @mindme/core 와 /api/* 를 쓴다. 저장은 브라우저(NativeAdapter.storage)에만 한다.
+ import {
++  MAX_INPUT_CHARS,
+   parseKakao,
+   personaName,
+   PersonaSchema,
+@@ -36,7 +37,6 @@
+ 
+ type Screen = 'landing' | 'create' | 'working' | 'list' | 'chat';
+ 
+-const MAX_TEXT = 300_000;
+ const STATUS: Record<PersonaKind, string> = { past: '그때의 나와 대화 중', present: '지금의 나와 대화 중', future: '미래의 나와 대화 중' };
+ const KIND_LABEL: Record<PersonaKind, string> = { past: '과거의 나', present: '지금의 나', future: '미래의 나' };
+ const CALL_STEP: Record<PersonaKind, string> = {
+@@ -163,7 +163,7 @@
+     if (!picked) return;
+     const text = (await picked.text()).trim();
+     if (!text) return setNotice('빈 파일이에요. 다른 파일을 골라 주세요.');
+-    if (text.length > MAX_TEXT) return setNotice('파일이 너무 길어요. 30만 자 이하로 나눠서 올려 주세요.');
++    if (text.length > MAX_INPUT_CHARS) return setNotice('파일이 너무 길어요. 30만 자 이하로 나눠서 올려 주세요.');
+     setNotice(undefined);
+     setFile({ name: picked.name, text });
+   }
+--- a/packages/core/src/analysis/analyze.ts
++++ b/packages/core/src/analysis/analyze.ts
+@@ -22,7 +22,7 @@
+ // OpenAI structured output(strict)은 모든 필드가 필수라서 선택값은 nullable 로 받는다.
+ // 길이 제한은 여기 두지 않고 normalizeEvents 에서 계약(EventSchema) 길이로 자른다.
+ 
+-export const LlmEventSchema = z.object({
++const LlmEventSchema = z.object({
+   title: z.string(),
+   date: z.string(),
+   dateEstimated: z.boolean(),
+@@ -238,7 +238,7 @@
+ }
+ 
+ /** 출생연도 추정: 연도와 나이가 둘 다 있는 사건들의 (연도 - 나이) 중앙값. 없으면 undefined. */
+-export function birthYearOf(events: { date: string; age?: number }[]): number | undefined {
++function birthYearOf(events: { date: string; age?: number }[]): number | undefined {
+   const births = events
+     .flatMap((e) => {
+       const k = dateKey(e.date);
+--- a/packages/core/src/analysis/parse.ts
++++ b/packages/core/src/analysis/parse.ts
+@@ -1,6 +1,6 @@
+ // 카카오톡 내보내기 TXT · 일기 TXT 파서. 순수 함수만 둔다 (서버·클라이언트 공용).
+ 
+-export type KakaoMessage = {
++type KakaoMessage = {
+   /** YYYY-MM-DD */
+   date: string;
+   /** HH:MM (24시간) */
+@@ -9,7 +9,7 @@
+   text: string;
+ };
+ 
+-export type KakaoChat = {
++type KakaoChat = {
+   /** 내보내기 첫 줄의 대화방 이름 ('박서진 님과 카카오톡 대화' → '박서진') */
+   title?: string;
+   /** 처음 말한 순서 */
+@@ -19,7 +19,7 @@
+   messages: KakaoMessage[];
+ };
+ 
+-export type DiaryEntry = { date?: string; text: string };
++type DiaryEntry = { date?: string; text: string };
+ 
+ const pad = (n: number | string) => String(n).padStart(2, '0');
+ 
+--- a/packages/core/src/chat/index.ts
++++ b/packages/core/src/chat/index.ts
+@@ -22,7 +22,7 @@
+ };
+ 
+ /** LLM 에 보내는 대화 상한. 오래된 메시지부터 잘라낸다. (요청 상한은 ChatRequestSchema: 100개 · 4000자) */
+-export const CHAT_LIMITS = { maxMessages: 24, maxChars: 12_000 } as const;
++const CHAT_LIMITS = { maxMessages: 24, maxChars: 12_000 } as const;
+ 
+ /** 최근 메시지만 남긴다. 마지막(user) 메시지는 항상 포함한다. */
+ export function trimMessages(messages: ChatMessage[], limits: { maxMessages: number; maxChars: number } = CHAT_LIMITS): ChatMessage[] {
+--- a/packages/core/src/errors.ts
++++ b/packages/core/src/errors.ts
+@@ -55,7 +55,7 @@
+ }
+ 
+ /** zod 이슈 하나 → 한국어 문구. */
+-export function issueMessage(issue: z.core.$ZodIssue): string {
++function issueMessage(issue: z.core.$ZodIssue): string {
+   const label = labelOf(issue.path);
+   if (issue.code === 'custom') return /[가-힣]/.test(issue.message) ? issue.message : `${label ?? '요청'} 값을 확인해 주세요.`;
+   if (!label) return '요청 형식이 올바르지 않아요.';
+--- a/packages/core/src/persona/persona.ts
++++ b/packages/core/src/persona/persona.ts
+@@ -31,7 +31,7 @@
+   emotions: z.array(z.string()),
+   greeting: z.string(),
+ });
+-export type PersonaDraft = z.infer<typeof PersonaDraftSchema>;
++type PersonaDraft = z.infer<typeof PersonaDraftSchema>;
+ 
+ export const PHASE_LABEL: Record<Phase, string> = { before: '사건 전', during: '사건 당시', after: '사건 직후' };
+ 
+--- a/packages/core/src/schemas.ts
++++ b/packages/core/src/schemas.ts
+@@ -8,10 +8,10 @@
+ export const SourceSchema = z.enum(['kakao', 'diary', 'prompt']);
+ export const PersonaKindSchema = z.enum(['past', 'present', 'future']);
+ export const PhaseSchema = z.enum(['before', 'during', 'after']);
+-export const AgeSchema = z.int().min(1).max(120);
++const AgeSchema = z.int().min(1).max(120);
+ 
+ /** 그 시점의 '나' 단서. 페르소나 생성(/api/persona)이 성격·말투를 잡을 때 쓴다. */
+-export const SelfAtTimeSchema = z.object({
++const SelfAtTimeSchema = z.object({
+   traits: z.array(text(40)).max(10),
+   speechStyle: z.string().max(300),
+   /** '나'가 실제로 한 말(원문). 기록에 없으면 빈 배열 */
+@@ -59,10 +59,6 @@
+   content: text(4000),
+ });
+ 
+-export const ErrorResponseSchema = z.object({
+-  error: z.object({ code: z.string(), message: z.string() }),
+-});
+-
+ // ── POST /api/analyze ──────────────────────────────────────
+ 
+ export const AnalyzeRequestSchema = z.object({
+@@ -145,16 +141,13 @@
+ export type PersonaKind = z.infer<typeof PersonaKindSchema>;
+ export type Phase = z.infer<typeof PhaseSchema>;
+ export type TimelineEvent = z.infer<typeof EventSchema>;
+-export type SelfAtTime = z.infer<typeof SelfAtTimeSchema>;
+ export type AnalyzeMeta = z.infer<typeof AnalyzeMetaSchema>;
+ export type Owner = z.infer<typeof OwnerSchema>;
+ export type Profile = z.infer<typeof ProfileSchema>;
+ export type Persona = z.infer<typeof PersonaSchema>;
+ export type ChatMessage = z.infer<typeof ChatMessageSchema>;
+-export type ErrorResponse = z.infer<typeof ErrorResponseSchema>;
+ export type AnalyzeRequest = z.input<typeof AnalyzeRequestSchema>;
+ export type AnalyzeResponse = z.infer<typeof AnalyzeResponseSchema>;
+-export type PersonaRequest = z.input<typeof PersonaRequestSchema>;
+ export type PersonaResponse = z.infer<typeof PersonaResponseSchema>;
+ export type AvatarRequest = z.infer<typeof AvatarRequestSchema>;
+ export type AvatarResponse = z.infer<typeof AvatarResponseSchema>;
+--- a/packages/core/src/server/ai.ts
++++ b/packages/core/src/server/ai.ts
+@@ -5,7 +5,7 @@
+ // 지금 앱이 쓰는 공급자는 OpenAI 하나다. 다른 공급자(예: 12/1 이후 Claude)는 env.ts 에 키 이름,
+ // 여기에 클라이언트, llm.ts 에 호출을 더하면 된다. 라우트는 llm.ts 만 부르므로 바꿀 필요가 없다.
+ export const MODELS = {
+-  openai: { astra: 'gpt-6-astra', sol: 'gpt-6.1-sol', image: 'gpt-image-2' },
++  openai: { astra: 'gpt-6-astra', image: 'gpt-image-2' },
+ } as const;
+ 
+ let openai: OpenAI | undefined;
+--- a/packages/core/src/server/env.ts
++++ b/packages/core/src/server/env.ts
+@@ -5,7 +5,7 @@
+   openai: 'OPENAI_API_KEY',
+ } as const;
+ 
+-export type Provider = keyof typeof KEY_NAMES;
++type Provider = keyof typeof KEY_NAMES;
+ 
+ export function hasKey(provider: Provider): boolean {
+   return Boolean(process.env[KEY_NAMES[provider]]?.trim());
+--- a/packages/core/src/server/http.ts
++++ b/packages/core/src/server/http.ts
+@@ -76,7 +76,7 @@
+ const hits = new Map<string, { count: number; reset: number }>();
+ const MAX_KEYS = 10_000;
+ 
+-export const clientIp = (req: Request) =>
++const clientIp = (req: Request) =>
+   req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || req.headers.get('x-real-ip')?.trim() || 'unknown';
+ 
+ /** windowMs 동안 IP 당 limit 번까지 handler 를 부른다. 넘으면 429 rate_limited + Retry-After(초). */
+--- a/packages/core/src/server/llm.ts
++++ b/packages/core/src/server/llm.ts
+@@ -10,7 +10,7 @@
+ // SDK 가 타임아웃·5xx·429 를 재시도한다. 1회만.
+ const REQUEST = { timeout: 60_000, maxRetries: 1 } as const;
+ 
+-const modelOf = (model?: string) => model ?? process.env.MINDME_TEXT_MODEL?.trim() ?? MODELS.openai.astra;
++const textModel = () => process.env.MINDME_TEXT_MODEL?.trim() || MODELS.openai.astra;
+ 
+ /** 공급자 에러를 키가 섞이지 않은 메시지로 바꾼다. 원본(cause)은 붙이지 않는다. */
+ function llmError(err: unknown): Error {
+@@ -23,13 +23,12 @@
+   schema: z.ZodType<T>;
+   system: string;
+   input: string;
+-  model?: string;
+ }): Promise<T> {
+   let text: string;
+   try {
+     const res = await getOpenAI().responses.create(
+       {
+-        model: modelOf(opts.model),
++        model: textModel(),
+         instructions: opts.system,
+         input: opts.input,
+         text: { format: zodTextFormat(opts.schema, 'output') },
+@@ -50,7 +49,7 @@
+ }
+ 
+ /** UTF-8 텍스트 청크 스트림. Route Handler 에서 `new Response(stream)` 으로 바로 반환한다. */
+-export function streamText(opts: { system: string; messages: Message[]; model?: string }): ReadableStream<Uint8Array> {
++export function streamText(opts: { system: string; messages: Message[] }): ReadableStream<Uint8Array> {
+   const encoder = new TextEncoder();
+   let abort: AbortController | undefined;
+   return new ReadableStream<Uint8Array>({
+@@ -59,7 +58,7 @@
+       try {
+         const events = await getOpenAI().responses.create(
+           {
+-            model: modelOf(opts.model),
++            model: textModel(),
+             instructions: opts.system,
+             input: opts.messages.map((m) => ({ role: m.role, content: m.content })),
+             stream: true,
+@@ -85,29 +84,21 @@
+  * 이미지 편집(참조 이미지 + 프롬프트) → base64. 아바타 생성용 (gpt-image-2).
+  * 이미지 생성은 오래 걸려서 SDK 재시도 없이 한 번만 부르고, 타임아웃을 따로 둔다.
+  */
+-export async function editImage(opts: {
+-  images: File[];
+-  prompt: string;
+-  model?: string;
+-  size?: '1024x1024' | '512x512';
+-  format?: 'png' | 'webp' | 'jpeg';
+-  quality?: 'low' | 'medium' | 'high';
+-  timeoutMs?: number;
+-}): Promise<{ b64: string; format: 'png' | 'webp' | 'jpeg' }> {
+-  const format = opts.format ?? 'webp';
++export async function editImage(opts: { images: File[]; prompt: string }): Promise<{ b64: string; format: 'webp' }> {
++  const format = 'webp';
+   try {
+     const res = await getOpenAI().images.edit(
+       {
+-        model: opts.model ?? process.env.MINDME_IMAGE_MODEL?.trim() ?? MODELS.openai.image,
++        model: process.env.MINDME_IMAGE_MODEL?.trim() || MODELS.openai.image,
+         image: opts.images,
+         prompt: opts.prompt,
+-        size: opts.size ?? '1024x1024',
+-        quality: opts.quality ?? 'medium',
++        size: '1024x1024',
++        quality: 'medium',
+         output_format: format,
+-        ...(format === 'png' ? {} : { output_compression: 80 }),
++        output_compression: 80,
+         n: 1,
+       },
+-      { timeout: opts.timeoutMs ?? 110_000, maxRetries: 0 },
++      { timeout: 110_000, maxRetries: 0 },
+     );
+     const b64 = res.data?.[0]?.b64_json;
+     if (!b64) throw new Error('이미지 응답이 비어 있습니다.');
+--- a/packages/ui/src/components/assets.ts
++++ b/packages/ui/src/components/assets.ts
+@@ -1,6 +1,5 @@
+ // 캐릭터 이미지 (원본: assets/generated, 웹용 리사이즈본을 packages/ui/assets 에 둠)
+ import guide from '../../assets/guide-512.png';
+-import guideFace from '../../assets/guide-face-256.png';
+ import guideMark from '../../assets/guide-mark-128.png';
+ import guideAvatar from '../../assets/guide-avatar-256.png';
+ import guidePeek from '../../assets/guide-peek-512.png';
+@@ -10,7 +9,6 @@
+ 
+ export const characters = {
+   guide: guide.src,
+-  guideFace: guideFace.src,
+   /** 로고 옆 얼굴 마크 (팔다리 없음) */
+   guideMark: guideMark.src,
+   /** 원형 아바타용으로 가깝게 자른 마스코트 */
+--- a/packages/ui/src/index.ts
++++ b/packages/ui/src/index.ts
+@@ -11,4 +11,3 @@
+ export { ProfileSheet, type ProfileSheetProps, type ProfileValues } from './screens/ProfileSheet.tsx';
+ export type { PersonaListItem, ChatBubbleItem } from './screens/types.ts';
+ export { characters } from './components/assets.ts';
+-export { Avatar } from './components/Avatar.tsx';
+--- a/pnpm-workspace.yaml
++++ b/pnpm-workspace.yaml
+@@ -2,5 +2,3 @@
+   - packages/*
+   - pocs
+   - apps/*
+-allowBuilds:
+-  protobufjs: false
+--- a/pocs/app/pocs/page.tsx
++++ b/pocs/app/pocs/page.tsx
+@@ -2,29 +2,22 @@
+ import styles from './pocs.module.css';
+ 
+ const POCS = [
+-  { href: '/pocs/analysis', title: '기록 분석', desc: '카카오톡 TXT·일기·프롬프트에서 사건 타임라인 추출', ready: true },
+-  { href: '/pocs/persona', title: '페르소나 생성', desc: '과거·현재·미래의 나 — 성격·말투·기억·감정 설정', ready: true },
+-  { href: '/pocs/chat', title: '대화', desc: '페르소나와 스트리밍 대화', ready: true },
+-  { href: '/pocs/screens', title: '화면', desc: '5개 화면 프론트엔드 (목업 셸)', ready: true },
++  { href: '/pocs/analysis', title: '기록 분석', desc: '카카오톡 TXT·일기·프롬프트에서 사건 타임라인 추출' },
++  { href: '/pocs/persona', title: '페르소나 생성', desc: '과거·현재·미래의 나 — 성격·말투·기억·감정 설정' },
++  { href: '/pocs/chat', title: '대화', desc: '페르소나와 스트리밍 대화' },
++  { href: '/pocs/screens', title: '화면', desc: '5개 화면 프론트엔드 (목업 셸)' },
+ ] as const;
+ 
+ export default function PocIndex() {
+   return (
+     <main className={styles.page}>
+       <h1 className={styles.title}>PoC 목록</h1>
+-      <p className={styles.lead}>Gate 1 에서 하나씩 채워 나갑니다.</p>
+       <ul className={styles.list}>
+         {POCS.map((poc) => (
+           <li key={poc.href}>
+-            {poc.ready ? (
+-              <Link className={styles.item} href={poc.href}>
+-                <Item {...poc} />
+-              </Link>
+-            ) : (
+-              <div className={styles.item} aria-disabled>
+-                <Item {...poc} />
+-              </div>
+-            )}
++            <Link className={styles.item} href={poc.href}>
++              <Item {...poc} />
++            </Link>
+           </li>
+         ))}
+       </ul>
+@@ -35,12 +28,12 @@
+   );
+ }
+ 
+-function Item({ href, title, desc, ready }: (typeof POCS)[number]) {
++function Item({ href, title, desc }: (typeof POCS)[number]) {
+   return (
+     <>
+       <span className={styles.itemHead}>
+         <strong>{title}</strong>
+-        <span className={ready ? styles.badgeOn : styles.badge}>{ready ? '열기' : '준비 중'}</span>
++        <span className={styles.badgeOn}>열기</span>
+       </span>
+       <span className={styles.desc}>{desc}</span>
+       <code className={styles.path}>{href}</code>
+--- a/pocs/app/pocs/persona/PersonaPoc.tsx
++++ b/pocs/app/pocs/persona/PersonaPoc.tsx
+@@ -15,7 +15,7 @@
+   type Phase,
+   type TimelineEvent,
+ } from '@mindme/core';
+-import { webNative } from '@mindme/ui';
++import { blobToDataUrl, shrinkImage, webNative } from '@mindme/ui';
+ import sample from '../../../fixtures/persona/sample-events.json';
+ import styles from './persona.module.css';
+ 
+@@ -54,27 +54,6 @@
+   });
+ }
+ 
+-/** 업로드 전에 긴 변을 max 로 줄이고 JPEG 로 바꾼다 (Vercel 요청 4.5MB 제한). */
+-async function shrink(file: Blob, max: number, type = 'image/jpeg', quality = 0.88): Promise<Blob> {
+-  const bmp = await createImageBitmap(file);
+-  const scale = Math.min(1, max / Math.max(bmp.width, bmp.height));
+-  const canvas = document.createElement('canvas');
+-  canvas.width = Math.round(bmp.width * scale);
+-  canvas.height = Math.round(bmp.height * scale);
+-  canvas.getContext('2d')!.drawImage(bmp, 0, 0, canvas.width, canvas.height);
+-  bmp.close();
+-  return new Promise((resolve, reject) =>
+-    canvas.toBlob((b) => (b ? resolve(b) : reject(new Error('이미지를 줄이지 못했어요.'))), type, quality),
+-  );
+-}
+-
+-const toDataUrl = (b: Blob) =>
+-  new Promise<string>((resolve) => {
+-    const r = new FileReader();
+-    r.onload = () => resolve(String(r.result));
+-    r.readAsDataURL(b);
+-  });
+-
+ async function postJson<T>(url: string, body: unknown): Promise<T> {
+   const res = await fetch(url, { method: 'POST', body: JSON.stringify(body), headers: { 'content-type': 'application/json' } });
+   const data = await res.json().catch(() => null);
+@@ -166,7 +145,7 @@
+     const file = await webNative.pickFile('image/jpeg,image/png,image/webp');
+     if (!file) return;
+     try {
+-      const blob = await shrink(file, 1024);
++      const blob = await shrinkImage(file, 1024);
+       if (photo) URL.revokeObjectURL(photo.url);
+       setPhoto({ blob, url: URL.createObjectURL(blob) });
+       setAvatarNote(`${Math.round(file.size / 1024)}KB → ${Math.round(blob.size / 1024)}KB 로 줄였어요.`);
+@@ -180,10 +159,10 @@
+     setAvatarNote(photo ? '아바타를 그리는 중이에요. 30초쯤 걸려요.' : '');
+     const started = performance.now();
+     try {
+-      const body: AvatarRequest = { age: theAge, kind, ...(photo ? { photo: await toDataUrl(photo.blob) } : {}) };
++      const body: AvatarRequest = { age: theAge, kind, ...(photo ? { photo: await blobToDataUrl(photo.blob) } : {}) };
+       const res = await postJson<AvatarResponse>('/api/persona/avatar', body);
+       // 저장 공간을 아끼려고 생성 이미지는 256px WEBP 로 줄여서 들고 있는다.
+-      const small = res.source === 'generated' ? await toDataUrl(await shrink(await (await fetch(res.avatar)).blob(), 256, 'image/webp', 0.9)) : res.avatar;
++      const small = res.source === 'generated' ? await blobToDataUrl(await shrinkImage(await (await fetch(res.avatar)).blob(), 256, 'image/webp', 0.9)) : res.avatar;
+       setAvatar(small);
+       setPersona((p) => (p ? { ...p, avatar: small } : p));
+       setAvatarNote(res.source === 'generated' ? `${secs(performance.now() - started)} 걸렸어요.` : '사진이 없어서 기본 캐릭터를 넣었어요.');
+--- a/pocs/app/pocs/pocs.module.css
++++ b/pocs/app/pocs/pocs.module.css
+@@ -38,10 +38,6 @@
+   outline: 2px solid var(--mm-primary);
+ }
+ 
+-.item[aria-disabled] {
+-  opacity: 0.6;
+-}
+-
+ .itemHead {
+   display: flex;
+   justify-content: space-between;
+@@ -49,16 +45,10 @@
+   font-size: 16px;
+ }
+ 
+-.badge,
+ .badgeOn {
+   font-size: var(--mm-fs-caption);
+   padding: 3px 10px;
+   border-radius: var(--mm-radius-pill);
+-  background: var(--mm-line);
+-  color: var(--mm-text-sub);
+-}
+-
+-.badgeOn {
+   background: var(--mm-primary);
+   color: var(--mm-on-primary);
+ }
+Binary deleted: packages/ui/assets/guide-face-256.png

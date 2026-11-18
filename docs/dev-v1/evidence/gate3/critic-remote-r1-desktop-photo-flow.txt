@@ -1,0 +1,13 @@
+CHECK landingHttp = {"status":200,"ms":330,"permissionsPolicy":"camera=(self), microphone=(), geolocation=()"}
+CHECK fonts = {"status":"loaded","loaded":["Pretendard"],"bodyFont":"Pretendard, -apple-system, \"system-ui\", \"Apple SD Gothic Neo\", system-ui, sans-serif"}
+CHECK landingAutoMs = 4024
+CHECK secureContext = {"isSecureContext":true,"protocol":"https:"}
+CHECK chooser:critic-remote-r1-kakao.txt = {"accept":".txt,text/plain","multiple":false}
+CHECK chooser:big-face.png = {"accept":"image/*","multiple":false}
+CHECK fileNameShown = true
+CHECK firstCreate:wait = {"ms":53712,"failed":false,"alert":null}
+CHECK firstCreate = {"count":3,"items":[{"name":"반장 선거에서 두 표 차로 떨어진 날의 한도윤","kind":"past","age":12,"avatar":"data:image/webp;base64","avatarLen":11903},{"name":"첫 직장에 사직서를 낸 날의 한도윤","kind":"past","age":19,"avatar":"data:image/webp;base64","avatarLen":13115},{"name":"내 가게가 될 작은 빵집을 계약한 날의 한도윤","kind":"past","age":24,"avatar":"data:image/webp;base64","avatarLen":11959}]}
+CHECK events = ["2011-04-12 age=- 반장 선거에서 두 표 차로 떨어진 날","2014-02-14 age=- 선생님의 격려에 눈물 흘린 졸업식 날","2018-09-03 age=- 첫 직장에 사직서를 낸 날","2023-06-10 age=- 내 가게가 될 작은 빵집을 계약한 날"]
+CHECK apiTimings = {"analyze":[{"t":10.7,"done":"/api/analyze","status":200,"ms":4156,"serverTiming":null},{"t":28.6,"done":"/api/analyze","status":200,"ms":22074,"serverTiming":null}],"persona":[{"t":37.6,"done":"/api/persona","status":200,"ms":9002,"serverTiming":null},{"t":42.1,"done":"/api/persona","status":200,"ms":13506,"serverTiming":null},{"t":43,"done":"/api/persona","status":200,"ms":14323,"serverTiming":null}],"avatar":[{"t":56.1,"done":"/api/persona/avatar","status":200,"ms":27506,"serverTiming":"gen;dur=25796"},{"t":57.3,"done":"/api/persona/avatar","status":200,"ms":28623,"serverTiming":"gen;dur=26779"},{"t":60.2,"done":"/api/persona/avatar","status":200,"ms":31587,"serverTiming":"gen;dur=29751"}]}
+CHECK avatarRequests = [{"t":28.6,"m":"POST","u":"/api/persona/avatar","reqBytes":127574},{"t":28.6,"m":"POST","u":"/api/persona/avatar","reqBytes":127574},{"t":28.6,"m":"POST","u":"/api/persona/avatar","reqBytes":127574}]
+keyScan bodies=19 hits=0 console=0 bad=0

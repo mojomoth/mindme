@@ -1,0 +1,88 @@
+{
+  "tag": "before",
+  "listPeekAtEnd": {
+    "peek": {
+      "top": 744,
+      "bottom": 766
+    },
+    "bar": {
+      "top": 766,
+      "bottom": 844
+    },
+    "covered": false
+  },
+  "create390": {
+    "bar": {
+      "top": 766,
+      "bottom": 844
+    },
+    "me": {
+      "top": 0,
+      "bottom": 844
+    },
+    "photo": {
+      "top": 702,
+      "bottom": 842
+    },
+    "meCovered": true,
+    "photoCovered": true
+  },
+  "create360": {
+    "bar": {
+      "top": 662,
+      "bottom": 740
+    },
+    "me": {
+      "top": 0,
+      "bottom": 740
+    },
+    "photo": {
+      "top": 702,
+      "bottom": 842
+    },
+    "meCovered": true,
+    "photoCovered": true
+  },
+  "modalTextarea": {
+    "clientHeight": 70,
+    "lineHeight": 22,
+    "linesInBox": 2.18,
+    "paddingTop": "11px",
+    "cutPx": 7
+  },
+  "chatInput": {
+    "clientHeight": 120,
+    "lineHeight": 22,
+    "linesInBox": 4.45,
+    "paddingTop": "11px",
+    "cutPx": 1
+  },
+  "sheetSpeech": {
+    "clientHeight": 82,
+    "lineHeight": 22,
+    "linesInBox": 2.73,
+    "paddingTop": "11px",
+    "cutPx": 17
+  },
+  "sheetMemories": {
+    "clientHeight": 102,
+    "lineHeight": 22,
+    "linesInBox": 3.64,
+    "paddingTop": "11px",
+    "cutPx": 19
+  },
+  "chatAbortedOnLeave": true,
+  "reenterAlert": null,
+  "chatCalls": 1,
+  "dupDialog": null,
+  "dupPersonaCalls": 1,
+  "dupPersonaCount": 5,
+  "retryDebug": "페르소나를 만들고 있어요 30초에서 1분쯤 걸려요. 그때의 나를 불러오는 중 (끝남) 얼굴을 그리는 중 (끝남)",
+  "retry": {
+    "personaCalls": 1,
+    "avatarCalls": 1
+  },
+  "longName": "15살의 이지우",
+  "ownerSubmitEnabled": false,
+  "permissionsPolicy": null
+}

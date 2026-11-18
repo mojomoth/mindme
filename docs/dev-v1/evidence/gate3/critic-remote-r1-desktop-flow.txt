@@ -1,0 +1,26 @@
+CHECK landingHttp = {"status":200,"ms":319,"permissionsPolicy":"camera=(self), microphone=(), geolocation=()"}
+CHECK fonts = {"status":"loaded","loaded":["Pretendard"],"bodyFont":"Pretendard, -apple-system, \"system-ui\", \"Apple SD Gothic Neo\", system-ui, sans-serif"}
+CHECK landingAutoMs = 4376
+CHECK secureContext = {"isSecureContext":true,"protocol":"https:"}
+CHECK chooser:critic-remote-r1-kakao.txt = {"accept":".txt,text/plain","multiple":false}
+CHECK fileNameShown = true
+CHECK firstCreate:wait = {"ms":42110,"failed":false,"alert":null}
+CHECK firstCreate = {"count":3,"items":[{"name":"반장 선거에서 두 표 차로 떨어진 날의 한도윤","kind":"past","age":12,"avatar":null,"avatarLen":0},{"name":"첫 직장에 사직서를 낸 날의 한도윤","kind":"past","age":19,"avatar":null,"avatarLen":0},{"name":"내 빵집을 계약한 날의 한도윤","kind":"past","age":24,"avatar":null,"avatarLen":0}]}
+CHECK events = ["2011-04-12 age=- 반장 선거에서 두 표 차로 떨어진 날","2014-02-14 age=- 선생님의 격려에 눈물 흘린 졸업식 날","2018-09-03 age=- 첫 직장에 사직서를 낸 날","2023-06-10 age=- 내 빵집을 계약한 날"]
+CHECK apiTimings = {"analyze":[{"t":9.8,"done":"/api/analyze","status":200,"ms":4485,"serverTiming":null},{"t":30.5,"done":"/api/analyze","status":200,"ms":25192,"serverTiming":null}],"persona":[{"t":38.6,"done":"/api/persona","status":200,"ms":8089,"serverTiming":null},{"t":41.4,"done":"/api/persona","status":200,"ms":10953,"serverTiming":null},{"t":47.7,"done":"/api/persona","status":200,"ms":17254,"serverTiming":null}],"avatar":[]}
+CHECK modalFuture = {"slider":40,"pill":"40살"}
+CHECK future:wait = {"ms":25989,"failed":false,"alert":null}
+CHECK futureMade = "40살의 한도윤"
+CHECK modalPast = {"slider":13,"pill":"13살"}
+CHECK pastDuplicateAsked = true
+CHECK chatHeader = {"title":"반장 선거에서 두 표 차로 떨어진 날의 한도윤","status":"그때의 나와 대화 중"}
+CHECK chat1 = {"firstChunkMs":3158,"distinctLengths":15,"finalLen":86,"reply":"집에 가는 길에 무슨 생각 했는지는 잘 기억 안 나. 근데 지금은 준비한 말만 다 했어도 달랐을까 싶고, 애들이 내 빨개진 얼굴만 기억할까 봐 신경 쓰여.","alert":null}
+CHECK midStream = {"partial":true,"len":6,"firstChunkMs":3332}
+CHECK midStreamAbort = [{"t":117.6,"failed":"/api/chat","why":"net::ERR_ABORTED"}]
+CHECK reenter = {"lastIsMine":true,"alert":"답을 받지 못했어요.다시 받기","retryButton":1}
+CHECK retryAnswered = {"len":140,"alert":0}
+CHECK composerOverlap = {"lastBottom":740,"composerTop":782,"hidden":false}
+CHECK afterReload = {"landingToListMs":3321,"same":true,"names":["40살의 한도윤","반장 선거에서 두 표 차로 떨어진 날의 한도윤","첫 직장에 사직서를 낸 날의 한도윤","내 빵집을 계약한 날의 한도윤"]}
+CHECK chatRestored = {"bubbles":5,"before":5}
+CHECK docScroll = {"sw":1440,"cw":1440,"sh":900,"ch":900}
+keyScan bodies=30 hits=0 console=0 bad=0

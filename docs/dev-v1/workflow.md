@@ -15,14 +15,19 @@ flowchart LR
 | Gate 0 준비 | Critic r1~r4 (수정 r1~r3) | 없음 | PASS. r4 에서 남은 P0 는 report.md 없음 하나였고 저장 후 해소 |
 | Gate 1 PoC | 작업별 Critic r1 → r1b (chat 은 P1 수정 후 r1b) | 11/19 네트워크 장애(ENOTFOUND)로 1차 실행 중단, 미커밋 작업을 살려 재개 | 4개 작업 PASS, 통합 회귀 통과, 계약 Critic PASS(P2 4). HIL 은 기다리지 않음 |
 | Gate 2 통합 | e2e r1, visual r1→r2, ponytail r1→r2 | 없음 | 3개 Critic 모두 PASS, 열린 P0·P1 없음 |
-| Gate 3 배포 | 아직 시작 전 | | |
+| Gate 3 배포 | polish(서버·클라이언트) → audit → cleanup → 로컬 Critic r1 → Vercel 배포 → 배포 URL Critic r1 | 없음 | 모두 PASS(1라운드). 열린 P0·P1 없음, P2 는 run.md. 배포 https://mindme-rho.vercel.app |
 
 ```mermaid
 flowchart TD
   G0[Gate 0 준비 PASS] --> G1[Gate 1 PoC PASS]
   G1 -. HIL 대기 .-> G2
   G1 --> G2[Gate 2 통합 PASS]
-  G2 --> G3[Gate 3 배포 예정]
+  G2 --> G3P[Gate 3 polish 서버·클라이언트 PASS]
+  G3P --> G3A[감사·정리 PASS]
+  G3A --> G3L[로컬 Critic r1 PASS]
+  G3L --> G3D[Vercel 배포 PASS]
+  G3D --> G3R[배포 URL Critic r1 PASS]
+  G3R -. HIL 대기 .-> END[완료]
 ```
 
 ## 2. 앱 화면 플로우

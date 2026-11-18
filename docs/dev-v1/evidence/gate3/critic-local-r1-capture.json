@@ -1,0 +1,418 @@
+{
+  "mobile": {
+    "landing": {
+      "mockup": false,
+      "docScrollW": 390,
+      "vw": 390,
+      "docScrollH": 844,
+      "vh": 844
+    },
+    "create": {
+      "mockup": false,
+      "docScrollW": 390,
+      "vw": 390,
+      "docScrollH": 844,
+      "vh": 844
+    },
+    "list": {
+      "measure": {
+        "mockup": false,
+        "docScrollW": 390,
+        "vw": 390,
+        "docScrollH": 844,
+        "vh": 844
+      },
+      "personas": 4
+    },
+    "listScroll": {
+      "scroller": "DIV",
+      "scrollTop": 53,
+      "max": 53,
+      "windowY": 0
+    },
+    "listFooter": {
+      "hintBottom": 758,
+      "ctaTop": 778,
+      "gap": 20,
+      "covered": false
+    },
+    "chat": {
+      "mockup": false,
+      "docScrollW": 390,
+      "vw": 390,
+      "docScrollH": 844,
+      "vh": 844
+    }
+  },
+  "desktop": {
+    "1280x720": {
+      "landing": {
+        "mockup": true,
+        "vw": 1280,
+        "vh": 720,
+        "frame": {
+          "x": 485.27,
+          "y": 24,
+          "w": 309.45,
+          "h": 672
+        },
+        "centerOffset": {
+          "x": -0.01,
+          "y": 0
+        },
+        "screenVsExpected": {
+          "dl": -0.01,
+          "dt": -0.01,
+          "dw": 0,
+          "dh": 0
+        },
+        "inViewport": true,
+        "docScroll": {
+          "w": false,
+          "h": false
+        },
+        "content": {
+          "scrollH": 892,
+          "clientH": 892,
+          "overflowY": "auto"
+        }
+      },
+      "list": {
+        "mockup": true,
+        "vw": 1280,
+        "vh": 720,
+        "frame": {
+          "x": 485.27,
+          "y": 24,
+          "w": 309.45,
+          "h": 672
+        },
+        "centerOffset": {
+          "x": -0.01,
+          "y": 0
+        },
+        "screenVsExpected": {
+          "dl": -0.01,
+          "dt": -0.01,
+          "dw": 0,
+          "dh": 0
+        },
+        "inViewport": true,
+        "docScroll": {
+          "w": false,
+          "h": false
+        },
+        "content": {
+          "scrollH": 951,
+          "clientH": 892,
+          "overflowY": "auto"
+        }
+      },
+      "listScroll": {
+        "scroller": "DIV(content)",
+        "scrollTop": 59,
+        "max": 59,
+        "windowY": 0
+      },
+      "listFooter": {
+        "hintBottom": 614,
+        "ctaTop": 628,
+        "gap": 14,
+        "covered": false
+      },
+      "chat": {
+        "mockup": true,
+        "vw": 1280,
+        "vh": 720,
+        "frame": {
+          "x": 485.27,
+          "y": 24,
+          "w": 309.45,
+          "h": 672
+        },
+        "centerOffset": {
+          "x": -0.01,
+          "y": 0
+        },
+        "screenVsExpected": {
+          "dl": -0.01,
+          "dt": -0.01,
+          "dw": 0,
+          "dh": 0
+        },
+        "inViewport": true,
+        "docScroll": {
+          "w": false,
+          "h": false
+        },
+        "content": {
+          "scrollH": 1165,
+          "clientH": 892,
+          "overflowY": "auto"
+        }
+      },
+      "chatScroll": {
+        "scroller": "DIV",
+        "atBottom": true,
+        "windowY": 0
+      }
+    },
+    "1440x900": {
+      "landing": {
+        "mockup": true,
+        "vw": 1440,
+        "vh": 900,
+        "frame": {
+          "x": 523.83,
+          "y": 24,
+          "w": 392.34,
+          "h": 852
+        },
+        "centerOffset": {
+          "x": 0,
+          "y": 0
+        },
+        "screenVsExpected": {
+          "dl": -0.01,
+          "dt": -0.01,
+          "dw": 0,
+          "dh": 0
+        },
+        "inViewport": true,
+        "docScroll": {
+          "w": false,
+          "h": false
+        },
+        "content": {
+          "scrollH": 892,
+          "clientH": 892,
+          "overflowY": "auto"
+        }
+      },
+      "list": {
+        "mockup": true,
+        "vw": 1440,
+        "vh": 900,
+        "frame": {
+          "x": 523.83,
+          "y": 24,
+          "w": 392.34,
+          "h": 852
+        },
+        "centerOffset": {
+          "x": 0,
+          "y": 0
+        },
+        "screenVsExpected": {
+          "dl": -0.01,
+          "dt": -0.01,
+          "dw": 0,
+          "dh": 0
+        },
+        "inViewport": true,
+        "docScroll": {
+          "w": false,
+          "h": false
+        },
+        "content": {
+          "scrollH": 951,
+          "clientH": 892,
+          "overflowY": "auto"
+        }
+      },
+      "listScroll": {
+        "scroller": "DIV(content)",
+        "scrollTop": 59,
+        "max": 59,
+        "windowY": 0
+      },
+      "listFooter": {
+        "hintBottom": 772,
+        "ctaTop": 790,
+        "gap": 18,
+        "covered": false
+      },
+      "modal": {
+        "mockup": true,
+        "vw": 1440,
+        "vh": 900,
+        "frame": {
+          "x": 523.83,
+          "y": 24,
+          "w": 392.34,
+          "h": 852
+        },
+        "centerOffset": {
+          "x": 0,
+          "y": 0
+        },
+        "screenVsExpected": {
+          "dl": -0.01,
+          "dt": -0.01,
+          "dw": 0,
+          "dh": 0
+        },
+        "inViewport": true,
+        "docScroll": {
+          "w": false,
+          "h": false
+        },
+        "content": {
+          "scrollH": 951,
+          "clientH": 892,
+          "overflowY": "auto"
+        }
+      },
+      "chat": {
+        "mockup": true,
+        "vw": 1440,
+        "vh": 900,
+        "frame": {
+          "x": 523.83,
+          "y": 24,
+          "w": 392.34,
+          "h": 852
+        },
+        "centerOffset": {
+          "x": 0,
+          "y": 0
+        },
+        "screenVsExpected": {
+          "dl": -0.01,
+          "dt": -0.01,
+          "dw": 0,
+          "dh": 0
+        },
+        "inViewport": true,
+        "docScroll": {
+          "w": false,
+          "h": false
+        },
+        "content": {
+          "scrollH": 1165,
+          "clientH": 892,
+          "overflowY": "auto"
+        }
+      },
+      "chatScroll": {
+        "scroller": "DIV",
+        "atBottom": true,
+        "windowY": 0
+      }
+    },
+    "1920x1080": {
+      "landing": {
+        "mockup": true,
+        "vw": 1920,
+        "vh": 1080,
+        "frame": {
+          "x": 747.25,
+          "y": 78,
+          "w": 425.5,
+          "h": 924
+        },
+        "centerOffset": {
+          "x": 0,
+          "y": 0
+        },
+        "screenVsExpected": {
+          "dl": -0.02,
+          "dt": -0.02,
+          "dw": 0,
+          "dh": 0
+        },
+        "inViewport": true,
+        "docScroll": {
+          "w": false,
+          "h": false
+        },
+        "content": {
+          "scrollH": 892,
+          "clientH": 892,
+          "overflowY": "auto"
+        }
+      },
+      "list": {
+        "mockup": true,
+        "vw": 1920,
+        "vh": 1080,
+        "frame": {
+          "x": 747.25,
+          "y": 78,
+          "w": 425.5,
+          "h": 924
+        },
+        "centerOffset": {
+          "x": 0,
+          "y": 0
+        },
+        "screenVsExpected": {
+          "dl": -0.02,
+          "dt": -0.02,
+          "dw": 0,
+          "dh": 0
+        },
+        "inViewport": true,
+        "docScroll": {
+          "w": false,
+          "h": false
+        },
+        "content": {
+          "scrollH": 951,
+          "clientH": 892,
+          "overflowY": "auto"
+        }
+      },
+      "listScroll": {
+        "scroller": "DIV(content)",
+        "scrollTop": 59,
+        "max": 59,
+        "windowY": 0
+      },
+      "listFooter": {
+        "hintBottom": 889,
+        "ctaTop": 908,
+        "gap": 20,
+        "covered": false
+      },
+      "chat": {
+        "mockup": true,
+        "vw": 1920,
+        "vh": 1080,
+        "frame": {
+          "x": 747.25,
+          "y": 78,
+          "w": 425.5,
+          "h": 924
+        },
+        "centerOffset": {
+          "x": 0,
+          "y": 0
+        },
+        "screenVsExpected": {
+          "dl": -0.02,
+          "dt": -0.02,
+          "dw": 0,
+          "dh": 0
+        },
+        "inViewport": true,
+        "docScroll": {
+          "w": false,
+          "h": false
+        },
+        "content": {
+          "scrollH": 1165,
+          "clientH": 892,
+          "overflowY": "auto"
+        }
+      },
+      "chatScroll": {
+        "scroller": "DIV",
+        "atBottom": true,
+        "windowY": 0
+      }
+    }
+  },
+  "console": [],
+  "errors": []
+}

@@ -1,0 +1,312 @@
+{
+  "mode": "mobile",
+  "photo": false,
+  "steps": [],
+  "checks": {
+    "landingHttp": {
+      "status": 200,
+      "ms": 166,
+      "permissionsPolicy": "camera=(self), microphone=(), geolocation=()"
+    },
+    "fonts": {
+      "status": "loaded",
+      "loaded": [
+        "Pretendard"
+      ],
+      "bodyFont": "Pretendard, -apple-system, \"system-ui\", \"Apple SD Gothic Neo\", system-ui, sans-serif"
+    },
+    "landingAutoMs": 3773,
+    "secureContext": {
+      "isSecureContext": true,
+      "protocol": "https:"
+    },
+    "chooser:critic-remote-r1-kakao.txt": {
+      "accept": ".txt,text/plain",
+      "multiple": false
+    },
+    "fileNameShown": false,
+    "firstCreate:wait": {
+      "ms": 40116,
+      "failed": false,
+      "alert": null
+    },
+    "firstCreate": {
+      "count": 3,
+      "items": [
+        {
+          "name": "반장 선거에서 두 표 차로 떨어진 날의 한도윤",
+          "kind": "past",
+          "age": 12,
+          "avatar": null,
+          "avatarLen": 0
+        },
+        {
+          "name": "첫 직장에 사직서를 낸 날의 한도윤",
+          "kind": "past",
+          "age": 19,
+          "avatar": null,
+          "avatarLen": 0
+        },
+        {
+          "name": "내 빵집을 계약한 날의 한도윤",
+          "kind": "past",
+          "age": 24,
+          "avatar": null,
+          "avatarLen": 0
+        }
+      ]
+    },
+    "events": [
+      "2011-04-12 age=- 반장 선거에서 두 표 차로 떨어진 날",
+      "2014-02-14 age=- 선생님의 격려에 눈물 흘린 졸업식 날",
+      "2018-09-03 age=- 첫 직장에 사직서를 낸 날",
+      "2023-06-10 age=- 내 빵집을 계약한 날"
+    ],
+    "apiTimings": {
+      "analyze": [
+        {
+          "t": 8.2,
+          "done": "/api/analyze",
+          "status": 200,
+          "ms": 3518,
+          "serverTiming": null
+        },
+        {
+          "t": 27.6,
+          "done": "/api/analyze",
+          "status": 200,
+          "ms": 22934,
+          "serverTiming": null
+        }
+      ],
+      "persona": [
+        {
+          "t": 37.7,
+          "done": "/api/persona",
+          "status": 200,
+          "ms": 10077,
+          "serverTiming": null
+        },
+        {
+          "t": 44.2,
+          "done": "/api/persona",
+          "status": 200,
+          "ms": 16546,
+          "serverTiming": null
+        },
+        {
+          "t": 45.1,
+          "done": "/api/persona",
+          "status": 200,
+          "ms": 17515,
+          "serverTiming": null
+        }
+      ],
+      "avatar": []
+    },
+    "modalFuture": {
+      "slider": 40,
+      "pill": "40살"
+    },
+    "future:wait": {
+      "ms": 15403,
+      "failed": false,
+      "alert": null
+    },
+    "futureMade": "40살의 한도윤",
+    "modalPast": {
+      "slider": 13,
+      "pill": "13살"
+    },
+    "pastDuplicateAsked": true,
+    "chatHeader": {
+      "title": "반장 선거에서 두 표 차로 떨어진 날의 한도윤",
+      "status": "그때의 나와 대화 중"
+    },
+    "chat1": {
+      "firstChunkMs": 1349,
+      "distinctLengths": 20,
+      "finalLen": 95,
+      "reply": "집에 가는 길에 무슨 생각 했는지는 잘 기억 안 나. 근데 지금은 준비한 말만 다 했어도 달랐을까 싶어. 얼굴 빨개진 거 애들이 다 봤을 것 같아서 내일 학교 가기 싫어.",
+      "alert": null
+    },
+    "midStream": {
+      "partial": true,
+      "len": 6,
+      "firstChunkMs": 1587
+    },
+    "midStreamAbort": [
+      {
+        "t": 100.9,
+        "failed": "/api/chat",
+        "why": "net::ERR_ABORTED"
+      }
+    ],
+    "reenter": {
+      "lastIsMine": true,
+      "alert": "답을 받지 못했어요.다시 받기",
+      "retryButton": 1
+    },
+    "retryAnswered": {
+      "len": 116,
+      "alert": 0
+    },
+    "composerOverlap": {
+      "lastBottom": 729,
+      "composerTop": 776,
+      "hidden": false
+    },
+    "afterReload": {
+      "landingToListMs": 3323,
+      "same": true,
+      "names": [
+        "40살의 한도윤",
+        "반장 선거에서 두 표 차로 떨어진 날의 한도윤",
+        "첫 직장에 사직서를 낸 날의 한도윤",
+        "내 빵집을 계약한 날의 한도윤"
+      ]
+    },
+    "chatRestored": {
+      "bubbles": 5,
+      "before": 5
+    },
+    "docScroll": {
+      "sw": 390,
+      "cw": 390,
+      "sh": 844,
+      "ch": 844
+    }
+  },
+  "console": [],
+  "badResponses": [],
+  "api": [
+    {
+      "t": 4.7,
+      "m": "POST",
+      "u": "/api/analyze",
+      "reqBytes": 1671
+    },
+    {
+      "t": 4.7,
+      "m": "POST",
+      "u": "/api/analyze",
+      "reqBytes": 245
+    },
+    {
+      "t": 8.2,
+      "done": "/api/analyze",
+      "status": 200,
+      "ms": 3518,
+      "serverTiming": null
+    },
+    {
+      "t": 27.6,
+      "done": "/api/analyze",
+      "status": 200,
+      "ms": 22934,
+      "serverTiming": null
+    },
+    {
+      "t": 27.6,
+      "m": "POST",
+      "u": "/api/persona",
+      "reqBytes": 4644
+    },
+    {
+      "t": 27.6,
+      "m": "POST",
+      "u": "/api/persona",
+      "reqBytes": 4644
+    },
+    {
+      "t": 27.6,
+      "m": "POST",
+      "u": "/api/persona",
+      "reqBytes": 4644
+    },
+    {
+      "t": 37.7,
+      "done": "/api/persona",
+      "status": 200,
+      "ms": 10077,
+      "serverTiming": null
+    },
+    {
+      "t": 44.2,
+      "done": "/api/persona",
+      "status": 200,
+      "ms": 16546,
+      "serverTiming": null
+    },
+    {
+      "t": 45.1,
+      "done": "/api/persona",
+      "status": 200,
+      "ms": 17515,
+      "serverTiming": null
+    },
+    {
+      "t": 46.8,
+      "m": "POST",
+      "u": "/api/persona",
+      "reqBytes": 4779
+    },
+    {
+      "t": 62,
+      "done": "/api/persona",
+      "status": 200,
+      "ms": 15273,
+      "serverTiming": null
+    },
+    {
+      "t": 63.5,
+      "m": "POST",
+      "u": "/api/chat",
+      "reqBytes": 1510
+    },
+    {
+      "t": 66.5,
+      "done": "/api/chat",
+      "status": 200,
+      "ms": 2988,
+      "serverTiming": null
+    },
+    {
+      "t": 99.2,
+      "m": "POST",
+      "u": "/api/chat",
+      "reqBytes": 1892
+    },
+    {
+      "t": 100.9,
+      "failed": "/api/chat",
+      "why": "net::ERR_ABORTED"
+    },
+    {
+      "t": 104.4,
+      "m": "POST",
+      "u": "/api/chat",
+      "reqBytes": 1892
+    },
+    {
+      "t": 109.3,
+      "done": "/api/chat",
+      "status": 200,
+      "ms": 4966,
+      "serverTiming": null
+    }
+  ],
+  "resources": {
+    "js": 16,
+    "css": 4,
+    "img": 18,
+    "font": 2
+  },
+  "keyScan": {
+    "bodies": 30,
+    "bytes": 1337192,
+    "hits": []
+  },
+  "errors": [],
+  "totalSec": 654.432
+}

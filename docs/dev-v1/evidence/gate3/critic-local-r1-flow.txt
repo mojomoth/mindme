@@ -1,0 +1,23 @@
+CHECK landingAutoMs = 3333
+CHECK fileNameShown = true
+CHECK firstCreate = {"ms":62301,"count":3,"items":[{"name":"부산 학교로 전학 간 첫날의 서하린","kind":"past","age":15,"avatar":"data:image/webp;base64"},{"name":"수능을 끝내고 스스로를 다독인 날의 서하린","kind":"past","age":18,"avatar":"data:image/webp;base64"},{"name":"디자이너로 첫 출근한 날의 서하린","kind":"past","age":24,"avatar":"data:image/webp;base64"}]}
+CHECK events = ["2010-03-02 age=- 부산 학교로 전학 간 첫날","2010-03-05 age=- 전학 후 짝꿍과 가까워진 날","2013-11-07 age=- 수능을 끝내고 스스로를 다독인 날","2019-01-02 age=- 디자이너로 첫 출근한 날"]
+CHECK modalFuture = {"slider":40,"pill":"40살","note":"미래의 나를 만나요. 바라는 모습이나 이루고 싶은 일을 적어 주세요."}
+CHECK futureFailText = "잠깐 문제가 생겼어요."
+CHECK avatarCacheRetry = {"ms":29574,"personaCalls":2,"avatarCalls":1,"made":{"name":"40살의 서하린","kind":"future","age":40,"avatar":"data:image/webp;base64"}}
+CHECK modalPast = {"slider":15,"pill":"15살","note":"과거의 나를 만나요. 상황과 비슷한 기억이 있으면 그 기억에서 시작해요."}
+CHECK duplicate = {"asked":true,"text":"‘부산 학교로 전학 간 첫날의 서하린’ 페르소나가 이미 있어요.그 대화를 이어갈까요?","personaCalls":0}
+CHECK dupOpenExisting = {"chatTitle":"부산 학교로 전학 간 첫날의 서하린","countUnchanged":true}
+CHECK chatHeader = {"title":"부산 학교로 전학 간 첫날의 서하린","status":"그때의 나와 대화 중"}
+CHECK chat1 = {"firstChunkMs":1082,"samples":19,"finalLen":93,"reply":"지금 누구 옆에 앉아도 되나, 말 걸면 이상하게 볼까 그런 생각만 했어. 사투리 따라 하다가 웃음거리 될까 봐 입도 안 떨어지고… 내일도 혼자 먹게 될까 봐 무서웠어.","alert":null}
+CHECK midStream = {"partial":true,"len":8,"firstChunkMs":4139}
+CHECK midStreamAbort = {"abortedRequests":1,"screen":"나의 페르소나"}
+CHECK reenterAfterMidStream = {"lastIsMine":true,"alert":"답을 받지 못했어요.다시 받기","retryButton":1,"stored":["assistant:지금 누구 옆에 앉아도 되나, 말 걸면 이상하게 볼까 ","user:그때 짝꿍한테 먼저 인사하려고 마음먹은 순간을 길게 자"]}
+CHECK retryAnswered = {"len":151,"alert":0,"reply":"정확히 어느 순간인지는 잘 기억 안 나는데, 채원이한테 오늘 얘기하고 응원받으니까 내일은 인사라도 해 보고 싶었어. 오늘 아무 말 못 한 게 자꾸 마음에 걸려서, 짝꿍한테 먼저 인사해 보겠다고 했어. 근데 마음먹고도"}
+CHECK composerOverlap = {"lastBottom":740,"composerTop":782,"hidden":false}
+CHECK profileSaved = {"sheetClosed":true,"header":"열다섯 하린이"}
+CHECK chat429Ui = "짧은 시간에 요청이 많았어요. 10분쯤 뒤에 다시 시도해 주세요.다시 받기"
+CHECK afterReload = {"landingToListMs":3346,"names":["40살의 서하린","열다섯 하린이","수능을 끝내고 스스로를 다독인 날의 서하린","디자이너로 첫 출근한 날의 서하린"],"editedPersisted":true}
+CHECK chatRestored = {"bubbles":6}
+CHECK emotionPersisted = true
+CHECK stateKeys = ["mindme:profile","mindme:personas","mindme:photo","mindme:chat:per_062d9d01","mindme:events"]

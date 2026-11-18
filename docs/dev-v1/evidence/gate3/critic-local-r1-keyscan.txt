@@ -1,0 +1,18 @@
+keys: 6 (JEV_KEY, GOOGLE_API_KEY, OPENAI_API_KEY, CLAUDE_API_KEY, VERCEL_API_KEY, RENDER_API_KEY)
+repo (node_modules/.git/.next/.env 제외): files 1004, hits 0
+apps/web/.next/static: files 24, hits 0
+apps/web/.next/server: files 173, hits 0
+pocs/.next/static: files 35, hits 0
+git log -p --all --binary: bytes 115273094, hits 0 
+tracked env files: .env.example
+NEXT_PUBLIC_ in source: 2 apps/web/next.config.ts, pocs/next.config.ts
+NEXT_PUBLIC_ in .env: 0
+static js contains "OPENAI_API_KEY": 0
+static js contains "CLAUDE_API_KEY": 0
+static js contains "GOOGLE_API_KEY": 0
+static js contains "VERCEL_API_KEY": 0
+static js contains "RENDER_API_KEY": 0
+static js contains "JEV_KEY": 0
+static js contains "server-only": 0
+static js contains "api.openai.com": 0
+static js sk- pattern: 0

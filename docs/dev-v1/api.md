@@ -1,7 +1,7 @@
-# 최소 API 계약 (v1, Gate 1 실측 + Gate 2 core-p2-fixes 반영)
+# 최소 API 계약 (v1, Gate 1 실측 + Gate 2 core-p2-fixes + Gate 3 polish-server 반영)
 
 - 코드 기준: `packages/core/src/schemas.ts`(zod), `packages/core/src/persona/persona.ts`(`PersonaGenerateRequestSchema`), `packages/core/src/errors.ts`(검증 오류 문구). 이 문서와 1:1 이다. 한쪽을 바꾸면 다른 쪽도 같이 바꾼다.
-- Route Handler(`pocs/app/api/**/route.ts`)는 얇게 둔다: `parseRequest`(본문 상한 → JSON → zod) → 키 확인 → core 함수 → 응답. 공통 처리는 `packages/core/src/server/http.ts`, 대화 스트림은 `packages/core/src/chat/server.ts`.
+- Route Handler(`pocs/app/api/**/route.ts`, `apps/web/app/api/**/route.ts`)는 얇게 둔다: (apps/web 은 `rateLimit`) → `parseRequest`(본문 상한 → JSON → zod) → 키 확인 → core 함수 → 응답. 공통 처리는 `packages/core/src/server/http.ts`, 대화 스트림은 `packages/core/src/chat/server.ts`.
 - 모든 Route Handler 는 서버 전용이다. AI 키는 서버(`@mindme/core/server`)에서만 읽고, AI 호출은 모두 `packages/core/src/server/llm.ts`(OpenAI) 를 거친다.
 - 서버는 상태를 저장하지 않는다. 사건·페르소나·대화 기록은 클라이언트(localStorage)가 보관하고, 필요한 만큼 요청 본문에 실어 보낸다.
 - 문자열 필드는 앞뒤 공백을 지운 뒤 검사한다. 아래 `≤n` 은 글자 수(UTF-16 길이) 상한이고, `text` 표시는 빈 문자열을 허용하지 않는다는 뜻이다.
@@ -16,22 +16,24 @@
 
 | 상태 | code | 언제 |
 |---|---|---|
-| 400 | `invalid_request` | JSON 이 아님(`JSON 형식이 아닙니다.`), zod 검증 실패, 입력 의미 오류(엔드포인트별) |
-| 413 | `payload_too_large` | 본문 글자 수가 엔드포인트 상한 초과 |
+| 400 | `invalid_request` | JSON 이 아님(`보낸 내용을 읽지 못했어요. 다시 시도해 주세요.`), zod 검증 실패, 입력 의미 오류(엔드포인트별) |
+| 413 | `payload_too_large` | 본문 글자 수가 엔드포인트 상한 초과, 또는 `Content-Length` 가 상한 x 3 바이트 초과(본문을 읽기 전에 거름). 기본 문구 `보낸 내용이 너무 길어요. 조금 줄여서 다시 보내 주세요.` |
+| 429 | `rate_limited` | `apps/web` 만: IP 당 속도 제한 초과(아래 표). `짧은 시간에 요청이 많았어요. N분쯤 뒤에 다시 시도해 주세요.`(1분 미만이면 `잠시 뒤에`), 헤더 `Retry-After: <초>` |
 | 502 | `upstream_error` | AI 공급자 오류 |
-| 503 | `provider_unavailable` | OpenAI 키 없음(`AI 공급자 키가 설정되지 않았습니다.`), `/api/analyze` 는 HTTP 429 도 503 |
+| 503 | `provider_unavailable` | OpenAI 키 없음(`지금은 대화를 준비할 수 없어요. 잠시 후 다시 시도해 주세요.` — 사유는 서버 로그에만 `[api/…] OPENAI_API_KEY 가 설정되지 않았어요.`, 값 없이), `/api/analyze` 는 공급자 HTTP 429 도 503 |
 
 - zod 검증 실패 문구는 첫 번째 이슈를 `zodErrorMessage`(core `errors.ts`)로 바꾼 한국어다. zod 기본 메시지(영어)는 응답에 싣지 않는다. 예: `나이는 120 이하여야 해요.`, `기록을 입력해 주세요.`, `기록 종류 값이 올바르지 않아요.`, `대화가 하나 이상 있어야 해요.`. 필드 이름은 한국어 라벨로 바꾸고, 라벨이 없는 필드는 `요청 형식이 올바르지 않아요.`
 - `parseRequest(req, schema, { invalid })` 에 `invalid` 문구를 주면 그 고정 문구를 쓴다(`/api/persona/avatar`, `apps/web` 의 route). 클라이언트 폼 검증도 `zodErrorMessage` 를 그대로 쓸 수 있다(비밀 없음, `@mindme/core`).
 
-| 엔드포인트 | 본문 상한(글자) | maxDuration |
-|---|---|---|
-| `POST /api/analyze` | 700,000 | 300s |
-| `POST /api/persona` | 1,000,000 | 60s |
-| `POST /api/persona/avatar` | 5,700,000 (Content-Length 도 먼저 검사) | 120s |
-| `POST /api/chat` | 1,000,000 | 기본값 |
+| 엔드포인트 | 본문 상한(글자) | maxDuration (apps/web · pocs) | 속도 제한 (apps/web, IP 당 10분) |
+|---|---|---|---|
+| `POST /api/analyze` | 700,000 | 300s · 300s | 10회 |
+| `POST /api/persona` | 1,000,000 | 60s · 60s | 30회 |
+| `POST /api/persona/avatar` | 5,700,000 (Content-Length 를 이 값으로 먼저 검사) | 120s · 120s | 15회 |
+| `POST /api/chat` | 1,000,000 | 60s · 기본값 | 100회 |
 
-배포 시 Vercel 요청 본문 4.5MB 제한이 먼저 걸린다.
+- 배포 시 Vercel 요청 본문 4.5MB 제한이 먼저 걸린다. Vercel fluid compute 의 함수 시간 한도는 Hobby 기본·최대 300s, Pro 기본 300s·최대 800s(공식 문서 2026-08-24 기준)라 300s 는 모든 플랜에서 쓸 수 있다.
+- 속도 제한(`rateLimit`, core `server/http.ts`)은 IP(`x-forwarded-for` 첫 값) 기준 고정 창이고 인스턴스 메모리에 센다. 인스턴스가 여럿이면 한도도 그만큼 늘어나는 최소 보호다. 횟수는 검증 전에 세므로 잘못된 요청도 한도를 쓴다. pocs 에는 걸지 않는다.
 
 ### 공용 타입
 
@@ -91,14 +93,14 @@ Owner {                       // 기록을 남긴 '나' (/api/analyze 가 추정
 
 ## GET /api/health
 
-`providers.<이름>` 의 값은 **configured**(서버 환경 변수에 그 공급자 키가 설정돼 있는지)다. 키가 유효한지, 한도·권한이 남았는지(=실제로 호출할 수 있는지)는 확인하지 않는다. 키 값·길이·접두사는 응답하지 않는다.
+`configured.<이름>` 의 값은(서버 환경 변수에 그 공급자 키가 설정돼 있는지)다. 키가 유효한지, 한도·권한이 남았는지(=실제로 호출할 수 있는지)는 확인하지 않는다. 키 값·길이·접두사는 응답하지 않는다.
 
 ```json
-{ "ok": true, "providers": { "anthropic": true, "openai": true, "google": true } }
+{ "ok": true, "configured": { "openai": true } }
 ```
 
-- 앱이 실제로 부르는 공급자는 `openai` 하나다. `anthropic`·`google` 이 `true` 여도 지금은 쓰지 않는다(Gate 0 실측: Anthropic 월 한도 초과로 2026-12-01 복구 예정, Google 은 타임아웃·429).
-- 화면에서 'AI 사용 가능'을 판단할 때는 `providers.openai` 만 본다. 실제 호출 실패는 각 엔드포인트의 502/503 으로 알 수 있다.
+- Gate 3 에서 `providers` → `configured` 로 이름을 바꾸고, 앱이 쓰지 않는 `anthropic`·`google` 을 뺐다(core 의 `getAnthropic`·`getGoogle` 과 SDK 의존성도 제거). 나중에 Claude 로 바꿀 때는 `server/env.ts` 키 이름 · `server/ai.ts` 클라이언트 · `server/llm.ts` 호출만 더하면 된다.
+- 실제 호출 실패는 각 엔드포인트의 502/503 으로 알 수 있다.
 
 ## POST /api/analyze
 
@@ -116,7 +118,7 @@ Owner {                       // 기록을 남긴 '나' (/api/analyze 가 추정
 
 처리
 
-- 정리한 본문이 40,000자 이하면 한 번에 분석(`direct`). 넘으면 날짜 경계로 30,000자씩 나눠 구간마다 요약(동시 4)한 뒤 최종 분석(`summarized`). 300,000자면 약 10구간, 2~3분 걸릴 수 있다.
+- 정리한 본문이 40,000자 이하면 한 번에 분석(`direct`). 넘으면 날짜 경계로 30,000자씩 나눠 구간 요약을 **모두 동시에** 보낸 뒤 최종 분석(`summarized`). 300,000자면 약 10~11구간이고, 최악 지연은 요약 1회 + 최종 1회(호출당 60초 x 재시도 1회) ≈ 250초로 maxDuration 300초 안이다. 실측: 30만 자 일기 11구간 29.9s (`evidence/gate3/server-analyze-300k.json`).
 
 응답 200 (`AnalyzeResponseSchema`)
 
@@ -137,7 +139,7 @@ Owner {                       // 기록을 남긴 '나' (/api/analyze 가 추정
     }
   ],
   "owner": { "name": "이지우", "currentAge": 26 },
-  "meta": { "mode": "direct", "chunks": 0, "units": 33, "participants": ["이지우", "박서진"], "me": "이지우", "llm": { } }
+  "meta": { "mode": "direct", "chunks": 1, "units": 33, "participants": ["박서진", "이지우"], "me": "이지우" }
 }
 ```
 
@@ -146,7 +148,7 @@ Owner {                       // 기록을 남긴 '나' (/api/analyze 가 추정
   - `name`: AI 추정 → 없으면 카카오톡에서 찾은 '나'(`meta.me`) → 없으면 `null`. 따옴표·줄바꿈은 공백으로, 20자로 자른다
   - `currentAge`: AI 추정 → 없으면 사건들의 (연도 - 나이) 중앙값으로 출생연도를 잡아 `오늘 연도 - 출생연도` → 없으면 `null`. 사건 당시 나이 중 가장 큰 값보다 작으면 그 값으로 올린다
   - 구간 요약(`summarized`) 모드에서는 이름·나이 단서가 요약에서 빠질 수 있어 `null` 이 나오기 쉽다(P2)
-- `meta`(검증용, 클라이언트 동작에는 필요 없음): `mode` `direct|summarized`, `chunks` 구간 수, `units`(kakao 메시지 수 · diary 항목 수 · prompt 문단 수), `participants`, `me`, `llm`(마지막 AI 호출 원시 출력)
+- `meta`: `mode` `direct|summarized`, `chunks` 구간 수, `units`(kakao 메시지 수 · diary 항목 수 · prompt 문단 수), `participants`, `me`(apps/web 이 이름 기본값으로 씀). `llm`(마지막 AI 호출 원시 출력)은 pocs 만 싣는다(`analyzeRoute({ includeLlm: true })`). apps/web 응답에는 없다
 - 오류: 413 `입력이 너무 길어요. 30만 자 이하로 줄여 주세요.`, 429 → 503 `AI 사용 한도에 걸렸어요. …`, 그 밖의 AI 오류 → 502 `기록을 분석하지 못했어요. …`
 - 사건 추가·수정·삭제는 클라이언트에서 하고, 결과를 `/api/persona` 에 그대로 넘긴다.
 
@@ -207,7 +209,7 @@ Owner {                       // 기록을 남긴 '나' (/api/analyze 가 추정
 }
 ```
 
-- 오류: 413 `요청 본문이 너무 큽니다.`, AI 오류 → 502 `페르소나를 만들지 못했어요. …`
+- 오류: 413 `보낸 내용이 너무 길어요. …`, AI 오류 → 502 `페르소나를 만들지 못했어요. …`
 
 ## POST /api/persona/avatar
 
@@ -220,7 +222,7 @@ Owner {                       // 기록을 남긴 '나' (/api/analyze 가 추정
 ```
 
 - `photo`(선택): `data:image/(jpeg|png|webp);base64,…`, ≤5,600,000자. 클라이언트가 긴 변 1024px JPEG 로 줄여 보낸다(보통 300KB 안팎)
-- 검증 실패는 고정 문구 400 `age(1~120), kind(past|present|future), photo(JPG·PNG·WEBP data URL)를 확인해 주세요.`
+- 검증 실패는 고정 문구 400. pocs 는 개발 화면이라 필드 이름을 그대로 보여 준다(`age(1~120), kind(past|present|future), photo(JPG·PNG·WEBP data URL)를 확인해 주세요.`), core 기본값과 apps/web 은 `사진 형식을 확인해 주세요. JPG·PNG·WEBP 사진만 쓸 수 있어요.`
 
 응답 200 (`AvatarResponseSchema`)
 
@@ -263,4 +265,4 @@ Owner {                       // 기록을 남긴 '나' (/api/analyze 가 추정
 - `Content-Type: text/plain; charset=utf-8`, `Cache-Control: no-store`, 청크 단위 스트림 (페르소나 답변 본문만)
 - `X-Crisis: 1|0`: 최근 user 메시지 3개 중 하나에 자해·자살 키워드가 있으면 1(`detectCrisisInChat`). 키워드에는 돌려 말한 표현('다 놓고 싶다', '없어지고 싶다', '다 끝내고 싶다', '살 이유가 없다' 등)도 들어 있다. '배고파 죽겠어', '숙제 끝내고 싶어' 같은 관용 표현은 잡지 않는다. 이때 응답 끝에 109 안내(`CRISIS_FOOTER`)를 한 번 붙인다(모델이 이미 109 를 썼으면 생략)
 - 첫 청크를 받을 때까지 기다린다. 시작 전 오류는 502 `답변을 만들지 못했어요. …` JSON, 스트림 도중 오류는 연결 종료로 알린다
-- 오류: 413 `요청 본문이 너무 큽니다.`
+- 오류: 413 `보낸 내용이 너무 길어요. …`

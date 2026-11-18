@@ -1,0 +1,14 @@
+{
+  "responses": [
+    {
+      "status": 429,
+      "path": "/api/analyze",
+      "retryAfter": "347"
+    }
+  ],
+  "alert": "짧은 시간에 요청이 많았어요. 6분쯤 뒤에 다시 시도해 주세요.",
+  "buttons": [
+    "다시 시도",
+    "입력 화면으로"
+  ]
+}

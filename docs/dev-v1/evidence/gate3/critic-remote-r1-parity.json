@@ -1,0 +1,18 @@
+{
+  "desktop-local": {
+    "bad": [],
+    "console": []
+  },
+  "desktop-remote": {
+    "bad": [],
+    "console": []
+  },
+  "mobile-local": {
+    "bad": [],
+    "console": []
+  },
+  "mobile-remote": {
+    "bad": [],
+    "console": []
+  }
+}

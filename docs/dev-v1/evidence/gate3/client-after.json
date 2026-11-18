@@ -1,0 +1,97 @@
+{
+  "tag": "after",
+  "listPeekFirstScreen": {
+    "peek": {
+      "top": 839,
+      "bottom": 861
+    },
+    "bar": {
+      "top": 766,
+      "bottom": 844
+    },
+    "belowFold": true
+  },
+  "listPeekAtEnd": {
+    "peek": {
+      "top": 736,
+      "bottom": 758
+    },
+    "bar": {
+      "top": 766,
+      "bottom": 844
+    },
+    "gapPx": 8,
+    "covered": false
+  },
+  "create390": {
+    "buttonTop": 778,
+    "meBottom": 605,
+    "photoBottom": 763,
+    "meCovered": false,
+    "photoCovered": false
+  },
+  "create360": {
+    "buttonTop": 674,
+    "meBottom": 605,
+    "photoBottom": 763,
+    "meCovered": false,
+    "photoCovered": true
+  },
+  "modalTextarea": {
+    "clientHeight": 44,
+    "lineHeight": 22,
+    "linesInBox": 2,
+    "paddingTop": "0px",
+    "cutPx": 0
+  },
+  "chatInput": {
+    "clientHeight": 88,
+    "lineHeight": 22,
+    "linesInBox": 4,
+    "paddingTop": "0px",
+    "cutPx": 0
+  },
+  "sheetSpeech": {
+    "clientHeight": 66,
+    "lineHeight": 22,
+    "linesInBox": 3,
+    "paddingTop": "0px",
+    "cutPx": 0
+  },
+  "sheetMemories": {
+    "clientHeight": 88,
+    "lineHeight": 22,
+    "linesInBox": 4,
+    "paddingTop": "0px",
+    "cutPx": 0
+  },
+  "chatAbortedOnLeave": true,
+  "reenterAlert": "답을 받지 못했어요.다시 받기",
+  "retryAnswered": true,
+  "chatCalls": 2,
+  "dupDialog": "새로운 페르소나 만나고 싶은 순간을 알려주세요 상황 설명 그때의 나이 15살 5살 80살 과거의 나를 만나요. 상황과 비슷한 기억이 있으면 그 기억에서 시작해요. ‘15살의 이지우’ 페르소나가 이미 있어요. 그 대화를 이어갈까요? 대화 이어가기 새로 만들기",
+  "dupWentTo": "15살의 이지우",
+  "dupPersonaCalls": 0,
+  "dupPersonaCount": 5,
+  "retry": {
+    "personaCalls": 2,
+    "avatarCalls": 1
+  },
+  "longName": "17살의 이지우",
+  "longNameShown": {
+    "text": "17살의 이지우",
+    "clamped": false
+  },
+  "ownerSubmitEnabled": true,
+  "ownerProfile": "{\"name\":\"박서진\",\"currentAge\":31,\"story\":\"요즘 회사를 계속 다닐지 고민이 많아.\"}",
+  "ownerPersonaReq": {
+    "kind": "present",
+    "age": 31,
+    "profile": {
+      "name": "박서진",
+      "currentAge": 31,
+      "story": "요즘 회사를 계속 다닐지 고민이 많아."
+    }
+  },
+  "permissionsPolicy": "camera=(self), microphone=(), geolocation=()"
+}
