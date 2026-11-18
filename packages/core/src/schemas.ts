@@ -83,8 +83,15 @@ export const AnalyzeMetaSchema = z.object({
   /** 마지막 AI 호출의 원시 출력 */
   llm: z.unknown(),
 });
+/** 기록을 남긴 '나'. 앱이 Profile(이름·현재 나이) 기본값과 과거·현재·미래 판정에 쓴다. 모르면 null. */
+export const OwnerSchema = z.object({
+  name: text(20).nullable(),
+  currentAge: AgeSchema.nullable(),
+});
 export const AnalyzeResponseSchema = z.object({
   events: z.array(EventSchema).max(100),
+  /** 서버는 항상 채운다. 예전에 저장한 결과와 호환하려고 optional */
+  owner: OwnerSchema.optional(),
   meta: AnalyzeMetaSchema.optional(),
 });
 
@@ -140,6 +147,7 @@ export type Phase = z.infer<typeof PhaseSchema>;
 export type TimelineEvent = z.infer<typeof EventSchema>;
 export type SelfAtTime = z.infer<typeof SelfAtTimeSchema>;
 export type AnalyzeMeta = z.infer<typeof AnalyzeMetaSchema>;
+export type Owner = z.infer<typeof OwnerSchema>;
 export type Profile = z.infer<typeof ProfileSchema>;
 export type Persona = z.infer<typeof PersonaSchema>;
 export type ChatMessage = z.infer<typeof ChatMessageSchema>;

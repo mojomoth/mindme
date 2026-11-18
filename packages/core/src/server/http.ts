@@ -1,6 +1,7 @@
 // Route Handler 공통: 본문 읽기 → JSON → zod 검증, 공통 에러 응답(api.md '에러 응답').
 // 비밀은 없지만 Route Handler 전용이라 @mindme/core/server 로만 내보낸다.
 import type { z } from 'zod';
+import { zodErrorMessage } from '../errors.ts';
 
 export const fail = (status: number, code: string, message: string) =>
   Response.json({ error: { code, message } }, { status });
@@ -10,8 +11,8 @@ type ParseOpts = {
   maxBody: number;
   /** 413 문구 */
   tooLarge?: string;
-  /** 400 문구. 'path'(기본) = `경로: zod 메시지`, 'message' = zod 메시지만, 그 밖의 문자열 = 고정 문구 */
-  invalid?: 'path' | 'message' | (string & {});
+  /** 검증 실패(400) 고정 문구. 없으면 첫 번째 zod 이슈를 한국어로 바꾼 문구(errors.ts) */
+  invalid?: string;
   /** 검증 전에 본문을 손본다 (예: 빠진 값 기본값 채우기) */
   prepare?: (body: Record<string, unknown>) => unknown;
 };
@@ -35,15 +36,7 @@ export async function parseRequest<S extends z.ZodType>(
 
   const parsed = schema.safeParse(body);
   if (parsed.success) return { data: parsed.data };
-  const issue = parsed.error.issues[0];
-  const mode = opts.invalid ?? 'path';
-  const message =
-    mode === 'path'
-      ? issue ? `${issue.path.join('.')}: ${issue.message}` : '요청이 올바르지 않습니다.'
-      : mode === 'message'
-        ? (issue?.message ?? '요청이 올바르지 않습니다.')
-        : mode;
-  return { error: fail(400, 'invalid_request', message) };
+  return { error: fail(400, 'invalid_request', opts.invalid ?? zodErrorMessage(parsed.error)) };
 }
 
 export const noKey = () => fail(503, 'provider_unavailable', 'AI 공급자 키가 설정되지 않았습니다.');

@@ -19,10 +19,8 @@ test('http: 413 · JSON 아님 · 검증 실패 문구 3종', async () => {
   const notJson = await parseRequest(post('{'), Schema, { maxBody: 100 });
   assert.deepEqual(await errorOf(notJson.error!), { status: 400, code: 'invalid_request', message: 'JSON 형식이 아닙니다.' });
 
-  const withPath = await errorOf((await parseRequest(post('{"n":0}'), Schema, { maxBody: 100 })).error!);
-  assert.match(withPath.message, /^n: /);
-  const msgOnly = await errorOf((await parseRequest(post('{"n":0}'), Schema, { maxBody: 100, invalid: 'message' })).error!);
-  assert.doesNotMatch(msgOnly.message, /^n: /);
+  const korean = await errorOf((await parseRequest(post('{"n":0}'), Schema, { maxBody: 100 })).error!);
+  assert.deepEqual(korean, { status: 400, code: 'invalid_request', message: '요청 형식이 올바르지 않아요.' }); // n 은 라벨 없음
   const fixed = await errorOf((await parseRequest(post('{"n":0}'), Schema, { maxBody: 100, invalid: '고정 문구' })).error!);
   assert.equal(fixed.message, '고정 문구');
 });

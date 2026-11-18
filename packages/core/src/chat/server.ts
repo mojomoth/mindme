@@ -2,15 +2,15 @@ import 'server-only';
 import type { ChatRequest } from '../schemas.ts';
 import { streamText } from '../server/llm.ts';
 import { fail } from '../server/http.ts';
-import { buildSystemPrompt, CRISIS_FOOTER, detectCrisis, trimMessages } from './index.ts';
+import { buildSystemPrompt, CRISIS_FOOTER, detectCrisisInChat, trimMessages } from './index.ts';
 
 /**
  * 검증 끝난 요청 → text/plain 스트림 응답 (POST /api/chat).
  * 첫 청크까지 기다려서, 시작 전 공급자 오류는 공통 에러 JSON(502)으로 돌려준다. 이후 오류는 연결 종료.
- * 위기 신호면 응답 끝에 109 안내를 한 번만 붙이고(모델이 이미 썼으면 생략) X-Crisis 헤더로 알린다.
+ * 최근 user 메시지 3개에 위기 신호가 있으면 응답 끝에 109 안내를 한 번만 붙이고(모델이 이미 썼으면 생략) X-Crisis 헤더로 알린다.
  */
 export async function chatResponse({ persona, messages }: ChatRequest): Promise<Response> {
-  const crisis = detectCrisis(messages.at(-1)!.content);
+  const crisis = detectCrisisInChat(messages);
   const reader = streamText({
     system: buildSystemPrompt(persona, { crisis }),
     messages: trimMessages(messages),

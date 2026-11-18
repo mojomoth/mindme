@@ -10,6 +10,7 @@ import {
   PersonaDraftSchema,
   PersonaGenerateRequestSchema,
   personaFromDraft,
+  personaRequestError,
   selectedEvent,
 } from './persona.ts';
 
@@ -18,10 +19,8 @@ export class PersonaInputError extends Error {}
 /** 요청(검증 끝난 값) → Persona. 선택한 사건을 찾지 못하면 PersonaInputError. */
 export async function generatePersona(req: z.infer<typeof PersonaGenerateRequestSchema>): Promise<Persona> {
   const picked = selectedEvent(req);
-  if (picked === null) throw new PersonaInputError('선택한 사건을 events 에서 찾지 못했어요.');
-  const now = req.profile.currentAge;
-  if (now && req.kind === 'past' && req.age > now) throw new PersonaInputError('과거의 나는 지금 나이보다 어려야 해요.');
-  if (now && req.kind === 'future' && req.age <= now) throw new PersonaInputError('미래의 나는 지금 나이보다 많아야 해요.');
+  const invalid = personaRequestError(req, picked);
+  if (invalid || picked === null) throw new PersonaInputError(invalid);
 
   const draft = await generateObject({ schema: PersonaDraftSchema, system: PERSONA_SYSTEM, input: buildPersonaInput(req, picked) });
   return personaFromDraft(req, draft, `per_${crypto.randomUUID().slice(0, 8)}`, picked);

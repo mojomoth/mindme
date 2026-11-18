@@ -9,6 +9,7 @@ import {
   type Profile,
   type TimelineEvent,
 } from '../schemas.ts';
+import { dateKey } from '../analysis/analyze.ts';
 
 /**
  * POST /api/persona 요청. 계약(PersonaRequestSchema)에 두 필드를 더한다.
@@ -34,14 +35,18 @@ export type PersonaDraft = z.infer<typeof PersonaDraftSchema>;
 
 export const PHASE_LABEL: Record<Phase, string> = { before: '사건 전', during: '사건 당시', after: '사건 직후' };
 
+// 사건 제목이 이런 '때'를 나타내는 말로 끝날 때만 '…날의 홍길동'으로 붙인다.
+// '민수와 크게 다툼'처럼 명사형으로 끝나면 '…다툼의 홍길동'이 어색하므로 '15살의 홍길동'을 쓴다.
+const WHEN_SUFFIX = /(날|밤|아침|낮|저녁|새벽|때|무렵|하루|순간|시절)$/;
+
 /** '15살의 홍길동' · '친구와 다툰 날의 홍길동' · '지금의 홍길동' · '30살의 홍길동'. 40자를 넘으면 사건 제목을 줄인다. */
 export function personaName(kind: Persona['kind'], age: number, name: string, eventTitle?: string): string {
   const suffix = `의 ${name}`;
   if (kind === 'present') return `지금${suffix}`;
-  if (kind === 'past' && eventTitle) {
+  const title = eventTitle?.trim();
+  if (kind === 'past' && title && WHEN_SUFFIX.test(title)) {
     const room = 40 - suffix.length;
-    const title = eventTitle.length > room ? `${eventTitle.slice(0, room - 1)}…` : eventTitle;
-    return `${title}${suffix}`;
+    return `${title.length > room ? `${title.slice(0, room - 1)}…` : title}${suffix}`;
   }
   return `${age}살${suffix}`;
 }
@@ -79,12 +84,32 @@ const fmtEvent = (e: TimelineEvent, age?: number) =>
 
 /**
  * 과거의 나에게 보여 줄 기록만 남긴다(미래 지식 차단).
- * 그 나이보다 뒤의 사건과 나이를 알 수 없는 사건은 아예 넘기지 않는다. 선택한 사건은 항상 남긴다.
+ * 그 나이보다 뒤의 사건, 나이를 알 수 없는 사건, 선택한 사건보다 날짜가 뒤인 사건은 아예 넘기지 않는다. 선택한 사건은 항상 남긴다.
  */
 export function visibleEvents(req: ParsedRequest, picked?: TimelineEvent | null): { event: TimelineEvent; age?: number }[] {
   const all = req.events.map((event) => ({ event, age: eventAgeOf(event, req.profile) }));
   if (req.kind !== 'past') return all;
-  return all.filter(({ event, age }) => event.id === picked?.id || (age !== undefined && age <= req.age));
+  const until = picked ? dateKey(picked.date) : undefined;
+  return all.filter(
+    ({ event, age }) =>
+      event.id === picked?.id ||
+      (age !== undefined && age <= req.age && !(until !== undefined && (dateKey(event.date) ?? 0) > until)),
+  );
+}
+
+/**
+ * 요청의 의미 오류(400 문구). 문제가 없으면 undefined.
+ * 과거의 나는 선택한 사건 당시 나이(±1살)여야 한다. 사건 전(before)이 아니면 사건보다 어릴 수 없다(미래 지식 차단).
+ */
+export function personaRequestError(req: ParsedRequest, picked: TimelineEvent | undefined | null): string | undefined {
+  if (picked === null) return '선택한 사건을 events 에서 찾지 못했어요.';
+  const now = req.profile.currentAge;
+  if (now && req.kind === 'past' && req.age > now) return '과거의 나는 지금 나이보다 어려야 해요.';
+  if (now && req.kind === 'future' && req.age <= now) return '미래의 나는 지금 나이보다 많아야 해요.';
+  const at = picked ? eventAgeOf(picked, req.profile) : undefined;
+  if (at !== undefined && (Math.abs(at - req.age) > 1 || (at > req.age && req.phase !== 'before'))) {
+    return `선택한 사건은 ${at}살 때 일이에요. 나이를 ${at}살로 맞춰 주세요.`;
+  }
 }
 
 export const PERSONA_SYSTEM = `너는 Mindme 의 페르소나 작가다. 사용자의 기록으로 '특정 시점의 사용자 자신'을 설정한다.

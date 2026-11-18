@@ -10,6 +10,8 @@ import {
   DIRECT_CHARS,
   LlmAnalysisSchema,
   normalizeEvents,
+  normalizeOwner,
+  ANALYZE_SYSTEM,
   sortByTime,
   type Generate,
   type LlmEvent,
@@ -156,7 +158,7 @@ test('analyzeRecords: 짧으면 한 번, 길면 구간 요약 후 분석', async
     calls.push({ system: o.system, input: o.input });
     const out =
       (o.schema as unknown) === LlmAnalysisSchema
-        ? { events: [llmEvent({ title: '친구와 다툰 날', age: 15 })] }
+        ? { events: [llmEvent({ title: '친구와 다툰 날', age: 15 })], owner: { name: null, currentAge: null } }
         : { moments: [{ date: '2015-05-14', what: '다툼', people: ['박서진'], emotions: ['서운함'], myWords: ['됐어'] }] };
     return o.schema.parse(out);
   };
@@ -167,6 +169,8 @@ test('analyzeRecords: 짧으면 한 번, 길면 구간 요약 후 분석', async
   assert.equal(short.meta.mode, 'direct');
   assert.ok(AnalyzeResponseSchema.safeParse(short).success);
   assert.equal(short.events[0]!.title, '친구와 다툰 날');
+  // AI 가 '나'를 모르면 카카오톡의 '나'와 사건(2015-05-14, 15살 → 2000년생)으로 채운다
+  assert.deepEqual(short.owner, { name: '이지우', currentAge: 26 });
 
   calls.length = 0;
   const days = Array.from({ length: 120 }, (_, d) => {
@@ -183,4 +187,19 @@ test('analyzeRecords: 짧으면 한 번, 길면 구간 요약 후 분석', async
   assert.match(calls.at(-1)!.input, /## 2015-05-14 \| 다툼 \| 인물: 박서진 \| 감정: 서운함 \| 나의 말: "됐어"/);
 
   await assert.rejects(analyzeRecords({ source: 'kakao', text: '그냥 메모' }, fake), AnalyzeInputError);
+});
+
+test('normalizeOwner: AI 값 우선, 없으면 대화명·사건으로 계산, 사건 나이보다 어리지 않게', () => {
+  const events = normalizeEvents([llmEvent({ date: '2015-05-14', age: 15 }), llmEvent({ date: '2024-03-04', age: 24 })]);
+  assert.deepEqual(normalizeOwner({ name: ' "홍길동"\n', currentAge: 31.6 }, events, '길동', '2026-11-19'), { name: '홍길동', currentAge: 32 });
+  assert.deepEqual(normalizeOwner({ name: null, currentAge: null }, events, '길동', '2026-11-19'), { name: '길동', currentAge: 26 });
+  assert.deepEqual(normalizeOwner({ name: null, currentAge: 20 }, events, undefined, '2026-11-19'), { name: null, currentAge: 24 });
+  assert.deepEqual(normalizeOwner({ name: '', currentAge: null }, [], undefined, '2026-11-19'), { name: null, currentAge: null });
+  assert.deepEqual(normalizeOwner({ name: '가'.repeat(30), currentAge: 500 }, [], undefined, '2026-11-19').currentAge, null);
+});
+
+test('분석 프롬프트: 사건 제목은 \'~한 날\'로, owner 를 묻는다', () => {
+  assert.match(ANALYZE_SYSTEM, /'~한 날'/);
+  assert.match(ANALYZE_SYSTEM, /명사형으로 끝내지 않는다/);
+  assert.match(ANALYZE_SYSTEM, /owner:/);
 });

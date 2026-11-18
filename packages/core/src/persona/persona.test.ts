@@ -9,6 +9,7 @@ import {
   PersonaGenerateRequestSchema,
   personaFromDraft,
   personaName,
+  personaRequestError,
   selectedEvent,
   visibleEvents,
 } from './persona.ts';
@@ -22,6 +23,38 @@ test('이름 규칙', () => {
   assert.equal(personaName('future', 30, '홍길동'), '30살의 홍길동');
   assert.equal(personaName('present', 26, '홍길동'), '지금의 홍길동');
   assert.ok(personaName('past', 15, '홍길동', '가'.repeat(80)).length <= 40);
+  assert.ok(personaName('past', 15, '홍길동', `${'가'.repeat(80)} 날`).length <= 40);
+  // 명사형 제목은 붙이면 어색하다('…다툼의 홍길동') → 나이 형식
+  assert.equal(personaName('past', 15, '홍길동', '반 대표 문제로 민수와 크게 다툼'), '15살의 홍길동');
+  assert.equal(personaName('past', 26, '홍길동', '회사를 계속 다닐지 고민한 밤'), '회사를 계속 다닐지 고민한 밤의 홍길동');
+});
+
+test('과거: 선택한 사건 나이와 맞지 않으면 400 문구 (미래 지식 차단)', () => {
+  const check = (extra: object) => {
+    const r = req({ kind: 'past', eventId: 'evt_fight', ...extra }); // evt_fight = 15살
+    return personaRequestError(r, selectedEvent(r));
+  };
+  assert.equal(check({ age: 15 }), undefined);
+  assert.equal(check({ age: 16, phase: 'after' }), undefined);
+  assert.equal(check({ age: 14, phase: 'before' }), undefined);
+  assert.equal(check({ age: 14, phase: 'after' }), '선택한 사건은 15살 때 일이에요. 나이를 15살로 맞춰 주세요.');
+  assert.equal(check({ age: 12 }), '선택한 사건은 15살 때 일이에요. 나이를 15살로 맞춰 주세요.');
+  assert.equal(check({ age: 20 }), '선택한 사건은 15살 때 일이에요. 나이를 15살로 맞춰 주세요.');
+  assert.equal(check({ age: 15, eventId: 'nope' }), '선택한 사건을 events 에서 찾지 못했어요.');
+  assert.equal(personaRequestError(req({ kind: 'past', age: 30 }), undefined), '과거의 나는 지금 나이보다 어려야 해요.');
+  assert.equal(personaRequestError(req({ kind: 'future', age: 26 }), undefined), '미래의 나는 지금 나이보다 많아야 해요.');
+  // 나이 없는 사건은 date 연도로 계산한다 (2015 → 지금 26살 기준)
+  const r = PersonaGenerateRequestSchema.parse({
+    profile: sample.profile, kind: 'past', age: 25, phase: 'after',
+    event: { ...sample.events[1], age: undefined, date: '2015-05' },
+  });
+  assert.match(personaRequestError(r, selectedEvent(r)) ?? '', /살 때 일이에요/);
+});
+
+test('과거: 같은 나이라도 선택한 사건보다 날짜가 뒤인 사건은 뺀다', () => {
+  const events = [...sample.events, { ...sample.events[1], id: 'evt_later', title: '여름방학 캠프 간 날', date: '2015-08', age: 15 }];
+  const r = PersonaGenerateRequestSchema.parse({ profile: sample.profile, events, kind: 'past', age: 15, eventId: 'evt_fight' });
+  assert.deepEqual(visibleEvents(r, selectedEvent(r)).map((v) => v.event.id), ['evt_move', 'evt_fight']);
 });
 
 test('사건 나이: age 우선, 없으면 연도로 계산', () => {

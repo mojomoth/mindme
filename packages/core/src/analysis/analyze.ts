@@ -1,7 +1,7 @@
 // 기록 분석 파이프라인: 입력 정리 → (길면 날짜 단위 구간 요약) → 사건 추출 → 정규화·시간순 정렬.
 // AI 호출은 인자로 받는다. 서버에서는 @mindme/core/server 의 generateObject 를 넘기고, 테스트에서는 가짜를 넘긴다.
 import { z } from 'zod';
-import { EventSchema, type AnalyzeMeta, type AnalyzeResponse, type Source, type TimelineEvent } from '../schemas.ts';
+import { EventSchema, type AnalyzeMeta, type AnalyzeResponse, type Owner, type Source, type TimelineEvent } from '../schemas.ts';
 import { kakaoDayBlocks, packChunks, parseKakao, splitDiary } from './parse.ts';
 
 export type Generate = <T>(opts: { schema: z.ZodType<T>; system: string; input: string }) => Promise<T>;
@@ -37,7 +37,10 @@ export const LlmEventSchema = z.object({
     quotes: z.array(z.string()),
   }),
 });
-export const LlmAnalysisSchema = z.object({ events: z.array(LlmEventSchema) });
+export const LlmAnalysisSchema = z.object({
+  events: z.array(LlmEventSchema),
+  owner: z.object({ name: z.string().nullable(), currentAge: z.number().nullable() }),
+});
 export type LlmEvent = z.infer<typeof LlmEventSchema>;
 
 const DigestSchema = z.object({
@@ -69,7 +72,7 @@ export const ANALYZE_SYSTEM = `너는 한 사람의 기록에서 인생의 사�
 - 카카오톡에서 '(나)'가 붙은 사람이 '나'다. '나'가 지정되지 않았으면 대화 흐름으로 '나'를 추정하고, 그 사람 시점으로 쓴다.
 
 필드
-- title: 20자 안팎. '친구와 다툰 날', '첫 출근'처럼 사건을 바로 알 수 있게.
+- title: 20자 안팎. '친구와 다툰 날', '첫 출근 날', '수능 끝난 날'처럼 '~한 날'(밤·아침 등 때를 나타내는 말도 됨)로 끝낸다. 앱이 '친구와 다툰 날의 지우'처럼 이름을 붙여 쓰므로 '민수와 크게 다툼', '이직 결심' 같은 명사형으로 끝내지 않는다.
 - date: 기록에 날짜가 있으면 'YYYY-MM-DD'. 일이나 월을 모르면 'YYYY-MM', 'YYYY'. 연도도 알 수 없으면 '중학교 2학년 봄'처럼 짧은 표현.
 - dateEstimated: 기록에 그 날짜가 그대로 없고 나이·'작년' 같은 단서로 계산했으면 true.
 - age: 그때 '나'의 나이(연 나이 = 그해 연도 - 출생연도). 기록에 나이가 나오면 그 숫자를 따르고, 학년만 있으면 중1=13살, 고1=16살, 대학 1학년=19살로 센다. 단서가 없으면 null.
@@ -78,6 +81,10 @@ export const ANALYZE_SYSTEM = `너는 한 사람의 기록에서 인생의 사�
 - people: 관련 인물 이름(기록에 나온 호칭 그대로). '나'는 넣지 않는다.
 - summary: 무슨 일이 있었고 '나'가 어떻게 반응했는지 2~3문장.
 - selfAtTime: 그 시점의 '나'. traits 는 성격 2~5개, speechStyle 은 말투(반말·존댓말, 자주 쓰는 표현, ㅋㅋ·이모티콘 습관 등) 한두 문장, quotes 는 '나'가 실제로 한 말 원문 1~3개(기록에 '나'의 말이 없으면 빈 배열). 기록에서 보이는 만큼만 쓰고 지어내지 않는다.
+
+owner: 기록을 남긴 '나'.
+- name: 기록에 나온 '나'의 이름. 카카오톡이면 '나'의 대화명, 일기·글이면 스스로 밝힌 이름이나 남이 부른 이름. 기록에 없으면 null.
+- currentAge: 오늘 기준 '나'의 나이(연 나이). 출생연도, '올해 서른', 학년, 사건 당시 나이 같은 단서로 계산한다. 단서가 없으면 null. 짐작으로 채우지 않는다.
 
 모든 값은 한국어로 쓰고, 사건은 일어난 순서대로 나열한다.`;
 
@@ -168,8 +175,10 @@ export async function analyzeRecords(
   }
 
   const llm = await generate({ schema: LlmAnalysisSchema, system: ANALYZE_SYSTEM, input });
+  const events = normalizeEvents(llm.events);
   return {
-    events: normalizeEvents(llm.events),
+    events,
+    owner: normalizeOwner(llm.owner, events, p.me, today),
     meta: { mode, chunks, units: p.units, participants: p.participants, me: p.me, llm },
   };
 }
@@ -203,6 +212,19 @@ export function normalizeEvents(raw: LlmEvent[]): TimelineEvent[] {
   return sortByTime(events).map((e, i) => EventSchema.parse({ id: `evt_${String(i + 1).padStart(2, '0')}`, ...e }));
 }
 
+/**
+ * AI 가 추정한 '나'를 계약 모양으로. 이름이 없으면 카카오톡에서 찾은 '나', 나이가 없으면 사건(연도·나이)으로 계산한다.
+ * 현재 나이는 사건 당시 나이보다 어릴 수 없다.
+ */
+export function normalizeOwner(raw: { name: string | null; currentAge: number | null }, events: TimelineEvent[], me: string | undefined, today: string): Owner {
+  const name = clip((raw.name ?? me ?? '').replace(/["'“”‘’\s]+/g, ' '), 20) || null;
+  const birth = birthYearOf(events);
+  let age = raw.currentAge !== null ? Math.round(raw.currentAge) : birth !== undefined ? Number(today.slice(0, 4)) - birth : undefined;
+  const oldest = Math.max(0, ...events.map((e) => e.age ?? 0));
+  if (age !== undefined && age < oldest) age = oldest;
+  return { name, currentAge: age !== undefined && age >= 1 && age <= 120 ? age : null };
+}
+
 /** 'YYYY-MM-DD', 'YYYY-MM', 'YYYY', '2015년 5월' 등에서 YYYYMMDD 정렬 키를 만든다. 연도가 없으면 undefined. */
 export function dateKey(date: string): number | undefined {
   const m = date.match(/((?:19|20)\d{2})(?:\D{1,3}(\d{1,2})(?!\d))?(?:\D{1,3}(\d{1,2})(?!\d))?/);
@@ -217,13 +239,7 @@ export function dateKey(date: string): number | undefined {
  * 출생연도는 연도와 나이가 둘 다 있는 사건들의 (연도 - 나이) 중앙값.
  */
 export function sortByTime<T extends { date: string; age?: number }>(events: T[]): T[] {
-  const births = events
-    .flatMap((e) => {
-      const k = dateKey(e.date);
-      return k !== undefined && e.age !== undefined ? [Math.floor(k / 10000) - e.age] : [];
-    })
-    .sort((a, b) => a - b);
-  const birth = births[Math.floor(births.length / 2)];
+  const birth = birthYearOf(events);
   let prev = 0;
   const keyed = events.map((e) => {
     let k = dateKey(e.date);
@@ -232,4 +248,15 @@ export function sortByTime<T extends { date: string; age?: number }>(events: T[]
     return { e, k: prev };
   });
   return keyed.sort((a, b) => a.k - b.k).map((x) => x.e);
+}
+
+/** 출생연도 추정: 연도와 나이가 둘 다 있는 사건들의 (연도 - 나이) 중앙값. 없으면 undefined. */
+export function birthYearOf(events: { date: string; age?: number }[]): number | undefined {
+  const births = events
+    .flatMap((e) => {
+      const k = dateKey(e.date);
+      return k !== undefined && e.age !== undefined ? [Math.floor(k / 10000) - e.age] : [];
+    })
+    .sort((a, b) => a - b);
+  return births[Math.floor(births.length / 2)];
 }
