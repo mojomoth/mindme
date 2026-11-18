@@ -10,6 +10,14 @@ export const PersonaKindSchema = z.enum(['past', 'present', 'future']);
 export const PhaseSchema = z.enum(['before', 'during', 'after']);
 export const AgeSchema = z.int().min(1).max(120);
 
+/** 그 시점의 '나' 단서. 페르소나 생성(/api/persona)이 성격·말투를 잡을 때 쓴다. */
+export const SelfAtTimeSchema = z.object({
+  traits: z.array(text(40)).max(10),
+  speechStyle: z.string().max(300),
+  /** '나'가 실제로 한 말(원문). 기록에 없으면 빈 배열 */
+  quotes: z.array(text(200)).max(5),
+});
+
 /** 타임라인의 사건 하나. date 는 'YYYY', 'YYYY-MM', 'YYYY-MM-DD' 또는 추정 표현. */
 export const EventSchema = z.object({
   id: text(64),
@@ -21,6 +29,7 @@ export const EventSchema = z.object({
   context: z.string().max(1000),
   people: z.array(text(40)).max(20),
   summary: z.string().max(1000),
+  selfAtTime: SelfAtTimeSchema.optional(),
 });
 
 /** 사용자 기본 정보. 페르소나 이름('15살의 홍길동')을 만들 때 쓴다. */
@@ -62,8 +71,21 @@ export const AnalyzeRequestSchema = z.object({
   /** 카카오톡 대화에서 '나'에 해당하는 대화명. 없으면 AI 가 추정한다. */
   me: text(40).optional(),
 });
+/** 입출력 검증용 부가 정보. 클라이언트 동작에는 필요 없다. */
+export const AnalyzeMetaSchema = z.object({
+  /** direct: 한 번에 분석, summarized: 날짜 단위 구간 요약 후 분석 */
+  mode: z.enum(['direct', 'summarized']),
+  chunks: z.int().min(0),
+  /** kakao: 메시지 수, diary: 일기 항목 수, prompt: 문단 수 */
+  units: z.int().min(0),
+  participants: z.array(z.string()),
+  me: z.string().optional(),
+  /** 마지막 AI 호출의 원시 출력 */
+  llm: z.unknown(),
+});
 export const AnalyzeResponseSchema = z.object({
   events: z.array(EventSchema).max(100),
+  meta: AnalyzeMetaSchema.optional(),
 });
 
 // ── POST /api/persona ──────────────────────────────────────
@@ -116,6 +138,8 @@ export type Source = z.infer<typeof SourceSchema>;
 export type PersonaKind = z.infer<typeof PersonaKindSchema>;
 export type Phase = z.infer<typeof PhaseSchema>;
 export type TimelineEvent = z.infer<typeof EventSchema>;
+export type SelfAtTime = z.infer<typeof SelfAtTimeSchema>;
+export type AnalyzeMeta = z.infer<typeof AnalyzeMetaSchema>;
 export type Profile = z.infer<typeof ProfileSchema>;
 export type Persona = z.infer<typeof PersonaSchema>;
 export type ChatMessage = z.infer<typeof ChatMessageSchema>;
