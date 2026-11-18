@@ -1,0 +1,155 @@
+/* 01 랜딩 — 드래프트 01-landing.png (830px → 390 논리px, 배율 0.47) */
+
+.landing {
+  align-items: center;
+  text-align: center;
+  user-select: none;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-top: max(calc(var(--mm-safe-top) + 26px), 32px);
+  color: #1b1a19;
+}
+
+.logo img {
+  display: block;
+  margin-right: 3px;
+}
+
+.wordmark {
+  display: block;
+}
+
+.middle {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding-bottom: 8px;
+}
+
+.hero {
+  position: relative;
+  width: 340px;
+  height: 344px;
+}
+
+.mascot {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 340px;
+  height: 340px;
+  animation: float 3.2s ease-in-out infinite;
+}
+
+.heart {
+  position: absolute;
+  z-index: 2;
+  top: 20px;
+  left: calc(50% + 76px);
+  filter: drop-shadow(0 8px 14px rgb(40 80 120 / 0.12));
+}
+
+.shadow {
+  position: absolute;
+  left: 50%;
+  bottom: -14px;
+  width: 230px;
+  height: 38px;
+  margin-left: -115px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgb(140 178 212 / 0.7), rgb(140 178 212 / 0));
+  animation: shadow 3.2s ease-in-out infinite;
+}
+
+.title {
+  margin-top: 44px;
+  font-size: 36px;
+  font-weight: 850;
+  line-height: 44px;
+  letter-spacing: -0.6px;
+}
+
+.sub {
+  margin-top: 16px;
+  color: #24272b;
+  font-size: 21px;
+  font-weight: 450;
+  line-height: 32px;
+  letter-spacing: -0.3px;
+}
+
+.bottom {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding-bottom: max(calc(var(--mm-safe-bottom) + 46px), 48px);
+}
+
+.dots {
+  display: flex;
+  gap: 10px;
+}
+
+.dots i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--mm-primary);
+  animation: dot 1.2s ease-in-out infinite;
+}
+
+.dots i:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.dots i:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.notice {
+  color: #33373c;
+  font-size: 15px;
+  letter-spacing: -0.2px;
+}
+
+@keyframes float {
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes shadow {
+  50% {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
+}
+
+/* 드래프트처럼 세 점 모두 진한 주황. 색 대신 위치만 살짝 움직인다 */
+@keyframes dot {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-4px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mascot,
+  .shadow,
+  .dots i {
+    animation: none;
+  }
+}

@@ -1,0 +1,248 @@
+/* 05 대화 — 드래프트 05-conversation.png (852px → 390, 배율 0.458) */
+
+.header {
+  position: sticky;
+  top: 0;
+  /* 목업 상태바(z-index 2)보다 아래에 깔려야 9:41 이 보인다 */
+  z-index: 1;
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: max(calc(var(--mm-safe-top) - 9px), 8px) 16px 10px 4px;
+  border-radius: 0 0 24px 24px;
+  background: var(--mm-surface);
+  box-shadow: 0 6px 20px rgb(32 64 96 / 0.06);
+}
+
+.who {
+  flex: 1;
+  min-width: 0;
+  margin-left: 6px;
+}
+
+.who h1 {
+  overflow: hidden;
+  font-size: 19px;
+  font-weight: 800;
+  line-height: 24px;
+  letter-spacing: -0.4px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.who p {
+  color: #5b6168;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+/* 보이는 pill 은 32px, 터치 영역은 44px */
+.exit {
+  position: relative;
+  flex: none;
+  height: 32px;
+  padding: 0 14px;
+  border: 1.5px solid var(--mm-primary);
+  border-radius: var(--mm-radius-pill);
+  background: var(--mm-surface);
+  color: var(--mm-primary);
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.exit::after {
+  content: '';
+  position: absolute;
+  inset: -7px -4px;
+}
+
+.exit:active {
+  background: #fff3ee;
+}
+
+.log {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 22px 13px 24px 14px;
+}
+
+.date {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #5b6168;
+  font-size: 14px;
+}
+
+.date::before,
+.date::after {
+  content: '';
+  width: 57px;
+  height: 1px;
+  background: #d5dee6;
+}
+
+.date span {
+  padding: 2px 13px;
+  border-radius: var(--mm-radius-pill);
+  background: #dce6ec;
+}
+
+.caption {
+  margin: 14px 0 12px;
+  text-align: center;
+  color: #5b6168;
+  font-size: 14px;
+}
+
+.in {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  margin-top: 8px;
+  margin-right: 40px;
+}
+
+.out {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 8px;
+  margin-left: 60px;
+}
+
+.bubbleIn,
+.bubbleOut {
+  padding: 10px 16px;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: -0.3px;
+  white-space: pre-line;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.bubbleIn {
+  border-radius: 18px;
+  background: var(--mm-surface);
+  box-shadow: 0 3px 12px rgb(32 64 96 / 0.05);
+}
+
+.bubbleOut {
+  border-radius: 18px;
+  background: var(--mm-primary);
+  color: #fff;
+}
+
+.time {
+  display: block;
+  margin-top: 3px;
+  padding: 0 3px;
+  color: #6a7077;
+  font-size: 13px;
+}
+
+.typing {
+  display: flex;
+  gap: 5px;
+  padding: 16px 18px;
+}
+
+.typing i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #c8ccd3;
+  animation: blink 1.2s ease-in-out infinite;
+}
+
+.typing i:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.typing i:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.composer {
+  position: sticky;
+  bottom: 0;
+  z-index: 2;
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 13px max(calc(var(--mm-safe-bottom) - 4px), 12px);
+  border-radius: 24px 24px 0 0;
+  background: var(--mm-surface);
+  box-shadow: 0 -4px 20px rgb(32 64 96 / 0.05);
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  height: 44px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: var(--mm-radius-pill);
+  background: #eceff4;
+  font-size: 16px;
+}
+
+.input::placeholder {
+  color: #7d838a;
+}
+
+.input:focus-visible {
+  outline: 2px solid rgb(255 91 42 / 0.4);
+}
+
+.send {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--mm-primary);
+  color: #fff;
+  cursor: pointer;
+}
+
+.send:disabled {
+  cursor: default;
+}
+
+.send:not(:disabled):active {
+  background: var(--mm-primary-pressed);
+}
+
+.send:focus-visible,
+.exit:focus-visible {
+  outline: 3px solid rgb(255 91 42 / 0.4);
+  outline-offset: 2px;
+}
+
+@keyframes blink {
+  0%,
+  60%,
+  100% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 0.4;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .typing i {
+    animation: none;
+  }
+}

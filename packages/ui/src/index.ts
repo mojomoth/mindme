@@ -1,2 +1,11 @@
 export { PhoneFrame } from './PhoneFrame.tsx';
 export { webNative, type NativeAdapter } from './native.ts';
+// 화면 (presentational — 상태·콜백은 props)
+export { Landing, type LandingProps } from './screens/Landing.tsx';
+export { PersonaCreate, type PersonaCreateProps } from './screens/PersonaCreate.tsx';
+export { PersonaList, type PersonaListProps } from './screens/PersonaList.tsx';
+export { PersonaModal, type PersonaModalProps } from './screens/PersonaModal.tsx';
+export { Conversation, type ConversationProps } from './screens/Conversation.tsx';
+export type { PersonaListItem, ChatBubbleItem } from './screens/types.ts';
+export { characters } from './components/assets.ts';
+export { Avatar } from './components/Avatar.tsx';
