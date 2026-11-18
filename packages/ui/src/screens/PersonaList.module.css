@@ -139,6 +139,15 @@
   letter-spacing: -0.4px;
 }
 
+.text strong,
+.text span {
+  /* 긴 이름·마지막 메시지는 두 줄까지만 */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
 .text span {
   color: #4f555c;
   font-size: 16px;
@@ -188,4 +197,28 @@
   color: #4a4f55;
   font-size: 15px;
   letter-spacing: -0.3px;
+}
+
+/* 좁은 화면(360px 등): 히어로 캐릭터를 줄여 제목·부제와 겹치지 않게 */
+@media (max-width: 380px) {
+  .heroArt,
+  .heroArt img {
+    width: 160px;
+    height: 160px;
+  }
+
+  .heroArt {
+    top: -4px;
+    right: -16px;
+  }
+
+  .heroShadow {
+    left: 40px;
+    top: 146px;
+    width: 88px;
+  }
+
+  .burst {
+    top: 30px;
+  }
 }

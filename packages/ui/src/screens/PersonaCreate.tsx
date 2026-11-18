@@ -17,6 +17,13 @@ export interface PersonaCreateProps {
   onBack?: () => void;
   onSubmit?: () => void;
   submitDisabled?: boolean;
+  /** 이름·지금 나이 입력. onAgeChange 를 주면 보인다(나이를 아직 모를 때 한 번만 묻는다). */
+  name?: string;
+  onNameChange?: (value: string) => void;
+  age?: string;
+  onAgeChange?: (value: string) => void;
+  /** 파일·입력 안내나 오류 (업로드 칸 아래) */
+  notice?: string;
 }
 
 /** 02 페르소나 만들기 */
@@ -31,6 +38,11 @@ export function PersonaCreate({
   onBack,
   onSubmit,
   submitDisabled,
+  name = '',
+  onNameChange,
+  age = '',
+  onAgeChange,
+  notice,
 }: PersonaCreateProps) {
   return (
     <main className={shared.screen}>
@@ -65,6 +77,11 @@ export function PersonaCreate({
           <strong id="pc-file-title">{fileName ?? 'TXT 파일 업로드'}</strong>
           <span>{fileName ? '다른 파일로 바꾸려면 눌러 주세요' : '.txt 파일을 올려주세요'}</span>
         </button>
+        {notice && (
+          <p className={styles.notice} role="alert">
+            {notice}
+          </p>
+        )}
 
         <label className={styles.label} htmlFor="pc-story">
           나의 이야기
@@ -81,6 +98,36 @@ export function PersonaCreate({
             {story.length.toLocaleString('ko-KR')} / {storyMax.toLocaleString('ko-KR')}
           </span>
         </div>
+
+        {onAgeChange && (
+          <div className={styles.me}>
+            <label>
+              <span className={styles.label}>이름</span>
+              <input
+                value={name}
+                maxLength={20}
+                onChange={(e) => onNameChange?.(e.target.value)}
+                placeholder="홍길동"
+                autoComplete="given-name"
+              />
+            </label>
+            <label>
+              <span className={styles.label}>지금 나이</span>
+              <span className={styles.ageField}>
+                <input
+                  value={age}
+                  inputMode="numeric"
+                  maxLength={3}
+                  onChange={(e) => onAgeChange(e.target.value.replace(/\D/g, ''))}
+                  placeholder="32"
+                  aria-describedby="pc-age-unit"
+                  required
+                />
+                <span id="pc-age-unit">살</span>
+              </span>
+            </label>
+          </div>
+        )}
 
         <section className={styles.photo} aria-labelledby="pc-photo">
           <strong id="pc-photo" className={styles.photoTitle}>

@@ -26,6 +26,22 @@
   animation: pop 0.22s ease-out;
 }
 
+.modal:focus {
+  outline: none;
+}
+
+.note {
+  margin-top: 8px;
+  word-break: keep-all;
+  padding: 8px 12px;
+  border-radius: 12px;
+  background: #fff3ee;
+  color: #9a3412;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.2px;
+}
+
 .sparkle {
   position: absolute;
   left: 18px;

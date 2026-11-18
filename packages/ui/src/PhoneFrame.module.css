@@ -82,10 +82,17 @@
   justify-content: space-between;
   padding: 0 28px 0 46px;
   pointer-events: none;
+  /* 스크롤한 내용이 9:41·다이내믹 아일랜드와 겹치지 않게 덮는다 */
+  background: var(--mm-bg);
   color: var(--mm-text);
   font-size: 17px;
   font-weight: 600;
   letter-spacing: -0.2px;
+}
+
+/* 자체 상단 바가 상태바 뒤를 채우는 화면(05 대화)은 덮개 없이 */
+.screen:has([data-statusbar-under]) .statusBar {
+  background: none;
 }
 
 .statusIcons {

@@ -1,3 +1,6 @@
+'use client';
+
+import { useEffect, useRef } from 'react';
 import { Avatar } from '../components/Avatar.tsx';
 import { ArrowUp, ChevronLeft } from '../components/icons.tsx';
 import shared from './shared.module.css';
@@ -18,6 +21,13 @@ export interface ConversationProps {
   onSend?: () => void;
   onBack?: () => void;
   onExit?: () => void;
+  /** 헤더 아바타·이름을 누르면 (프로필 보기) */
+  onProfile?: () => void;
+  /** 답변을 기다리는 동안 보내기 막기 */
+  sendDisabled?: boolean;
+  /** 답변 실패 안내. onRetry 가 있으면 '다시 받기' 버튼 */
+  error?: string;
+  onRetry?: () => void;
 }
 
 /** 05 대화 */
@@ -33,15 +43,35 @@ export function Conversation({
   onSend,
   onBack,
   onExit,
+  onProfile,
+  sendDisabled,
+  error,
+  onRetry,
 }: ConversationProps) {
-  const canSend = draft.trim().length > 0;
+  const canSend = draft.trim().length > 0 && !sendDisabled;
+  const end = useRef<HTMLDivElement>(null);
+  const last = messages.at(-1);
+
+  // 새 말풍선·입력 중 표시·스트리밍으로 길어지는 답변이 입력창 뒤에 가리지 않게 맨 아래로 내린다.
+  useEffect(() => {
+    end.current?.scrollIntoView({ block: 'end' });
+  }, [messages.length, last?.text, typing, error]);
+
+  const face = <Avatar src={persona.avatarSrc} size={52} bg={persona.avatarBg} zoom={1.3} />;
+
   return (
     <main className={shared.screen}>
-      <header className={styles.header}>
+      <header className={styles.header} data-statusbar-under>
         <button type="button" className={shared.iconBtn} onClick={onBack} aria-label="뒤로">
           <ChevronLeft size={28} />
         </button>
-        <Avatar src={persona.avatarSrc} size={52} bg={persona.avatarBg} zoom={1.3} />
+        {onProfile ? (
+          <button type="button" className={styles.profile} onClick={onProfile} aria-label="프로필 보기">
+            {face}
+          </button>
+        ) : (
+          face
+        )}
         <div className={styles.who}>
           <h1>{persona.name}</h1>
           <p>{status}</p>
@@ -84,6 +114,17 @@ export function Conversation({
             </p>
           </div>
         )}
+
+        {error && (
+          <p className={styles.error} role="alert">
+            {error}
+            {onRetry && (
+              <button type="button" onClick={onRetry}>
+                다시 받기
+              </button>
+            )}
+          </p>
+        )}
       </section>
 
       <form
@@ -93,10 +134,17 @@ export function Conversation({
           if (canSend) onSend?.();
         }}
       >
-        <input
+        <textarea
           className={styles.input}
+          rows={1}
           value={draft}
           onChange={(e) => onDraftChange(e.target.value)}
+          onKeyDown={(e) => {
+            // Enter 보내기, Shift+Enter 줄바꿈. 한글 조합 중 Enter 는 글자 확정이라 무시한다.
+            if (e.key !== 'Enter' || e.shiftKey || e.nativeEvent.isComposing || e.keyCode === 229) return;
+            e.preventDefault();
+            if (canSend) onSend?.();
+          }}
           placeholder="메시지를 입력하세요"
           aria-label="메시지"
           enterKeyHint="send"
@@ -106,6 +154,7 @@ export function Conversation({
           <ArrowUp size={26} />
         </button>
       </form>
+      <div ref={end} aria-hidden />
     </main>
   );
 }

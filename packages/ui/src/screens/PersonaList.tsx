@@ -10,6 +10,7 @@ export interface PersonaListProps {
   personas: PersonaListItem[];
   onSelect?: (id: string) => void;
   onCreate?: () => void;
+  /** 오른쪽 위 말풍선 버튼. 없으면 버튼을 숨긴다. */
   onChats?: () => void;
   /** 상단 '페르소나가 준비됐어요' 알림 */
   showReady?: boolean;
@@ -23,9 +24,11 @@ export function PersonaList({ personas, onSelect, onCreate, onChats, showReady =
     <main className={shared.screen}>
       <nav className={shared.nav}>
         <h1 className={shared.navTitle}>나의 페르소나</h1>
-        <button type="button" className={`${shared.iconBtn} ${shared.navRight} ${styles.chats}`} onClick={onChats} aria-label="대화 목록">
-          <ChatDots size={31} />
-        </button>
+        {onChats && (
+          <button type="button" className={`${shared.iconBtn} ${shared.navRight} ${styles.chats}`} onClick={onChats} aria-label="최근 대화 열기">
+            <ChatDots size={31} />
+          </button>
+        )}
       </nav>
 
       {showReady && (

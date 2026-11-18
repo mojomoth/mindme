@@ -1,0 +1,167 @@
+/* 진행 화면 — 01 랜딩의 가이드 캐릭터 + 02 의 카드 언어 */
+
+.working {
+  text-align: center;
+}
+
+.middle {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--mm-safe-top) + 12px) 24px 24px;
+}
+
+.hero {
+  position: relative;
+  width: 180px;
+  height: 196px;
+}
+
+.hero img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  animation: bob 1.6s ease-in-out infinite;
+}
+
+.shadow {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 120px;
+  height: 20px;
+  margin-left: -60px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgb(140 178 212 / 0.6), rgb(140 178 212 / 0));
+}
+
+.still img {
+  animation: none;
+}
+
+.title {
+  margin-top: 18px;
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 34px;
+  letter-spacing: -0.6px;
+}
+
+.hint,
+.error {
+  margin-top: 6px;
+  word-break: keep-all;
+  max-width: 300px;
+  font-size: 15px;
+  line-height: 22px;
+  letter-spacing: -0.2px;
+}
+
+.hint {
+  color: #4a4f55;
+}
+
+.error {
+  color: #9a3412;
+}
+
+.steps {
+  width: 100%;
+  max-width: 300px;
+  margin: 26px 0 0;
+  padding: 16px 18px;
+  border-radius: var(--mm-radius-card);
+  background: var(--mm-surface);
+  box-shadow: var(--mm-shadow-card);
+  list-style: none;
+  text-align: left;
+}
+
+.steps li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 40px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+}
+
+.mark {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border: 2px solid #d5dde5;
+  border-radius: 50%;
+  color: #fff;
+}
+
+.todo {
+  color: #8a939c;
+}
+
+.active .mark {
+  border-color: var(--mm-primary);
+  border-top-color: transparent;
+  animation: spin 0.9s linear infinite;
+}
+
+.done .mark {
+  border-color: var(--mm-primary);
+  background: var(--mm-primary);
+}
+
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.cancel {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  margin-top: 4px;
+  border: 0;
+  background: none;
+  color: #4a4f55;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.cancel:focus-visible {
+  outline: 3px solid rgb(255 91 42 / 0.4);
+  outline-offset: 2px;
+  border-radius: var(--mm-radius-pill);
+}
+
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero img,
+  .active .mark {
+    animation: none;
+  }
+}

@@ -1,6 +1,9 @@
-import type { CSSProperties } from 'react';
+'use client';
+
+import { useEffect, useRef, type CSSProperties } from 'react';
 import { characters } from '../components/assets.ts';
 import { Close, Sparkle } from '../components/icons.tsx';
+import { useEscape } from '../components/useEscape.ts';
 import shared from './shared.module.css';
 import styles from './PersonaModal.module.css';
 
@@ -14,6 +17,8 @@ export interface PersonaModalProps {
   onClose?: () => void;
   onSubmit?: () => void;
   submitDisabled?: boolean;
+  /** 슬라이더 아래 안내 (예: 어떤 시점의 나가 만들어지는지) */
+  ageNote?: string;
 }
 
 /** 04 새 페르소나 모달. 03 목록 위에 겹쳐 쓴다(PersonaList 의 children). */
@@ -27,11 +32,19 @@ export function PersonaModal({
   onClose,
   onSubmit,
   submitDisabled,
+  ageNote,
 }: PersonaModalProps) {
   const pct = ((age - minAge) / (maxAge - minAge)) * 100;
+  const dialog = useRef<HTMLFormElement>(null);
+  useEscape(onClose);
+  // 열리면 대화상자로 포커스를 옮긴다.
+  useEffect(() => dialog.current?.focus({ preventScroll: true }), []);
+
   return (
     <div className={styles.scrim} onClick={(e) => e.target === e.currentTarget && onClose?.()}>
       <form
+        ref={dialog}
+        tabIndex={-1}
         className={styles.modal}
         role="dialog"
         aria-modal="true"
@@ -86,6 +99,11 @@ export function PersonaModal({
           <span>{minAge}살</span>
           <span>{maxAge}살</span>
         </div>
+        {ageNote && (
+          <p className={styles.note} aria-live="polite">
+            {ageNote}
+          </p>
+        )}
 
         <button type="submit" className={`${shared.primary} ${styles.submit}`} disabled={submitDisabled}>
           생성하기
