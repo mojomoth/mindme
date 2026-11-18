@@ -1,0 +1,56 @@
+$ pnpm -r typecheck
+Scope: 3 of 4 workspace projects
+packages/core typecheck$ tsc -p tsconfig.json
+packages/ui typecheck$ tsc -p tsconfig.json
+packages/ui typecheck: Done
+packages/core typecheck: Done
+pocs typecheck$ next typegen && tsc -p tsconfig.json
+pocs typecheck: Generating route types...
+pocs typecheck: ✓ Types generated successfully
+pocs typecheck: Done
+$ node --test "packages/*/test/**/*.test.ts" "packages/*/src/**/*.test.ts"
+✔ 이름 규칙 (0.332542ms)
+✔ 사건 나이: age 우선, 없으면 연도로 계산 (0.614083ms)
+✔ 과거: 그 나이 이후 사건은 입력에서 빠진다 (미래 지식 차단) (3.120917ms)
+✔ 과거·사건 전: 사건 내용은 넘기지 않고 제목만 분위기로 (0.202667ms)
+✔ 과거·사건 없음: 자유 대화, 없는 eventId 는 null (0.168625ms)
+✔ 현재·미래: 모든 기록을 쓰고, 미래는 목표와 예언 금지 지시를 넣는다 (0.207709ms)
+✔ LLM 초안을 계약 한도로 자른다 (0.616792ms)
+✔ 초안의 줄바꿈을 한 줄로 편다 (chat 시스템 프롬프트 블록 탈출 방지) (0.081667ms)
+✔ 분석 결과의 selfAtTime 단서를 입력에 싣는다 (0.237666ms)
+✔ kakao PC: 날짜 구분선·여러 줄 메시지·사진 제외, 1:1 제목으로 나 추정 (1.63125ms)
+✔ kakao 모바일(iOS): 시스템 메시지·이모티콘 제외, 여러 줄, 오전/오후 (0.694667ms)
+✔ kakao Android · 24시간 표기 · Mac CSV · 오전 12시 (0.10425ms)
+✔ kakao: 형식이 아니면 메시지 0개, 없는 이름은 me 없음 (0.111375ms)
+✔ diary: 날짜 머리줄 여러 형식으로 분할, 머리줄 없으면 통째 (0.295916ms)
+✔ kakaoDayBlocks / packChunks: 날짜 경계 유지, 큰 블록은 머리줄 다시 붙임 (0.290917ms)
+✔ dateKey / sortByTime: 연도 없는 사건은 출생연도(2000)+나이, 그것도 없으면 AI 순서상 앞 사건 바로 뒤 (0.277583ms)
+✔ normalizeEvents: 계약 길이로 자르고 정렬 후 id 부여 (1.222459ms)
+✔ analyzeRecords: 짧으면 한 번, 길면 구간 요약 후 분석 (3.518583ms)
+✔ chat: 샘플 페르소나는 계약을 지킨다 (1.5125ms)
+✔ chat: 위기 신호 감지 (공백 무시, 관용 표현 제외) (0.120708ms)
+✔ chat: 시스템 프롬프트 — 과거는 이후를 모름, 위기 지시는 crisis 때만 (0.180417ms)
+✔ chat: 오래된 대화를 잘라도 마지막 메시지는 남는다 (0.293042ms)
+✔ chat: 페르소나 값은 정보 블록을 탈출하지 못한다 (0.080375ms)
+✔ http: 검증 통과하면 data (8.776916ms)
+✔ http: 413 · JSON 아님 · 검증 실패 문구 3종 (1.340292ms)
+✔ http: prepare 로 기본값을 채운다 (0.116583ms)
+✔ http: 429 는 rateLimited 문구가 있을 때만 503 (0.101792ms)
+✔ http: data URL → File (0.17125ms)
+✔ analyze: source 는 kakao|diary|prompt 만 허용 (0.953666ms)
+✔ persona: 기본값 채움, 나이 범위 검사 (0.685458ms)
+✔ avatar: data URL 이미지 형식만 허용 (0.262ms)
+✔ chat: 마지막 메시지는 user (0.638042ms)
+ℹ tests 32
+ℹ suites 0
+ℹ pass 32
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 95.120667
+$ pnpm -r lint
+Scope: 3 of 4 workspace projects
+pocs lint$ eslint .
+pocs lint: Done
+EXIT=0

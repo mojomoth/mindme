@@ -1,0 +1,14 @@
+✔ chat: 마지막 메시지는 user (0.584958ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 93.781458
+packages/core typecheck: Done
+pocs typecheck$ next typegen && tsc -p tsconfig.json
+pocs typecheck: Generating route types...
+pocs typecheck: ✓ Types generated successfully
+pocs typecheck: Done

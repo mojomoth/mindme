@@ -1,0 +1,13 @@
+Warning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect stdin explicitly: < /dev/null to skip, or wait longer.
+Warning: this sign-in can end at any time from now until 2026-11-18. Renewing it does not move that date. Run claude auth login now, or use claude setup-token for unattended jobs.
+SCORE: 9
+- [P2] 아바타가 A와 같은 캐릭터(갈색 머리, 파란 후드)이지만, B·C는 A보다 더 입체적이고 선명하게 렌더링되어 톤이 약간 다르다. 헤더 아바타도 B가 A보다 약간 크고 위로 붙어 있다.
+- [P2] 배경색이 A의 연한 하늘색(#E8F2FA 계열)보다 B·C에서 더 회청색(#EFF4F9 계열)으로 보인다.
+- [P2] B에서는 헤더 상단 여백이 A보다 좁고 헤더 높이가 약간 작다. 상태바 영역은 실제 기기가 그리는 것이므로 차이가 있어도 문제없다.
+- [P2] 타이핑 인디케이터의 점이 B·C에서는 A보다 연하고 작다. 말풍선 크기는 비슷하다.
+- [P2] 입력창과 하단 홈 인디케이터 영역에서, B는 홈 인디케이터를 앱이 그리지 않고 기기에 맡긴다. 입력창 하단 여백은 A보다 약간 좁다.
+- [P2] C에서는 목업 안에서 모든 요소가 비율대로 축소되어 있고 넘침, 잘림, 겹침은 없다. 좌측 화면 목록(05 대화 선택됨)은 시안에 없는 데모 셸이다.
+
+구성요소의 누락, 순서 오류, 문구 오류는 없다. 헤더, "나가기" 버튼, "오늘" 구분선, 안내 문구, 말풍선 4개, 시간 표기, 타이핑 인디케이터, 입력창, 전송 버튼이 모두 A와 같은 순서로 있다. 글자 단위로 비교해도 일치한다.
+
+VERDICT: OK

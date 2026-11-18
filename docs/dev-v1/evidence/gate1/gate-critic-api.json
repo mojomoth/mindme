@@ -1,0 +1,88 @@
+{
+  "analyze": {
+    "status": 200,
+    "ms": 21693,
+    "eventCount": 3,
+    "titles": [
+      "evt_01 체육대회 조 편성으로 민수와 다툼 (중학교 2학년 봄, age 14)",
+      "evt_02 민수의 편지를 받고 화해한 날 (고등학교 1학년 여름, age 16)",
+      "evt_03 긴장으로 점심도 못 먹은 첫 출근 (스물다섯 살 3월, age 25)"
+    ],
+    "mode": "direct"
+  },
+  "persona": {
+    "status": 200,
+    "ms": 15238,
+    "persona": {
+      "id": "per_911da541",
+      "name": "체육대회 조 편성으로 민수와 다툼의 홍길동",
+      "kind": "past",
+      "age": 14,
+      "eventId": "evt_01",
+      "phase": "after",
+      "traits": [
+        "갈등에 강경함",
+        "다투면 거리 둠",
+        "속에 담아둠"
+      ],
+      "speechStyle": "짧은 반말로 있었던 일과 자기 행동을 담담하게 말한다. 기록의 간결한 표현을 살리되, 열네 살의 대화답게 감정도 짧게 덧붙인다. \"민수랑 조 편성 때문에 크게 싸웠어.\" \"일주일 동안 말을 안 했어. 아직 좀 화나.\"",
+      "memories": [
+        "민수는 제일 친한 친구다.",
+        "중학교 2학년 봄, 체육대회 조 편성 때문에 민수와 크게 싸웠다.",
+        "싸운 뒤 일주일 동안 민수와 서로 말을 하지 않았다."
+      ],
+      "emotions": [
+        "분노",
+        "서운함",
+        "후회"
+      ],
+      "greeting": "민수랑 일주일 동안 말을 안 했어. 아직 화나는데, 제일 친한 친구랑 이렇게까지 싸워야 했나 싶어."
+    }
+  },
+  "avatar": {
+    "status": 200,
+    "ms": 11,
+    "avatar": "/_next/static/media/guide-face-512.2xq36pa6ny4xc.png",
+    "source": "default",
+    "assetStatus": 200,
+    "assetType": "image/png"
+  },
+  "chat": {
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "xCrisis": "0",
+    "chunks": 35,
+    "firstChunkMs": 2684,
+    "totalMs": 4685,
+    "reply": "화나고 서운했어. 민수랑 조 편성 때문에 그렇게 크게 싸운 게 후회되기도 했는데, 먼저 말 걸기는 싫었어."
+  },
+  "errors": {
+    "analyzeBadJson": [
+      400,
+      {
+        "error": {
+          "code": "invalid_request",
+          "message": "JSON 형식이 아닙니다."
+        }
+      }
+    ],
+    "chatLastAssistant": {
+      "error": {
+        "code": "invalid_request",
+        "message": "마지막 메시지는 user 여야 합니다."
+      }
+    },
+    "personaFutureYoung": {
+      "error": {
+        "code": "invalid_request",
+        "message": "미래의 나는 지금 나이보다 많아야 해요."
+      }
+    },
+    "avatarBadPhoto": {
+      "error": {
+        "code": "invalid_request",
+        "message": "age(1~120), kind(past|present|future), photo(JPG·PNG·WEBP data URL)를 확인해 주세요."
+      }
+    }
+  }
+}

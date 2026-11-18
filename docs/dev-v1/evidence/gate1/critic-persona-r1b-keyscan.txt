@@ -1,0 +1,23 @@
+{
+  "secretsChecked": [
+    "JEV_KEY",
+    "GOOGLE_API_KEY",
+    "OPENAI_API_KEY",
+    "CLAUDE_API_KEY",
+    "VERCEL_API_KEY",
+    "RENDER_API_KEY"
+  ],
+  "pages": {
+    "/pocs/persona": {
+      "htmlHit": false
+    },
+    "/pocs/chat": {
+      "htmlHit": false
+    }
+  },
+  "chunks": 20,
+  "chunkHits": 0,
+  "apiHits": 0,
+  "evidenceHits": [],
+  "devLogHit": false
+}

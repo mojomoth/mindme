@@ -1,0 +1,3 @@
+situation=" "+2000자 (trim 계약이면 통과 후 나이 400, 실제는?): [400,"situation: Too big: expected string to have <=2000 characters"]
+situation=2000자: [400,"미래의 나는 지금 나이보다 많아야 해요."]
+profile.name=" 홍길동 " (text, trim): [400,"미래의 나는 지금 나이보다 많아야 해요."]

@@ -1,0 +1,118 @@
+{
+  "mobile": {
+    "console": [],
+    "pageErrors": [],
+    "requests": [
+      "POST /api/persona/avatar 200",
+      "POST /api/persona 200",
+      "POST /api/chat 200"
+    ],
+    "eventHint": "· 기록 분석 결과 2개",
+    "options": [
+      "사건 없이 그 나이의 나와 이야기하기",
+      "강아지 보리를 잃어버린 날 · 2006-07 (14살)",
+      "준호와 결혼한 날 · 2022-05 (30살)"
+    ],
+    "ageAfterEvent": "14살",
+    "avatarNote": "사진이 없어서 기본 캐릭터를 넣었어요.",
+    "personaMs": 16955,
+    "generatedName": "강아지 보리를 잃어버린 날의 김서연",
+    "generated": {
+      "traits": "자책이 많음, 걱정이 많음, 쉽게 포기 못함",
+      "memories": "보리와 산책하다 목줄을 놓쳐 보리를 잃어버렸다.\n보리를 찾으려고 사흘 동안 전단지를 붙였다.\n비 오는 저녁, 공원 앞에서 보리 이름을 부르고 있다.",
+      "emotions": "죄책감, 불안, 간절함",
+      "greeting": "비 오는데 보리는 지금 어디 있을까. 내가 목줄만 안 놓쳤어도 이러진 않았을 텐데.",
+      "speech": "짧고 편한 반말을 쓰지만, 불안해서 같은 걱정을 되풀이하거나 말끝을 흐린다. 자기 잘못을 말할 때는 ‘내가’, ‘그때’라는 말을 자꾸 꺼낸다. \"내가 그때 목줄을 꽉 잡고 있었어야 했는데.\" \"보리 비 맞고 있으면 어떡해. 이름 좀 더 불러 볼까?\""
+    },
+    "traitsWhileTyping": "자책이 많음, 걱정이 많음, 쉽게 포기 못함, 겁이 많음 ",
+    "notice": "저장했어요. 대화 PoC 목록에서 고를 수 있어요.",
+    "stored": [
+      {
+        "id": "per_5dc97a18",
+        "name": "<img src=x onerror=window.__x=1> 서연M",
+        "age": 14,
+        "kind": "past",
+        "eventId": "e_bori",
+        "phase": "during",
+        "traits": [
+          "자책이 많음",
+          "걱정이 많음",
+          "쉽게 포기 못함",
+          "겁이 많음"
+        ],
+        "memLast": "보리 목줄은 빨간색이었다",
+        "greeting": "보리야… 아, 너구나. 같이 좀 찾아 줄래?",
+        "avatar": "/_next/static/media/guide-face-512.2xq36pa6ny4xc.png"
+      }
+    ],
+    "savedListAfterReload": [
+      "<img src=x onerror=window.__x=1> 서연M"
+    ],
+    "chatOptions": [
+      "15살의 홍길동 (샘플)",
+      "<img src=x onerror=window.__x=1> 서연M"
+    ],
+    "chatFirst": "보리야… 아, 너구나. 같이 좀 찾아 줄래?",
+    "chatMs": 3333,
+    "chatAnswer": "아직 못 찾았어… 보리 비 맞고 있으면 어떡해. 근데 내가 나중에 준호랑 결혼한다고… 진짜야? 그럼 혹시 보리가 돌아오는지도 알아?",
+    "xssFired": false
+  },
+  "desktop": {
+    "console": [],
+    "pageErrors": [],
+    "requests": [
+      "POST /api/persona/avatar 200",
+      "POST /api/persona 200",
+      "POST /api/chat 200"
+    ],
+    "eventHint": "· 기록 분석 결과 2개",
+    "options": [
+      "사건 없이 그 나이의 나와 이야기하기",
+      "강아지 보리를 잃어버린 날 · 2006-07 (14살)",
+      "준호와 결혼한 날 · 2022-05 (30살)"
+    ],
+    "ageAfterEvent": "14살",
+    "avatarNote": "사진이 없어서 기본 캐릭터를 넣었어요.",
+    "personaMs": 15435,
+    "generatedName": "강아지 보리를 잃어버린 날의 김서연",
+    "generated": {
+      "traits": "자책을 많이 함, 걱정이 많음, 쉽게 포기 못 함",
+      "memories": "보리랑 산책하다가 목줄을 놓쳐 보리를 잃어버렸다.\n보리를 찾으려고 사흘 동안 전단지를 붙였다.\n비 오는 저녁, 공원 앞에서 보리 이름을 부르고 있다.",
+      "emotions": "죄책감, 불안, 간절함",
+      "greeting": "보리야 하고 부르면 올 것 같은데 왜 안 오지. 내가 목줄만 안 놓쳤으면 지금 같이 집에 있을 텐데.",
+      "speech": "익숙한 상대에게 짧고 편한 반말을 쓴다. 불안해서 자꾸 묻고, 목줄을 놓친 순간을 떠올리며 말끝을 흐린다. \"내가 목줄을 꽉 잡고 있었어야 했는데.\" \"보리 지금 비 맞고 있으면 어떡해.\""
+    },
+    "traitsWhileTyping": "자책을 많이 함, 걱정이 많음, 쉽게 포기 못 함, 겁이 많음 ",
+    "notice": "저장했어요. 대화 PoC 목록에서 고를 수 있어요.",
+    "stored": [
+      {
+        "id": "per_c53a9c04",
+        "name": "<img src=x onerror=window.__x=1> 서연D",
+        "age": 14,
+        "kind": "past",
+        "eventId": "e_bori",
+        "phase": "during",
+        "traits": [
+          "자책을 많이 함",
+          "걱정이 많음",
+          "쉽게 포기 못 함",
+          "겁이 많음"
+        ],
+        "memLast": "보리 목줄은 빨간색이었다",
+        "greeting": "보리야… 아, 너구나. 같이 좀 찾아 줄래?",
+        "avatar": "/_next/static/media/guide-face-512.2xq36pa6ny4xc.png"
+      }
+    ],
+    "savedListAfterReload": [
+      "<img src=x onerror=window.__x=1> 서연D"
+    ],
+    "chatOptions": [
+      "15살의 홍길동 (샘플)",
+      "<img src=x onerror=window.__x=1> 서연D"
+    ],
+    "chatFirst": "보리야… 아, 너구나. 같이 좀 찾아 줄래?",
+    "chatMs": 3340,
+    "chatAnswer": "아직 못 찾았어… 보리 지금 비 맞고 있으면 어떡해.\n근데 내가 나중에 준호랑 결혼한다고? 진짜야… 너는 보리 어떻게 됐는지도 알아?",
+    "xssFired": false
+  }
+}

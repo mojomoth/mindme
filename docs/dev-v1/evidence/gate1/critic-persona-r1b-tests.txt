@@ -1,0 +1,28 @@
+packages/core typecheck: Done
+pocs typecheck$ next typegen && tsc -p tsconfig.json
+pocs typecheck: Generating route types...
+pocs typecheck: ✓ Types generated successfully
+pocs typecheck: Done
+✔ analyze: source 는 kakao|diary|prompt 만 허용 (0.912709ms)
+✔ persona: 기본값 채움, 나이 범위 검사 (0.677333ms)
+✔ avatar: data URL 이미지 형식만 허용 (0.235917ms)
+✔ chat: 마지막 메시지는 user (0.585792ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 81.826292
+---
+✔ 초안의 줄바꿈을 한 줄로 편다 (chat 시스템 프롬프트 블록 탈출 방지) (0.084125ms)
+✔ 분석 결과의 selfAtTime 단서를 입력에 싣는다 (0.223667ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 70.037041

@@ -1,0 +1,5 @@
+env files: 1, key values: 6, files scanned: 677, hits: 0
+NEXT_PUBLIC_ uses:        0
+client @mindme/core/server imports (pocs/app/pocs, packages/ui):        0
+use client files importing server:        0
+.env gitignored: yes

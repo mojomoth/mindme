@@ -1,0 +1,328 @@
+{
+  "checks": [
+    {
+      "name": "landing 자동 이동 → create",
+      "pass": true,
+      "detail": "2570ms (networkidle 이후 측정)"
+    },
+    {
+      "name": "/pocs/screens(루트) 자동 이동 → create",
+      "pass": true,
+      "detail": "2542ms"
+    },
+    {
+      "name": "?hold 에서는 멈춤",
+      "pass": true,
+      "detail": "http://localhost:3101/pocs/screens/landing?hold"
+    },
+    {
+      "name": "02 글자수 0 → 10 → 1,500 → 2,000(상한)",
+      "pass": true,
+      "detail": "0 / 2,000 | 10 / 2,000 | 1,500 / 2,000 | 2,000 / 2,000"
+    },
+    {
+      "name": "02 페르소나 생성하기 → list",
+      "pass": true,
+      "detail": "http://localhost:3101/pocs/screens/list"
+    },
+    {
+      "name": "mobile 목록 + 페르소나 생성 → 모달",
+      "pass": true,
+      "detail": "http://localhost:3101/pocs/screens/modal"
+    },
+    {
+      "name": "mobile 슬라이더 → 나이 pill 갱신",
+      "pass": true,
+      "detail": "15살 → 20살 → 80살 → 5살 → 43살 → 67살 (--pct=82.66666666666667%)"
+    },
+    {
+      "name": "mobile 모달 상황 설명 입력",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "mobile 모달 X 닫기 → list",
+      "pass": true,
+      "detail": "http://localhost:3101/pocs/screens/list"
+    },
+    {
+      "name": "mobile 스크림 클릭 → 닫힘",
+      "pass": true,
+      "detail": "http://localhost:3101/pocs/screens/list"
+    },
+    {
+      "name": "mobile (참고) Esc 로 모달 닫힘",
+      "pass": false,
+      "detail": "http://localhost:3101/pocs/screens/modal",
+      "info": true
+    },
+    {
+      "name": "mobile 목록 행 → chat",
+      "pass": true,
+      "detail": "http://localhost:3101/pocs/screens/chat"
+    },
+    {
+      "name": "mobile 대화 메시지 전송 → 말풍선 추가",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "mobile 나가기 → list",
+      "pass": true,
+      "detail": "http://localhost:3101/pocs/screens/list"
+    },
+    {
+      "name": "mobile 대화 뒤로 → list",
+      "pass": true,
+      "detail": "http://localhost:3101/pocs/screens/list"
+    },
+    {
+      "name": "desktop 목록 + 페르소나 생성 → 모달",
+      "pass": true,
+      "detail": "http://localhost:3101/pocs/screens/modal"
+    },
+    {
+      "name": "desktop 슬라이더 → 나이 pill 갱신",
+      "pass": true,
+      "detail": "15살 → 20살 → 80살 → 5살 → 42살 → 67살 (--pct=82.66666666666667%)"
+    },
+    {
+      "name": "desktop 모달 상황 설명 입력",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "desktop 모달 X 닫기 → list",
+      "pass": true,
+      "detail": "http://localhost:3101/pocs/screens/list"
+    },
+    {
+      "name": "desktop 스크림 클릭 → 닫힘",
+      "pass": true,
+      "detail": "http://localhost:3101/pocs/screens/list"
+    },
+    {
+      "name": "desktop (참고) Esc 로 모달 닫힘",
+      "pass": false,
+      "detail": "http://localhost:3101/pocs/screens/modal",
+      "info": true
+    },
+    {
+      "name": "desktop 목록 행 → chat",
+      "pass": true,
+      "detail": "http://localhost:3101/pocs/screens/chat"
+    },
+    {
+      "name": "desktop 대화 메시지 전송 → 말풍선 추가",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "desktop 나가기 → list",
+      "pass": true,
+      "detail": "http://localhost:3101/pocs/screens/list"
+    },
+    {
+      "name": "desktop 대화 뒤로 → list",
+      "pass": true,
+      "detail": "http://localhost:3101/pocs/screens/list"
+    },
+    {
+      "name": "375x667 create 하단 버튼 도달·클릭",
+      "pass": true,
+      "detail": "http://localhost:3101/pocs/screens/list"
+    },
+    {
+      "name": "375x667 모달 생성하기 버튼이 뷰포트 안",
+      "pass": true,
+      "detail": "{\"x\":57,\"y\":544.75,\"width\":261,\"height\":48}"
+    }
+  ],
+  "overflow": {
+    "create-mobile-after-2000": {
+      "hScroll": false,
+      "docH": 844,
+      "vpH": 844,
+      "clipped": [],
+      "outsideFrame": []
+    },
+    "chat-mobile-after-send": {
+      "hScroll": false,
+      "docH": 844,
+      "vpH": 844,
+      "clipped": [],
+      "outsideFrame": []
+    },
+    "chat-desktop-after-send": {
+      "hScroll": false,
+      "docH": 900,
+      "vpH": 900,
+      "clipped": [],
+      "outsideFrame": [],
+      "frame": {
+        "left": 540.4111328125,
+        "right": 900.021484375,
+        "top": 39.66091537475586,
+        "bottom": 861.6933860778809,
+        "scrollH": 892,
+        "clientH": 892
+      }
+    },
+    "landing?hold-mobile": {
+      "hScroll": false,
+      "docH": 844,
+      "vpH": 844,
+      "clipped": [],
+      "outsideFrame": []
+    },
+    "create-mobile": {
+      "hScroll": false,
+      "docH": 844,
+      "vpH": 844,
+      "clipped": [],
+      "outsideFrame": []
+    },
+    "list-mobile": {
+      "hScroll": false,
+      "docH": 844,
+      "vpH": 844,
+      "clipped": [],
+      "outsideFrame": []
+    },
+    "modal-mobile": {
+      "hScroll": false,
+      "docH": 844,
+      "vpH": 844,
+      "clipped": [],
+      "outsideFrame": []
+    },
+    "chat-mobile": {
+      "hScroll": false,
+      "docH": 844,
+      "vpH": 844,
+      "clipped": [],
+      "outsideFrame": []
+    },
+    "landing?hold-se": {
+      "hScroll": false,
+      "docH": 667,
+      "vpH": 667,
+      "clipped": [],
+      "outsideFrame": []
+    },
+    "create-se": {
+      "hScroll": false,
+      "docH": 667,
+      "vpH": 667,
+      "clipped": [],
+      "outsideFrame": []
+    },
+    "list-se": {
+      "hScroll": false,
+      "docH": 667,
+      "vpH": 667,
+      "clipped": [],
+      "outsideFrame": []
+    },
+    "modal-se": {
+      "hScroll": false,
+      "docH": 667,
+      "vpH": 667,
+      "clipped": [],
+      "outsideFrame": []
+    },
+    "chat-se": {
+      "hScroll": false,
+      "docH": 667,
+      "vpH": 667,
+      "clipped": [],
+      "outsideFrame": []
+    },
+    "landing?hold-desktop": {
+      "hScroll": false,
+      "docH": 900,
+      "vpH": 900,
+      "clipped": [],
+      "outsideFrame": [],
+      "frame": {
+        "left": 540.4111328125,
+        "right": 900.021484375,
+        "top": 39.66091537475586,
+        "bottom": 861.6933860778809,
+        "scrollH": 892,
+        "clientH": 892
+      }
+    },
+    "create-desktop": {
+      "hScroll": false,
+      "docH": 900,
+      "vpH": 900,
+      "clipped": [],
+      "outsideFrame": [],
+      "frame": {
+        "left": 540.4111328125,
+        "right": 900.021484375,
+        "top": 39.66091537475586,
+        "bottom": 861.6933860778809,
+        "scrollH": 894,
+        "clientH": 892
+      }
+    },
+    "list-desktop": {
+      "hScroll": false,
+      "docH": 900,
+      "vpH": 900,
+      "clipped": [],
+      "outsideFrame": [
+        "SPAN.PersonaList-module__pERuZa__heroArt x=722..911 frame=540..900",
+        "IMG. x=722..911 frame=540..900"
+      ],
+      "frame": {
+        "left": 540.4111328125,
+        "right": 900.021484375,
+        "top": 39.66091537475586,
+        "bottom": 861.6933860778809,
+        "scrollH": 892,
+        "clientH": 892
+      }
+    },
+    "modal-desktop": {
+      "hScroll": false,
+      "docH": 900,
+      "vpH": 900,
+      "clipped": [],
+      "outsideFrame": [
+        "SPAN.PersonaList-module__pERuZa__heroArt x=722..911 frame=540..900",
+        "IMG. x=722..911 frame=540..900"
+      ],
+      "frame": {
+        "left": 540.4111328125,
+        "right": 900.021484375,
+        "top": 39.66091537475586,
+        "bottom": 861.6933860778809,
+        "scrollH": 892,
+        "clientH": 892
+      }
+    },
+    "chat-desktop": {
+      "hScroll": false,
+      "docH": 900,
+      "vpH": 900,
+      "clipped": [],
+      "outsideFrame": [],
+      "frame": {
+        "left": 540.4111328125,
+        "right": 900.021484375,
+        "top": 39.66091537475586,
+        "bottom": 861.6933860778809,
+        "scrollH": 892,
+        "clientH": 892
+      }
+    }
+  },
+  "consoleErrors": [],
+  "summary": {
+    "total": 25,
+    "failed": []
+  }
+}

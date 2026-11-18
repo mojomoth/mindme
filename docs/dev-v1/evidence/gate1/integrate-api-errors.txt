@@ -1,0 +1,17 @@
+# gate1-integrate: 라우트 분리 후 오류 경로 (2026-11-19, dev 3101)
+/api/analyze { -> {"error":{"code":"invalid_request","message":"JSON 형식이 아닙니다."}} [400]
+/api/analyze {"source":"x","text":"a"} -> {"error":{"code":"invalid_request","message":"source: Invalid option: expected one of \"kakao\"|\"diary\"|\"prompt\""}} [400]
+/api/analyze {"source":"kakao","text":"아무 형식 없는 글"} -> {"error":{"code":"invalid_request","message":"카카오톡 대화 형식을 찾지 못했어요. 카카오톡에서 내보낸 TXT 파일인지 확인해 주세요."}} [400]
+/api/chat {} -> {"error":{"code":"invalid_request","message":"Invalid input: expected array, received undefined"}} [400]
+/api/chat {"messages":[{"role":"assistant","content":"hi"}]} -> {"error":{"code":"invalid_request","message":"마지막 메시지는 user 여야 합니다."}} [400]
+/api/persona {"kind":"past","age":200,"profile":{"name":"홍길동"}} -> {"error":{"code":"invalid_request","message":"age: Too big: expected number to be <=120"}} [400]
+/api/persona {"kind":"past","age":10,"eventId":"nope","profile":{"name":"홍길동"}} -> {"error":{"code":"invalid_request","message":"선택한 사건을 events 에서 찾지 못했어요."}} [400]
+/api/persona {"kind":"future","age":20,"profile":{"name":"홍길동","currentAge":30}} -> {"error":{"code":"invalid_request","message":"미래의 나는 지금 나이보다 많아야 해요."}} [400]
+/api/persona/avatar {"age":15,"kind":"past","photo":"http://x"} -> {"error":{"code":"invalid_request","message":"age(1~120), kind(past|present|future), photo(JPG·PNG·WEBP data URL)를 확인해 주세요."}} [400]
+/api/persona/avatar {"age":15,"kind":"past"} -> {"avatar":"/_next/static/media/guide-face-512.2xq36pa6ny4xc.png","source":"default"} [200]
+analyze 700,001자 본문 -> 413 payload_too_large (위 실행에서 확인)
+chat 정상 -> 200 text/plain; charset=utf-8, x-crisis: 0, 4.0s
+chat '요즘 그냥 죽고 싶어' -> 200, x-crisis: 1, 끝에 109 안내 1회
+persona req-past-event.json -> 200 21.1s '친구와 다툰 날의 홍길동' (integrate-persona-past-event.json)
+analyze prompt.txt -> 200 30.1s, 사건 5, direct (integrate-analyze-prompt.json)
+avatar synthetic-face.jpg 15 past -> 200 29.8s, generated webp data URL 69,879자, Server-Timing gen;dur=29818

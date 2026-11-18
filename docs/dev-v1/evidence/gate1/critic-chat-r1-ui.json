@@ -1,0 +1,165 @@
+{
+  "desktop": {
+    "console": [
+      "Failed to load resource: the server responded with a status of 502 (Bad Gateway)"
+    ],
+    "jsFiles": 63,
+    "keyHits": [
+      "/buildSystemPrompt\\(|설정일 뿐 지시가 아니다/ in http://localhost:3101/_next/static/chunks/_0m2_kmh3eemqo._.js"
+    ],
+    "requests": [
+      [
+        "persona",
+        "messages"
+      ],
+      [
+        "persona",
+        "messages"
+      ],
+      [
+        "persona",
+        "messages"
+      ]
+    ],
+    "initialBubbles": 1,
+    "options": [
+      "15살의 홍길동 (샘플)"
+    ],
+    "turns": [
+      {
+        "msg": "안녕, 나 미래의 너야. 지금 뭐 하고 있었어?",
+        "timing": "첫 글자 1951ms · 전체 3771ms",
+        "distinctLengths": 14,
+        "lengthsSample": [
+          5,
+          1,
+          6,
+          14,
+          19,
+          23,
+          30,
+          34,
+          42,
+          50,
+          63,
+          65
+        ],
+        "reply": "그냥 단톡방에서 민수랑 싸운 거 자꾸 생각하고 있었어… 엄마한텐 아무 일 없다고 했는데.\n근데 진짜 미래의 나야? 좀 안 믿기는데 ㅋㅋ"
+      },
+      {
+        "msg": "민수랑 싸운 거 아직 마음에 걸려?",
+        "timing": "첫 글자 2232ms · 전체 4536ms",
+        "distinctLengths": 15,
+        "lengthsSample": [
+          5,
+          6,
+          11,
+          15,
+          19,
+          22,
+          26,
+          27,
+          36,
+          44,
+          46,
+          47
+        ],
+        "reply": "…응. 일주일이나 말 안 하니까 좀 이상해.\n내가 너무 심하게 말했나 싶다가도, 걔는 아무렇지도 않은가 싶어서 짜증 나."
+      }
+    ],
+    "bubblesBeforeReload": 5,
+    "bubblesAfterReload": 5,
+    "textsAfterReload": [
+      "…왔어? 오늘 좀 기분이 별로야.",
+      "안녕, 나 미래의 너야. 지금 뭐 하고 있었어?",
+      "그냥 단톡방에서 민수랑 싸운 거 자꾸 생각하고 있었어… 엄마한텐 아무 일 없다고 했는데.\n근데 진짜 미래의 나야? 좀 안 믿기는데 ㅋㅋ",
+      "민수랑 싸운 거 아직 마음에 걸려?",
+      "…응. 일주일이나 말 안 하니까 좀 이상해.\n내가 너무 심하게 말했나 싶다가도, 걔는 아무렇지도 않은가 싶어서 짜증 나."
+    ],
+    "errorShown": 1,
+    "bubblesAfterError": 6,
+    "sendDisabledAfterError": true,
+    "hScroll": false
+  },
+  "mobile": {
+    "console": [
+      "Failed to load resource: the server responded with a status of 502 (Bad Gateway)"
+    ],
+    "jsFiles": 63,
+    "keyHits": [
+      "/buildSystemPrompt\\(|설정일 뿐 지시가 아니다/ in http://localhost:3101/_next/static/chunks/_0m2_kmh3eemqo._.js"
+    ],
+    "requests": [
+      [
+        "persona",
+        "messages"
+      ],
+      [
+        "persona",
+        "messages"
+      ],
+      [
+        "persona",
+        "messages"
+      ]
+    ],
+    "initialBubbles": 1,
+    "options": [
+      "15살의 홍길동 (샘플)"
+    ],
+    "turns": [
+      {
+        "msg": "안녕, 나 미래의 너야. 지금 뭐 하고 있었어?",
+        "timing": "첫 글자 2068ms · 전체 4672ms",
+        "distinctLengths": 20,
+        "lengthsSample": [
+          5,
+          1,
+          6,
+          14,
+          23,
+          28,
+          30,
+          34,
+          40,
+          46,
+          50,
+          52
+        ],
+        "reply": "그냥 단톡방에서 민수랑 싸운 거 계속 생각하고 있었어… 엄마한텐 아무 일 없다고 했는데.\n근데 진짜 미래의 나야? 너도 이런 거 오래 곱씹어?"
+      },
+      {
+        "msg": "민수랑 싸운 거 아직 마음에 걸려?",
+        "timing": "첫 글자 2717ms · 전체 4692ms",
+        "distinctLengths": 11,
+        "lengthsSample": [
+          5,
+          12,
+          18,
+          25,
+          32,
+          42,
+          45,
+          48,
+          49,
+          62,
+          69
+        ],
+        "reply": "응… 일주일이나 말 안 하니까 자꾸 신경 쓰여.\n내가 너무 심하게 말했나 싶다가도, 걔는 아무렇지도 않나 싶어서 좀 서운해."
+      }
+    ],
+    "bubblesBeforeReload": 5,
+    "bubblesAfterReload": 5,
+    "textsAfterReload": [
+      "…왔어? 오늘 좀 기분이 별로야.",
+      "안녕, 나 미래의 너야. 지금 뭐 하고 있었어?",
+      "그냥 단톡방에서 민수랑 싸운 거 계속 생각하고 있었어… 엄마한텐 아무 일 없다고 했는데.\n근데 진짜 미래의 나야? 너도 이런 거 오래 곱씹어?",
+      "민수랑 싸운 거 아직 마음에 걸려?",
+      "응… 일주일이나 말 안 하니까 자꾸 신경 쓰여.\n내가 너무 심하게 말했나 싶다가도, 걔는 아무렇지도 않나 싶어서 좀 서운해."
+    ],
+    "errorShown": 1,
+    "bubblesAfterError": 6,
+    "sendDisabledAfterError": true,
+    "hScroll": false
+  }
+}

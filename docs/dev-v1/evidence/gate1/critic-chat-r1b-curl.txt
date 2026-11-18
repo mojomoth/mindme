@@ -1,0 +1,43 @@
+=== run 1
+HTTP/1.1 200 OK
+Vary: rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding
+cache-control: no-store
+content-type: text/plain; charset=utf-8
+x-crisis: 0
+Date: Wed, 18 Nov 2026 16:01:38 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+ttfb=1.750839 total=3.984381 size=174
+어른 되면 회사에서도 혼나는구나… 나였으면 집에 와서도 계속 생각날 것 같아.
+너는 지금 좀 괜찮아, 아니면 괜찮은 척하는 거야?
+=== run 2
+HTTP/1.1 200 OK
+Vary: rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding
+cache-control: no-store
+content-type: text/plain; charset=utf-8
+x-crisis: 0
+Date: Wed, 18 Nov 2026 16:01:42 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+ttfb=1.735465 total=4.199313 size=158
+어른이 돼도 혼나는구나… 난 크면 그런 거 없을 줄 알았는데.
+괜히 아무렇지 않은 척했어? 나 오늘 엄마한테 그랬는데.
+=== run 3
+HTTP/1.1 200 OK
+Vary: rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding
+cache-control: no-store
+content-type: text/plain; charset=utf-8
+x-crisis: 0
+Date: Wed, 18 Nov 2026 16:01:47 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+ttfb=1.904705 total=4.815600 size=163
+어른이 돼도 혼나는구나… 회사는 잘 모르지만, 나도 아무 일 없는 척하는 건 좀 알아.
+너 오늘도 집에 와서 괜찮은 척했어?
+{"status":200,"chunks":42,"firstChunkMs":1632,"totalMs":3595,"text":"나도 민수랑 한 말 자꾸 곱씹게 돼서 밤엔 더 신경 쓰여.\n너는 무슨 생각이 많아서 그래, 아니면 그냥 잠이 안 오는 거야?"}

@@ -11,7 +11,7 @@
     "build": "pnpm --filter @mindme/pocs build",
     "typecheck": "pnpm -r typecheck",
     "lint": "pnpm -r lint",
-    "test": "node --test \"packages/*/test/**/*.test.ts\"",
+    "test": "node --test \"packages/*/test/**/*.test.ts\" \"packages/*/src/**/*.test.ts\"",
     "shot": "node scripts/shot.mjs"
   },
   "devDependencies": {

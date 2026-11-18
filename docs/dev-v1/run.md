@@ -4,7 +4,8 @@
 
 ## 현재 상태
 
-- 단계: **Gate 0 PASS (Critic r4 8/9 + 메인이 report.md 저장해 조건 7 해소) → Gate 1 진행 중**
+- 단계: **Gate 0 PASS → Gate 1 구현·검증 PASS (4개 작업 Critic PASS, Integrate 회귀 통과) → HIL 대기(기다리지 않고 Gate 2 진행) → Gate 2**
+- 2026-11-19: Gate 1 1차 실행이 네트워크 장애(ENOTFOUND)로 중단되어, 남은 미커밋 작업을 살려 이어서 진행했다(persona·screens 는 이어받아 마무리).
 - 개발 서버: `pnpm dev:pocs` → http://localhost:3101 (로그 `logs/pocs-dev.log`)
 - 원격: `origin = github.com/mojomoth/mindme` (public, 사용자가 추가). 검증 통과 단위마다 커밋·push
 
@@ -52,6 +53,19 @@ Plan → Build → Independent Critic → Fix → Recheck → PASS
 - 5개 화면 프론트엔드(`/pocs/screens`, 기능 없이 화면만) — 드래프트와 외형 비교
 - PoC 완성 시 HIL(사람 확인). PoC·화면 동결 후 Gate 2
 
+| 조건 | 상태 | 근거 |
+|---|---|---|
+| LLM 공통 호출(`llm.ts`: generateObject·streamText·editImage) | PASS | `logs/gate1-llm-base.md` |
+| 기록 분석 `/pocs/analysis` | PASS (Critic r1b, P2 6) | `logs/gate1-analysis.md`, `logs/gate1-critic-analysis-r1b.md` |
+| 페르소나 생성 + 아바타 `/pocs/persona` | PASS (Critic r1b, P2 7) | `logs/gate1-persona.md`, `logs/gate1-critic-persona-r1b.md` |
+| 대화 `/pocs/chat` | PASS (Critic r1 P1 수정 → r1b, P2 3) | `logs/gate1-chat.md`, `logs/gate1-critic-chat-r1b.md` |
+| 5개 화면 `/pocs/screens` | PASS (Critic r1b, 유사도 7~8/10, P2 7) | `logs/gate1-screens.md`, `logs/gate1-critic-screens-r1b.md` |
+| 최소 API 분리 (route 얇게, 로직은 core) | PASS | `api.md`(실측 기준 v1), `packages/core/src/server/http.ts`, `packages/core/src/chat/server.ts`, `evidence/gate1/integrate-api-errors.txt` |
+| 기능 정의 | PASS | `features.md` (F1~F5) |
+| 회귀: typecheck · test · lint · build · 경로 · 키 검사 | PASS | 3패키지 통과, 32/32, 경고 0, next build 성공, `/pocs` 10개 경로 200, 키 값 657파일 0건 (`evidence/gate1/integrate-*`) |
+| HIL (사람 확인) | 대기 — 사람 확인은 기다리지 않고 Gate 2 진행(무중단 원칙) | `hil-gate1.md` |
+| Gate 1 커밋 | 완료 | Commit 단계 (main push) |
+
 ### Gate 2 — 통합 구현
 
 - `apps/web`(포트 3100)에 목표 서비스 구현 — PoC 코드는 `packages/*` 로 재사용, 다시 쓰지 않음
@@ -71,10 +85,13 @@ Plan → Build → Independent Critic → Fix → Recheck → PASS
 - [x] `/api/health`, 최소 API 계약, 스키마 테스트
 - [x] Playwright 스크린샷 스크립트 (`pnpm shot`)
 - [x] 마스코트·에셋 (`logs/mascot-assets.md`, Critic r1 PASS)
-- [ ] `report.md` 저장 (메인 세션. 본문: `logs/fix-gate0-r1.md` + `logs/fix-gate0-r2.md` 변경 3줄 적용본, `logs/fix-gate0-r3.md` 참고)
-- [x] Gate 0 독립 Critic r4 실행 (판정 FAIL, `evidence/gate0/critic-r4-gate0.md`)
-- [x] Gate 0 커밋 (chore(gate0): monorepo scaffold, mockup shell, harness, assets)
-- [ ] Gate 1: `/pocs/analysis`, `/pocs/persona`, `/pocs/chat`, `/pocs/screens` 5개 화면
+- [x] `report.md` 저장 (메인 세션)
+- [x] Gate 0 독립 Critic r4, Gate 0 커밋
+- [x] Gate 1: `/pocs/analysis`, `/pocs/persona`, `/pocs/chat`, `/pocs/screens` 5개 화면 (Critic 모두 PASS)
+- [x] Gate 1 Integrate: API 분리, `api.md` 실측 반영, `features.md`, `hil-gate1.md`, 회귀 (`logs/gate1-integrate.md`)
+- [ ] Gate 1 HIL(대기, Gate 2 는 기다리지 않고 진행): 사람이 `hil-gate1.md` 체크 (특히 실제 카카오톡 내보내기 파일, 내 얼굴 아바타, 03 목록 2행 아바타)
+- [x] Gate 1 커밋 (Commit 단계)
+- [ ] Gate 2: `apps/web`(3100) 통합 구현
 
 ## 마지막 검증
 
@@ -83,11 +100,40 @@ Plan → Build → Independent Critic → Fix → Recheck → PASS
 - 2026-11-17 Gate 0 Critic r3 probe: OpenAI gpt-6-astra 200(3.5s) / Anthropic claude-haiku-5-5 400 월 한도(2026-12-01 복구) / Gemini 3.5-flash 45s 타임아웃 (`evidence/gate0/critic-r3-raw.txt`). 결론 변화 없음: 직접 API 는 OpenAI 만 사용.
 
 - 2026-11-17 Gate 0 Critic r4: 타입체크 3패키지 통과, 테스트 4/4, 키 값 바이트 검색 834파일 0건, 목업 정렬 6개 뷰포트 오차 0.01px 미만, Codex 독립 판정 PASS. 유일한 P0는 report.md 없음.
+- 2026-11-19 Gate 1 Integrate: route 4개를 `parseRequest` → core 호출로 정리(동작 동일, 오류 경로 10건·정상 호출 analyze 30.1s / persona 21.1s / avatar 29.8s / chat 4.0s 재확인). `pnpm typecheck` 3패키지, `pnpm test` 32/32, `pnpm lint`, `next build` 통과, 빌드 뒤 dev 3101 정상, `/pocs` 10개 경로 200, 키 값 바이트 검색 657파일(레포 + `pocs/.next/static`) 0건 (`logs/gate1-integrate.md`).
 
 ## P2 목록
 
-- 스키마 길이 제한(Persona.id ≤64, Event.date ≤40, situation ≤2000, me ≤40)이 api.md 에 없음
-- 카카오톡 TXT 파서(packages/core), 03 '고개 내민' 마스코트, 01 하트 말풍선 에셋 없음 (Gate 1)
+Gate 1 (Critic r1b·Integrate 기준, Gate 2 에서 처리할 후보)
+
+- analysis 파서(`packages/core/src/analysis/parse.ts`): 여러 줄 메시지 중간에 날짜 구분선과 같은 모양의 줄('2019년 3월 2일 토요일')이 있으면 구분선으로 인식해, 그 뒤에 이어지던 줄이 사라진다
+- analysis 입력 UX: 30만 자를 넘는 파일을 올리면 버튼만 꺼지고 할 수 있는 일을 안내하지 않는다. 다른 파일을 올려도 이전 오류 문구가 남는다
+- analysis·chat 오류 문구: 수정 폼 검증 오류와 API 400 메시지에 zod 영어 문구가 섞인다
+- analysis 다시 분석: 타임라인 전체가 새 결과로 바뀌어 직접 추가·수정한 사건이 확인 없이 사라진다. 출처가 다른 기록끼리 합쳐지지 않는다
+- analysis 프라이버시: localStorage `mindme:analysis:last` 에 원문 전체(최대 30만 자)가 평문으로 남는다
+- analysis UI 문구: 파일 선택 버튼이 브라우저 기본 영어 'Choose File / No file chosen' 이다
+- chat 이름 필드 주입: `persona.name` 이 정보 블록 밖(첫 줄·마지막 규칙 줄)에 들어가 40자 이내 짧은 지시가 먹힌다(PWNED 접두어, 영어로만 답하기, 해적 캐릭터). 코드 출력·위기 대응 무력화·자해 방법·규칙 유출은 0건
+- chat 위기 감지: 돌려 말한 표현은 감지하지 못하고(X-Crisis 0, 109 없음) 마지막 user 메시지만 검사한다
+- chat 번들: 시스템 프롬프트 문구가 클라이언트 번들에 들어 있다(비밀은 아님)
+- persona (past): 과거 나이와 선택한 사건의 나이가 달라도 통과하고, 선택한 사건은 나이와 상관없이 프롬프트에 들어가 미래 지식이 샐 수 있다
+- persona 프롬프트: 기록이 적을 때 설정 문구가 memories 로 새어 나온다
+- persona 기본 아바타: 해시가 붙은 `/_next/static/media` 경로로 localStorage 에 저장돼, 다시 빌드하면 깨진다
+- persona (present): `age` 와 `profile.currentAge` 일치를 서버가 검사하지 않는다
+- ~~api.md 에 `futureGoals`·`event` 없음~~ → Integrate 에서 반영
+- 아바타 품질: 8살과 34살의 나이 차이가 약하고, 60살은 회색 머리 말고는 나이 든 티가 적다
+- persona·chat PoC 화면: 새로고침하면 폼의 이름·지금 나이가 샘플 값으로 돌아간다. chat 모바일에서 이름이 길면 '초기화' 버튼이 세로로 꺾인다
+- screens 03 목록 2행 아바타: '첫 출근 날의 홍길동' 그림체·크롭이 드래프트와 다르다(드래프트 3/4 측면·갈색 가르마, 구현 정면 상반신·검은 웨이브. 의상·소품은 같음). codex P1(7점) / claude P2(8점) — HIL 판단
+- screens 배경: 단색 `--mm-bg` 라 드래프트의 옅은 하늘색 그라데이션·질감이 없다. CTA 도 단색
+- screens 03 목록 360px: 히어로 캐릭터 팔이 제목 '?'·부제 끝 '요'에 맞닿는다. 하단 '다른 순간의 나도 만나보세요' 가 CTA 그라데이션에 반쯤 가려진다(스크롤하면 보임)
+- screens 05 대화: 메시지를 보내도 맨 아래로 스크롤되지 않아 새 말풍선이 입력창 뒤에 가려진다
+- screens 04 모달: Esc 로 닫히지 않는다(X·스크림 클릭은 됨)
+- screens 02 생성 데스크톱: 흰 패널 하단과 CTA 사이 간격이 약 10px 로 드래프트보다 좁다
+- 실제 사용자 카카오톡 내보내기 파일·30만 자 상한 입력은 실측하지 않았다. 아바타 30~35s 는 Vercel 함수 시간 한도 확인 필요 (Gate 3)
+
+Gate 0
+
+- ~~스키마 길이 제한이 api.md 에 없음~~ → Gate 1 Integrate 에서 반영
+- ~~카카오톡 TXT 파서, 03 '고개 내민' 마스코트, 01 하트 말풍선 에셋 없음~~ → Gate 1 에서 해소
 - safe-area 는 Chromium 에뮬레이션에서 0px 라 실기기 확인 필요 (Gate 3)
 - Anthropic 월 한도(12/1 복구), Gemini 45초 타임아웃: 외부 요인, Gate 1 은 OpenAI 사용
 
@@ -98,6 +144,7 @@ Plan → Build → Independent Critic → Fix → Recheck → PASS
 
 ## 다음 작업
 
-1. Gate 1: `/pocs/analysis`, `/pocs/persona`, `/pocs/chat` PoC 3종과 `/pocs/screens` 5개 화면 프론트엔드
-2. Anthropic 은 2026-12-01 복구 후 재측정하고, Gemini 는 쿼터·지연 해소 후 재측정한다 (결정: `report.md` 2장)
-3. 위 P2 항목은 Gate 1 에서 처리
+1. Gate 1 HIL: 사람이 `hil-gate1.md` 를 체크한다. 승인되면 Commit 단계에서 Gate 1 커밋
+2. **Gate 2**: `apps/web`(포트 3100)에 목표 서비스 구현. `packages/ui/src/screens/*` 화면에 F1~F4(`features.md`)를 연결하고, `packages/core` 를 그대로 재사용한다(다시 쓰지 않음)
+3. Gate 2 에서 처리할 P2 우선순위: 05 대화 자동 스크롤, chat 이름 필드 주입, past 사건 나이 검사, 기본 아바타 경로, zod 영어 오류 문구, analysis 다시 분석 확인
+4. Anthropic 은 2026-12-01 복구 후 재측정하고, Gemini 는 쿼터·지연 해소 후 재측정한다 (결정: `report.md` 2장)

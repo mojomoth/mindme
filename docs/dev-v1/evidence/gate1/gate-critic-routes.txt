@@ -1,0 +1,13 @@
+/ 200
+/pocs 200
+/pocs/analysis 200
+/pocs/persona 200
+/pocs/chat 200
+/pocs/screens 200
+/pocs/screens/landing 200
+/pocs/screens/create 200
+/pocs/screens/list 200
+/pocs/screens/modal 200
+/pocs/screens/chat 200
+/pocs/screens/nope 404
+/api/health 200

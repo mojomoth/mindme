@@ -1,0 +1,42 @@
+$ pnpm --filter @mindme/pocs build
+$ next build
+▲ Next.js 16.4.6 (Turbopack)
+✓ Running next.config.ts took 11ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 428ms
+  Running TypeScript ...
+  Finished TypeScript in 755ms ...
+  Collecting page data using 9 workers ...
+  Generating static pages using 9 workers (0/12) ...
+  Generating static pages using 9 workers (3/12) 
+  Generating static pages using 9 workers (6/12) 
+  Generating static pages using 9 workers (9/12) 
+✓ Generating static pages using 9 workers (12/12) in 125ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ƒ /api/analyze
+├ ƒ /api/chat
+├ ƒ /api/health
+├ ƒ /api/persona
+├ ƒ /api/persona/avatar
+├ ○ /pocs
+├ ƒ /pocs/analysis
+├ ○ /pocs/chat
+├ ○ /pocs/persona
+├ ○ /pocs/screens
+└   /pocs/screens/[screen]
+  ├ ● /pocs/screens/landing
+  ├ ● /pocs/screens/create
+  ├ ● /pocs/screens/list
+  └ ● [+2 more paths]
+
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+
+EXIT=0

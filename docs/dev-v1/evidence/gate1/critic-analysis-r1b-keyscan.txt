@@ -1,0 +1,2 @@
+key names checked: JEV_KEY,GOOGLE_API_KEY,OPENAI_API_KEY,CLAUDE_API_KEY,VERCEL_API_KEY,RENDER_API_KEY files: 24 hits: 0
+client chunks: 17 key value hits: 0 key name hits: 0 server code markers: 2

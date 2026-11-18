@@ -1,0 +1,6 @@
+env 파일 1개, 검사 값 6개(JEV_KEY, GOOGLE_API_KEY, OPENAI_API_KEY, CLAUDE_API_KEY, VERCEL_API_KEY, RENDER_API_KEY), 파일 657개 (pocs/.next 는 static 만), 일치 0건
+'use client' 파일에서 @mindme/core/server import:
+       0
+pocs/app/pocs 아래 @mindme/core/server import:
+       0
+NEXT_PUBLIC_ 사용 0건 (pocs/next.config.ts 주석 1줄 "NEXT_PUBLIC_ 금지" 만 일치) / pocs/.next/static 파일 36 개 포함
