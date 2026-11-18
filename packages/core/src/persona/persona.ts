@@ -31,7 +31,7 @@ export const PersonaDraftSchema = z.object({
   emotions: z.array(z.string()),
   greeting: z.string(),
 });
-export type PersonaDraft = z.infer<typeof PersonaDraftSchema>;
+type PersonaDraft = z.infer<typeof PersonaDraftSchema>;
 
 export const PHASE_LABEL: Record<Phase, string> = { before: '사건 전', during: '사건 당시', after: '사건 직후' };
 

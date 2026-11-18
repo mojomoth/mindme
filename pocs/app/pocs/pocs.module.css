@@ -38,10 +38,6 @@ a.item:hover {
   outline: 2px solid var(--mm-primary);
 }
 
-.item[aria-disabled] {
-  opacity: 0.6;
-}
-
 .itemHead {
   display: flex;
   justify-content: space-between;
@@ -49,16 +45,10 @@ a.item:hover {
   font-size: 16px;
 }
 
-.badge,
 .badgeOn {
   font-size: var(--mm-fs-caption);
   padding: 3px 10px;
   border-radius: var(--mm-radius-pill);
-  background: var(--mm-line);
-  color: var(--mm-text-sub);
-}
-
-.badgeOn {
   background: var(--mm-primary);
   color: var(--mm-on-primary);
 }

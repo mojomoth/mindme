@@ -8,10 +8,10 @@ const text = (max: number) => z.string().trim().min(1).max(max);
 export const SourceSchema = z.enum(['kakao', 'diary', 'prompt']);
 export const PersonaKindSchema = z.enum(['past', 'present', 'future']);
 export const PhaseSchema = z.enum(['before', 'during', 'after']);
-export const AgeSchema = z.int().min(1).max(120);
+const AgeSchema = z.int().min(1).max(120);
 
 /** 그 시점의 '나' 단서. 페르소나 생성(/api/persona)이 성격·말투를 잡을 때 쓴다. */
-export const SelfAtTimeSchema = z.object({
+const SelfAtTimeSchema = z.object({
   traits: z.array(text(40)).max(10),
   speechStyle: z.string().max(300),
   /** '나'가 실제로 한 말(원문). 기록에 없으면 빈 배열 */
@@ -59,10 +59,6 @@ export const ChatMessageSchema = z.object({
   content: text(4000),
 });
 
-export const ErrorResponseSchema = z.object({
-  error: z.object({ code: z.string(), message: z.string() }),
-});
-
 // ── POST /api/analyze ──────────────────────────────────────
 
 export const AnalyzeRequestSchema = z.object({
@@ -80,8 +76,8 @@ export const AnalyzeMetaSchema = z.object({
   units: z.int().min(0),
   participants: z.array(z.string()),
   me: z.string().optional(),
-  /** 마지막 AI 호출의 원시 출력 */
-  llm: z.unknown(),
+  /** 마지막 AI 호출의 원시 출력. 개발 화면(pocs)에만 싣고 apps/web 응답에는 없다 */
+  llm: z.unknown().optional(),
 });
 /** 기록을 남긴 '나'. 앱이 Profile(이름·현재 나이) 기본값과 과거·현재·미래 판정에 쓴다. 모르면 null. */
 export const OwnerSchema = z.object({
@@ -145,16 +141,13 @@ export type Source = z.infer<typeof SourceSchema>;
 export type PersonaKind = z.infer<typeof PersonaKindSchema>;
 export type Phase = z.infer<typeof PhaseSchema>;
 export type TimelineEvent = z.infer<typeof EventSchema>;
-export type SelfAtTime = z.infer<typeof SelfAtTimeSchema>;
 export type AnalyzeMeta = z.infer<typeof AnalyzeMetaSchema>;
 export type Owner = z.infer<typeof OwnerSchema>;
 export type Profile = z.infer<typeof ProfileSchema>;
 export type Persona = z.infer<typeof PersonaSchema>;
 export type ChatMessage = z.infer<typeof ChatMessageSchema>;
-export type ErrorResponse = z.infer<typeof ErrorResponseSchema>;
 export type AnalyzeRequest = z.input<typeof AnalyzeRequestSchema>;
 export type AnalyzeResponse = z.infer<typeof AnalyzeResponseSchema>;
-export type PersonaRequest = z.input<typeof PersonaRequestSchema>;
 export type PersonaResponse = z.infer<typeof PersonaResponseSchema>;
 export type AvatarRequest = z.infer<typeof AvatarRequestSchema>;
 export type AvatarResponse = z.infer<typeof AvatarResponseSchema>;

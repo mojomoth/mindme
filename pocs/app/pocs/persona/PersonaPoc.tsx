@@ -15,7 +15,7 @@ import {
   type Phase,
   type TimelineEvent,
 } from '@mindme/core';
-import { webNative } from '@mindme/ui';
+import { blobToDataUrl, shrinkImage, webNative } from '@mindme/ui';
 import sample from '../../../fixtures/persona/sample-events.json';
 import styles from './persona.module.css';
 
@@ -53,27 +53,6 @@ function loadPersonas(): Persona[] {
     return r.success ? [r.data] : [];
   });
 }
-
-/** 업로드 전에 긴 변을 max 로 줄이고 JPEG 로 바꾼다 (Vercel 요청 4.5MB 제한). */
-async function shrink(file: Blob, max: number, type = 'image/jpeg', quality = 0.88): Promise<Blob> {
-  const bmp = await createImageBitmap(file);
-  const scale = Math.min(1, max / Math.max(bmp.width, bmp.height));
-  const canvas = document.createElement('canvas');
-  canvas.width = Math.round(bmp.width * scale);
-  canvas.height = Math.round(bmp.height * scale);
-  canvas.getContext('2d')!.drawImage(bmp, 0, 0, canvas.width, canvas.height);
-  bmp.close();
-  return new Promise((resolve, reject) =>
-    canvas.toBlob((b) => (b ? resolve(b) : reject(new Error('이미지를 줄이지 못했어요.'))), type, quality),
-  );
-}
-
-const toDataUrl = (b: Blob) =>
-  new Promise<string>((resolve) => {
-    const r = new FileReader();
-    r.onload = () => resolve(String(r.result));
-    r.readAsDataURL(b);
-  });
 
 async function postJson<T>(url: string, body: unknown): Promise<T> {
   const res = await fetch(url, { method: 'POST', body: JSON.stringify(body), headers: { 'content-type': 'application/json' } });
@@ -166,7 +145,7 @@ export default function PersonaPoc() {
     const file = await webNative.pickFile('image/jpeg,image/png,image/webp');
     if (!file) return;
     try {
-      const blob = await shrink(file, 1024);
+      const blob = await shrinkImage(file, 1024);
       if (photo) URL.revokeObjectURL(photo.url);
       setPhoto({ blob, url: URL.createObjectURL(blob) });
       setAvatarNote(`${Math.round(file.size / 1024)}KB → ${Math.round(blob.size / 1024)}KB 로 줄였어요.`);
@@ -180,10 +159,10 @@ export default function PersonaPoc() {
     setAvatarNote(photo ? '아바타를 그리는 중이에요. 30초쯤 걸려요.' : '');
     const started = performance.now();
     try {
-      const body: AvatarRequest = { age: theAge, kind, ...(photo ? { photo: await toDataUrl(photo.blob) } : {}) };
+      const body: AvatarRequest = { age: theAge, kind, ...(photo ? { photo: await blobToDataUrl(photo.blob) } : {}) };
       const res = await postJson<AvatarResponse>('/api/persona/avatar', body);
       // 저장 공간을 아끼려고 생성 이미지는 256px WEBP 로 줄여서 들고 있는다.
-      const small = res.source === 'generated' ? await toDataUrl(await shrink(await (await fetch(res.avatar)).blob(), 256, 'image/webp', 0.9)) : res.avatar;
+      const small = res.source === 'generated' ? await blobToDataUrl(await shrinkImage(await (await fetch(res.avatar)).blob(), 256, 'image/webp', 0.9)) : res.avatar;
       setAvatar(small);
       setPersona((p) => (p ? { ...p, avatar: small } : p));
       setAvatarNote(res.source === 'generated' ? `${secs(performance.now() - started)} 걸렸어요.` : '사진이 없어서 기본 캐릭터를 넣었어요.');

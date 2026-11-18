@@ -11,8 +11,6 @@
     "typecheck": "tsc -p tsconfig.json"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "1.8.0",
-    "@google/genai": "3.3.0",
     "openai": "7.57.0",
     "server-only": "0.0.1",
     "zod": "4.6.7"

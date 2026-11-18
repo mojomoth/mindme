@@ -1,7 +1,7 @@
 import 'server-only';
 import type { ChatRequest } from '../schemas.ts';
 import { streamText } from '../server/llm.ts';
-import { fail } from '../server/http.ts';
+import { upstreamFail } from '../server/http.ts';
 import { buildSystemPrompt, CRISIS_FOOTER, detectCrisisInChat, trimMessages } from './index.ts';
 
 /**
@@ -19,8 +19,8 @@ export async function chatResponse({ persona, messages }: ChatRequest): Promise<
   let first: ReadableStreamReadResult<Uint8Array>;
   try {
     first = await reader.read();
-  } catch {
-    return fail(502, 'upstream_error', '답변을 만들지 못했어요. 잠시 뒤 다시 시도해 주세요.');
+  } catch (err) {
+    return upstreamFail('api/chat', err, '답변을 만들지 못했어요. 잠시 뒤 다시 시도해 주세요.');
   }
 
   const decoder = new TextDecoder();

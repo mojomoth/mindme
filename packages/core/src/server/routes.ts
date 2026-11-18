@@ -6,7 +6,7 @@ import { PersonaGenerateRequestSchema } from '../persona/persona.ts';
 import { chatResponse } from '../chat/server.ts';
 import { AnalyzeRequestSchema, AvatarRequestSchema, ChatRequestSchema } from '../schemas.ts';
 import { hasKey } from './env.ts';
-import { dataUrlToFile, fail, noKey, parseRequest, upstreamFail } from './http.ts';
+import { dataUrlToFile, fail, noKey, parseRequest, upstreamFail, type Handler } from './http.ts';
 import { generateObject } from './llm.ts';
 
 type RouteOpts = {
@@ -15,21 +15,23 @@ type RouteOpts = {
   /** 검증 전에 본문을 손본다 */
   prepare?: (body: Record<string, unknown>) => unknown;
 };
-type Handler = (req: Request) => Promise<Response>;
 
 const RATE_LIMITED = 'AI 사용 한도에 걸렸어요. 잠시 뒤 다시 시도해 주세요.';
 
-// text 상한 300,000자(UTF-16 길이) + JSON 이스케이프 여유
-export const analyzeRoute = (o: RouteOpts = {}): Handler => async (req) => {
+// text 상한 300,000자(UTF-16 길이) + JSON 이스케이프 여유.
+// meta.llm(AI 원시 출력)은 includeLlm 을 준 개발 화면(pocs)에만 싣는다.
+export const analyzeRoute = ({ includeLlm, ...o }: RouteOpts & { includeLlm?: boolean } = {}): Handler => async (req) => {
   const { data, error } = await parseRequest(req, AnalyzeRequestSchema, {
     maxBody: 700_000,
     tooLarge: '입력이 너무 길어요. 30만 자 이하로 줄여 주세요.',
     ...o,
   });
   if (error) return error;
-  if (!hasKey('openai')) return noKey();
+  if (!hasKey('openai')) return noKey('api/analyze');
   try {
-    return Response.json(await analyzeRecords(data, generateObject));
+    const res = await analyzeRecords(data, generateObject);
+    if (!includeLlm) delete res.meta.llm;
+    return Response.json(res);
   } catch (err) {
     if (err instanceof AnalyzeInputError) return fail(400, 'invalid_request', err.message);
     return upstreamFail('api/analyze', err, '기록을 분석하지 못했어요. 잠시 뒤 다시 시도해 주세요.', RATE_LIMITED);
@@ -40,7 +42,7 @@ export const analyzeRoute = (o: RouteOpts = {}): Handler => async (req) => {
 export const personaRoute = (o: RouteOpts = {}): Handler => async (req) => {
   const { data, error } = await parseRequest(req, PersonaGenerateRequestSchema, { maxBody: 1_000_000, ...o });
   if (error) return error;
-  if (!hasKey('openai')) return noKey();
+  if (!hasKey('openai')) return noKey('api/persona');
   try {
     return Response.json({ persona: await generatePersona(data) });
   } catch (err) {
@@ -67,7 +69,7 @@ export const avatarRoute = (o: RouteOpts & { defaultAvatar: string }): Handler =
   const { age, kind, photo } = data;
 
   if (!photo) return Response.json({ avatar: o.defaultAvatar, source: 'default' });
-  if (!hasKey('openai')) return noKey();
+  if (!hasKey('openai')) return noKey('api/persona/avatar');
 
   const started = Date.now();
   try {
@@ -82,6 +84,6 @@ export const avatarRoute = (o: RouteOpts & { defaultAvatar: string }): Handler =
 export const chatRoute = (o: RouteOpts = {}): Handler => async (req) => {
   const { data, error } = await parseRequest(req, ChatRequestSchema, { maxBody: 1_000_000, ...o });
   if (error) return error;
-  if (!hasKey('openai')) return noKey();
+  if (!hasKey('openai')) return noKey('api/chat');
   return chatResponse(data);
 };

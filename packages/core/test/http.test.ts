@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { z } from 'zod';
-import { dataUrlToFile, parseRequest, upstreamFail } from '../src/server/http.ts';
+import { dataUrlToFile, parseRequest, rateLimit, upstreamFail } from '../src/server/http.ts';
 
 const Schema = z.object({ n: z.int().min(1) });
 const post = (body: string) => new Request('http://x/api', { method: 'POST', body });
@@ -17,7 +17,7 @@ test('http: 413 · JSON 아님 · 검증 실패 문구 3종', async () => {
   assert.deepEqual(await errorOf(big.error!), { status: 413, code: 'payload_too_large', message: '너무 커요' });
 
   const notJson = await parseRequest(post('{'), Schema, { maxBody: 100 });
-  assert.deepEqual(await errorOf(notJson.error!), { status: 400, code: 'invalid_request', message: 'JSON 형식이 아닙니다.' });
+  assert.deepEqual(await errorOf(notJson.error!), { status: 400, code: 'invalid_request', message: '보낸 내용을 읽지 못했어요. 다시 시도해 주세요.' });
 
   const korean = await errorOf((await parseRequest(post('{"n":0}'), Schema, { maxBody: 100 })).error!);
   assert.deepEqual(korean, { status: 400, code: 'invalid_request', message: '요청 형식이 올바르지 않아요.' }); // n 은 라벨 없음
@@ -47,4 +47,25 @@ test('http: data URL → File', async () => {
   assert.equal(f.type, 'image/png');
   assert.equal(f.name, 'photo.png');
   assert.equal(await f.text(), 'abc');
+});
+
+test('http: Content-Length 가 상한의 3배를 넘으면 읽기 전에 413, 기본 문구는 해요체', async () => {
+  const req = new Request('http://x/api', { method: 'POST', body: '{"n":3}', headers: { 'content-length': '100' } });
+  const r = await parseRequest(req, Schema, { maxBody: 10 });
+  assert.deepEqual(await errorOf(r.error!), { status: 413, code: 'payload_too_large', message: '보낸 내용이 너무 길어요. 조금 줄여서 다시 보내 주세요.' });
+});
+
+test('http: rateLimit 은 IP·이름별로 세고, 넘으면 429 + Retry-After', async () => {
+  let called = 0;
+  const handler = rateLimit('t', 2, 60_000, async () => (called++, new Response('ok')));
+  const from = (ip: string) => new Request('http://x/api', { method: 'POST', headers: { 'x-forwarded-for': `${ip}, 10.0.0.1` } });
+  assert.equal((await handler(from('1.1.1.1'))).status, 200);
+  assert.equal((await handler(from('1.1.1.1'))).status, 200);
+  const limited = await handler(from('1.1.1.1'));
+  assert.equal(limited.status, 429);
+  assert.equal(limited.headers.get('retry-after'), '60');
+  assert.deepEqual(await errorOf(limited), { status: 429, code: 'rate_limited', message: '짧은 시간에 요청이 많았어요. 1분쯤 뒤에 다시 시도해 주세요.' });
+  assert.equal((await handler(from('2.2.2.2'))).status, 200); // 다른 IP 는 따로
+  assert.equal((await rateLimit('u', 2, 60_000, async () => new Response('ok'))(from('1.1.1.1'))).status, 200); // 다른 이름도 따로
+  assert.equal(called, 3);
 });

@@ -1,6 +1,6 @@
 // 카카오톡 내보내기 TXT · 일기 TXT 파서. 순수 함수만 둔다 (서버·클라이언트 공용).
 
-export type KakaoMessage = {
+type KakaoMessage = {
   /** YYYY-MM-DD */
   date: string;
   /** HH:MM (24시간) */
@@ -9,7 +9,7 @@ export type KakaoMessage = {
   text: string;
 };
 
-export type KakaoChat = {
+type KakaoChat = {
   /** 내보내기 첫 줄의 대화방 이름 ('박서진 님과 카카오톡 대화' → '박서진') */
   title?: string;
   /** 처음 말한 순서 */
@@ -19,7 +19,7 @@ export type KakaoChat = {
   messages: KakaoMessage[];
 };
 
-export type DiaryEntry = { date?: string; text: string };
+type DiaryEntry = { date?: string; text: string };
 
 const pad = (n: number | string) => String(n).padStart(2, '0');
 

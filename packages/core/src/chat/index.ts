@@ -22,7 +22,7 @@ export const SAMPLE_PERSONA: Persona = {
 };
 
 /** LLM 에 보내는 대화 상한. 오래된 메시지부터 잘라낸다. (요청 상한은 ChatRequestSchema: 100개 · 4000자) */
-export const CHAT_LIMITS = { maxMessages: 24, maxChars: 12_000 } as const;
+const CHAT_LIMITS = { maxMessages: 24, maxChars: 12_000 } as const;
 
 /** 최근 메시지만 남긴다. 마지막(user) 메시지는 항상 포함한다. */
 export function trimMessages(messages: ChatMessage[], limits: { maxMessages: number; maxChars: number } = CHAT_LIMITS): ChatMessage[] {

@@ -55,7 +55,7 @@ function labelOf(path: PropertyKey[]): string | undefined {
 }
 
 /** zod 이슈 하나 → 한국어 문구. */
-export function issueMessage(issue: z.core.$ZodIssue): string {
+function issueMessage(issue: z.core.$ZodIssue): string {
   const label = labelOf(issue.path);
   if (issue.code === 'custom') return /[가-힣]/.test(issue.message) ? issue.message : `${label ?? '요청'} 값을 확인해 주세요.`;
   if (!label) return '요청 형식이 올바르지 않아요.';

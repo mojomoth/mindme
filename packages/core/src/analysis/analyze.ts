@@ -9,11 +9,11 @@ export type Generate = <T>(opts: { schema: z.ZodType<T>; system: string; input: 
 // 토큰 예산 (한국어는 대략 1글자 ≈ 1토큰).
 // 입력 상한은 api.md 의 text 1~300,000자와 같다. 정리한 본문이 DIRECT_CHARS 이하면 한 번에 분석하고,
 // 넘으면 날짜 경계를 지키며 CHUNK_CHARS 묶음으로 잘라 구간별로 요약한 뒤 요약본을 분석한다.
-// 300,000자 → 최대 약 10구간, 요약 호출은 동시에 4개까지.
+// 300,000자 → 약 10구간. 구간 요약은 모두 동시에 보낸다: 최악 지연 = 요약 1회 + 최종 1회
+// (호출당 타임아웃 60초 x 재시도 1회, llm.ts) ≈ 250초 < apps/web maxDuration 300초. 근거는 logs/gate3-server.md.
 export const MAX_INPUT_CHARS = 300_000;
 export const DIRECT_CHARS = 40_000;
 export const CHUNK_CHARS = 30_000;
-const CONCURRENCY = 4;
 
 /** 입력이 분석할 수 없는 형식일 때 (Route Handler 에서 400) */
 export class AnalyzeInputError extends Error {}
@@ -22,7 +22,7 @@ export class AnalyzeInputError extends Error {}
 // OpenAI structured output(strict)은 모든 필드가 필수라서 선택값은 nullable 로 받는다.
 // 길이 제한은 여기 두지 않고 normalizeEvents 에서 계약(EventSchema) 길이로 자른다.
 
-export const LlmEventSchema = z.object({
+const LlmEventSchema = z.object({
   title: z.string(),
   date: z.string(),
   dateEstimated: z.boolean(),
@@ -130,19 +130,6 @@ function prepare(source: Source, text: string, me: string | undefined, today: st
   return { blocks: paragraphs, header: base, units: paragraphs.length, participants: [] };
 }
 
-async function mapLimit<T, R>(items: T[], limit: number, fn: (item: T) => Promise<R>): Promise<R[]> {
-  const out = new Array<R>(items.length);
-  let next = 0;
-  const worker = async () => {
-    while (next < items.length) {
-      const i = next++;
-      out[i] = await fn(items[i]!);
-    }
-  };
-  await Promise.all(Array.from({ length: Math.min(limit, items.length) }, worker));
-  return out;
-}
-
 export async function analyzeRecords(
   req: { source: Source; text: string; me?: string },
   generate: Generate,
@@ -161,8 +148,8 @@ export async function analyzeRecords(
     mode = 'summarized';
     const parts = packChunks(p.blocks, CHUNK_CHARS);
     chunks = parts.length;
-    const digests = await mapLimit(parts, CONCURRENCY, (part) =>
-      generate({ schema: DigestSchema, system: DIGEST_SYSTEM, input: `${p.header}\n\n${part}` }),
+    const digests = await Promise.all(
+      parts.map((part) => generate({ schema: DigestSchema, system: DIGEST_SYSTEM, input: `${p.header}\n\n${part}` })),
     );
     const lines = digests.flatMap((d) =>
       d.moments.map(
@@ -251,7 +238,7 @@ export function sortByTime<T extends { date: string; age?: number }>(events: T[]
 }
 
 /** 출생연도 추정: 연도와 나이가 둘 다 있는 사건들의 (연도 - 나이) 중앙값. 없으면 undefined. */
-export function birthYearOf(events: { date: string; age?: number }[]): number | undefined {
+function birthYearOf(events: { date: string; age?: number }[]): number | undefined {
   const births = events
     .flatMap((e) => {
       const k = dateKey(e.date);
