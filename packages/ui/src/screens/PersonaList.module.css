@@ -181,7 +181,9 @@
 
 .peek {
   margin-top: auto;
-  padding-top: 30px;
+  /* 아래 생성 버튼 영역(sticky, 버튼 높이 + safe-area)은 흐름 안에 자리를 차지하므로
+     스크롤 끝에서 안내가 버튼에 가리지 않는다. 버튼과 붙어 보이지 않게 조금 띄운다. */
+  padding: 30px 0 8px;
   display: flex;
   flex-direction: column;
   align-items: center;

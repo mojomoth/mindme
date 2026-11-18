@@ -11,4 +11,3 @@ export { Working, type WorkingProps, type WorkingStep } from './screens/Working.
 export { ProfileSheet, type ProfileSheetProps, type ProfileValues } from './screens/ProfileSheet.tsx';
 export type { PersonaListItem, ChatBubbleItem } from './screens/types.ts';
 export { characters } from './components/assets.ts';
-export { Avatar } from './components/Avatar.tsx';

@@ -68,37 +68,43 @@ export function ProfileSheet({ initial, avatarSrc, avatarBg, caption, onSave, on
         </button>
 
         <div className={styles.head}>
-          <Avatar src={avatarSrc} size={88} bg={avatarBg} zoom={1.3} />
+          <span className={styles.face}>
+            <Avatar src={avatarSrc} size={112} bg={avatarBg} zoom={1.3} />
+          </span>
           <h2 id="ps-title" className={styles.title}>
-            프로필
+            {name.trim() || initial.name}
           </h2>
           {caption && <p className={styles.caption}>{caption}</p>}
         </div>
 
-        <label className={styles.label} htmlFor="ps-name">
-          이름
-        </label>
-        <input id="ps-name" className={styles.input} value={name} maxLength={40} required onChange={(e) => setName(e.target.value)} />
+        <section className={styles.group} aria-label="이름">
+          <label className={styles.label} htmlFor="ps-name">
+            이름
+          </label>
+          <input id="ps-name" className={styles.input} value={name} maxLength={40} required onChange={(e) => setName(e.target.value)} />
+        </section>
 
-        <label className={styles.label} htmlFor="ps-traits">
-          성격 <small>쉼표로 나눠 적어요</small>
-        </label>
-        <input id="ps-traits" className={styles.input} value={traits} onChange={(e) => setTraits(e.target.value)} />
+        <section className={styles.group} aria-label="성격과 말투">
+          <label className={styles.label} htmlFor="ps-traits">
+            성격 <small>쉼표로 나눠 적어요</small>
+          </label>
+          <input id="ps-traits" className={styles.input} value={traits} onChange={(e) => setTraits(e.target.value)} />
+          <label className={styles.label} htmlFor="ps-speech">
+            말투
+          </label>
+          <textarea id="ps-speech" className={styles.input} rows={3} maxLength={500} value={speech} onChange={(e) => setSpeech(e.target.value)} />
+        </section>
 
-        <label className={styles.label} htmlFor="ps-speech">
-          말투
-        </label>
-        <textarea id="ps-speech" className={styles.input} rows={3} maxLength={500} value={speech} onChange={(e) => setSpeech(e.target.value)} />
-
-        <label className={styles.label} htmlFor="ps-memories">
-          기억 <small>한 줄에 하나씩</small>
-        </label>
-        <textarea id="ps-memories" className={styles.input} rows={4} value={memories} onChange={(e) => setMemories(e.target.value)} />
-
-        <label className={styles.label} htmlFor="ps-emotions">
-          감정 <small>쉼표로 나눠 적어요</small>
-        </label>
-        <input id="ps-emotions" className={styles.input} value={emotions} onChange={(e) => setEmotions(e.target.value)} />
+        <section className={styles.group} aria-label="기억과 감정">
+          <label className={styles.label} htmlFor="ps-memories">
+            기억 <small>한 줄에 하나씩</small>
+          </label>
+          <textarea id="ps-memories" className={styles.input} rows={4} value={memories} onChange={(e) => setMemories(e.target.value)} />
+          <label className={styles.label} htmlFor="ps-emotions">
+            감정 <small>쉼표로 나눠 적어요</small>
+          </label>
+          <input id="ps-emotions" className={styles.input} value={emotions} onChange={(e) => setEmotions(e.target.value)} />
+        </section>
 
         {error && (
           <p className={styles.error} role="alert">

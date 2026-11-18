@@ -19,6 +19,12 @@
   --mm-text-sub: #4a515a;
   --mm-text-muted: #8a939c;
   --mm-line: #e2e9ef;
+  --mm-line-strong: #d5dde5; /* 시트 손잡이·진행 단계 빈 원 */
+  --mm-primary-soft: #fff3ee; /* 주황 옅은 바탕(안내·눌림) */
+  --mm-warn: #9a3412; /* 오류·주의 글자 */
+  --mm-danger: #b4361a; /* 삭제 */
+  --mm-field: #f3f7fa; /* 흰 카드 안 입력란 바탕 */
+  --mm-field-line: #c8ced6;
   --mm-mascot: #ffe48f;
   --mm-stage: #e3ebf1; /* 데스크톱 목업 바깥 배경 */
 

@@ -187,11 +187,14 @@
   flex: 1;
   min-width: 0;
   height: 44px;
-  max-height: 120px;
+  /* 4줄(88px) + 위아래 11px. 넘치면 안에서 스크롤 */
+  max-height: 110px;
   /* 줄바꿈하면 늘어난다 (지원 브라우저). 아니면 44px 안에서 스크롤 */
   field-sizing: content;
-  padding: 11px 18px;
-  border: 0;
+  /* 위아래 여백은 padding 대신 투명 테두리: 스크롤할 때 반쯤 걸친 줄이 여백에 보이지 않는다 */
+  padding: 0 18px;
+  border: solid transparent;
+  border-width: 11px 0;
   border-radius: 22px;
   background: #eceff4;
   font-size: 16px;

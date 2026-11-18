@@ -16,14 +16,21 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  gap: 12px;
   max-height: 100%;
   overflow: auto;
   overscroll-behavior: contain;
-  padding: 10px 20px max(calc(var(--mm-safe-bottom) + 4px), 18px);
+  padding: 10px 16px max(calc(var(--mm-safe-bottom) + 4px), 18px);
   border-radius: 28px 28px 0 0;
-  background: var(--mm-surface);
+  /* 드래프트처럼 옅은 하늘색 바탕 위에 흰 카드를 올린다 */
+  background: var(--mm-bg);
   box-shadow: 0 -10px 40px rgb(20 40 70 / 0.16);
   animation: rise 0.24s ease-out;
+}
+
+/* 내용이 길어도 칸이 눌려 줄어들지 않게 (줄어들면 입력란에 반쯤 보이는 줄이 생긴다) */
+.sheet > * {
+  flex: none;
 }
 
 .sheet:focus {
@@ -31,65 +38,87 @@
 }
 
 .handle {
-  flex: none;
   align-self: center;
   width: 40px;
   height: 5px;
   border-radius: 3px;
-  background: #d5dde5;
+  background: var(--mm-line-strong);
 }
 
 .close {
   position: absolute;
   right: 8px;
   top: 8px;
-  color: #5f656c;
+  color: var(--mm-text-sub);
 }
 
 .head {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 8px 0 6px;
+  margin-bottom: 4px;
+  text-align: center;
+}
+
+.face {
+  display: block;
+  border: 4px solid var(--mm-surface);
+  border-radius: 50%;
+  box-shadow: var(--mm-shadow-card);
 }
 
 .title {
-  margin-top: 8px;
-  font-size: 22px;
+  max-width: 100%;
+  margin-top: 12px;
+  padding: 0 24px;
+  overflow-wrap: anywhere;
+  font-size: 21px;
   font-weight: 800;
   line-height: 28px;
   letter-spacing: -0.5px;
 }
 
 .caption {
-  color: #4a4f55;
+  margin-top: 2px;
+  color: var(--mm-text-sub);
   font-size: 14px;
 }
 
+.group {
+  display: flex;
+  flex-direction: column;
+  padding: 4px 16px 16px;
+  border-radius: 20px;
+  background: var(--mm-surface);
+  box-shadow: var(--mm-shadow-card);
+}
+
 .label {
-  margin-top: 14px;
-  font-size: 15px;
-  font-weight: 800;
-  line-height: 22px;
-  letter-spacing: -0.3px;
+  margin-top: 12px;
+  color: var(--mm-text-sub);
+  font-size: var(--mm-fs-label);
+  font-weight: 700;
+  line-height: 18px;
 }
 
 .label small {
   margin-left: 6px;
-  color: #6a7077;
-  font-size: 13px;
+  color: var(--mm-text-muted);
+  font-size: var(--mm-fs-caption);
   font-weight: 500;
 }
 
+/* 위아래 여백은 padding 대신 투명 테두리로 준다. padding 은 스크롤 영역에 들어가서
+   안에서 스크롤하면 그 자리에 윗줄이 반쯤 걸쳐 보이고, 테두리는 스크롤 밖이라 줄 경계에서 잘린다. */
 .input {
   display: block;
   width: 100%;
-  min-height: 46px;
   margin-top: 6px;
-  padding: 11px 13px;
-  border: 1.5px solid #c8ced6;
+  padding: 0 12px;
+  border: solid transparent;
+  border-width: 11px 0;
   border-radius: 12px;
-  background: #fbfcfd;
+  background: var(--mm-field);
   font-size: 16px;
   line-height: 22px;
   letter-spacing: -0.3px;
@@ -97,37 +126,37 @@
 }
 
 .input:focus {
-  border-color: var(--mm-primary);
   outline: none;
+  box-shadow: 0 0 0 2px var(--mm-primary);
 }
 
 .error {
-  margin-top: 12px;
   word-break: keep-all;
-  color: #9a3412;
+  color: var(--mm-warn);
   font-size: 14px;
 }
 
 .actions {
   display: grid;
-  grid-template-columns: 112px 1fr;
+  grid-template-columns: 104px 1fr;
   gap: 10px;
-  margin-top: 20px;
+  margin-top: 4px;
 }
 
 .delete {
   height: 50px;
-  border: 1.5px solid #e2b4a5;
+  border: 0;
   border-radius: var(--mm-radius-pill);
   background: var(--mm-surface);
-  color: #b4361a;
-  font-size: 15px;
+  color: var(--mm-danger);
+  font-size: 16px;
   font-weight: 800;
+  box-shadow: var(--mm-shadow-card);
   cursor: pointer;
 }
 
 .delete:active {
-  background: #fff3ee;
+  background: var(--mm-primary-soft);
 }
 
 .delete:focus-visible {

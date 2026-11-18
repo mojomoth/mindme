@@ -121,7 +121,6 @@ export function PersonaCreate({
                   onChange={(e) => onAgeChange(e.target.value.replace(/\D/g, ''))}
                   placeholder="32"
                   aria-describedby="pc-age-unit"
-                  required
                 />
                 <span id="pc-age-unit">살</span>
               </span>

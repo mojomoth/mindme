@@ -19,6 +19,9 @@ export interface PersonaModalProps {
   submitDisabled?: boolean;
   /** 슬라이더 아래 안내 (예: 어떤 시점의 나가 만들어지는지) */
   ageNote?: string;
+  /** 같은 이름의 페르소나가 이미 있으면 그 이름. '대화 이어가기'(onOpenExisting)와 '새로 만들기'(onSubmit)를 묻는다. */
+  existingName?: string;
+  onOpenExisting?: () => void;
 }
 
 /** 04 새 페르소나 모달. 03 목록 위에 겹쳐 쓴다(PersonaList 의 children). */
@@ -33,6 +36,8 @@ export function PersonaModal({
   onSubmit,
   submitDisabled,
   ageNote,
+  existingName,
+  onOpenExisting,
 }: PersonaModalProps) {
   const pct = ((age - minAge) / (maxAge - minAge)) * 100;
   const dialog = useRef<HTMLFormElement>(null);
@@ -105,9 +110,24 @@ export function PersonaModal({
           </p>
         )}
 
-        <button type="submit" className={`${shared.primary} ${styles.submit}`} disabled={submitDisabled}>
-          생성하기
-        </button>
+        {existingName ? (
+          <>
+            <p className={styles.exists} role="status">
+              ‘{existingName}’ 페르소나가 이미 있어요.
+              <br />그 대화를 이어갈까요?
+            </p>
+            <button type="button" className={`${shared.primary} ${styles.submit}`} onClick={onOpenExisting}>
+              대화 이어가기
+            </button>
+            <button type="submit" className={styles.secondary} disabled={submitDisabled}>
+              새로 만들기
+            </button>
+          </>
+        ) : (
+          <button type="submit" className={`${shared.primary} ${styles.submit}`} disabled={submitDisabled}>
+            생성하기
+          </button>
+        )}
       </form>
     </div>
   );
