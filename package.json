@@ -8,10 +8,12 @@
   },
   "scripts": {
     "dev:pocs": "pnpm --filter @mindme/pocs dev",
+    "dev:web": "pnpm --filter @mindme/web dev",
     "build": "pnpm --filter @mindme/pocs build",
+    "build:web": "pnpm --filter @mindme/web build",
     "typecheck": "pnpm -r typecheck",
     "lint": "pnpm -r lint",
-    "test": "node --test \"packages/*/test/**/*.test.ts\" \"packages/*/src/**/*.test.ts\"",
+    "test": "node --test --experimental-test-module-mocks \"packages/*/test/**/*.test.ts\" \"packages/*/src/**/*.test.ts\" \"apps/*/lib/**/*.test.ts\"",
     "shot": "node scripts/shot.mjs"
   },
   "devDependencies": {
