@@ -53,34 +53,35 @@
   letter-spacing: -0.3px;
 }
 
+/* 드래프트 실측: 캐릭터 높이 약 129px, 오른쪽 끝 367px. 부제 끝(약 237px)과 10px 남짓 띄운다. */
 .heroArt {
   position: absolute;
-  top: -18px;
-  right: -12px;
-  width: 205px;
-  height: 205px;
+  top: -5px;
+  right: -6px;
+  width: 178px;
+  height: 178px;
   pointer-events: none;
 }
 
 .heroArt img {
   position: relative;
   display: block;
-  width: 205px;
-  height: 205px;
+  width: 178px;
+  height: 178px;
 }
 
 .burst {
   position: absolute;
-  left: 2px;
-  top: 46px;
+  left: 0;
+  top: 38px;
 }
 
 .heroShadow {
   position: absolute;
-  left: 50px;
-  top: 186px;
-  width: 112px;
-  height: 16px;
+  left: 43px;
+  top: 161px;
+  width: 97px;
+  height: 14px;
   border-radius: 50%;
   background: radial-gradient(closest-side, rgb(150 185 215 / 0.55), rgb(150 185 215 / 0));
 }
@@ -95,7 +96,7 @@
 .list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 11px;
   margin: 10px 16px 0;
   padding: 0;
   list-style: none;
@@ -106,8 +107,9 @@
   display: flex;
   align-items: center;
   gap: 14px;
-  min-height: 88px;
-  padding: 6px 12px 6px 15px;
+  /* 드래프트 카드 높이: 두 줄 약 89px, '새로운 페르소나'까지 세 줄 약 96px */
+  min-height: 90px;
+  padding: 0 12px 0 15px;
   border: 0;
   border-radius: 20px;
   background: var(--mm-surface);
@@ -130,12 +132,13 @@
   min-width: 0;
   display: flex;
   flex-direction: column;
+  padding: 15px 0;
 }
 
 .text strong {
   font-size: 19px;
   font-weight: 800;
-  line-height: 26px;
+  line-height: 24px;
   letter-spacing: -0.4px;
 }
 
@@ -146,12 +149,14 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow: hidden;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
 }
 
 .text span {
   color: #4f555c;
   font-size: 16px;
-  line-height: 24px;
+  line-height: 22px;
   letter-spacing: -0.3px;
 }
 
@@ -159,9 +164,9 @@
   display: flex;
   align-items: center;
   gap: 7px;
-  margin-top: 2px;
   color: var(--mm-primary);
   font-size: 14px;
+  line-height: 20px;
   font-style: normal;
   font-weight: 700;
 }
@@ -205,22 +210,24 @@
 @media (max-width: 380px) {
   .heroArt,
   .heroArt img {
-    width: 160px;
-    height: 160px;
+    width: 150px;
+    height: 150px;
   }
 
   .heroArt {
-    top: -4px;
-    right: -16px;
+    top: 8px;
+    right: -13px;
   }
 
   .heroShadow {
-    left: 40px;
-    top: 146px;
-    width: 88px;
+    left: 36px;
+    top: 136px;
+    width: 82px;
+    height: 12px;
   }
 
   .burst {
+    left: -4px;
     top: 30px;
   }
 }

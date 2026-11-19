@@ -50,7 +50,7 @@ export function PersonaList({ personas, onSelect, onCreate, onChats, showReady =
         <span className={styles.heroArt} aria-hidden>
           <i className={styles.heroShadow} />
           <img src={characters.guide} alt="" draggable={false} />
-          <Burst size={26} className={styles.burst} />
+          <Burst size={36} className={styles.burst} />
         </span>
       </section>
 
@@ -59,7 +59,7 @@ export function PersonaList({ personas, onSelect, onCreate, onChats, showReady =
         {personas.map((p) => (
           <li key={p.id}>
             <button type="button" className={styles.row} onClick={() => onSelect?.(p.id)}>
-              <Avatar src={p.avatarSrc} size={76} bg={p.avatarBg} />
+              <Avatar src={p.avatarSrc} size={78} bg={p.avatarBg} />
               <span className={styles.text}>
                 <strong>{p.name}</strong>
                 <span>{p.description}</span>

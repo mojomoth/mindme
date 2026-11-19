@@ -17,7 +17,11 @@ export function PhoneFrame({ children }: { children: ReactNode }) {
             <div className={styles.content}>{children}</div>
             <div className={styles.homeIndicator} aria-hidden />
           </div>
-          <img className={styles.frame} src={mockup.src} width={851} height={1848} alt="" draggable={false} />
+          {/* 모바일(CSS 와 같은 600px 이하)에서는 목업을 내려받지 않는다 */}
+          <picture>
+            <source media="(max-width: 600px)" srcSet="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" />
+            <img className={styles.frame} src={mockup.src} width={851} height={1848} alt="" draggable={false} />
+          </picture>
         </div>
       </div>
     </div>

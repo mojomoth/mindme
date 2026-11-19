@@ -33,7 +33,18 @@ import {
 } from '@mindme/ui';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { errorText, postJson, streamChat } from '../lib/api.ts';
-import { AVATAR_BG, kindOf, mergeEvents, nearestEvent, pickEvents, plainName, store, type MeProfile, type StoredMessage } from '../lib/data.ts';
+import {
+  avatarBgAt,
+  isNewest,
+  kindOf,
+  mergeEvents,
+  nearestEvent,
+  pickEvents,
+  plainName,
+  store,
+  type MeProfile,
+  type StoredMessage,
+} from '../lib/data.ts';
 
 type Screen = 'landing' | 'create' | 'working' | 'list' | 'chat';
 
@@ -180,6 +191,7 @@ export default function MindmeApp() {
   }
 
   async function createFirst() {
+    setNotice(undefined);
     const labels = ['기억을 읽는 중', '그때의 나를 불러오는 중', ...(photo ? [DRAW_STEP] : [])];
     const show = progress(labels, {
       hint: '1~2분쯤 걸려요. 화면을 켜 둔 채 기다려 주세요.',
@@ -411,7 +423,10 @@ export default function MindmeApp() {
   const ageNum = Number(age);
   // 나이는 비워 둘 수 있다(기록에서 읽는다).
   const canCreate = (Boolean(file) || story.trim().length > 0) && (!age || (Number.isInteger(ageNum) && ageNum >= 1 && ageNum <= 120));
-  const avatarOf = (p: Persona) => ({ avatarSrc: p.avatar ?? characters.guideAvatar, avatarBg: AVATAR_BG[p.kind] });
+  const avatarOf = (p: Persona) => ({
+    avatarSrc: p.avatar ?? characters.guideAvatar,
+    avatarBg: avatarBgAt(personas.indexOf(p), personas.length),
+  });
 
   let view: ReactNode;
   switch (screen) {
@@ -435,7 +450,10 @@ export default function MindmeApp() {
           name={name}
           onNameChange={setName}
           age={age}
-          onAgeChange={setAge}
+          onAgeChange={(v) => {
+            setAge(v);
+            setNotice(undefined);
+          }}
           notice={notice}
           onBack={() => setScreen(hasPersonas ? 'list' : 'landing')}
           onSubmit={() => canCreate && createFirst()}
@@ -453,7 +471,7 @@ export default function MindmeApp() {
             id: p.id,
             name: p.name,
             description: (store.chat(p.id).at(-1)?.content ?? p.greeting).replace(/\s+/g, ' '),
-            isNew: newIds.includes(p.id),
+            isNew: isNewest(personas, newIds, p.id),
             ...avatarOf(p),
           }))}
           showReady={newIds.length > 0}

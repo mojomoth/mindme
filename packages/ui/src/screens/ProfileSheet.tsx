@@ -77,7 +77,7 @@ export function ProfileSheet({ initial, avatarSrc, avatarBg, caption, onSave, on
           {caption && <p className={styles.caption}>{caption}</p>}
         </div>
 
-        <section className={styles.group} aria-label="이름">
+        <section className={styles.group}>
           <label className={styles.label} htmlFor="ps-name">
             이름
           </label>

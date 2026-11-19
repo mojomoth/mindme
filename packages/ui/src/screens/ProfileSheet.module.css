@@ -71,6 +71,7 @@
   max-width: 100%;
   margin-top: 12px;
   padding: 0 24px;
+  word-break: keep-all;
   overflow-wrap: anywhere;
   font-size: 21px;
   font-weight: 800;

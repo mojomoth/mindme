@@ -37,7 +37,18 @@ export const store = {
 export const kindOf = (age: number, currentAge: number): PersonaKind =>
   age < currentAge ? 'past' : age === currentAge ? 'present' : 'future';
 
-export const AVATAR_BG: Record<PersonaKind, string> = { past: '#dceaf8', present: '#fef1c5', future: '#fedfd2' };
+// 목록(personas)은 새로 만든 것이 앞에 온다(createFirst·createFromModal 이 앞에 붙인다).
+
+/**
+ * 아바타 배경(tokens.css). 드래프트처럼 카드마다 다른 옅은 색을 만든 순서대로 돌려 쓴다.
+ * 뒤(먼저 만든 것)부터 세므로 새로 만들어도 기존 페르소나 색은 바뀌지 않는다. 처음 만든 3개는 위에서부터 파랑·노랑·복숭아다.
+ */
+const AVATAR_BGS = ['var(--mm-avatar-peach)', 'var(--mm-avatar-yellow)', 'var(--mm-avatar-blue)'];
+export const avatarBgAt = (index: number, count: number) => AVATAR_BGS[(count - 1 - index) % AVATAR_BGS.length]!;
+
+/** '새로운 페르소나' 표시는 방금 만든 것(newIds) 가운데 가장 최근에 만든 하나, 곧 목록 맨 앞에만 붙인다. */
+export const isNewest = (personas: Pick<Persona, 'id'>[], newIds: string[], id: string) =>
+  personas[0]?.id === id && newIds.includes(id);
 
 /**
  * core 가 40자에 맞추려고 사건 제목을 '…'로 자른 이름('졸업하며 서진과 헤어짐을 아쉬워…의 홍길동')은 '17살의 홍길동'으로 바꾼다.
@@ -57,9 +68,13 @@ export function pickEvents(events: TimelineEvent[], profile: MeProfile, max = 3)
     .map((event, i) => ({ event, i, age: eventAgeOf(event, profile) ?? 0 }))
     .filter((x) => x.age >= 1 && x.age <= profile.currentAge)
     .sort((a, b) => weight(b.event) - weight(a.event));
+  // 이름이 같은 페르소나('15살의 홍길동' 둘)는 만들지 않는다. 모자라면 createFirst 가 '지금의 나'로 채운다.
+  const nameOf = (x: (typeof known)[number]) =>
+    plainName({ name: personaName('past', x.age, profile.name, x.event.title), kind: 'past', age: x.age }, profile.name);
   const picked: typeof known = [];
-  for (const x of known) if (picked.length < max && !picked.some((p) => p.age === x.age)) picked.push(x);
-  for (const x of known) if (picked.length < max && !picked.includes(x)) picked.push(x);
+  const clash = (x: (typeof known)[number]) => picked.some((p) => nameOf(p) === nameOf(x));
+  for (const x of known) if (picked.length < max && !picked.some((p) => p.age === x.age) && !clash(x)) picked.push(x);
+  for (const x of known) if (picked.length < max && !clash(x)) picked.push(x);
   return picked.sort((a, b) => a.i - b.i);
 }
 
