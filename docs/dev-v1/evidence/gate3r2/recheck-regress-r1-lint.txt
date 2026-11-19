@@ -1,0 +1,7 @@
+$ pnpm -r lint
+apps/web                                 | [WARN] Unsupported engine: wanted: {"node":"24.x"} (current: {"node":"v26.13.1","pnpm":"11.6.0"})
+Scope: 4 of 5 workspace projects
+apps/web lint$ eslint .
+pocs lint$ eslint .
+apps/web lint: Done
+pocs lint: Done

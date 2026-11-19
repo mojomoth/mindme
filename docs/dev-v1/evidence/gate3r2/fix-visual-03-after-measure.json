@@ -1,0 +1,147 @@
+{
+  "label": "after",
+  "at": "2026-11-19T06:46:16.641Z",
+  "viewports": {
+    "360": {
+      "cards": [
+        {
+          "x": 16,
+          "y": 313,
+          "w": 328,
+          "h": 96,
+          "name": "15살의 홍길동",
+          "isNew": true,
+          "avatarBg": "rgb(220, 234, 248)"
+        },
+        {
+          "x": 16,
+          "y": 420,
+          "w": 328,
+          "h": 90,
+          "name": "졸업식 날의 홍길동",
+          "isNew": false,
+          "avatarBg": "rgb(254, 241, 197)"
+        },
+        {
+          "x": 16,
+          "y": 521,
+          "w": 328,
+          "h": 90,
+          "name": "첫 출근 날의 홍길동",
+          "isNew": false,
+          "avatarBg": "rgb(254, 223, 210)"
+        }
+      ],
+      "gaps": [
+        11,
+        11
+      ],
+      "subTextRight": 239,
+      "subTextY": [
+        224,
+        242
+      ],
+      "heroArt": {
+        "x": 223,
+        "y": 112,
+        "w": 150,
+        "h": 150
+      },
+      "readyShown": true
+    },
+    "390": {
+      "cards": [
+        {
+          "x": 16,
+          "y": 313,
+          "w": 358,
+          "h": 96,
+          "name": "15살의 홍길동",
+          "isNew": true,
+          "avatarBg": "rgb(220, 234, 248)"
+        },
+        {
+          "x": 16,
+          "y": 420,
+          "w": 358,
+          "h": 90,
+          "name": "졸업식 날의 홍길동",
+          "isNew": false,
+          "avatarBg": "rgb(254, 241, 197)"
+        },
+        {
+          "x": 16,
+          "y": 521,
+          "w": 358,
+          "h": 90,
+          "name": "첫 출근 날의 홍길동",
+          "isNew": false,
+          "avatarBg": "rgb(254, 223, 210)"
+        }
+      ],
+      "gaps": [
+        11,
+        11
+      ],
+      "subTextRight": 239,
+      "subTextY": [
+        224,
+        242
+      ],
+      "heroArt": {
+        "x": 218,
+        "y": 99,
+        "w": 178,
+        "h": 178
+      },
+      "readyShown": true
+    },
+    "1440": {
+      "cards": [
+        {
+          "x": 555,
+          "y": 367,
+          "w": 330,
+          "h": 89,
+          "name": "15살의 홍길동",
+          "isNew": true,
+          "avatarBg": "rgb(220, 234, 248)"
+        },
+        {
+          "x": 555,
+          "y": 465,
+          "w": 330,
+          "h": 83,
+          "name": "졸업식 날의 홍길동",
+          "isNew": false,
+          "avatarBg": "rgb(254, 241, 197)"
+        },
+        {
+          "x": 555,
+          "y": 558,
+          "w": 330,
+          "h": 83,
+          "name": "첫 출근 날의 홍길동",
+          "isNew": false,
+          "avatarBg": "rgb(254, 223, 210)"
+        }
+      ],
+      "gaps": [
+        10,
+        10
+      ],
+      "subTextRight": 761,
+      "subTextY": [
+        285,
+        302
+      ],
+      "heroArt": {
+        "x": 741,
+        "y": 170,
+        "w": 164,
+        "h": 164
+      },
+      "readyShown": true
+    }
+  }
+}

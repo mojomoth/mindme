@@ -1,0 +1,49 @@
+# 배포 정적 파일·HTML·/api/health (crawl.mjs, 2026-11-19T07:34:02Z)
+files: 20, bytes: 1569197
+JEV_KEY: full=0 prefix8=0
+GOOGLE_KEY: full=0 prefix8=0
+OPENAI_KEY: full=0 prefix8=0
+CLAUDE_KEY: full=0 prefix8=0
+VERCEL_KEY: full=0 prefix8=0
+RENDER_KEY: full=0 prefix8=0
+OPENROUTER_KEY: full=0 prefix8=0
+sk-pattern: 0
+OPENAI_API_KEY (literal): 0
+OPENAI_KEY (literal): 0
+api.openai.com (literal): 0
+
+# 이번 Critic 증거(remote-behavior-* PNG·JSON·TXT) + 스크립트·JSON(검사 스크립트·이 파일 제외)
+files: 57, bytes: 8729120
+JEV_KEY: full=0 prefix8=0
+GOOGLE_KEY: full=0 prefix8=0
+OPENAI_KEY: full=0 prefix8=0
+CLAUDE_KEY: full=0 prefix8=0
+VERCEL_KEY: full=0 prefix8=0
+RENDER_KEY: full=0 prefix8=0
+OPENROUTER_KEY: full=0 prefix8=0
+sk-pattern: 0
+OPENAI_API_KEY (literal): 0
+OPENAI_KEY (literal): 0
+api.openai.com (literal): 0
+
+# 내려받은 파일 목록
+200 14454 text/html; charset=utf-8 /
+200 40 application/json /api/health
+200 20507 image/png /_next/static/immutable/media/guide-mark-128.2gsd96psuelpy.png
+200 120305 image/png /_next/static/immutable/media/guide-512.0hdnwdn5jutqj.png
+200 36583 text/css; charset=utf-8 /_next/static/immutable/chunks/319vpyo4c67z1.css
+200 24617 text/css; charset=utf-8 /_next/static/immutable/chunks/1ln4b5r71byfc.css
+200 22085 application/javascript; charset=utf-8 /_next/static/immutable/chunks/1a9r1aiaqjv0s.js
+200 181856 application/javascript; charset=utf-8 /_next/static/immutable/chunks/1ai-m4ww2tjmn.js
+200 229776 application/javascript; charset=utf-8 /_next/static/immutable/chunks/078gz0lic3zcq.js
+200 9974 application/javascript; charset=utf-8 /_next/static/immutable/chunks/turbopack-3xd-7z66s-4wg.js
+200 13995 application/javascript; charset=utf-8 /_next/static/immutable/chunks/2w3jzrqyldh_z.js
+200 5766 application/javascript; charset=utf-8 /_next/static/immutable/chunks/0zx8mwxjj3y4b.js
+200 35025 application/javascript; charset=utf-8 /_next/static/immutable/chunks/0n8z_mq83rv8y.js
+200 112594 application/javascript; charset=utf-8 /_next/static/immutable/chunks/0c0hxoamwjsbw.js
+200 263471 image/png /_next/static/immutable/media/mockup-iphone.3-sed8rcvwz19.png
+200 48329 image/png /_next/static/immutable/media/avatar-teen-256.38mwcdveis7h-.png
+200 44188 image/png /_next/static/immutable/media/avatar-young-256.3y9_l0mj46y2n.png
+200 61096 image/png /_next/static/immutable/media/guide-avatar-256.1kumyc23t8xr5.png
+200 155142 image/png /_next/static/immutable/media/guide-peek-512.1spdp5dgk2f58.png
+200 169394 image/png /_next/static/immutable/media/guide-peek-open-512.1y45uuu3h8z16.png

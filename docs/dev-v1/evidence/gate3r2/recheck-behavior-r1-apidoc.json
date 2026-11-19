@@ -1,0 +1,28 @@
+{
+  "withClue": {
+    "chars": 81278,
+    "mode": "summarized",
+    "chunks": 2,
+    "calls": 3,
+    "finalHasClueBlock": true,
+    "finalClueLine": "- 2019-03-01 나 95년생이야 그래서 너보다 한 살 많아",
+    "finalHeaderMe": "나: 이지우",
+    "owner": {
+      "name": "이지우",
+      "currentAge": null
+    }
+  },
+  "noClue": {
+    "chars": 81226,
+    "mode": "summarized",
+    "chunks": 2,
+    "calls": 3,
+    "finalHasClueBlock": false,
+    "finalClueLine": null,
+    "finalHeaderMe": "나: 이지우",
+    "owner": {
+      "name": "이지우",
+      "currentAge": null
+    }
+  }
+}

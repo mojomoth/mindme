@@ -1,0 +1,91 @@
+{
+  "when": "2026-11-19T06:40:53.268Z",
+  "target": "http://localhost:3100",
+  "condition": {
+    "note": "gate3r2-critic-behavior-r1 NEW-story-future-leak 재현과 같은 조건(critic-behavior-r1-state.json 의 profile·events, 04 모달 17살, eventId 없음)",
+    "profile": {
+      "name": "이지우",
+      "currentAge": 27,
+      "story": "첫 출근 날 너무 떨려서 아침도 못 먹었던 게 기억나요. 사수가 말이 없어서 눈치를 많이 봤어요."
+    },
+    "eventsCount": 4,
+    "eventAges": [
+      {
+        "id": "evt_01",
+        "date": "2024-02-29",
+        "age": null,
+        "title": "열한 번 탈락 끝에 합격한 날"
+      },
+      {
+        "id": "evt_02",
+        "date": "2024-03-04",
+        "age": null,
+        "title": "첫 출근에 잔뜩 긴장한 날"
+      },
+      {
+        "id": "evt_03",
+        "date": "2024-03-08",
+        "age": null,
+        "title": "회의에서 의견을 칭찬받은 날"
+      },
+      {
+        "id": "evt_04",
+        "date": "첫 출근 날",
+        "age": null,
+        "title": "긴장으로 아침도 못 먹은 첫 출근 날"
+      }
+    ],
+    "request": {
+      "kind": "past",
+      "age": 17,
+      "situation": "고등학교 2학년 때 처음으로 반 대표로 발표했던 날",
+      "events": "(4개, critic-behavior-r1-state.json mindme:events)",
+      "profile": {
+        "name": "이지우",
+        "currentAge": 27,
+        "story": "첫 출근 날 너무 떨려서 아침도 못 먹었던 게 기억나요. 사수가 말이 없어서 눈치를 많이 봤어요."
+      }
+    }
+  },
+  "persona": {
+    "status": 200,
+    "ms": 16999,
+    "persona": {
+      "id": "per_75ce66c8",
+      "name": "17살의 이지우",
+      "kind": "past",
+      "age": 17,
+      "traits": [
+        "눈치를 봄",
+        "책임감 있음",
+        "생각이 많음",
+        "은근히 용기 냄"
+      ],
+      "speechStyle": "편한 상대에게는 짧은 반말로 이야기한다. 속마음을 꺼낼 때는 '근데', '좀', '괜히'를 섞고, 쑥스러우면 질문으로 말을 돌린다. \"근데 나만 이렇게 신경 쓰나?\" \"좀 떨리긴 해도 일단 해보려고.\"",
+      "memories": [
+        "고등학교 2학년 때 처음으로 반 대표로 발표했다.",
+        "수업을 들으며 공책에 필기하고 교과서를 넘기던 평범한 학교생활을 보냈다.",
+        "쉬는 시간에는 잠깐 쉬다가 다음 수업에 쓸 책을 꺼내 놓곤 했다."
+      ],
+      "emotions": [
+        "긴장",
+        "후련함",
+        "쑥스러움"
+      ],
+      "greeting": "오늘 처음으로 반 대표로 발표했어. 끝났는데도 좀 떨리네, 너도 이 기분 기억나?"
+    }
+  },
+  "chat": {
+    "status": 200,
+    "ms": 3519,
+    "crisis": "0",
+    "question": "요즘 무슨 일 있었어?",
+    "reply": "오늘 반 대표로 처음 발표한 게 제일 큰일이었어. 끝나니까 후련한데, 괜히 내가 한 말 계속 떠올리게 돼. 너는 요즘 무슨 일 있어?"
+  },
+  "check": {
+    "leakPattern": "/출근|사수|회사|입사|직장|팀장|월급/",
+    "personaLeak": null,
+    "replyLeak": null,
+    "pass": true
+  }
+}

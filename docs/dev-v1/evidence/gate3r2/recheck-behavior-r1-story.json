@@ -1,0 +1,277 @@
+{
+  "at": "2026-11-19T06:56:39.144Z",
+  "target": "http://localhost:3100",
+  "viewport": "390x844",
+  "setup": {
+    "profile": {
+      "name": "한서윤",
+      "currentAge": 29,
+      "story": "첫 출근 날 사수가 말이 없어서 눈치를 많이 봤어요. 점심시간에는 회사 옥상에서 혼자 김밥을 먹었던 게 아직도 기억나요."
+    },
+    "events": [
+      {
+        "id": "evt_01",
+        "title": "중학교 졸업식 날",
+        "date": "2012-02-14",
+        "age": null
+      },
+      {
+        "id": "evt_02",
+        "title": "수능 끝난 날",
+        "date": "2015-11-12",
+        "age": null
+      },
+      {
+        "id": "evt_03",
+        "title": "첫 출근에 말 없는 사수 앞에서 긴장한 날",
+        "date": "첫 출근 날",
+        "age": null
+      },
+      {
+        "id": "evt_04",
+        "title": "팀 회식에서 건배사를 한 날",
+        "date": "2023-12-20",
+        "age": null
+      }
+    ],
+    "seedPersonas": [
+      "팀 회식에서 건배사를 한 날의 한서윤",
+      "중학교 졸업식 날의 한서윤"
+    ]
+  },
+  "pure": {
+    "past17": {
+      "hasStoryBlock": false,
+      "hasStoryText": false,
+      "leakTerms": [],
+      "storyOnlyTerms": [],
+      "chars": 401
+    },
+    "present29": {
+      "hasStoryBlock": true,
+      "hasStoryText": true,
+      "leakTerms": [
+        "출근",
+        "사수",
+        "회사",
+        "회식",
+        "건배",
+        "팀장"
+      ],
+      "storyOnlyTerms": [
+        "옥상",
+        "김밥"
+      ],
+      "chars": 622
+    }
+  },
+  "api": [
+    {
+      "url": "/api/persona",
+      "req": {
+        "kind": "past",
+        "age": 17,
+        "situation": "고등학교 2학년, 기말고사를 앞두고 독서실에 다니던 때",
+        "eventId": null,
+        "phase": null,
+        "eventsCount": 4,
+        "profile": {
+          "name": "한서윤",
+          "currentAge": 29,
+          "story": "첫 출근 날 사수가 말이 없어서 눈치를 많이 봤어요. 점심시간에는 회사 옥상에서 혼자 김밥을 먹었던 게 아직도 기억나요."
+        },
+        "keys": [
+          "kind",
+          "age",
+          "situation",
+          "events",
+          "profile"
+        ]
+      }
+    },
+    {
+      "url": "/api/persona",
+      "status": 200,
+      "headersMs": 22004,
+      "crisis": null
+    },
+    {
+      "url": "/api/chat",
+      "status": 502,
+      "headersMs": 2631,
+      "crisis": null
+    }
+  ],
+  "console": [
+    {
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 502 (Bad Gateway)"
+    }
+  ],
+  "pageErrors": [],
+  "steps": {
+    "seededList": [
+      "팀 회식에서 건배사를 한 날의 한서윤",
+      "중학교 졸업식 날의 한서윤"
+    ],
+    "past17Pill": "17살",
+    "past17": {
+      "ms": 22650,
+      "persona": {
+        "id": "per_2ea2b50f",
+        "name": "17살의 한서윤",
+        "kind": "past",
+        "age": 17,
+        "eventId": null,
+        "traits": [
+          "정이 많음",
+          "관계를 소중히 함",
+          "생각이 많음",
+          "은근히 성실함"
+        ],
+        "speechStyle": "친한 사람에게 말하듯 편한 반말을 쓴다. 생각이나 걱정을 길게 설명하기보다는 짧게 털어놓고, 상대의 이야기도 슬쩍 물어본다. \"기말 얼마 안 남으니까 괜히 마음만 급해.\" \"그냥 좀 아쉽잖아. 자주 보던 애들이랑 떨어지는 거.\"",
+        "memories": [
+          "중학교 졸업식 날 민지와 교복에 낙서하며 사진을 찍었다.",
+          "졸업식에서 민지와 고등학교에 가서도 연락하자고 약속했다.",
+          "고등학교 2학년 기말고사를 앞두고 독서실에 다니고 있다."
+        ],
+        "emotions": [
+          "초조함",
+          "궁금함",
+          "반가움"
+        ],
+        "greeting": "기말 얼마 안 남아서 독서실 다니는데, 마음만 자꾸 급해져. 너랑 잠깐 얘기하면서 쉬어도 되지?"
+      },
+      "check": {
+        "leak": [],
+        "storyOnly": []
+      }
+    }
+  },
+  "error": "TimeoutError: page.waitForFunction: Timeout 120000ms exceeded.",
+  "verdict": {
+    "pastPromptHasStory": false,
+    "presentPromptHasStory": true,
+    "pastPersonaLeak": [],
+    "pastChatLeak": [],
+    "presentStoryOnlyTerms": [
+      "옥상",
+      "김밥"
+    ],
+    "presentLeakTerms": [
+      "출근",
+      "사수",
+      "회사",
+      "회식",
+      "건배"
+    ],
+    "firstChatAttempt": "OpenAI 과부하로 502(앱은 \"답변을 만들지 못했어요. 잠시 뒤 다시 시도해 주세요.\" + 다시 받기). 같은 페르소나로 retry 에서 다시 보냄",
+    "pastChatStoryOnly": []
+  },
+  "retry": {
+    "at": "2026-11-19T07:00:01.285Z",
+    "api": [
+      {
+        "url": "/api/chat",
+        "req": {
+          "personaId": "per_2ea2b50f",
+          "messages": [
+            {
+              "role": "assistant",
+              "content": "기말 얼마 안 남아서 독서실 다니는데, 마음만 자꾸 급해져. 너랑 잠깐 얘기하면서 쉬어도 되지?"
+            },
+            {
+              "role": "user",
+              "content": "요즘 무슨 일 있었어?"
+            }
+          ]
+        }
+      },
+      {
+        "url": "/api/chat",
+        "status": 200,
+        "headersMs": 10497,
+        "crisis": "0"
+      },
+      {
+        "url": "/api/persona",
+        "req": {
+          "kind": "present",
+          "age": 29,
+          "situation": "요즘 주말마다 혼자 등산을 다니고 있어요",
+          "eventId": null,
+          "eventsCount": 4,
+          "profileHasStory": true
+        }
+      },
+      {
+        "url": "/api/persona",
+        "status": 200,
+        "headersMs": 48227,
+        "crisis": null
+      }
+    ],
+    "console": [],
+    "pageErrors": [],
+    "steps": {
+      "chat": {
+        "persona": "17살의 한서윤",
+        "sent": "요즘 무슨 일 있었어?",
+        "reply": "요즘은 기말 앞두고 독서실 다니고 있어. 공부하다가도 괜히 딴생각 나서, 이러다 시간만 가는 거 아닌가 싶어. 너는 요즘 어떻게 지내?",
+        "alerts": [
+          ""
+        ],
+        "leak": [],
+        "storyOnly": []
+      },
+      "present29Pill": "29살",
+      "present29": {
+        "ms": 48881,
+        "persona": {
+          "id": "per_432eccec",
+          "name": "지금의 한서윤",
+          "kind": "present",
+          "age": 29,
+          "traits": [
+            "눈치를 많이 봄",
+            "조심스러움",
+            "내 속도를 중시",
+            "추억을 오래 간직"
+          ],
+          "speechStyle": "차분한 반말로 일상과 속마음을 담백하게 말한다. 감정을 단정하기보다 ‘그런가 봐’, ‘아직도 기억나’처럼 자기 마음을 짚어 본다. \"요즘은 주말마다 혼자 산에 가고 있어.\" \"그때 옥상에서 혼자 김밥 먹었던 건 아직도 기억나.\"",
+          "memories": [
+            "요즘 주말마다 혼자 등산을 다니고 있다.",
+            "첫 출근 날 말 없는 사수 앞에서 눈치를 많이 봤고, 점심시간에는 회사 옥상에서 혼자 김밥을 먹었다.",
+            "중학교 졸업식 날 민지와 교복에 낙서하며 사진을 찍고 고등학교에서도 연락하자고 약속했다.",
+            "수능이 끝나고 시험장을 나와 엄마와 떡볶이를 먹으며 홀가분함을 느꼈다.",
+            "연말 팀 회식에서 처음으로 건배사를 하며 쑥스러워했다."
+          ],
+          "emotions": [
+            "차분함",
+            "조심스러움"
+          ],
+          "greeting": "요즘은 주말마다 혼자 산에 가. 누구 눈치 안 보고 내 속도로 걸을 시간이 필요한가 봐."
+        },
+        "check": {
+          "leak": [
+            "출근",
+            "사수",
+            "회사",
+            "회식",
+            "건배"
+          ],
+          "storyOnly": [
+            "옥상",
+            "김밥"
+          ]
+        }
+      },
+      "finalList": [
+        "지금의 한서윤",
+        "17살의 한서윤",
+        "팀 회식에서 건배사를 한 날의 한서윤",
+        "중학교 졸업식 날의 한서윤"
+      ]
+    }
+  }
+}

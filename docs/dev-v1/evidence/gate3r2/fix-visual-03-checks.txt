@@ -1,0 +1,28 @@
+# pnpm typecheck (exit 0)
+apps/web typecheck$ next typegen && tsc -p tsconfig.json
+pocs typecheck$ next typegen && tsc -p tsconfig.json
+pocs typecheck: Generating route types...
+apps/web typecheck: Generating route types...
+pocs typecheck: ✓ Types generated successfully
+apps/web typecheck: ✓ Types generated successfully
+apps/web typecheck: Done
+pocs typecheck: Done
+
+# pnpm test (exit 0)
+✔ Pretendard 조각: 코드포인트가 겹치지 않고 희귀 음절도 조각에 들어 있다 (3.687042ms)
+ℹ tests 55
+ℹ suites 0
+ℹ pass 55
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 253.247959
+
+# pnpm lint (exit 0)
+$ pnpm -r lint
+Scope: 4 of 5 workspace projects
+apps/web lint$ eslint .
+pocs lint$ eslint .
+apps/web lint: Done
+pocs lint: Done

@@ -1,0 +1,742 @@
+{
+  "at": "2026-11-19T07:02:25.467Z",
+  "A": {
+    "360": {
+      "steps": [
+        {
+          "s": "01",
+          "text": "다시 만나는, 그때의 나 기억 속 나와 나누는 조금 특별한 대화 3초 후 페르소나 만들기로 이동해요"
+        },
+        {
+          "s": "02",
+          "ok": true
+        },
+        {
+          "s": "03",
+          "names": [
+            "15살의 홍길동",
+            "졸업식 날의 홍길동",
+            "첫 출근 날의 홍길동"
+          ]
+        },
+        {
+          "s": "04",
+          "pill": "16살"
+        },
+        {
+          "s": "05",
+          "ok": true
+        },
+        {
+          "s": "back-to-list",
+          "ok": true
+        }
+      ],
+      "list": {
+        "docOverflowX": false,
+        "mainRect": {
+          "x": 0,
+          "y": 0,
+          "w": 360,
+          "h": 817
+        },
+        "ready": "페르소나가 준비됐어요",
+        "newBadges": [
+          "새로운 페르소나"
+        ],
+        "cards": [
+          {
+            "name": "15살의 홍길동",
+            "desc": "꿈이 많던 중학생 시절의 나",
+            "isNew": true,
+            "rect": {
+              "x": 16,
+              "y": 313,
+              "w": 328,
+              "h": 96
+            },
+            "bg": "rgb(220, 234, 248)",
+            "bgName": "blue",
+            "textOverflow": false,
+            "insideMain": true
+          },
+          {
+            "name": "졸업식 날의 홍길동",
+            "desc": "새로운 시작을 앞둔 나",
+            "isNew": false,
+            "rect": {
+              "x": 16,
+              "y": 420,
+              "w": 328,
+              "h": 90
+            },
+            "bg": "rgb(254, 241, 197)",
+            "bgName": "yellow",
+            "textOverflow": false,
+            "insideMain": true
+          },
+          {
+            "name": "첫 출근 날의 홍길동",
+            "desc": "설렘과 긴장이 가득했던 하루",
+            "isNew": false,
+            "rect": {
+              "x": 16,
+              "y": 521,
+              "w": 328,
+              "h": 90
+            },
+            "bg": "rgb(254, 223, 210)",
+            "bgName": "peach",
+            "textOverflow": false,
+            "insideMain": true
+          }
+        ]
+      },
+      "bottom": {
+        "peekBottom": 654,
+        "buttonTop": 674,
+        "hiddenByButton": false
+      },
+      "afterModal": {
+        "docOverflowX": false,
+        "mainRect": {
+          "x": 0,
+          "y": 0,
+          "w": 360,
+          "h": 918
+        },
+        "ready": "페르소나가 준비됐어요",
+        "newBadges": [
+          "새로운 페르소나"
+        ],
+        "cards": [
+          {
+            "name": "16살의 홍길동",
+            "desc": "처음 교복을 입은 날의 나",
+            "isNew": true,
+            "rect": {
+              "x": 16,
+              "y": 313,
+              "w": 328,
+              "h": 96
+            },
+            "bg": "rgb(254, 223, 210)",
+            "bgName": "peach",
+            "textOverflow": false,
+            "insideMain": true
+          },
+          {
+            "name": "15살의 홍길동",
+            "desc": "꿈이 많던 중학생 시절의 나",
+            "isNew": false,
+            "rect": {
+              "x": 16,
+              "y": 420,
+              "w": 328,
+              "h": 90
+            },
+            "bg": "rgb(220, 234, 248)",
+            "bgName": "blue",
+            "textOverflow": false,
+            "insideMain": true
+          },
+          {
+            "name": "졸업식 날의 홍길동",
+            "desc": "새로운 시작을 앞둔 나",
+            "isNew": false,
+            "rect": {
+              "x": 16,
+              "y": 521,
+              "w": 328,
+              "h": 90
+            },
+            "bg": "rgb(254, 241, 197)",
+            "bgName": "yellow",
+            "textOverflow": false,
+            "insideMain": true
+          },
+          {
+            "name": "첫 출근 날의 홍길동",
+            "desc": "설렘과 긴장이 가득했던 하루",
+            "isNew": false,
+            "rect": {
+              "x": 16,
+              "y": 622,
+              "w": 328,
+              "h": 90
+            },
+            "bg": "rgb(254, 223, 210)",
+            "bgName": "peach",
+            "textOverflow": false,
+            "insideMain": true
+          }
+        ]
+      },
+      "colorsKept": true,
+      "chat": {
+        "header": "15살의 홍길동 그때의 나와 대화 중 나가기",
+        "bubbles": [
+          "꿈이 많던 중학생 시절의 나",
+          "요즘 어떻게 지내?",
+          "음… 새 학기가 조금 걱정돼. 친구들이랑 반이 갈릴까 봐."
+        ],
+        "chatAvatarBg": "rgb(220, 234, 248)",
+        "overflowX": false
+      },
+      "consoleErrors": []
+    },
+    "390": {
+      "steps": [
+        {
+          "s": "01",
+          "text": "다시 만나는, 그때의 나 기억 속 나와 나누는 조금 특별한 대화 3초 후 페르소나 만들기로 이동해요"
+        },
+        {
+          "s": "02",
+          "ok": true
+        },
+        {
+          "s": "03",
+          "names": [
+            "15살의 홍길동",
+            "졸업식 날의 홍길동",
+            "첫 출근 날의 홍길동"
+          ]
+        },
+        {
+          "s": "04",
+          "pill": "16살"
+        },
+        {
+          "s": "05",
+          "ok": true
+        },
+        {
+          "s": "back-to-list",
+          "ok": true
+        }
+      ],
+      "list": {
+        "docOverflowX": false,
+        "mainRect": {
+          "x": 0,
+          "y": 0,
+          "w": 390,
+          "h": 844
+        },
+        "ready": "페르소나가 준비됐어요",
+        "newBadges": [
+          "새로운 페르소나"
+        ],
+        "cards": [
+          {
+            "name": "15살의 홍길동",
+            "desc": "꿈이 많던 중학생 시절의 나",
+            "isNew": true,
+            "rect": {
+              "x": 16,
+              "y": 313,
+              "w": 358,
+              "h": 96
+            },
+            "bg": "rgb(220, 234, 248)",
+            "bgName": "blue",
+            "textOverflow": false,
+            "insideMain": true
+          },
+          {
+            "name": "졸업식 날의 홍길동",
+            "desc": "새로운 시작을 앞둔 나",
+            "isNew": false,
+            "rect": {
+              "x": 16,
+              "y": 420,
+              "w": 358,
+              "h": 90
+            },
+            "bg": "rgb(254, 241, 197)",
+            "bgName": "yellow",
+            "textOverflow": false,
+            "insideMain": true
+          },
+          {
+            "name": "첫 출근 날의 홍길동",
+            "desc": "설렘과 긴장이 가득했던 하루",
+            "isNew": false,
+            "rect": {
+              "x": 16,
+              "y": 521,
+              "w": 358,
+              "h": 90
+            },
+            "bg": "rgb(254, 223, 210)",
+            "bgName": "peach",
+            "textOverflow": false,
+            "insideMain": true
+          }
+        ]
+      },
+      "bottom": {
+        "peekBottom": 758,
+        "buttonTop": 778,
+        "hiddenByButton": false
+      },
+      "afterModal": {
+        "docOverflowX": false,
+        "mainRect": {
+          "x": 0,
+          "y": 0,
+          "w": 390,
+          "h": 918
+        },
+        "ready": "페르소나가 준비됐어요",
+        "newBadges": [
+          "새로운 페르소나"
+        ],
+        "cards": [
+          {
+            "name": "16살의 홍길동",
+            "desc": "처음 교복을 입은 날의 나",
+            "isNew": true,
+            "rect": {
+              "x": 16,
+              "y": 313,
+              "w": 358,
+              "h": 96
+            },
+            "bg": "rgb(254, 223, 210)",
+            "bgName": "peach",
+            "textOverflow": false,
+            "insideMain": true
+          },
+          {
+            "name": "15살의 홍길동",
+            "desc": "꿈이 많던 중학생 시절의 나",
+            "isNew": false,
+            "rect": {
+              "x": 16,
+              "y": 420,
+              "w": 358,
+              "h": 90
+            },
+            "bg": "rgb(220, 234, 248)",
+            "bgName": "blue",
+            "textOverflow": false,
+            "insideMain": true
+          },
+          {
+            "name": "졸업식 날의 홍길동",
+            "desc": "새로운 시작을 앞둔 나",
+            "isNew": false,
+            "rect": {
+              "x": 16,
+              "y": 521,
+              "w": 358,
+              "h": 90
+            },
+            "bg": "rgb(254, 241, 197)",
+            "bgName": "yellow",
+            "textOverflow": false,
+            "insideMain": true
+          },
+          {
+            "name": "첫 출근 날의 홍길동",
+            "desc": "설렘과 긴장이 가득했던 하루",
+            "isNew": false,
+            "rect": {
+              "x": 16,
+              "y": 622,
+              "w": 358,
+              "h": 90
+            },
+            "bg": "rgb(254, 223, 210)",
+            "bgName": "peach",
+            "textOverflow": false,
+            "insideMain": true
+          }
+        ]
+      },
+      "colorsKept": true,
+      "chat": {
+        "header": "15살의 홍길동 그때의 나와 대화 중 나가기",
+        "bubbles": [
+          "꿈이 많던 중학생 시절의 나",
+          "요즘 어떻게 지내?",
+          "음… 새 학기가 조금 걱정돼. 친구들이랑 반이 갈릴까 봐."
+        ],
+        "chatAvatarBg": "rgb(220, 234, 248)",
+        "overflowX": false
+      },
+      "consoleErrors": []
+    },
+    "1440": {
+      "steps": [
+        {
+          "s": "01",
+          "text": "다시 만나는, 그때의 나 기억 속 나와 나누는 조금 특별한 대화 3초 후 페르소나 만들기로 이동해요"
+        },
+        {
+          "s": "02",
+          "ok": true
+        },
+        {
+          "s": "03",
+          "names": [
+            "15살의 홍길동",
+            "졸업식 날의 홍길동",
+            "첫 출근 날의 홍길동"
+          ]
+        },
+        {
+          "s": "04",
+          "pill": "16살"
+        },
+        {
+          "s": "05",
+          "ok": true
+        },
+        {
+          "s": "back-to-list",
+          "ok": true
+        }
+      ],
+      "list": {
+        "docOverflowX": false,
+        "mainRect": {
+          "x": 540,
+          "y": 40,
+          "w": 360,
+          "h": 822
+        },
+        "ready": "페르소나가 준비됐어요",
+        "newBadges": [
+          "새로운 페르소나"
+        ],
+        "cards": [
+          {
+            "name": "15살의 홍길동",
+            "desc": "꿈이 많던 중학생 시절의 나",
+            "isNew": true,
+            "rect": {
+              "x": 555,
+              "y": 367,
+              "w": 330,
+              "h": 89
+            },
+            "bg": "rgb(220, 234, 248)",
+            "bgName": "blue",
+            "textOverflow": false,
+            "insideMain": true
+          },
+          {
+            "name": "졸업식 날의 홍길동",
+            "desc": "새로운 시작을 앞둔 나",
+            "isNew": false,
+            "rect": {
+              "x": 555,
+              "y": 465,
+              "w": 330,
+              "h": 83
+            },
+            "bg": "rgb(254, 241, 197)",
+            "bgName": "yellow",
+            "textOverflow": false,
+            "insideMain": true
+          },
+          {
+            "name": "첫 출근 날의 홍길동",
+            "desc": "설렘과 긴장이 가득했던 하루",
+            "isNew": false,
+            "rect": {
+              "x": 555,
+              "y": 558,
+              "w": 330,
+              "h": 83
+            },
+            "bg": "rgb(254, 223, 210)",
+            "bgName": "peach",
+            "textOverflow": false,
+            "insideMain": true
+          }
+        ]
+      },
+      "bottom": {
+        "peekBottom": 771,
+        "buttonTop": 790,
+        "hiddenByButton": false
+      },
+      "afterModal": {
+        "docOverflowX": false,
+        "mainRect": {
+          "x": 540,
+          "y": 40,
+          "w": 360,
+          "h": 896
+        },
+        "ready": "페르소나가 준비됐어요",
+        "newBadges": [
+          "새로운 페르소나"
+        ],
+        "cards": [
+          {
+            "name": "16살의 홍길동",
+            "desc": "처음 교복을 입은 날의 나",
+            "isNew": true,
+            "rect": {
+              "x": 555,
+              "y": 367,
+              "w": 330,
+              "h": 89
+            },
+            "bg": "rgb(254, 223, 210)",
+            "bgName": "peach",
+            "textOverflow": false,
+            "insideMain": true
+          },
+          {
+            "name": "15살의 홍길동",
+            "desc": "꿈이 많던 중학생 시절의 나",
+            "isNew": false,
+            "rect": {
+              "x": 555,
+              "y": 465,
+              "w": 330,
+              "h": 83
+            },
+            "bg": "rgb(220, 234, 248)",
+            "bgName": "blue",
+            "textOverflow": false,
+            "insideMain": true
+          },
+          {
+            "name": "졸업식 날의 홍길동",
+            "desc": "새로운 시작을 앞둔 나",
+            "isNew": false,
+            "rect": {
+              "x": 555,
+              "y": 558,
+              "w": 330,
+              "h": 83
+            },
+            "bg": "rgb(254, 241, 197)",
+            "bgName": "yellow",
+            "textOverflow": false,
+            "insideMain": true
+          },
+          {
+            "name": "첫 출근 날의 홍길동",
+            "desc": "설렘과 긴장이 가득했던 하루",
+            "isNew": false,
+            "rect": {
+              "x": 555,
+              "y": 651,
+              "w": 330,
+              "h": 83
+            },
+            "bg": "rgb(254, 223, 210)",
+            "bgName": "peach",
+            "textOverflow": false,
+            "insideMain": true
+          }
+        ]
+      },
+      "colorsKept": true,
+      "chat": {
+        "header": "15살의 홍길동 그때의 나와 대화 중 나가기",
+        "bubbles": [
+          "꿈이 많던 중학생 시절의 나",
+          "요즘 어떻게 지내?",
+          "음… 새 학기가 조금 걱정돼. 친구들이랑 반이 갈릴까 봐."
+        ],
+        "chatAvatarBg": "rgb(220, 234, 248)",
+        "overflowX": false
+      },
+      "consoleErrors": []
+    }
+  },
+  "B": {
+    "360": {
+      "list": {
+        "docOverflowX": false,
+        "mainRect": {
+          "x": 0,
+          "y": 0,
+          "w": 360,
+          "h": 759
+        },
+        "ready": null,
+        "newBadges": [],
+        "cards": [
+          {
+            "name": "15살의 홍길동",
+            "desc": "꿈이 많던 중학생 시절의 나",
+            "isNew": false,
+            "rect": {
+              "x": 16,
+              "y": 261,
+              "w": 328,
+              "h": 90
+            },
+            "bg": "rgb(220, 234, 248)",
+            "bgName": "blue",
+            "textOverflow": false,
+            "insideMain": true
+          },
+          {
+            "name": "첫 출근 날의 홍길동",
+            "desc": "설렘과 긴장이 가득했던 하루",
+            "isNew": false,
+            "rect": {
+              "x": 16,
+              "y": 362,
+              "w": 328,
+              "h": 90
+            },
+            "bg": "rgb(254, 241, 197)",
+            "bgName": "yellow",
+            "textOverflow": false,
+            "insideMain": true
+          },
+          {
+            "name": "졸업식 날의 홍길동",
+            "desc": "새로운 시작을 앞둔 나",
+            "isNew": false,
+            "rect": {
+              "x": 16,
+              "y": 463,
+              "w": 328,
+              "h": 90
+            },
+            "bg": "rgb(254, 223, 210)",
+            "bgName": "peach",
+            "textOverflow": false,
+            "insideMain": true
+          }
+        ]
+      },
+      "consoleErrors": []
+    },
+    "390": {
+      "list": {
+        "docOverflowX": false,
+        "mainRect": {
+          "x": 0,
+          "y": 0,
+          "w": 390,
+          "h": 844
+        },
+        "ready": null,
+        "newBadges": [],
+        "cards": [
+          {
+            "name": "15살의 홍길동",
+            "desc": "꿈이 많던 중학생 시절의 나",
+            "isNew": false,
+            "rect": {
+              "x": 16,
+              "y": 261,
+              "w": 358,
+              "h": 90
+            },
+            "bg": "rgb(220, 234, 248)",
+            "bgName": "blue",
+            "textOverflow": false,
+            "insideMain": true
+          },
+          {
+            "name": "첫 출근 날의 홍길동",
+            "desc": "설렘과 긴장이 가득했던 하루",
+            "isNew": false,
+            "rect": {
+              "x": 16,
+              "y": 362,
+              "w": 358,
+              "h": 90
+            },
+            "bg": "rgb(254, 241, 197)",
+            "bgName": "yellow",
+            "textOverflow": false,
+            "insideMain": true
+          },
+          {
+            "name": "졸업식 날의 홍길동",
+            "desc": "새로운 시작을 앞둔 나",
+            "isNew": false,
+            "rect": {
+              "x": 16,
+              "y": 463,
+              "w": 358,
+              "h": 90
+            },
+            "bg": "rgb(254, 223, 210)",
+            "bgName": "peach",
+            "textOverflow": false,
+            "insideMain": true
+          }
+        ]
+      },
+      "consoleErrors": []
+    },
+    "1440": {
+      "list": {
+        "docOverflowX": false,
+        "mainRect": {
+          "x": 540,
+          "y": 40,
+          "w": 360,
+          "h": 822
+        },
+        "ready": null,
+        "newBadges": [],
+        "cards": [
+          {
+            "name": "15살의 홍길동",
+            "desc": "꿈이 많던 중학생 시절의 나",
+            "isNew": false,
+            "rect": {
+              "x": 555,
+              "y": 319,
+              "w": 330,
+              "h": 83
+            },
+            "bg": "rgb(220, 234, 248)",
+            "bgName": "blue",
+            "textOverflow": false,
+            "insideMain": true
+          },
+          {
+            "name": "첫 출근 날의 홍길동",
+            "desc": "설렘과 긴장이 가득했던 하루",
+            "isNew": false,
+            "rect": {
+              "x": 555,
+              "y": 412,
+              "w": 330,
+              "h": 83
+            },
+            "bg": "rgb(254, 241, 197)",
+            "bgName": "yellow",
+            "textOverflow": false,
+            "insideMain": true
+          },
+          {
+            "name": "졸업식 날의 홍길동",
+            "desc": "새로운 시작을 앞둔 나",
+            "isNew": false,
+            "rect": {
+              "x": 555,
+              "y": 505,
+              "w": 330,
+              "h": 83
+            },
+            "bg": "rgb(254, 223, 210)",
+            "bgName": "peach",
+            "textOverflow": false,
+            "insideMain": true
+          }
+        ]
+      },
+      "consoleErrors": []
+    }
+  }
+}

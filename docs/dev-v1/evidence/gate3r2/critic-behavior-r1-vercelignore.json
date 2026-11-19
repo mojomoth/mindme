@@ -1,0 +1,21 @@
+{
+  "totalFiles": 1213,
+  "uploadedWithVercelignore": 189,
+  "uploadedWithoutVercelignore": 1212,
+  "envFilesWithout": [
+    ".env",
+    ".env.example"
+  ],
+  "envFilesWith": [],
+  "mustHaveMissing": [],
+  "excludedTopDirs": [
+    ".claude",
+    ".env",
+    ".env.example",
+    "CLAUDE.md",
+    "assets",
+    "docs",
+    "scripts"
+  ],
+  "pass": true
+}

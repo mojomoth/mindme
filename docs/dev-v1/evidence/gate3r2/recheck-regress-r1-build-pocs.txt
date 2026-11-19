@@ -1,0 +1,42 @@
+$ pnpm --filter @mindme/pocs build
+apps/web                                 | [WARN] Unsupported engine: wanted: {"node":"24.x"} (current: {"node":"v26.13.1","pnpm":"11.6.0"})
+$ next build
+▲ Next.js 16.4.6 (Turbopack)
+✓ Running next.config.ts took 17ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 889ms
+  Running TypeScript ...
+  Finished TypeScript in 1710ms ...
+  Collecting page data using 11 workers ...
+  Generating static pages using 11 workers (0/12) ...
+  Generating static pages using 11 workers (3/12) 
+  Generating static pages using 11 workers (6/12) 
+  Generating static pages using 11 workers (9/12) 
+✓ Generating static pages using 11 workers (12/12) in 193ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ƒ /api/analyze
+├ ƒ /api/chat
+├ ƒ /api/health
+├ ƒ /api/persona
+├ ƒ /api/persona/avatar
+├ ○ /pocs
+├ ƒ /pocs/analysis
+├ ○ /pocs/chat
+├ ○ /pocs/persona
+├ ○ /pocs/screens
+└   /pocs/screens/[screen]
+  ├ ● /pocs/screens/landing
+  ├ ● /pocs/screens/create
+  ├ ● /pocs/screens/list
+  └ ● [+2 more paths]
+
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+

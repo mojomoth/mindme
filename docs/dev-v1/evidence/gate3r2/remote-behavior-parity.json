@@ -1,0 +1,96 @@
+[
+ {
+  "pair": "1440-01",
+  "size": [
+   1440,
+   900
+  ],
+  "sameSize": true,
+  "diffPixels": 0,
+  "totalPixels": 1296000,
+  "ratio": 0.0,
+  "bbox": null,
+  "maxChannelDiff": 0,
+  "over16": 0
+ },
+ {
+  "pair": "1440-02",
+  "size": [
+   1440,
+   900
+  ],
+  "sameSize": true,
+  "diffPixels": 2,
+  "totalPixels": 1296000,
+  "ratio": 2e-06,
+  "bbox": [
+   586,
+   708,
+   587,
+   710
+  ],
+  "maxChannelDiff": 1,
+  "over16": 0
+ },
+ {
+  "pair": "1440-04",
+  "size": [
+   1440,
+   900
+  ],
+  "sameSize": true,
+  "diffPixels": 18,
+  "totalPixels": 1296000,
+  "ratio": 1.4e-05,
+  "bbox": [
+   569,
+   408,
+   574,
+   666
+  ],
+  "maxChannelDiff": 2,
+  "over16": 0
+ },
+ {
+  "pair": "390-01",
+  "size": [
+   1170,
+   2532
+  ],
+  "sameSize": true,
+  "diffPixels": 0,
+  "totalPixels": 2962440,
+  "ratio": 0.0,
+  "bbox": null,
+  "maxChannelDiff": 0,
+  "over16": 0
+ },
+ {
+  "pair": "390-02",
+  "size": [
+   1170,
+   2532
+  ],
+  "sameSize": true,
+  "diffPixels": 0,
+  "totalPixels": 2962440,
+  "ratio": 0.0,
+  "bbox": null,
+  "maxChannelDiff": 0,
+  "over16": 0
+ },
+ {
+  "pair": "390-04",
+  "size": [
+   1170,
+   2532
+  ],
+  "sameSize": true,
+  "diffPixels": 0,
+  "totalPixels": 2962440,
+  "ratio": 0.0,
+  "bbox": null,
+  "maxChannelDiff": 0,
+  "over16": 0
+ }
+]

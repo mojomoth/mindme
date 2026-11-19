@@ -1,0 +1,4 @@
+src files 189
+env-like: []
+docs: 0 .claude: 0
+top: ['/src/.vercelignore', '/src/apps', '/src/assets', '/src/package.json', '/src/packages', '/src/pnpm-lock.yaml', '/src/pnpm-workspace.yaml', '/src/pocs', '/src/tsconfig.base.json']

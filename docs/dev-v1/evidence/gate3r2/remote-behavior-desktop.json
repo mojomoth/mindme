@@ -1,0 +1,353 @@
+{
+  "at": "2026-11-19T07:31:09.316Z",
+  "frame": {
+    "1440": {
+      "01": {
+        "img": {
+          "left": 523.8,
+          "top": 24,
+          "width": 392.3,
+          "height": 852,
+          "right": 916.2,
+          "bottom": 876
+        },
+        "screen": {
+          "left": 540.4,
+          "top": 39.7,
+          "width": 359.6,
+          "height": 822,
+          "right": 900,
+          "bottom": 861.7
+        },
+        "currentSrc": "mockup-iphone.3-sed8rcvwz19.png",
+        "naturalWidth": 851,
+        "imgComplete": true,
+        "screenInsideImg": true,
+        "ratios": {
+          "left": 0.0423,
+          "top": 0.0184,
+          "width": 0.9166,
+          "height": 0.9648
+        },
+        "centeredX": true,
+        "inViewport": true,
+        "docScroll": {
+          "sw": 1440,
+          "sh": 900,
+          "cw": 1440,
+          "ch": 900,
+          "bodySh": 900
+        },
+        "noDocScroll": true,
+        "scrollY": 0
+      },
+      "02": {
+        "img": {
+          "left": 523.8,
+          "top": 24,
+          "width": 392.3,
+          "height": 852,
+          "right": 916.2,
+          "bottom": 876
+        },
+        "screen": {
+          "left": 540.4,
+          "top": 39.7,
+          "width": 359.6,
+          "height": 822,
+          "right": 900,
+          "bottom": 861.7
+        },
+        "currentSrc": "mockup-iphone.3-sed8rcvwz19.png",
+        "naturalWidth": 851,
+        "imgComplete": true,
+        "screenInsideImg": true,
+        "ratios": {
+          "left": 0.0423,
+          "top": 0.0184,
+          "width": 0.9166,
+          "height": 0.9648
+        },
+        "centeredX": true,
+        "inViewport": true,
+        "docScroll": {
+          "sw": 1440,
+          "sh": 900,
+          "cw": 1440,
+          "ch": 900,
+          "bodySh": 900
+        },
+        "noDocScroll": true,
+        "scrollY": 0
+      },
+      "03": {
+        "img": {
+          "left": 523.8,
+          "top": 24,
+          "width": 392.3,
+          "height": 852,
+          "right": 916.2,
+          "bottom": 876
+        },
+        "screen": {
+          "left": 540.4,
+          "top": 39.7,
+          "width": 359.6,
+          "height": 822,
+          "right": 900,
+          "bottom": 861.7
+        },
+        "currentSrc": "mockup-iphone.3-sed8rcvwz19.png",
+        "naturalWidth": 851,
+        "imgComplete": true,
+        "screenInsideImg": true,
+        "ratios": {
+          "left": 0.0423,
+          "top": 0.0184,
+          "width": 0.9166,
+          "height": 0.9648
+        },
+        "centeredX": true,
+        "inViewport": true,
+        "docScroll": {
+          "sw": 1440,
+          "sh": 900,
+          "cw": 1440,
+          "ch": 900,
+          "bodySh": 900
+        },
+        "noDocScroll": true,
+        "scrollY": 0
+      },
+      "05": {
+        "img": {
+          "left": 523.8,
+          "top": 24,
+          "width": 392.3,
+          "height": 852,
+          "right": 916.2,
+          "bottom": 876
+        },
+        "screen": {
+          "left": 540.4,
+          "top": 39.7,
+          "width": 359.6,
+          "height": 822,
+          "right": 900,
+          "bottom": 861.7
+        },
+        "currentSrc": "mockup-iphone.3-sed8rcvwz19.png",
+        "naturalWidth": 851,
+        "imgComplete": true,
+        "screenInsideImg": true,
+        "ratios": {
+          "left": 0.0423,
+          "top": 0.0184,
+          "width": 0.9166,
+          "height": 0.9648
+        },
+        "centeredX": true,
+        "inViewport": true,
+        "docScroll": {
+          "sw": 1440,
+          "sh": 900,
+          "cw": 1440,
+          "ch": 900,
+          "bodySh": 900
+        },
+        "noDocScroll": true,
+        "scrollY": 0
+      },
+      "errors": []
+    },
+    "1920": {
+      "01": {
+        "img": {
+          "left": 747.3,
+          "top": 78,
+          "width": 425.5,
+          "height": 924,
+          "right": 1172.8,
+          "bottom": 1002
+        },
+        "screen": {
+          "left": 765.2,
+          "top": 95,
+          "width": 390,
+          "height": 891.5,
+          "right": 1155.2,
+          "bottom": 986.5
+        },
+        "currentSrc": "mockup-iphone.3-sed8rcvwz19.png",
+        "naturalWidth": 851,
+        "imgComplete": true,
+        "screenInsideImg": true,
+        "ratios": {
+          "left": 0.0421,
+          "top": 0.0184,
+          "width": 0.9166,
+          "height": 0.9648
+        },
+        "centeredX": true,
+        "inViewport": true,
+        "docScroll": {
+          "sw": 1920,
+          "sh": 1080,
+          "cw": 1920,
+          "ch": 1080,
+          "bodySh": 1080
+        },
+        "noDocScroll": true,
+        "scrollY": 0
+      },
+      "02": {
+        "img": {
+          "left": 747.3,
+          "top": 78,
+          "width": 425.5,
+          "height": 924,
+          "right": 1172.8,
+          "bottom": 1002
+        },
+        "screen": {
+          "left": 765.2,
+          "top": 95,
+          "width": 390,
+          "height": 891.5,
+          "right": 1155.2,
+          "bottom": 986.5
+        },
+        "currentSrc": "mockup-iphone.3-sed8rcvwz19.png",
+        "naturalWidth": 851,
+        "imgComplete": true,
+        "screenInsideImg": true,
+        "ratios": {
+          "left": 0.0421,
+          "top": 0.0184,
+          "width": 0.9166,
+          "height": 0.9648
+        },
+        "centeredX": true,
+        "inViewport": true,
+        "docScroll": {
+          "sw": 1920,
+          "sh": 1080,
+          "cw": 1920,
+          "ch": 1080,
+          "bodySh": 1080
+        },
+        "noDocScroll": true,
+        "scrollY": 0
+      },
+      "03": {
+        "img": {
+          "left": 747.3,
+          "top": 78,
+          "width": 425.5,
+          "height": 924,
+          "right": 1172.8,
+          "bottom": 1002
+        },
+        "screen": {
+          "left": 765.2,
+          "top": 95,
+          "width": 390,
+          "height": 891.5,
+          "right": 1155.2,
+          "bottom": 986.5
+        },
+        "currentSrc": "mockup-iphone.3-sed8rcvwz19.png",
+        "naturalWidth": 851,
+        "imgComplete": true,
+        "screenInsideImg": true,
+        "ratios": {
+          "left": 0.0421,
+          "top": 0.0184,
+          "width": 0.9166,
+          "height": 0.9648
+        },
+        "centeredX": true,
+        "inViewport": true,
+        "docScroll": {
+          "sw": 1920,
+          "sh": 1080,
+          "cw": 1920,
+          "ch": 1080,
+          "bodySh": 1080
+        },
+        "noDocScroll": true,
+        "scrollY": 0
+      },
+      "05": {
+        "img": {
+          "left": 747.3,
+          "top": 78,
+          "width": 425.5,
+          "height": 924,
+          "right": 1172.8,
+          "bottom": 1002
+        },
+        "screen": {
+          "left": 765.2,
+          "top": 95,
+          "width": 390,
+          "height": 891.5,
+          "right": 1155.2,
+          "bottom": 986.5
+        },
+        "currentSrc": "mockup-iphone.3-sed8rcvwz19.png",
+        "naturalWidth": 851,
+        "imgComplete": true,
+        "screenInsideImg": true,
+        "ratios": {
+          "left": 0.0421,
+          "top": 0.0184,
+          "width": 0.9166,
+          "height": 0.9648
+        },
+        "centeredX": true,
+        "inViewport": true,
+        "docScroll": {
+          "sw": 1920,
+          "sh": 1080,
+          "cw": 1920,
+          "ch": 1080,
+          "bodySh": 1080
+        },
+        "noDocScroll": true,
+        "scrollY": 0
+      },
+      "errors": []
+    }
+  },
+  "parity": {
+    "1440-local": {
+      "fonts": [
+        "latin-basic.3uepf7b46eijr.woff2",
+        "hangul-common.1yocirlkx9ke-.woff2"
+      ],
+      "fontCheck01": true
+    },
+    "1440-remote": {
+      "fonts": [
+        "latin-basic.0myqbphs6kc1y.woff2",
+        "hangul-common.1_np0uchtmuoq.woff2"
+      ],
+      "fontCheck01": true
+    },
+    "390-local": {
+      "fonts": [
+        "latin-basic.3uepf7b46eijr.woff2",
+        "hangul-common.1yocirlkx9ke-.woff2"
+      ],
+      "fontCheck01": true
+    },
+    "390-remote": {
+      "fonts": [
+        "latin-basic.0myqbphs6kc1y.woff2",
+        "hangul-common.1_np0uchtmuoq.woff2"
+      ],
+      "fontCheck01": true
+    }
+  }
+}

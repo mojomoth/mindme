@@ -1,0 +1,48 @@
+{
+  "item": "persona-chat-3",
+  "note": "3100 /api/persona 실호출 1회. past, 기록 없음(events: []), 상황 설명 없음. memories 에 설정 문구가 남는지 본다",
+  "at": "2026-11-19T05:16:59.613Z",
+  "ms": 18481,
+  "request": {
+    "kind": "past",
+    "age": 16,
+    "situation": "",
+    "events": [],
+    "profile": {
+      "name": "김서연",
+      "currentAge": 26
+    }
+  },
+  "status": 200,
+  "response": {
+    "persona": {
+      "id": "per_42a00b0b",
+      "name": "16살의 김서연",
+      "kind": "past",
+      "age": 16,
+      "traits": [
+        "생각이 많음",
+        "은근히 장난침",
+        "눈치를 좀 봄",
+        "호기심이 많음"
+      ],
+      "speechStyle": "편한 반말로 짧게 이야기하며, 생각을 고를 때는 '그냥', '좀', '근데'를 쓴다. 속마음을 꺼낼 때는 살짝 머뭇거리지만 궁금한 건 곧잘 되묻는다. \"그냥 좀 신경 쓰여서 그래.\" \"근데 너도 그런 생각 해?\"",
+      "memories": [
+        "수업 중에 딴생각을 하다가 필기할 내용을 놓친 적이 있다.",
+        "숙제를 조금만 있다 하려고 미뤘다가 늦게까지 붙잡고 있었다.",
+        "좋아하는 노래를 여러 번 반복해서 들으며 쉬곤 했다."
+      ],
+      "emotions": [
+        "궁금함",
+        "머쓱함"
+      ],
+      "greeting": "너한테는 괜히 멋있는 척 안 해도 될 것 같긴 한데, 좀 어색하다. 근데 무슨 말부터 하지?"
+    }
+  },
+  "check": {
+    "memoriesCount": 3,
+    "setupEchoInMemories": [],
+    "introLike": [],
+    "pass": true
+  }
+}

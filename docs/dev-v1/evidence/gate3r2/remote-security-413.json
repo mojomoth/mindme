@@ -1,0 +1,43 @@
+{
+  "node_client_module": {
+    "item": "remote-security-4 413",
+    "at": "2026-11-19T07:32:08.673Z",
+    "raw": {
+      "url": "https://mindme-rho.vercel.app/api/chat",
+      "requestBytes": 5000056,
+      "ms": 698,
+      "status": 413,
+      "headers": {
+        "cache-control": "public, max-age=0, must-revalidate",
+        "content-type": "text/plain; charset=utf-8",
+        "server": "Vercel",
+        "x-vercel-error": "FUNCTION_PAYLOAD_TOO_LARGE",
+        "x-vercel-id": "icn1::t76td-1795073528048-1270c3fc95ab"
+      },
+      "body": "Request Entity Too Large\n\nFUNCTION_PAYLOAD_TOO_LARGE\n\nicn1::t76td-1795073528048-1270c3fc95ab\n"
+    },
+    "clientThrown": {
+      "message": "보낸 내용이 너무 커요. 조금 줄여서 다시 해 주세요.",
+      "errorText": "보낸 내용이 너무 커요. 조금 줄여서 다시 해 주세요."
+    }
+  },
+  "chromium": {
+    "item": "remote-security-4 413 browser",
+    "at": "2026-11-19T07:33:30.987Z",
+    "result": {
+      "status": 413,
+      "bytes": 5000056,
+      "shown": "보낸 내용이 너무 커요. 조금 줄여서 다시 해 주세요.",
+      "ms": 516
+    },
+    "net": [
+      {
+        "status": 413,
+        "path": "/api/chat",
+        "xVercelError": "FUNCTION_PAYLOAD_TOO_LARGE"
+      }
+    ],
+    "scripts": 9,
+    "bundleFilesWith413Text": 1
+  }
+}

@@ -1,0 +1,9 @@
+scanned_files=1980 keys=7 (tracked + untracked-to-commit + apps/web/.next)
+JEV_KEY: 0
+GOOGLE_KEY: 0
+OPENAI_KEY: 0
+CLAUDE_KEY: 0
+VERCEL_KEY: 0
+RENDER_KEY: 0
+OPENROUTER_KEY: 0
+sk- token-shaped matches: 0

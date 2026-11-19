@@ -1,0 +1,54 @@
+{
+  "at": "2026-11-19T05:35:10.269Z",
+  "analysis-5": {
+    "390": {
+      "shownText": "기록에서 지금 나이를 찾지 못했어요. 지금 나이를 적어 주세요.",
+      "afterFirstDigit": 0,
+      "afterAge": 0,
+      "reshown": 1,
+      "afterRetryFail": 0,
+      "analyzeCalls": 2,
+      "errors": [],
+      "pass": true
+    },
+    "1440": {
+      "shownText": "기록에서 지금 나이를 찾지 못했어요. 지금 나이를 적어 주세요.",
+      "afterFirstDigit": 0,
+      "afterAge": 0,
+      "reshown": 1,
+      "afterRetryFail": 0,
+      "analyzeCalls": 2,
+      "errors": [],
+      "pass": true
+    }
+  },
+  "persona-chat-2-e2e": {
+    "events": [
+      "15살 민수와 크게 다툼",
+      "15살 반장 선거에서 떨어짐",
+      "17살 전학"
+    ],
+    "personaRequests": [
+      {
+        "kind": "past",
+        "age": 15,
+        "eventId": "evt_01"
+      },
+      {
+        "kind": "past",
+        "age": 17,
+        "eventId": "evt_03"
+      },
+      {
+        "kind": "present",
+        "age": 26
+      }
+    ],
+    "names": [
+      "15살의 홍길동",
+      "17살의 홍길동",
+      "지금의 홍길동"
+    ],
+    "pass": true
+  }
+}

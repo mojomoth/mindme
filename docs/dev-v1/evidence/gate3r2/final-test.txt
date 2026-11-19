@@ -1,0 +1,72 @@
+$ node --test --experimental-test-module-mocks "packages/*/test/**/*.test.ts" "packages/*/src/**/*.test.ts" "apps/*/lib/**/*.test.ts"
+(node:74220) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/jeongyounglee/work/repo/mindme/apps/web/lib/data.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/jeongyounglee/work/repo/mindme/apps/web/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:74220) ExperimentalWarning: Module mocking is an experimental feature and might change at any time
+(node:74220) DeprecationWarning: mock.module(): options.namedExports is deprecated. Use options.exports instead.
+✔ isNewest: 한 번에 여러 개를 만들어도 '새로운 페르소나'는 목록 맨 앞(가장 최근) 하나에만 붙는다 (0.653875ms)
+✔ avatarBgAt: 카드마다 색이 다르고, 새 페르소나를 앞에 붙여도 기존 색은 그대로다 (1.546291ms)
+✔ nearestEvent: 1살 차 사건은 고르고, 2살 차 사건은 고르지 않는다 (core ±1살 규칙) (2.9385ms)
+✔ plainName: 사건 제목이 잘린 이름만 나이 이름으로 바꾼다 (0.100667ms)
+✔ pickEvents: 같은 이름이 될 사건은 고르지 않는다 (같은 나이·명사형 제목) (0.282291ms)
+✔ 이름 규칙 (0.902167ms)
+✔ 과거: 선택한 사건 나이와 맞지 않으면 400 문구 (미래 지식 차단) (4.156667ms)
+✔ 과거: 같은 나이라도 선택한 사건보다 날짜가 뒤인 사건은 뺀다 (0.67325ms)
+✔ 사건 나이: age 우선, 없으면 연도로 계산 (0.1085ms)
+✔ 과거: 그 나이 이후 사건은 입력에서 빠진다 (미래 지식 차단) (0.429583ms)
+✔ 과거: '나의 이야기' 원문은 넣지 않는다 (나이가 없어 미래 일일 수 있음), 현재·미래는 넣는다 (0.572083ms)
+✔ 과거·사건 전: 사건 내용은 넘기지 않고 제목만 분위기로 (0.160792ms)
+✔ 과거·사건 없음: 자유 대화, 없는 eventId 는 null (0.193208ms)
+✔ 현재·미래: 모든 기록을 쓰고, 미래는 목표와 예언 금지 지시를 넣는다 (0.228666ms)
+✔ LLM 초안을 계약 한도로 자른다 (0.917125ms)
+✔ 초안의 줄바꿈을 한 줄로 편다 (chat 시스템 프롬프트 블록 탈출 방지) (0.837708ms)
+✔ 분석 결과의 selfAtTime 단서를 입력에 싣는다 (0.340833ms)
+✔ 기록이 적을 때 설정 문구를 옮긴 기억은 뺀다 (0.534333ms)
+✔ kakao PC: 날짜 구분선·여러 줄 메시지·사진 제외, 1:1 제목으로 나 추정 (2.759666ms)
+✔ kakao 모바일(iOS): 시스템 메시지·이모티콘 제외, 여러 줄, 오전/오후 (0.730917ms)
+✔ kakao Android · 24시간 표기 · Mac CSV · 오전 12시 (0.497ms)
+✔ kakao: 여러 줄 메시지 속 날짜 구분선 모양 줄은 본문으로 남고 다음 메시지 날짜를 바꾸지 않는다 (0.295792ms)
+✔ kakao: (모바일) 날짜 구분선 뒤가 시간 없는 시스템 줄·파일 끝이어도 구분선으로 읽고, PC 파일의 맨 날짜 줄은 본문으로 남긴다 (0.30925ms)
+✔ kakao: 형식이 아니면 메시지 0개, 없는 이름은 me 없음 (0.189042ms)
+✔ diary: 날짜 머리줄 여러 형식으로 분할, 머리줄 없으면 통째 (0.567417ms)
+✔ kakaoDayBlocks / packChunks: 날짜 경계 유지, 큰 블록은 머리줄 다시 붙임 (0.536208ms)
+✔ dateKey / sortByTime: 연도 없는 사건은 출생연도(2000)+나이, 그것도 없으면 AI 순서상 앞 사건 바로 뒤 (0.407666ms)
+✔ normalizeEvents: 계약 길이로 자르고 정렬 후 id 부여 (1.770458ms)
+✔ analyzeRecords: 짧으면 한 번, 길면 구간 요약 후 분석 (5.354209ms)
+✔ normalizeOwner: AI 값 우선, 없으면 대화명·사건으로 계산, 사건 나이보다 어리지 않게 (0.219042ms)
+✔ 분석 프롬프트: 사건 제목은 '~한 날'로, owner 를 묻는다 (0.044584ms)
+✔ chat: 샘플 페르소나는 계약을 지킨다 (3.709375ms)
+✔ chat: 위기 신호 감지 (공백 무시, 관용 표현 제외) (0.462625ms)
+✔ chat: 위기 신호는 최근 user 메시지 3개까지 본다 (2.56975ms)
+✔ chat: 시스템 프롬프트 — 과거는 이후를 모름, 위기 지시는 crisis 때만 (0.749666ms)
+✔ chat: 오래된 대화를 잘라도 마지막 메시지는 남는다 (0.903833ms)
+✔ chat: 페르소나 값은 정보 블록을 탈출하지 못한다 (0.308625ms)
+✔ chat: 이름은 정보 블록 안에만, 따옴표·줄바꿈 정리 후 40자 (0.259334ms)
+✔ zod 오류 → 한국어 문구 (영어 기본 메시지 없음) (47.427667ms)
+✔ http: 검증 통과하면 data (24.431166ms)
+✔ http: 413 · JSON 아님 · 검증 실패 문구 3종 (2.60175ms)
+✔ http: prepare 로 기본값을 채운다 (0.248042ms)
+✔ http: 429 는 rateLimited 문구가 있을 때만 503 (0.153792ms)
+✔ http: data URL → File (0.56625ms)
+✔ http: Content-Length 가 상한의 3배를 넘으면 읽기 전에 413, 기본 문구는 해요체 (0.4325ms)
+✔ http: rateLimit 은 IP·이름별로 세고, 넘으면 429 + Retry-After (1.120583ms)
+(node:74226) ExperimentalWarning: Module mocking is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ routes: 키가 없으면 503, 사유는 숨기고 해요체 안내 (21.411042ms)
+✔ routes: analyze text 가 30만 자를 넘으면 고정 400 문구보다 먼저 413 과 길이 안내 (2.68425ms)
+✔ routes: analyze 는 meta.llm 을 빼고, includeLlm 이면 싣는다. 긴 기록의 구간 요약은 한꺼번에 보낸다 (31.833666ms)
+✔ analyze: source 는 kakao|diary|prompt 만 허용 (1.370042ms)
+✔ persona: 기본값 채움, 나이 범위 검사 (0.933625ms)
+✔ avatar: data URL 이미지 형식만 허용 (0.398083ms)
+✔ chat: 마지막 메시지는 user (1.804167ms)
+✔ Pretendard 조각: tokens.css 의 @font-face 가 조각 파일·unicode-range 와 일치한다 (7.189125ms)
+✔ Pretendard 조각: 코드포인트가 겹치지 않고 희귀 음절도 조각에 들어 있다 (4.978542ms)
+ℹ tests 55
+ℹ suites 0
+ℹ pass 55
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 272.940666

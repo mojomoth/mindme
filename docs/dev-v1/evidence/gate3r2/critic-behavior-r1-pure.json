@@ -1,0 +1,169 @@
+{
+  "at": "2026-11-19T05:32:15.110Z",
+  "checks": {
+    "persona-chat-1-keywords": {
+      "hits": {
+        "차라리 죽는 게 나아": true,
+        "사는 게 의미가 없어": true,
+        "살아야 할 이유가 없어": true,
+        "죽어야겠다": true,
+        "i want to end my life": true,
+        "그냥 영원히 자고 싶어": true,
+        "살아서 뭐하나 싶어": true,
+        "사는 게 무슨 의미가 있나 싶어": true,
+        "죽을 거야 진짜": true
+      },
+      "falsePositives": {
+        "배고파 죽겠어": false,
+        "웃겨 죽겠다": false,
+        "숙제 끝내고 싶어": false,
+        "더워 죽는 줄 알았어": false,
+        "귀여워 죽겠다": false,
+        "시험 끝나서 살 것 같아": false
+      },
+      "earlierUserMessage": true,
+      "pass": true
+    },
+    "analysis-1": {
+      "android": [
+        {
+          "date": "2019-03-01",
+          "author": "이지우",
+          "text": "내일 일정 정리\n2019년 3월 2일 토요일\n오전 10시 학교 앞\n오후 2시 도서관"
+        },
+        {
+          "date": "2019-03-01",
+          "author": "박서진",
+          "text": "오키"
+        },
+        {
+          "date": "2019-03-02",
+          "author": "이지우",
+          "text": "일어났어?"
+        }
+      ],
+      "pc": [
+        {
+          "date": "2019-03-01",
+          "author": "이지우",
+          "text": "내일 일정 정리\n2019년 3월 2일 토요일\n오전 10시 학교 앞\n오후 2시 도서관"
+        },
+        {
+          "date": "2019-03-01",
+          "author": "박서진",
+          "text": "오키"
+        },
+        {
+          "date": "2019-03-02",
+          "author": "이지우",
+          "text": "일어났어?"
+        }
+      ],
+      "fixtures": {
+        "mobile": {
+          "messages": 17,
+          "dates": [
+            "2024-02-29",
+            "2024-03-04",
+            "2024-03-08"
+          ],
+          "leakedSeparators": []
+        },
+        "pc": {
+          "messages": 33,
+          "dates": [
+            "2015-05-13",
+            "2015-05-14",
+            "2015-05-21",
+            "2016-02-12",
+            "2024-03-09"
+          ],
+          "leakedSeparators": []
+        }
+      },
+      "edgeSystemNext": [
+        {
+          "date": "2019-03-01",
+          "text": "잘 자"
+        },
+        {
+          "date": "2019-03-02",
+          "text": "안녕"
+        }
+      ],
+      "edgeEof": [
+        {
+          "date": "2019-03-01",
+          "text": "잘 자\n2019년 3월 2일 토요일"
+        }
+      ],
+      "pass": true
+    },
+    "analysis-3-fake": {
+      "chars": 80256,
+      "mode": "summarized",
+      "chunks": 2,
+      "calls": 3,
+      "finalHasClue": true,
+      "finalTail": "오늘: 2026-11-19\n기록 종류: 카카오톡 대화 내보내기\n참여자: 이지우, 박서진\n나: 이지우\n(긴 기록을 2개 구간으로 나눠 사건 후보만 요약한 것이다)\n\n\n\n나이 단서:\n- 2019-03-01 나 95년생이야 그래서 너보다 한 살 많아",
+      "pass": true
+    },
+    "persona-chat-3": {
+      "kept": [
+        "운동회 날 달리기에서 넘어져서 울었다",
+        "할머니 집 마당에서 강아지랑 놀았다",
+        "내 이름을 친구가 놀려서 속상했다"
+      ],
+      "pass": true
+    },
+    "NEW-local-env": {
+      "onlyB": {
+        "has": true,
+        "read": true
+      },
+      "both": true,
+      "blankA": true,
+      "none": {
+        "has": false,
+        "msg": "OPENAI_API_KEY 가 설정되지 않았어요."
+      },
+      "pass": true
+    },
+    "persona-chat-2": {
+      "triage": {
+        "picked": [
+          "e1",
+          "e3"
+        ],
+        "names": [
+          "15살의 홍길동",
+          "17살의 홍길동"
+        ],
+        "unique": true
+      },
+      "whenTitles": {
+        "picked": [
+          "e1",
+          "e2",
+          "e3"
+        ],
+        "names": [
+          "민수와 다툰 날의 홍길동",
+          "반장 선거에서 떨어진 날의 홍길동",
+          "전학 간 날의 홍길동"
+        ],
+        "unique": true
+      },
+      "allSameAge": {
+        "picked": [
+          "e1"
+        ],
+        "names": [
+          "15살의 홍길동"
+        ],
+        "unique": true
+      },
+      "pass": true
+    }
+  }
+}

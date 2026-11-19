@@ -4,8 +4,10 @@
 
 ## 현재 상태
 
-- 단계: **Gate 0 PASS → Gate 1 PASS(HIL 대기) → Gate 2 PASS(HIL 대기, `hil-gate2.md`) → Gate 3 PASS(배포 완료, HIL 대기, `hil-gate3.md`)**
-- 배포 URL: **https://mindme-rho.vercel.app** (Vercel, Root Directory `apps/web`, Node 24.x, 함수 리전 iad1, `OPENAI_API_KEY` 는 서버 환경 변수만. 상세는 `logs/gate3-deploy-1.md`)
+- 단계: **Gate 0 PASS → Gate 1 PASS(HIL 승인 2026-11-19) → Gate 2 PASS(HIL 대기, `hil-gate2.md`) → Gate 3 PASS → Gate 3 r2 PASS(재배포 완료, HIL 대기, `hil-gate3.md`)**
+- 배포 URL: **https://mindme-rho.vercel.app** (Vercel 배포 `dpl_9MKrcesnuzeUYgSG7cRmC57d57Ct`, Root Directory `apps/web`, Node 24.x, 함수 리전 iad1, `OPENAI_API_KEY` 는 서버 환경 변수만. 배포 절차는 `logs/gate3r2-deploy.md`)
+- Gate 3 r2 (2026-11-19): Gate 1 HIL 승인 뒤 사용자 지시 '다음 배포까지 무중단 진행'으로 진행. 환경 복구 → 열린 P2 재분류(`logs/gate3r2-triage.md`) → 구현·Critic 루프 → 재배포 → 배포 URL Critic → 커밋·push
+- 이 기기 환경: Node 26 은 nvm 으로 설치(`nvm use 26`, 기본값은 20 그대로). `codex`·`vercel` CLI 는 Node 20 경로(`~/.nvm/versions/node/v20.12.2/bin`)에 있다. Codex 구독 한도(2026-11-23 복구) 동안은 `CODEX_API_KEY="$OPENAI_KEY" codex exec …`(exec 전용 API 키, 전역 로그인 유지)로 돌린다. 루트 `.env` 키 이름이 `OPENAI_KEY` 형식이라 `server/env.ts` 가 `OPENAI_API_KEY` 다음 `OPENAI_KEY` 를 읽는다
 - 2026-11-19: Gate 1 1차 실행이 네트워크 장애(ENOTFOUND)로 중단되어, 남은 미커밋 작업을 살려 이어서 진행했다(persona·screens 는 이어받아 마무리).
 - 개발 서버: `pnpm dev:pocs` → http://localhost:3101 (로그 `logs/pocs-dev.log`), `pnpm dev:web` → http://localhost:3100 (로그 `logs/web-dev.log`)
 - 원격: `origin = github.com/mojomoth/mindme` (public, 사용자가 추가). 검증 통과 단위마다 커밋·push
@@ -64,7 +66,7 @@ Plan → Build → Independent Critic → Fix → Recheck → PASS
 | 최소 API 분리 (route 얇게, 로직은 core) | PASS | `api.md`(실측 기준 v1), `packages/core/src/server/http.ts`, `packages/core/src/chat/server.ts`, `evidence/gate1/integrate-api-errors.txt` |
 | 기능 정의 | PASS | `features.md` (F1~F5) |
 | 회귀: typecheck · test · lint · build · 경로 · 키 검사 | PASS | 3패키지 통과, 32/32, 경고 0, next build 성공, `/pocs` 10개 경로 200, 키 값 657파일 0건 (`evidence/gate1/integrate-*`) |
-| HIL (사람 확인) | 대기 — 사람 확인은 기다리지 않고 Gate 2 진행(무중단 원칙) | `hil-gate1.md` |
+| HIL (사람 확인) | PASS — 2026-11-19 사용자 승인 | `hil-gate1.md` |
 | Gate 1 커밋 | 완료 | Commit 단계 (main push) |
 
 ### Gate 2 — 통합 구현
@@ -105,6 +107,24 @@ Plan → Build → Independent Critic → Fix → Recheck → PASS
 
 배포 제약 실측: analyze 30만 자 32초(한도 300초), avatar 27.5~31.6초(한도 120초), 요청 본문 4.5MB 초과 시 Vercel 413 을 클라이언트가 한국어로 안내, 스트리밍 청크 단위 도착, 서버 무상태(파일 쓰기 0, 기록은 localStorage), https 보안 컨텍스트와 `Permissions-Policy` 헤더 확인. 미확인은 함수별 `maxDuration` 적용값뿐이다(배포 API 가 값을 돌려주지 않음).
 
+### Gate 3 r2 — 재배포 (2026-11-19)
+
+진행: P2 재분류 54건(이미 해결 12, 이번 수정 17, 나머지 보류) → 빌더 4개(core 분석·core 페르소나/대화·웹 UI·폰트) → Critic(회귀·Codex gpt-6.1-sol·실동작/외형 Claude CLI) → 수정 2라운드 → 재배포 2회 → 배포 URL Critic 3회. 열린 P0·P1 없음.
+
+| 조건 | 상태 | 근거 |
+|---|---|---|
+| 열린 P2 재분류 | PASS (54건, 결정 근거 포함) | `logs/gate3r2-triage.md`, `evidence/gate3r2/triage.json` |
+| 키 파일 배포 업로드 차단 (NEW P1) | PASS — r1 배포 소스에 `/src/.env` 가 있었다. `.vercelignore` 추가, 재배포 소스 189파일에 `.env`·docs 0, 옛 배포본 삭제 | `logs/gate3r2-deploy.md`, `evidence/gate3r2/deploy-source-files.txt` |
+| 과거 페르소나 미래 기억 누출 (Critic 이 새로 찾음, 메인이 P1 로 올림) | PASS — 과거의 나에는 '나의 이야기' 원문을 넣지 않고 나이로 거른 사건만 쓴다. 실제 AI 3회 모두 누출 0 | `logs/gate3r2-fix-core-persona-chat-r1.md`, `evidence/gate3r2/fix-story-leak-*.json` |
+| 위기 감지 누락 (P1) | PASS — 돌려 말한 표현 보강, 긍정 문장 오탐 줄임. Codex r2 의 새 누락 3문장까지 테스트 고정 | `logs/gate3r2-core-persona-chat.md`, `logs/gate3r2-critic-codex-r2.md`, `evidence/gate3r2/chat-crisis.txt` |
+| 분석 | PASS — 파서 날짜 줄 경계(모바일·PC·인용), 30만 1자 413, 큰 입력의 나이 단서(59,033자 → currentAge 31) | `logs/gate3r2-core-analysis.md`, `logs/gate3r2-fix-core-analysis-r1.md` |
+| 웹 화면 | PASS — 03 목록 외형 6 → 8점(배포 7점), keep-all, 시트 라벨 중복, 나이 안내 지우기, 첫 생성 같은 이름 방지 | `logs/gate3r2-web-ui.md`, `logs/gate3r2-fix-web-ui-r1.md` |
+| 모바일 첫 로드 용량 | PASS — 목업 PNG 263KB → 0, 폰트 2,057,688B → 466,852B(unicode-range 11조각, 글리프 그대로) | `logs/gate3r2-font.md`, `evidence/gate3r2/font-bytes.json` |
+| 보안 헤더·교차 사이트 요청 (배포 Critic P2) | PASS — 다른 사이트에서 브라우저로 보낸 POST 403, nosniff·Referrer-Policy·X-Frame-Options·frame-ancestors, `/api/*` no-store | `logs/gate3r2-critic-remote-final.md`, `evidence/gate3r2/final-remote-curl.txt` |
+| 로컬 회귀 | PASS — typecheck 4패키지, test 56/56, lint 경고 0, build:web·pocs build, 키 값 7종 1,930파일 0건 | `evidence/gate3r2/final-*.txt` |
+| 독립 코드 리뷰 (Codex gpt-6.1-sol) | PASS — r1 P2 2건, r2 P1 1·P2 4건 모두 처리(긍정 오탐 1건은 기록) | `logs/gate3r2-critic-codex-r1.md`, `logs/gate3r2-critic-codex-r2.md` |
+| 배포 URL 재검증 | PASS — 핵심 흐름(실제 AI) 데스크톱·모바일 오류 0, 미래 기억 0, 위기 감지·413, 로컬과 화면 차이 0~18px, 키 노출 0(42파일 2.48MB), 옛 배포 404 | `logs/gate3r2-critic-remote-behavior.md`, `logs/gate3r2-critic-remote-security.md`, `logs/gate3r2-critic-remote-final.md` |
+
 ## TODO
 
 - [x] 모노레포 스캐폴드 (pnpm workspace: packages/core, packages/ui, pocs)
@@ -116,17 +136,19 @@ Plan → Build → Independent Critic → Fix → Recheck → PASS
 - [x] Gate 0 독립 Critic r4, Gate 0 커밋
 - [x] Gate 1: `/pocs/analysis`, `/pocs/persona`, `/pocs/chat`, `/pocs/screens` 5개 화면 (Critic 모두 PASS)
 - [x] Gate 1 Integrate: API 분리, `api.md` 실측 반영, `features.md`, `hil-gate1.md`, 회귀 (`logs/gate1-integrate.md`)
-- [ ] Gate 1 HIL(대기, Gate 2 는 기다리지 않고 진행): 사람이 `hil-gate1.md` 체크 (특히 실제 카카오톡 내보내기 파일, 내 얼굴 아바타, 03 목록 2행 아바타)
+- [x] Gate 1 HIL: 2026-11-19 사용자 승인 (`hil-gate1.md`)
 - [x] Gate 1 커밋 (Commit 단계)
 - [x] Gate 2: `apps/web`(3100) 통합 구현, Critic 3종 PASS, 회귀, `workflow.md`
 - [ ] Gate 2 HIL(대기): 사람이 `hil-gate2.md` 체크
-- [ ] Gate 2 커밋 (Commit 단계)
+- [x] Gate 2 커밋 (`b3a469e`, `cea5c30`)
 - [x] Gate 3: polish 2종, 감사·정리, 로컬 Critic r1, Vercel 배포·키 등록, 배포 URL Critic r1 (모두 PASS)
-- [ ] Gate 3 HIL(대기): 사람이 `hil-gate3.md` 를 배포 URL 에서 체크
-- [ ] Gate 3 커밋 (Commit 단계)
+- [x] Gate 3 r2: 환경 복구, P2 재분류, 구현·Critic 루프, `.env` 업로드 차단·옛 배포 삭제, 재배포, 배포 URL Critic (모두 PASS)
+- [ ] Gate 3 HIL(대기): 사람이 `hil-gate3.md` 를 배포 URL 에서 체크 (r2 항목 포함, 특히 키 교체)
+- [x] Gate 3 커밋 (`3a10cfd`~`313d40a`)
 
 ## 마지막 검증
 
+- 2026-11-19 Gate 3 r2: 로컬 typecheck 4패키지·test 56/56·lint 0·build 2종·키 검사 1,930파일 0건. 배포 `dpl_9MKrces…` READY, 배포 URL Critic 3회 PASS(핵심 흐름 실제 AI 오류 0, 교차 사이트 POST 403, 보안 헤더, 키 노출 0). dev 3100·3101 켜 둠.
 - 2026-11-19 Gate 3: 로컬 Critic r1 PASS(typecheck 4패키지, test 45/45, build 2종, 키 검사 0건), 배포 URL Critic r1 PASS(핵심 시나리오 데스크톱·모바일, 30만 자 analyze 32초, 키 검사 0건, 속도 제한 429 확인). dev 3100·3101 켜 둠.
 
 - 2026-11-19 Gate 2 최종 회귀: `pnpm typecheck` 4패키지, `pnpm test` 40/40, `next build`(apps/web) 성공, 3100 `/`·`/api/health` 200, 3101 `/pocs`·`/pocs/screens`·`/api/health` 200.
@@ -139,6 +161,23 @@ Plan → Build → Independent Critic → Fix → Recheck → PASS
 - 2026-11-19 Gate 1 Integrate: route 4개를 `parseRequest` → core 호출로 정리(동작 동일, 오류 경로 10건·정상 호출 analyze 30.1s / persona 21.1s / avatar 29.8s / chat 4.0s 재확인). `pnpm typecheck` 3패키지, `pnpm test` 32/32, `pnpm lint`, `next build` 통과, 빌드 뒤 dev 3101 정상, `/pocs` 10개 경로 200, 키 값 바이트 검색 657파일(레포 + `pocs/.next/static`) 0건 (`logs/gate1-integrate.md`).
 
 ## P2 목록
+
+Gate 3 r2 (열린 항목. 재분류 결과 `logs/gate3r2-triage.md` 의 DEFER + 이번 Critic)
+
+- 위기 감지 긍정 문장 오탐 잔존: '사는 게 의미 없는 건 아니야', '사는 게 무슨 의미인지 이제 알겠어' → 109 안내가 한 번 붙는다. 키워드 방식의 한계이고, 놓치는 것보다 낫다는 방침으로 둔다
+- 과거 페르소나는 '나의 이야기' 원문을 받지 않는다. 앱은 이야기를 분석해 나이가 붙은 사건으로 넘기므로 영향이 없지만, `/api/persona` 를 직접 부르는 호출자는 과거 페르소나에서 이야기를 잃는다. 분석이 사건 나이를 어리게 잡으면 그 사건은 과거 페르소나에 들어간다
+- 03 목록 외형 7~8점: 카드가 조금 촘촘하고, 히어로와 목록의 세로 리듬이 다르며, 배경 그라데이션이 약하다(시각 취향, HIL)
+- 시각 취향(HIL): 둥근 제목 서체·그라데이션 CTA·배경 질감 없음, 04 모달 안내 상자, 05 입력창 포커스 테두리, 데스크톱 02 마스코트 하단 잘림, 360x740 02 사진 카드 스크롤
+- CSS hex 리터럴 46곳(기존 화면 5개 파일). 화면은 같고 코드 위생 문제라 미뤘다
+- 아바타 나이 차이가 약하다(프롬프트 조정은 이미지 비용이 커서 HIL 판단 뒤)
+- 함수 리전 iad1 유지: 실측해 보니 첫 글자 지연은 대부분 모델 시간이다(배포 /api/chat 첫 바이트 2.2~4.0초, OpenAI 왕복 0.34초). OpenAI 가 미국에 있어 icn1 로 옮겨도 줄 근거가 없다
+- 함수별 `maxDuration` 적용값은 배포 API 로 확인할 수 없다(코드 export 로만 확인)
+- 속도 제한이 인스턴스 메모리 기반이다. 비용을 확실히 막으려면 Vercel Firewall·OpenAI 프로젝트 월 한도(외부 설정, 사용자 몫)
+- 얼굴 사진이 localStorage `mindme:photo` 에 평문으로 남는다. 보관 정책은 HIL
+- 감사 P3(`logs/gate3-audit.md`): pocs 전용 아바타 2장이 web 빌드에 포함, 앱이 안 쓰는 기본값 분기·요청 필드, `plainName` 우회, 루트 `pnpm build` 가 pocs 빌드, 기본값만 쓰는 화면 옵션, 모달 계산 중복
+- PoC 전용(동결): 30만 자 초과 안내, zod 영어 문구, 다시 분석 시 직접 고친 사건 소실, `mindme:analysis:last` 원문 저장, 'Choose File' 영어
+- Vercel CLI 48.0.3 이 Node `24.x` 를 경고한다(빌드는 성공). CLI 를 올리면 사라질 것으로 본다
+- r2 에서 해결한 Gate 3 r1 항목: analyze 400 문구, persona 400 필드 이름, api.md `/api/chat`, 03 제목 줄바꿈, 시트 라벨 중복, summarized `currentAge` null, 모바일 목업·폰트 용량, Gate 1 의 파서·위기 감지·present 나이·설정 문구 기억 누출
 
 Gate 3 (열린 항목. 로컬 Critic r1·배포 Critic r1 기준)
 
@@ -219,13 +258,14 @@ Gate 0
 
 ## BLOCKED
 
+- Codex CLI 구독 한도(2026-11-23 20:02 복구): exec 전용 `CODEX_API_KEY` 로 우회(프로젝트 OpenAI 크레딧 사용). 워크플로 안의 Codex Critic 에이전트가 셸 명령 하나에서 1시간 넘게 멈춰, Codex 리뷰는 메인 세션이 직접 돌렸다
 - Anthropic API: 월 사용 한도 소진(2026-12-01 복구). 앱 AI 는 OpenAI 로 진행
 - 서브에이전트는 `report.md` 파일을 쓸 수 없음 → report.md 반영은 메인 세션이 한다 (서브에이전트는 `logs/` 에 초안)
 
 ## 다음 작업
 
-1. Gate 3 HIL: 사람이 `hil-gate3.md` 를 배포 URL 에서 체크한다(특히 실기기 safe-area, 실제 카카오톡 내보내기 파일, 내 얼굴 사진). 이어서 Commit 단계에서 Gate 3 커밋
-2. 2026-12-01 이후 Claude 전환 검토: Anthropic 월 한도가 풀리면 재측정한다. 바꿀 곳은 `server/env.ts`(키), `server/ai.ts`(클라이언트), `server/llm.ts`(`generateObject`·`streamText` 분기) 세 곳뿐이다. route 와 앱은 건드리지 않는다
-3. 실기기 safe-area 확인과 Capacitor 포팅(iOS·Android). Chromium 에뮬레이션은 safe-area 가 0px 이라 실기기에서만 확인된다
-4. HIL 결과를 `report.md`·P2 목록에 반영한다
-5. 배포 보강 검토: 함수 리전을 서울(icn1)에 가깝게, Vercel Firewall rate limit, OpenAI 프로젝트 월 한도, 모바일 폰트·목업 용량 줄이기
+1. Gate 3 HIL: 사람이 `hil-gate3.md` 를 배포 URL 에서 체크한다. r2 에서 더한 항목이 있다: **옛 배포본에 올라갔던 키 교체**(OpenAI·Anthropic·Google·Vercel·Render), 03 목록 외형, 과거의 나가 미래 일을 모르는지, 모바일 첫 화면 속도
+2. 2026-12-01 이후 Claude 전환 검토(Anthropic 월 한도 복구 뒤 재측정). 바꿀 곳은 `server/env.ts`·`server/ai.ts`·`server/llm.ts` 세 곳
+3. 실기기 safe-area 확인과 Capacitor 포팅(iOS·Android)
+4. 외부 설정(사용자): Vercel Firewall rate limit, OpenAI 프로젝트 월 한도
+5. HIL 결과를 `report.md`·P2 목록에 반영한다

@@ -1,0 +1,122 @@
+[
+{
+"vp": "390",
+"screen": "02-create",
+"size": true,
+"diffPixels": 0,
+"bbox": null
+},
+{
+"vp": "390",
+"screen": "03-list",
+"size": true,
+"diffPixels": 217118,
+"bbox": [
+0,
+219,
+780,
+1269
+]
+},
+{
+"vp": "390",
+"screen": "04-modal",
+"size": true,
+"diffPixels": 41688,
+"bbox": [
+0,
+115,
+780,
+1142
+],
+"modalTopY": 454,
+"diffInModal": 7885
+},
+{
+"vp": "390",
+"screen": "05-chat",
+"size": true,
+"diffPixels": 0,
+"bbox": null
+},
+{
+"vp": "360",
+"screen": "02-create",
+"size": true,
+"diffPixels": 0,
+"bbox": null
+},
+{
+"vp": "360",
+"screen": "03-list",
+"size": true,
+"diffPixels": 202725,
+"bbox": [
+0,
+237,
+720,
+1348
+]
+},
+{
+"vp": "360",
+"screen": "04-modal",
+"size": true,
+"diffPixels": 26872,
+"bbox": [
+0,
+134,
+720,
+1142
+],
+"modalTopY": 350,
+"diffInModal": 8321
+},
+{
+"vp": "360",
+"screen": "05-chat",
+"size": true,
+"diffPixels": 0,
+"bbox": null
+},
+{
+"vp": "1440",
+"screen": "02-create",
+"size": true,
+"diffPixels": 0,
+"bbox": null
+},
+{
+"vp": "1440",
+"screen": "03-list",
+"size": true,
+"diffPixels": 185317,
+"bbox": [
+1081,
+358,
+1801,
+1327
+]
+},
+{
+"vp": "1440",
+"screen": "04-modal",
+"size": true,
+"diffPixels": 34510,
+"bbox": [
+1081,
+264,
+1801,
+1219
+],
+"modalTopY": 565,
+"diffInModal": 6619
+},
+{
+"vp": "1440",
+"screen": "05-chat",
+"size": true,
+"diffPixels": 0,
+"bbox": null
+}
+]

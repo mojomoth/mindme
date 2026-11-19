@@ -1,0 +1,45 @@
+{
+ "viewport": "390x844 DPR2 첫 로드(01 랜딩 -> 02 만들기, networkidle)",
+ "before": {
+  "firstLoadFontBytes": 2057688,
+  "fonts": [
+   {
+    "url": "pretendard.0ztvx5mb7lxp4.woff2",
+    "bytes": 2057688
+   }
+  ],
+  "rareSyllablesCheck": {
+   "똠": true,
+   "쀍": true,
+   "햏": true,
+   "loaded": 1
+  }
+ },
+ "after": {
+  "firstLoadFontBytes": 466852,
+  "fonts": [
+   {
+    "url": "latin-basic.3uepf7b46eijr.woff2",
+    "bytes": 61776
+   },
+   {
+    "url": "hangul-common.1yocirlkx9ke-.woff2",
+    "bytes": 405076
+   }
+  ],
+  "rareSyllablesCheck": {
+   "똠": true,
+   "쀍": true,
+   "햏": true,
+   "loaded": 5
+  }
+ },
+ "pixelDiff": {
+  "01": 0,
+  "02": 0,
+  "03": 0,
+  "04": 0,
+  "test": 0
+ },
+ "limitBytes": 700000
+}

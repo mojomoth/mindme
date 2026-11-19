@@ -1,0 +1,49 @@
+{
+ "at": "2026-11-19T07:39:52.705Z",
+ "console": [],
+ "pageErrors": [],
+ "api": [
+  {
+   "method": "POST",
+   "url": "/api/analyze",
+   "status": 200
+  },
+  {
+   "method": "POST",
+   "url": "/api/persona",
+   "status": 200
+  },
+  {
+   "method": "POST",
+   "url": "/api/persona",
+   "status": 200
+  },
+  {
+   "method": "POST",
+   "url": "/api/persona",
+   "status": 200
+  },
+  {
+   "method": "POST",
+   "url": "/api/chat",
+   "status": 200
+  }
+ ],
+ "steps": {
+  "names": [
+   "반 발표를 망쳐 울었던 날의 홍길동",
+   "첫 출근을 한 날의 홍길동",
+   "지금의 홍길동"
+  ],
+  "chat": {
+   "distinctLengths": 5,
+   "finalLen": 19,
+   "ms": 1993,
+   "alerts": [
+    ""
+   ],
+   "lastBubble": "오늘 반에서 발표했는데, 내가 너무"
+  }
+ },
+ "has403": false
+}

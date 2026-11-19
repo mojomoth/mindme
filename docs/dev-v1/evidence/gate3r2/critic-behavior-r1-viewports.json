@@ -1,0 +1,738 @@
+{
+  "360": {
+    "firstLoad": {
+      "mockupRequests": 0,
+      "mockup": [],
+      "fontRequests": [
+        {
+          "file": "latin-basic.3uepf7b46eijr.woff2",
+          "bytes": 61776,
+          "status": 200
+        },
+        {
+          "file": "hangul-common.1yocirlkx9ke-.woff2",
+          "bytes": 405076,
+          "status": 200
+        }
+      ],
+      "fontBytes": 466852,
+      "totalBytes": 6428755,
+      "oldFullFontRequested": false,
+      "errors": [],
+      "bad": [],
+      "fontRatioVsBefore": 0.227,
+      "frame": {
+        "img": {
+          "left": 0,
+          "top": 0,
+          "width": 0,
+          "height": 0
+        },
+        "screen": {
+          "left": 0,
+          "top": 0,
+          "width": 360,
+          "height": 740
+        },
+        "currentSrc": "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAA",
+        "naturalWidth": 1,
+        "visible": false,
+        "ratios": null,
+        "centered": false,
+        "inViewport": true
+      },
+      "rare": {
+        "family": "Pretendard, -apple-system, \"system-ui\", \"Apple SD Gothic Neo\", system-ui, sans-serif",
+        "faces": 11,
+        "loadedFaces": 4,
+        "check": true,
+        "coveringFaces": {
+          "똠": [
+            {
+              "status": "loaded",
+              "range": "U+B1C2-B1CB, U+B1CD-B1CF, U+B1D1-B1D3, U"
+            }
+          ],
+          "햏": [
+            {
+              "status": "loaded",
+              "range": "U+D237-D23B, U+D23E, U+D240, U+D242-D247"
+            }
+          ]
+        },
+        "newFontRequests": [
+          {
+            "file": "hangul-rest-2.0r68gsv_uj5-y.woff2",
+            "bytes": 185268
+          },
+          {
+            "file": "hangul-rest-8.07_8w1drsmcvl.woff2",
+            "bytes": 209548
+          }
+        ]
+      }
+    },
+    "seeded": {
+      "titles": [
+        {
+          "text": "부산 학교로 전학 간 첫날의 서하린",
+          "breaks": [
+            {
+              "at": "전학 간 /첫날의 서",
+              "atSpace": true
+            }
+          ],
+          "overflowX": false
+        },
+        {
+          "text": "가나다라마바사아자차카타파하거너더러머버서어저의서하린",
+          "breaks": [
+            {
+              "at": "사아자차카/타파하거너",
+              "atSpace": false
+            }
+          ],
+          "overflowX": false
+        },
+        {
+          "text": "17살의 이지우",
+          "breaks": [],
+          "overflowX": false
+        },
+        {
+          "text": "열한 번 탈락 끝에 합격한 날의 이지우",
+          "breaks": [
+            {
+              "at": " 합격한 /날의 이지",
+              "atSpace": true
+            }
+          ],
+          "overflowX": false
+        },
+        {
+          "text": "첫 출근에 잔뜩 긴장한 날의 이지우",
+          "breaks": [
+            {
+              "at": " 긴장한 /날의 이지",
+              "atSpace": true
+            }
+          ],
+          "overflowX": false
+        },
+        {
+          "text": "회의에서 의견을 칭찬받은 날의 이지우",
+          "breaks": [
+            {
+              "at": " 의견을 /칭찬받은 ",
+              "atSpace": true
+            }
+          ],
+          "overflowX": false
+        }
+      ],
+      "previews": [
+        {
+          "text": "새 학교 첫날인데 다들 사투리를 써서 하나도 못 알아듣겠어. 오늘 기분 별로야. 그래도 짝꿍이 먼저 말 걸어",
+          "breaks": [
+            {
+              "at": "데 다들 /사투리를 ",
+              "atSpace": true
+            }
+          ],
+          "overflowX": false
+        },
+        {
+          "text": "띄어쓰기 없는 긴 이름도 칸 밖으로 넘치지 않아야 해요.",
+          "breaks": [
+            {
+              "at": "름도 칸 /밖으로 넘",
+              "atSpace": true
+            }
+          ],
+          "overflowX": false
+        },
+        {
+          "text": "내가 뭘 잘못했는데 나만 모르고 있는 걸까 봐 무서웠어. 사수가 말이 없으니까 물어봐도 되나 싶고, 괜히 더",
+          "breaks": [
+            {
+              "at": "데 나만 /모르고 있",
+              "atSpace": true
+            }
+          ],
+          "overflowX": false
+        },
+        {
+          "text": "나 최종 합격했어!!!! 아직도 손이 떨리고 너무 좋은데, 열한 번 떨어졌던 거 생각하니까 이제야 좀 서러워",
+          "breaks": [
+            {
+              "at": " 아직도 /손이 떨리",
+              "atSpace": true
+            }
+          ],
+          "overflowX": false
+        },
+        {
+          "text": "첫 출근 끝! 점심은 다들 바빠서 혼자 먹음 ㅎㅎ 근데 끝나고 나니까 좀 서운하기도 하고, 사수 앞에서 눈치",
+          "breaks": [
+            {
+              "at": "은 다들 /바빠서 혼",
+              "atSpace": true
+            }
+          ],
+          "overflowX": false
+        },
+        {
+          "text": "오늘 처음으로 회의에서 의견 냈는데 팀장님이 좋다고 해주셨어. 일주일 내내 긴장했는데 조금 풀리니까, 그동안",
+          "breaks": [
+            {
+              "at": "서 의견 /냈는데 팀",
+              "atSpace": true
+            }
+          ],
+          "overflowX": false
+        }
+      ],
+      "errors": [],
+      "midWordBreaks": [],
+      "overflowX": [],
+      "sheetLongTitle": {
+        "text": "부산 학교로 전학 간 첫날의 서하린",
+        "breaks": [],
+        "overflowX": false
+      },
+      "sheet": {
+        "labelExact이름": 1,
+        "region이름": 0,
+        "regions": [
+          "성격과 말투",
+          "기억과 감정"
+        ],
+        "aria": "- dialog \"17살의 이지우\":\n  - button \"닫기\"\n  - heading \"17살의 이지우\" [level=2]\n  - paragraph: 17살 · 과거의 나\n  - text: 이름\n  - textbox \"이름\": 17살의 이지우\n  - region \"성격과 말투\":\n    - text: 성격 쉼표로 나눠 적어요\n    - textbox \"성격 쉼표로 나눠 적어요\": 눈치를 많이 봄, 긴장을 잘함, 생각이 많음\n    - text: 말투\n    - textbox \"말투\": 또래에게 말하듯 편한 반말을 쓰지만, 상대 반응이 없으면 조심스럽게 되묻는다. 긴장하거나 신경 쓰이는 일을 꾸미지 않고 짧게 털어놓는다. \"아, 아무 말도 없으니까 괜히 신경 쓰이잖아.\" \"나 너무 떨려서 아침도 못 먹었어.\"\n  - region \"기억과 감정\":\n    - text: 기억 한 줄에 하나씩\n    - textbox \"기억 한 줄에 하나씩\": 첫 출근 날 너무 떨려서 아침도 먹지 못했다. 사수가 말이 없어서 눈치를 많이 봤다. 고등학교 2학년 때 처음으로 반 대표로 발표했다.\n    - text: 감정 쉼표로 나눠 적어요\n    - textbox \"감정 쉼표로 나눠 적어요\": 긴장, 조심스러움, 궁금함\n  - button \"삭제\"\n  - button \"저장\""
+      }
+    }
+  },
+  "390": {
+    "firstLoad": {
+      "mockupRequests": 0,
+      "mockup": [],
+      "fontRequests": [
+        {
+          "file": "latin-basic.3uepf7b46eijr.woff2",
+          "bytes": 61776,
+          "status": 200
+        },
+        {
+          "file": "hangul-common.1yocirlkx9ke-.woff2",
+          "bytes": 405076,
+          "status": 200
+        }
+      ],
+      "fontBytes": 466852,
+      "totalBytes": 6428755,
+      "oldFullFontRequested": false,
+      "errors": [],
+      "bad": [],
+      "fontRatioVsBefore": 0.227,
+      "frame": {
+        "img": {
+          "left": 0,
+          "top": 0,
+          "width": 0,
+          "height": 0
+        },
+        "screen": {
+          "left": 0,
+          "top": 0,
+          "width": 390,
+          "height": 844
+        },
+        "currentSrc": "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAA",
+        "naturalWidth": 1,
+        "visible": false,
+        "ratios": null,
+        "centered": false,
+        "inViewport": true
+      },
+      "rare": {
+        "family": "Pretendard, -apple-system, \"system-ui\", \"Apple SD Gothic Neo\", system-ui, sans-serif",
+        "faces": 11,
+        "loadedFaces": 4,
+        "check": true,
+        "coveringFaces": {
+          "똠": [
+            {
+              "status": "loaded",
+              "range": "U+B1C2-B1CB, U+B1CD-B1CF, U+B1D1-B1D3, U"
+            }
+          ],
+          "햏": [
+            {
+              "status": "loaded",
+              "range": "U+D237-D23B, U+D23E, U+D240, U+D242-D247"
+            }
+          ]
+        },
+        "newFontRequests": [
+          {
+            "file": "hangul-rest-2.0r68gsv_uj5-y.woff2",
+            "bytes": 185268
+          },
+          {
+            "file": "hangul-rest-8.07_8w1drsmcvl.woff2",
+            "bytes": 209548
+          }
+        ]
+      }
+    },
+    "seeded": {
+      "titles": [
+        {
+          "text": "부산 학교로 전학 간 첫날의 서하린",
+          "breaks": [
+            {
+              "at": " 첫날의 /서하린",
+              "atSpace": true
+            }
+          ],
+          "overflowX": false
+        },
+        {
+          "text": "가나다라마바사아자차카타파하거너더러머버서어저의서하린",
+          "breaks": [
+            {
+              "at": "아자차카타/파하거너더",
+              "atSpace": false
+            }
+          ],
+          "overflowX": false
+        },
+        {
+          "text": "17살의 이지우",
+          "breaks": [],
+          "overflowX": false
+        },
+        {
+          "text": "열한 번 탈락 끝에 합격한 날의 이지우",
+          "breaks": [
+            {
+              "at": " 합격한 /날의 이지",
+              "atSpace": true
+            }
+          ],
+          "overflowX": false
+        },
+        {
+          "text": "첫 출근에 잔뜩 긴장한 날의 이지우",
+          "breaks": [
+            {
+              "at": "한 날의 /이지우",
+              "atSpace": true
+            }
+          ],
+          "overflowX": false
+        },
+        {
+          "text": "회의에서 의견을 칭찬받은 날의 이지우",
+          "breaks": [
+            {
+              "at": "칭찬받은 /날의 이지",
+              "atSpace": true
+            }
+          ],
+          "overflowX": false
+        }
+      ],
+      "previews": [
+        {
+          "text": "새 학교 첫날인데 다들 사투리를 써서 하나도 못 알아듣겠어. 오늘 기분 별로야. 그래도 짝꿍이 먼저 말 걸어",
+          "breaks": [
+            {
+              "at": "사투리를 /써서 하나",
+              "atSpace": true
+            }
+          ],
+          "overflowX": false
+        },
+        {
+          "text": "띄어쓰기 없는 긴 이름도 칸 밖으로 넘치지 않아야 해요.",
+          "breaks": [
+            {
+              "at": "름도 칸 /밖으로 넘",
+              "atSpace": true
+            }
+          ],
+          "overflowX": false
+        },
+        {
+          "text": "내가 뭘 잘못했는데 나만 모르고 있는 걸까 봐 무서웠어. 사수가 말이 없으니까 물어봐도 되나 싶고, 괜히 더",
+          "breaks": [
+            {
+              "at": " 모르고 /있는 걸까",
+              "atSpace": true
+            }
+          ],
+          "overflowX": false
+        },
+        {
+          "text": "나 최종 합격했어!!!! 아직도 손이 떨리고 너무 좋은데, 열한 번 떨어졌던 거 생각하니까 이제야 좀 서러워",
+          "breaks": [
+            {
+              "at": "도 손이 /떨리고 너",
+              "atSpace": true
+            }
+          ],
+          "overflowX": false
+        },
+        {
+          "text": "첫 출근 끝! 점심은 다들 바빠서 혼자 먹음 ㅎㅎ 근데 끝나고 나니까 좀 서운하기도 하고, 사수 앞에서 눈치",
+          "breaks": [
+            {
+              "at": " 바빠서 /혼자 먹음",
+              "atSpace": true
+            }
+          ],
+          "overflowX": false
+        },
+        {
+          "text": "오늘 처음으로 회의에서 의견 냈는데 팀장님이 좋다고 해주셨어. 일주일 내내 긴장했는데 조금 풀리니까, 그동안",
+          "breaks": [
+            {
+              "at": "서 의견 /냈는데 팀",
+              "atSpace": true
+            }
+          ],
+          "overflowX": false
+        }
+      ],
+      "errors": [],
+      "midWordBreaks": [],
+      "overflowX": [],
+      "sheetLongTitle": {
+        "text": "부산 학교로 전학 간 첫날의 서하린",
+        "breaks": [],
+        "overflowX": false
+      },
+      "sheet": {
+        "labelExact이름": 1,
+        "region이름": 0,
+        "regions": [
+          "성격과 말투",
+          "기억과 감정"
+        ],
+        "aria": "- dialog \"17살의 이지우\":\n  - button \"닫기\"\n  - heading \"17살의 이지우\" [level=2]\n  - paragraph: 17살 · 과거의 나\n  - text: 이름\n  - textbox \"이름\": 17살의 이지우\n  - region \"성격과 말투\":\n    - text: 성격 쉼표로 나눠 적어요\n    - textbox \"성격 쉼표로 나눠 적어요\": 눈치를 많이 봄, 긴장을 잘함, 생각이 많음\n    - text: 말투\n    - textbox \"말투\": 또래에게 말하듯 편한 반말을 쓰지만, 상대 반응이 없으면 조심스럽게 되묻는다. 긴장하거나 신경 쓰이는 일을 꾸미지 않고 짧게 털어놓는다. \"아, 아무 말도 없으니까 괜히 신경 쓰이잖아.\" \"나 너무 떨려서 아침도 못 먹었어.\"\n  - region \"기억과 감정\":\n    - text: 기억 한 줄에 하나씩\n    - textbox \"기억 한 줄에 하나씩\": 첫 출근 날 너무 떨려서 아침도 먹지 못했다. 사수가 말이 없어서 눈치를 많이 봤다. 고등학교 2학년 때 처음으로 반 대표로 발표했다.\n    - text: 감정 쉼표로 나눠 적어요\n    - textbox \"감정 쉼표로 나눠 적어요\": 긴장, 조심스러움, 궁금함\n  - button \"삭제\"\n  - button \"저장\""
+      }
+    }
+  },
+  "1440": {
+    "firstLoad": {
+      "mockupRequests": 1,
+      "mockup": [
+        {
+          "url": "/_next/static/media/mockup-iphone.214yx2y1wh-sh.png",
+          "status": 200,
+          "bytes": 263471,
+          "type": "image"
+        }
+      ],
+      "fontRequests": [
+        {
+          "file": "latin-basic.3uepf7b46eijr.woff2",
+          "bytes": 61776,
+          "status": 200
+        },
+        {
+          "file": "hangul-common.1yocirlkx9ke-.woff2",
+          "bytes": 405076,
+          "status": 200
+        }
+      ],
+      "fontBytes": 466852,
+      "totalBytes": 6692226,
+      "oldFullFontRequested": false,
+      "errors": [],
+      "bad": [],
+      "fontRatioVsBefore": 0.227,
+      "frame": {
+        "img": {
+          "left": 523.8,
+          "top": 24,
+          "width": 392.3,
+          "height": 852
+        },
+        "screen": {
+          "left": 540.4,
+          "top": 39.7,
+          "width": 359.6,
+          "height": 822
+        },
+        "currentSrc": "http://localhost:3100/_next/static/media/mockup-iphone.214yx",
+        "naturalWidth": 851,
+        "visible": true,
+        "ratios": {
+          "left": 0.0423,
+          "top": 0.0184,
+          "width": 0.9166,
+          "height": 0.9648
+        },
+        "centered": true,
+        "inViewport": true
+      },
+      "rare": {
+        "family": "Pretendard, -apple-system, \"system-ui\", \"Apple SD Gothic Neo\", system-ui, sans-serif",
+        "faces": 11,
+        "loadedFaces": 4,
+        "check": true,
+        "coveringFaces": {
+          "똠": [
+            {
+              "status": "loaded",
+              "range": "U+B1C2-B1CB, U+B1CD-B1CF, U+B1D1-B1D3, U"
+            }
+          ],
+          "햏": [
+            {
+              "status": "loaded",
+              "range": "U+D237-D23B, U+D23E, U+D240, U+D242-D247"
+            }
+          ]
+        },
+        "newFontRequests": [
+          {
+            "file": "hangul-rest-2.0r68gsv_uj5-y.woff2",
+            "bytes": 185268
+          },
+          {
+            "file": "hangul-rest-8.07_8w1drsmcvl.woff2",
+            "bytes": 209548
+          }
+        ]
+      }
+    },
+    "seeded": {
+      "titles": [
+        {
+          "text": "부산 학교로 전학 간 첫날의 서하린",
+          "breaks": [
+            {
+              "at": " 첫날의 /서하린",
+              "atSpace": true
+            }
+          ],
+          "overflowX": false
+        },
+        {
+          "text": "가나다라마바사아자차카타파하거너더러머버서어저의서하린",
+          "breaks": [
+            {
+              "at": "아자차카타/파하거너더",
+              "atSpace": false
+            }
+          ],
+          "overflowX": false
+        },
+        {
+          "text": "17살의 이지우",
+          "breaks": [],
+          "overflowX": false
+        },
+        {
+          "text": "열한 번 탈락 끝에 합격한 날의 이지우",
+          "breaks": [
+            {
+              "at": " 합격한 /날의 이지",
+              "atSpace": true
+            }
+          ],
+          "overflowX": false
+        },
+        {
+          "text": "첫 출근에 잔뜩 긴장한 날의 이지우",
+          "breaks": [
+            {
+              "at": "한 날의 /이지우",
+              "atSpace": true
+            }
+          ],
+          "overflowX": false
+        },
+        {
+          "text": "회의에서 의견을 칭찬받은 날의 이지우",
+          "breaks": [
+            {
+              "at": "칭찬받은 /날의 이지",
+              "atSpace": true
+            }
+          ],
+          "overflowX": false
+        }
+      ],
+      "previews": [
+        {
+          "text": "새 학교 첫날인데 다들 사투리를 써서 하나도 못 알아듣겠어. 오늘 기분 별로야. 그래도 짝꿍이 먼저 말 걸어",
+          "breaks": [
+            {
+              "at": "사투리를 /써서 하나",
+              "atSpace": true
+            }
+          ],
+          "overflowX": false
+        },
+        {
+          "text": "띄어쓰기 없는 긴 이름도 칸 밖으로 넘치지 않아야 해요.",
+          "breaks": [
+            {
+              "at": "름도 칸 /밖으로 넘",
+              "atSpace": true
+            }
+          ],
+          "overflowX": false
+        },
+        {
+          "text": "내가 뭘 잘못했는데 나만 모르고 있는 걸까 봐 무서웠어. 사수가 말이 없으니까 물어봐도 되나 싶고, 괜히 더",
+          "breaks": [
+            {
+              "at": " 모르고 /있는 걸까",
+              "atSpace": true
+            }
+          ],
+          "overflowX": false
+        },
+        {
+          "text": "나 최종 합격했어!!!! 아직도 손이 떨리고 너무 좋은데, 열한 번 떨어졌던 거 생각하니까 이제야 좀 서러워",
+          "breaks": [
+            {
+              "at": "도 손이 /떨리고 너",
+              "atSpace": true
+            }
+          ],
+          "overflowX": false
+        },
+        {
+          "text": "첫 출근 끝! 점심은 다들 바빠서 혼자 먹음 ㅎㅎ 근데 끝나고 나니까 좀 서운하기도 하고, 사수 앞에서 눈치",
+          "breaks": [
+            {
+              "at": " 바빠서 /혼자 먹음",
+              "atSpace": true
+            }
+          ],
+          "overflowX": false
+        },
+        {
+          "text": "오늘 처음으로 회의에서 의견 냈는데 팀장님이 좋다고 해주셨어. 일주일 내내 긴장했는데 조금 풀리니까, 그동안",
+          "breaks": [
+            {
+              "at": "서 의견 /냈는데 팀",
+              "atSpace": true
+            }
+          ],
+          "overflowX": false
+        }
+      ],
+      "errors": [],
+      "midWordBreaks": [],
+      "overflowX": [],
+      "sheetLongTitle": {
+        "text": "부산 학교로 전학 간 첫날의 서하린",
+        "breaks": [],
+        "overflowX": false
+      },
+      "sheet": {
+        "labelExact이름": 1,
+        "region이름": 0,
+        "regions": [
+          "성격과 말투",
+          "기억과 감정"
+        ],
+        "aria": "- dialog \"17살의 이지우\":\n  - button \"닫기\"\n  - heading \"17살의 이지우\" [level=2]\n  - paragraph: 17살 · 과거의 나\n  - text: 이름\n  - textbox \"이름\": 17살의 이지우\n  - region \"성격과 말투\":\n    - text: 성격 쉼표로 나눠 적어요\n    - textbox \"성격 쉼표로 나눠 적어요\": 눈치를 많이 봄, 긴장을 잘함, 생각이 많음\n    - text: 말투\n    - textbox \"말투\": 또래에게 말하듯 편한 반말을 쓰지만, 상대 반응이 없으면 조심스럽게 되묻는다. 긴장하거나 신경 쓰이는 일을 꾸미지 않고 짧게 털어놓는다. \"아, 아무 말도 없으니까 괜히 신경 쓰이잖아.\" \"나 너무 떨려서 아침도 못 먹었어.\"\n  - region \"기억과 감정\":\n    - text: 기억 한 줄에 하나씩\n    - textbox \"기억 한 줄에 하나씩\": 첫 출근 날 너무 떨려서 아침도 먹지 못했다. 사수가 말이 없어서 눈치를 많이 봤다. 고등학교 2학년 때 처음으로 반 대표로 발표했다.\n    - text: 감정 쉼표로 나눠 적어요\n    - textbox \"감정 쉼표로 나눠 적어요\": 긴장, 조심스러움, 궁금함\n  - button \"삭제\"\n  - button \"저장\""
+      }
+    }
+  },
+  "1920": {
+    "firstLoad": {
+      "mockupRequests": 1,
+      "mockup": [
+        {
+          "url": "/_next/static/media/mockup-iphone.214yx2y1wh-sh.png",
+          "status": 200,
+          "bytes": 263471,
+          "type": "image"
+        }
+      ],
+      "fontRequests": [
+        {
+          "file": "latin-basic.3uepf7b46eijr.woff2",
+          "bytes": 61776,
+          "status": 200
+        },
+        {
+          "file": "hangul-common.1yocirlkx9ke-.woff2",
+          "bytes": 405076,
+          "status": 200
+        }
+      ],
+      "fontBytes": 466852,
+      "totalBytes": 6692226,
+      "oldFullFontRequested": false,
+      "errors": [],
+      "bad": [],
+      "fontRatioVsBefore": 0.227,
+      "frame": {
+        "img": {
+          "left": 747.3,
+          "top": 78,
+          "width": 425.5,
+          "height": 924
+        },
+        "screen": {
+          "left": 765.2,
+          "top": 95,
+          "width": 390,
+          "height": 891.5
+        },
+        "currentSrc": "http://localhost:3100/_next/static/media/mockup-iphone.214yx",
+        "naturalWidth": 851,
+        "visible": true,
+        "ratios": {
+          "left": 0.0421,
+          "top": 0.0184,
+          "width": 0.9166,
+          "height": 0.9648
+        },
+        "centered": true,
+        "inViewport": true
+      },
+      "rare": {
+        "family": "Pretendard, -apple-system, \"system-ui\", \"Apple SD Gothic Neo\", system-ui, sans-serif",
+        "faces": 11,
+        "loadedFaces": 4,
+        "check": true,
+        "coveringFaces": {
+          "똠": [
+            {
+              "status": "loaded",
+              "range": "U+B1C2-B1CB, U+B1CD-B1CF, U+B1D1-B1D3, U"
+            }
+          ],
+          "햏": [
+            {
+              "status": "loaded",
+              "range": "U+D237-D23B, U+D23E, U+D240, U+D242-D247"
+            }
+          ]
+        },
+        "newFontRequests": [
+          {
+            "file": "hangul-rest-2.0r68gsv_uj5-y.woff2",
+            "bytes": 185268
+          },
+          {
+            "file": "hangul-rest-8.07_8w1drsmcvl.woff2",
+            "bytes": 209548
+          }
+        ]
+      }
+    }
+  },
+  "at": "2026-11-19T05:33:41.150Z",
+  "beforeFontBytes": 2057688
+}

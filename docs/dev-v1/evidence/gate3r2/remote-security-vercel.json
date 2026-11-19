@@ -1,0 +1,81 @@
+{
+ "team_scoped": false,
+ "project_status": 200,
+ "project": {
+  "framework": "nextjs",
+  "rootDirectory": "apps/web",
+  "nodeVersion": "24.x",
+  "publicSource": null,
+  "serverlessFunctionRegion": "iad1",
+  "sourceFilesOutsideRootDirectory": true,
+  "directoryListing": false,
+  "gitForkProtection": true,
+  "ssoProtection": null,
+  "passwordProtection": false,
+  "link": null
+ },
+ "project_env": [
+  {
+   "key": "OPENAI_API_KEY",
+   "type": "sensitive",
+   "target": [
+    "production"
+   ]
+  }
+ ],
+ "target": {
+  "id": "dpl_GPR9o3pKk6TqFWQ8wbpzgA5n469g",
+  "files_status": 200,
+  "files": 189,
+  "dirs_top_src": [
+   ".claude",
+   ".vercelignore",
+   "apps",
+   "assets",
+   "docs",
+   "package.json",
+   "packages",
+   "pnpm-lock.yaml",
+   "pnpm-workspace.yaml",
+   "pocs",
+   "scripts",
+   "tsconfig.base.json"
+  ],
+  "env_paths": [],
+  "src_docs": [
+   "/src/docs"
+  ],
+  "suspect": [
+   "/src/.claude",
+   "/src/docs",
+   "/src/scripts"
+  ],
+  "content_checked_files": 189,
+  "content_bytes": 11764681,
+  "content_env_hits": {
+   "JEV_KEY": 0,
+   "GOOGLE_KEY": 0,
+   "OPENAI_KEY": 0,
+   "CLAUDE_KEY": 0,
+   "VERCEL_KEY": 0,
+   "RENDER_KEY": 0,
+   "OPENROUTER_KEY": 0
+  },
+  "content_env_hit_files": {},
+  "content_sk_like_files": []
+ },
+ "deployments": [
+  {
+   "uid": "dpl_GPR9o3pKk6TqFWQ8wbpzgA5n469g",
+   "state": "READY",
+   "target": "production",
+   "created": "2026-11-19 07:12",
+   "source": "cli",
+   "url": "mindme-nb3lfgcmk-mojomoths-projects.vercel.app",
+   "aliases": null,
+   "files_status": 200,
+   "env_paths": [],
+   "has_src_docs": true
+  }
+ ]
+}

@@ -1,0 +1,56 @@
+{
+  "item": "remote-security-4 analyze big",
+  "at": "2026-11-19T07:31:52.466Z",
+  "endpoint": "POST https://mindme-rho.vercel.app/api/analyze",
+  "request": {
+    "chars": 59033,
+    "parsedBodyChars": 44331,
+    "expectMode": "summarized",
+    "expectChunks": 2,
+    "ageLineInChunk": 0,
+    "ageLineOffset": 29669,
+    "plantedMissing": [],
+    "plantedAt": {
+      "2021-03-15": "2021-03-17",
+      "2022-07-02": "2022-07-02",
+      "2023-09-20": "2023-09-23"
+    },
+    "messages": 1575,
+    "me": "정다온",
+    "lastDate": "2023-11-10",
+    "ageClueLine": "[정다온] [오후 9:31] 나 95년생이야",
+    "expectedCurrentAge": 31,
+    "note": "원문 text 는 싣지 않음(big-kakao.txt 로 따로 저장)"
+  },
+  "status": 200,
+  "elapsedMs": 42760,
+  "headers": {
+    "cache-control": "public, max-age=0, must-revalidate",
+    "content-type": "application/json",
+    "x-vercel-id": "icn1::iad1::j582l-1795073469807-94bd6bb39628",
+    "permissions-policy": "camera=(self), microphone=(), geolocation=()",
+    "access-control-allow-origin": null
+  },
+  "owner": {
+    "name": "정다온",
+    "currentAge": 31
+  },
+  "meta": {
+    "mode": "summarized",
+    "chunks": 2,
+    "units": 1575,
+    "participants": [
+      "정다온",
+      "한유진"
+    ],
+    "me": "정다온"
+  },
+  "hasMetaLlm": false,
+  "events": [
+    "2021-03-17 age=26 이직한 회사에 첫 출근한 날",
+    "2022-07-02 age=27 혼자 사는 첫 집으로 이사한 날",
+    "2023-09-23 age=28 전사 발표 뒤 자책하며 위로받은 날"
+  ],
+  "error": null,
+  "responseBytes": 1530
+}

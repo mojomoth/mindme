@@ -1,0 +1,721 @@
+{
+ "files": 42,
+ "bytes": 2477688,
+ "static_files": [
+  "/_next/static/immutable/chunks/078gz0lic3zcq.js",
+  "/_next/static/immutable/chunks/0c0hxoamwjsbw.js",
+  "/_next/static/immutable/chunks/0n8z_mq83rv8y.js",
+  "/_next/static/immutable/chunks/0pwjb_l3g05s3.js",
+  "/_next/static/immutable/chunks/0zx8mwxjj3y4b.js",
+  "/_next/static/immutable/chunks/1a9r1aiaqjv0s.js",
+  "/_next/static/immutable/chunks/1ai-m4ww2tjmn.js",
+  "/_next/static/immutable/chunks/1ln4b5r71byfc.css",
+  "/_next/static/immutable/chunks/2w3jzrqyldh_z.js",
+  "/_next/static/immutable/chunks/319vpyo4c67z1.css",
+  "/_next/static/immutable/chunks/turbopack-3xd-7z66s-4wg.js",
+  "/_next/static/immutable/media/avatar-teen-256.38mwcdveis7h-.png",
+  "/_next/static/immutable/media/avatar-young-256.3y9_l0mj46y2n.png",
+  "/_next/static/immutable/media/guide-512.0hdnwdn5jutqj.png",
+  "/_next/static/immutable/media/guide-avatar-256.1kumyc23t8xr5.png",
+  "/_next/static/immutable/media/guide-mark-128.2gsd96psuelpy.png",
+  "/_next/static/immutable/media/guide-peek-512.1spdp5dgk2f58.png",
+  "/_next/static/immutable/media/guide-peek-open-512.1y45uuu3h8z16.png",
+  "/_next/static/immutable/media/mockup-iphone.3-sed8rcvwz19.png"
+ ],
+ "status": {
+  "/": [
+   200,
+   "text/html; charset=utf-8",
+   14454
+  ],
+  "/?x=1": [
+   200,
+   "text/html; charset=utf-8",
+   14454
+  ],
+  "/index": [
+   200,
+   "text/html; charset=utf-8",
+   14454
+  ],
+  "/does-not-exist-xyz": [
+   404,
+   "text/html; charset=utf-8",
+   8006
+  ],
+  "/_not-found": [
+   200,
+   "text/html; charset=utf-8",
+   7902
+  ],
+  "/api": [
+   404,
+   "text/html; charset=utf-8",
+   8006
+  ],
+  "/robots.txt": [
+   404,
+   "text/html; charset=utf-8",
+   8006
+  ],
+  "/favicon.ico": [
+   404,
+   "text/html; charset=utf-8",
+   8006
+  ],
+  "/.env": [
+   404,
+   "text/html; charset=utf-8",
+   8006
+  ],
+  "/src/.env": [
+   404,
+   "text/html; charset=utf-8",
+   8006
+  ],
+  "/_src": [
+   200,
+   "text/html; charset=utf-8",
+   334417
+  ],
+  "/_logs": [
+   200,
+   "text/html; charset=utf-8",
+   335359
+  ],
+  "/.git/config": [
+   404,
+   "text/html; charset=utf-8",
+   8006
+  ],
+  "/package.json": [
+   404,
+   "text/html; charset=utf-8",
+   8006
+  ],
+  "/_next/static/immutable/media/guide-mark-128.2gsd96psuelpy.png": [
+   200,
+   "image/png",
+   20507
+  ],
+  "/_next/static/immutable/media/guide-512.0hdnwdn5jutqj.png": [
+   200,
+   "image/png",
+   120305
+  ],
+  "/_next/static/immutable/chunks/319vpyo4c67z1.css": [
+   200,
+   "text/css; charset=utf-8",
+   36583
+  ],
+  "/_next/static/immutable/chunks/1ln4b5r71byfc.css": [
+   200,
+   "text/css; charset=utf-8",
+   24617
+  ],
+  "/_next/static/immutable/chunks/1a9r1aiaqjv0s.js": [
+   200,
+   "application/javascript; charset=utf-8",
+   22085
+  ],
+  "/_next/static/immutable/chunks/1ai-m4ww2tjmn.js": [
+   200,
+   "application/javascript; charset=utf-8",
+   181856
+  ],
+  "/_next/static/immutable/chunks/078gz0lic3zcq.js": [
+   200,
+   "application/javascript; charset=utf-8",
+   229776
+  ],
+  "/_next/static/immutable/chunks/turbopack-3xd-7z66s-4wg.js": [
+   200,
+   "application/javascript; charset=utf-8",
+   9974
+  ],
+  "/_next/static/immutable/chunks/2w3jzrqyldh_z.js": [
+   200,
+   "application/javascript; charset=utf-8",
+   13995
+  ],
+  "/_next/static/immutable/chunks/0zx8mwxjj3y4b.js": [
+   200,
+   "application/javascript; charset=utf-8",
+   5766
+  ],
+  "/_next/static/immutable/chunks/0n8z_mq83rv8y.js": [
+   200,
+   "application/javascript; charset=utf-8",
+   35025
+  ],
+  "/_next/static/immutable/chunks/0c0hxoamwjsbw.js": [
+   200,
+   "application/javascript; charset=utf-8",
+   112594
+  ],
+  "/_next/static/immutable/media/mockup-iphone.3-sed8rcvwz19.png": [
+   200,
+   "image/png",
+   263471
+  ],
+  "/_next/static/immutable/chunks/31ka7qaavhy_m.css": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/0-uh4kvwvbof_.css": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/16gawg-3yr5z5.css": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/20_wpb1zzicxb.css": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/1igqsnegq7v33.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/2r74gg2_ye3v3.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/0qmodomzi4y49.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/3fyp5_av-2tzh.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/03_ho-yygvpgz.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/turbopack-3qj017aphhpwl.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/2r_7l99sgup1k.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/2bjkdk6jkv740.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/0-rhk1_rd6tft.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/2hjh3kk37wc5m.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/2v75fw8nulk3v.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/05ove-anmkv57.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/42ctohkrgalzs.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/3jen3ckcfiecc.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/0ga5f2vp2yhhg.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/1zkwpfqa-2k31.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/30gbyb9zlfpf_.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/2hzck3zbrjrlv.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/3-8vsf5dafcq8.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/200gmzfd_tw5k.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/11pndy5m-5rp0.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/28r1mxvewaaeg.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/3eyyed6422yhb.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/1m29_zs_xglxa.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/14p_ild9zr4bm.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/0ofclwzgapazo.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/3xc_6d2mqcj3r.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/0mk0yq7lpnv_l.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/1cxw62nf98mtd.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/1bzucvacer__9.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/0h9vdxmhsbylz.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/3-2ise0_l-vcy.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/1nzecpvns8hmd.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/0g5e-z7v0a---.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/18he16e6pibjo.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/3sg-9r-178w4l.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/2_gm1n_y3f0vm.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/2vuvv6rdqbz1c.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/03ua105akon1e.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/2n_ckcxzmxu1t.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/1iqpaya3qsg0p.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/3-r7-uycevv7y.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/0tglm02lf1l66.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/2mp-g3irxatrc.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/44ofzv_09be0j.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/2yjuv1fchjntn.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/2uxe_bsf_y8ym.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/2zbc-85zf8bbv.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/0j5rahx1cimnw.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/12xseha3yjc65.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/2-j5pn4w-jszr.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/1j5-wnzabb4uk.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/1hiocwd6ufzlm.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/0hih9jrz_j7-c.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/007iegfvoxggq.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/0jfuo9tzgz6xg.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/1hhhsleek5g2v.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/1k3oq4xv9_jig.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/18ht_z9_e_dtq.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/0jgp7baq66uka.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/1y8ej780crs63.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/0-9wiiwv4ln5g.js": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/2cqmk_szda2zv.css": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/media/07a39a8a4660cc7c.p.1v5bejj26fx9h.woff2": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/media/GeistPixel_Square.p.3i-voztpvqxl2.woff2": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/media/Geist_Variable-s.p.2wz-lhd5-5z0-.woff2": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/media/vercel-light.3_gxxexgi1nmy.svg": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/media/vercel-dark.1f3cgy23m5_jy.svg": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/media/logo-google-color-light.2x6g4y99zlarz.svg": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/media/logo-google-color-dark.3nr_e0zdganvm.svg": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/media/logo-github-color-light.1184n6l5g07-6.svg": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/media/logo-github-color-dark.1k-70sin_m3qn.svg": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/media/logo-open-ai-color-light.19_d6xia9t_gb.svg": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/media/logo-open-ai-color-dark.2s69z6l-k1q-7.svg": [
+   404,
+   null,
+   0
+  ],
+  "/_next/static/immutable/chunks/0pwjb_l3g05s3.js": [
+   200,
+   "application/javascript; charset=utf-8",
+   124927
+  ],
+  "/_next/static/immutable/media/avatar-teen-256.38mwcdveis7h-.png": [
+   200,
+   "image/png",
+   48329
+  ],
+  "/_next/static/immutable/media/avatar-young-256.3y9_l0mj46y2n.png": [
+   200,
+   "image/png",
+   44188
+  ],
+  "/_next/static/immutable/media/guide-avatar-256.1kumyc23t8xr5.png": [
+   200,
+   "image/png",
+   61096
+  ],
+  "/_next/static/immutable/media/guide-peek-512.1spdp5dgk2f58.png": [
+   200,
+   "image/png",
+   155142
+  ],
+  "/_next/static/immutable/media/guide-peek-open-512.1y45uuu3h8z16.png": [
+   200,
+   "image/png",
+   169394
+  ]
+ },
+ "sourcemaps": {
+  "/_next/static/immutable/chunks/1a9r1aiaqjv0s.js.map": 403,
+  "/_next/static/immutable/chunks/1ai-m4ww2tjmn.js.map": 403,
+  "/_next/static/immutable/chunks/078gz0lic3zcq.js.map": 403,
+  "/_next/static/immutable/chunks/turbopack-3xd-7z66s-4wg.js.map": 403,
+  "/_next/static/immutable/chunks/2w3jzrqyldh_z.js.map": 403,
+  "/_next/static/immutable/chunks/0zx8mwxjj3y4b.js.map": 403,
+  "/_next/static/immutable/chunks/0n8z_mq83rv8y.js.map": 403,
+  "/_next/static/immutable/chunks/0c0hxoamwjsbw.js.map": 403,
+  "/_next/static/immutable/chunks/0pwjb_l3g05s3.js.map": 403
+ },
+ "env_keys_checked": 7,
+ "env_hits": {
+  "JEV_KEY": {
+   "full": 0,
+   "prefix16": 0,
+   "suffix16": 0,
+   "b64": 0,
+   "sha256hex": 0
+  },
+  "GOOGLE_KEY": {
+   "full": 0,
+   "prefix16": 0,
+   "suffix16": 0,
+   "b64": 0,
+   "sha256hex": 0
+  },
+  "OPENAI_KEY": {
+   "full": 0,
+   "prefix16": 0,
+   "suffix16": 0,
+   "b64": 0,
+   "sha256hex": 0
+  },
+  "CLAUDE_KEY": {
+   "full": 0,
+   "prefix16": 0,
+   "suffix16": 0,
+   "b64": 0,
+   "sha256hex": 0
+  },
+  "VERCEL_KEY": {
+   "full": 0,
+   "prefix16": 0,
+   "suffix16": 0,
+   "b64": 0,
+   "sha256hex": 0
+  },
+  "RENDER_KEY": {
+   "full": 0,
+   "prefix16": 0,
+   "suffix16": 0,
+   "b64": 0,
+   "sha256hex": 0
+  },
+  "OPENROUTER_KEY": {
+   "full": 0,
+   "prefix16": 0,
+   "suffix16": 0,
+   "b64": 0,
+   "sha256hex": 0
+  }
+ },
+ "sk_like_hits": {},
+ "other_key_like_hits": {},
+ "name_hits": {
+  "NEXT_PUBLIC_": {},
+  "OPENAI_API_KEY": {},
+  "OPENAI_KEY": {},
+  "VERCEL_KEY": {},
+  "process.env": {},
+  "apiKey": {},
+  "Bearer ": {}
+ },
+ "api": {
+  "GET /api/health": {
+   "status": 200,
+   "ct": "application/json",
+   "cache": "public, max-age=0, must-revalidate",
+   "acao": null,
+   "body": "{\"ok\":true,\"configured\":{\"openai\":true}}"
+  },
+  "GET /api/chat": {
+   "status": 405,
+   "ct": null,
+   "cache": "public, max-age=0, must-revalidate",
+   "acao": null,
+   "body": ""
+  },
+  "POST /api/chat bad-json": {
+   "status": 400,
+   "ct": "application/json",
+   "cache": "public, max-age=0, must-revalidate",
+   "acao": null,
+   "body": "{\"error\":{\"code\":\"invalid_request\",\"message\":\"보낸 내용을 읽지 못했어요. 다시 시도해 주세요.\"}}"
+  },
+  "POST /api/chat schema": {
+   "status": 400,
+   "ct": "application/json",
+   "cache": "public, max-age=0, must-revalidate",
+   "acao": null,
+   "body": "{\"error\":{\"code\":\"invalid_request\",\"message\":\"대화 내용을 보내지 못했어요. 페르소나를 다시 열어 주세요.\"}}"
+  },
+  "POST /api/chat text/plain": {
+   "status": 400,
+   "ct": "application/json",
+   "cache": "public, max-age=0, must-revalidate",
+   "acao": null,
+   "body": "{\"error\":{\"code\":\"invalid_request\",\"message\":\"대화 내용을 보내지 못했어요. 페르소나를 다시 열어 주세요.\"}}"
+  },
+  "POST /api/persona schema": {
+   "status": 400,
+   "ct": "application/json",
+   "cache": "public, max-age=0, must-revalidate",
+   "acao": null,
+   "body": "{\"error\":{\"code\":\"invalid_request\",\"message\":\"페르소나를 만들 정보가 올바르지 않아요. 나이와 내용을 확인해 주세요.\"}}"
+  },
+  "GET /api/persona": {
+   "status": 405,
+   "ct": null,
+   "cache": "public, max-age=0, must-revalidate",
+   "acao": null,
+   "body": ""
+  },
+  "GET /api/analyze": {
+   "status": 405,
+   "ct": null,
+   "cache": "public, max-age=0, must-revalidate",
+   "acao": null,
+   "body": ""
+  },
+  "GET /api/nope": {
+   "status": 404,
+   "ct": "text/html; charset=utf-8",
+   "cache": "public, max-age=0, must-revalidate",
+   "acao": "*",
+   "body": "<!DOCTYPE html><html lang=\"ko\"><head><meta charSet=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1, viewport-fit=cover\"/><link rel=\"stylesheet\" href=\"/_next/static/immutable/chunks/319vpyo4c67z1.css\" data-precedence=\"next\"/><link rel=\"preload\" as=\"script\" fetchPriority=\"l"
+  }
+ }
+}

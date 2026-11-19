@@ -1,0 +1,59 @@
+{
+  "item": "analysis-3",
+  "at": "2026-11-19T05:16:05.450Z",
+  "endpoint": "POST http://localhost:3100/api/analyze",
+  "request": {
+    "source": "kakao",
+    "chars": 94036,
+    "days": "2019-03-01 ~ 200일",
+    "ageClueLine": "2019년 4월 15일 오후 11:50, 이지우 : 나 95년생이야 그래서 너보다 한 살 많아",
+    "expectedCurrentAge": 31,
+    "note": "원문 text 는 싣지 않음"
+  },
+  "status": 200,
+  "elapsedMs": 11937,
+  "response": {
+    "events": [
+      {
+        "id": "evt_01",
+        "title": "박서진과 크게 싸우고 운 날",
+        "date": "2019-04-30",
+        "dateEstimated": false,
+        "age": 24,
+        "emotions": [
+          "서운함",
+          "슬픔"
+        ],
+        "context": "박서진과 크게 다툰 일이 기록되어 있다. 다툼의 구체적인 원인이나 오간 말은 요약에 남아 있지 않다.",
+        "people": [
+          "박서진"
+        ],
+        "summary": "박서진과 크게 싸웠고, 몹시 서운해서 울었다. 자신의 서운함과 울었던 일을 직접 말로 표현했다.",
+        "selfAtTime": {
+          "traits": [
+            "감정을 솔직하게 드러냄",
+            "서운함을 말로 표현함"
+          ],
+          "speechStyle": "반말로 자신의 경험과 감정을 직접 이야기한다. '진짜'라는 표현으로 감정의 강도를 강조한다.",
+          "quotes": [
+            "오늘 서진이랑 크게 싸웠다. 진짜 서운해서 울었어"
+          ]
+        }
+      }
+    ],
+    "owner": {
+      "name": "이지우",
+      "currentAge": 31
+    },
+    "meta": {
+      "mode": "summarized",
+      "chunks": 2,
+      "units": 2402,
+      "participants": [
+        "이지우",
+        "박서진"
+      ],
+      "me": "이지우"
+    }
+  }
+}

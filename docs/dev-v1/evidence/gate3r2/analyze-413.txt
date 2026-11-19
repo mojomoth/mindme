@@ -1,0 +1,6 @@
+# analysis-2 실측 (2026-11-19, http://localhost:3100/api/analyze, AI 호출 없음)
+# 고치기 전
+'가'x300001 -> 400 {"error":{"code":"invalid_request","message":"기록 내용을 읽지 못했어요. 파일이나 이야기를 다시 확인해 주세요."}}
+# 고친 뒤
+'가'x300001 -> 413 {"error":{"code":"payload_too_large","message":"입력이 너무 길어요. 30만 자 이하로 줄여 주세요."}}
+'   '       -> 400 {"error":{"code":"invalid_request","message":"기록 내용을 읽지 못했어요. 파일이나 이야기를 다시 확인해 주세요."}}

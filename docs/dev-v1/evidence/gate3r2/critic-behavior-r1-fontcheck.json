@@ -1,0 +1,282 @@
+{
+  "origGlyphs": 14336,
+  "origAxes": [
+    [
+      "wght",
+      45.0,
+      930.0
+    ]
+  ],
+  "faces": 11,
+  "perFace": {
+    "latin-basic.woff2": {
+      "glyphs": 360,
+      "declared": 360,
+      "declaredButMissing": 0,
+      "inFileNotDeclared": 0,
+      "axes": [
+        [
+          "wght",
+          45.0,
+          930.0
+        ]
+      ],
+      "hasGvar": true,
+      "hasGSUB": true,
+      "hasGPOS": true
+    },
+    "symbols.woff2": {
+      "glyphs": 2804,
+      "declared": 2804,
+      "declaredButMissing": 0,
+      "inFileNotDeclared": 0,
+      "axes": [
+        [
+          "wght",
+          45.0,
+          930.0
+        ]
+      ],
+      "hasGvar": true,
+      "hasGSUB": true,
+      "hasGPOS": true
+    },
+    "hangul-common.woff2": {
+      "glyphs": 2350,
+      "declared": 2350,
+      "declaredButMissing": 0,
+      "inFileNotDeclared": 0,
+      "axes": [
+        [
+          "wght",
+          45.0,
+          930.0
+        ]
+      ],
+      "hasGvar": true,
+      "hasGSUB": true,
+      "hasGPOS": true
+    },
+    "hangul-rest-1.woff2": {
+      "glyphs": 1103,
+      "declared": 1103,
+      "declaredButMissing": 0,
+      "inFileNotDeclared": 0,
+      "axes": [
+        [
+          "wght",
+          45.0,
+          930.0
+        ]
+      ],
+      "hasGvar": true,
+      "hasGSUB": true,
+      "hasGPOS": true
+    },
+    "hangul-rest-2.woff2": {
+      "glyphs": 1103,
+      "declared": 1103,
+      "declaredButMissing": 0,
+      "inFileNotDeclared": 0,
+      "axes": [
+        [
+          "wght",
+          45.0,
+          930.0
+        ]
+      ],
+      "hasGvar": true,
+      "hasGSUB": true,
+      "hasGPOS": true
+    },
+    "hangul-rest-3.woff2": {
+      "glyphs": 1103,
+      "declared": 1103,
+      "declaredButMissing": 0,
+      "inFileNotDeclared": 0,
+      "axes": [
+        [
+          "wght",
+          45.0,
+          930.0
+        ]
+      ],
+      "hasGvar": true,
+      "hasGSUB": true,
+      "hasGPOS": true
+    },
+    "hangul-rest-4.woff2": {
+      "glyphs": 1103,
+      "declared": 1103,
+      "declaredButMissing": 0,
+      "inFileNotDeclared": 0,
+      "axes": [
+        [
+          "wght",
+          45.0,
+          930.0
+        ]
+      ],
+      "hasGvar": true,
+      "hasGSUB": true,
+      "hasGPOS": true
+    },
+    "hangul-rest-5.woff2": {
+      "glyphs": 1103,
+      "declared": 1103,
+      "declaredButMissing": 0,
+      "inFileNotDeclared": 0,
+      "axes": [
+        [
+          "wght",
+          45.0,
+          930.0
+        ]
+      ],
+      "hasGvar": true,
+      "hasGSUB": true,
+      "hasGPOS": true
+    },
+    "hangul-rest-6.woff2": {
+      "glyphs": 1103,
+      "declared": 1103,
+      "declaredButMissing": 0,
+      "inFileNotDeclared": 0,
+      "axes": [
+        [
+          "wght",
+          45.0,
+          930.0
+        ]
+      ],
+      "hasGvar": true,
+      "hasGSUB": true,
+      "hasGPOS": true
+    },
+    "hangul-rest-7.woff2": {
+      "glyphs": 1103,
+      "declared": 1103,
+      "declaredButMissing": 0,
+      "inFileNotDeclared": 0,
+      "axes": [
+        [
+          "wght",
+          45.0,
+          930.0
+        ]
+      ],
+      "hasGvar": true,
+      "hasGSUB": true,
+      "hasGPOS": true
+    },
+    "hangul-rest-8.woff2": {
+      "glyphs": 1101,
+      "declared": 1101,
+      "declaredButMissing": 0,
+      "inFileNotDeclared": 0,
+      "axes": [
+        [
+          "wght",
+          45.0,
+          930.0
+        ]
+      ],
+      "hasGvar": true,
+      "hasGSUB": true,
+      "hasGPOS": true
+    }
+  },
+  "origNotInAnySubset": 0,
+  "origNotDeclared": 0,
+  "origNotDeclaredSample": [],
+  "overlapProblems": [],
+  "glyphSample": [
+    {
+      "char": "A",
+      "file": "latin-basic.woff2",
+      "sameOutline": true
+    },
+    {
+      "char": "!",
+      "file": "latin-basic.woff2",
+      "sameOutline": true
+    },
+    {
+      "char": "?",
+      "file": "latin-basic.woff2",
+      "sameOutline": true
+    },
+    {
+      "char": ".",
+      "file": "latin-basic.woff2",
+      "sameOutline": true
+    },
+    {
+      "char": ",",
+      "file": "latin-basic.woff2",
+      "sameOutline": true
+    },
+    {
+      "char": "₩",
+      "file": "latin-basic.woff2",
+      "sameOutline": true
+    },
+    {
+      "char": "가",
+      "file": "hangul-common.woff2",
+      "sameOutline": true
+    },
+    {
+      "char": "나",
+      "file": "hangul-common.woff2",
+      "sameOutline": true
+    },
+    {
+      "char": "다",
+      "file": "hangul-common.woff2",
+      "sameOutline": true
+    },
+    {
+      "char": "가",
+      "file": "hangul-common.woff2",
+      "sameOutline": true
+    },
+    {
+      "char": "쓩",
+      "file": "hangul-common.woff2",
+      "sameOutline": true
+    },
+    {
+      "char": "똠",
+      "file": "hangul-rest-2.woff2",
+      "sameOutline": true
+    },
+    {
+      "char": "뷁",
+      "file": "hangul-rest-4.woff2",
+      "sameOutline": true
+    },
+    {
+      "char": "쀍",
+      "file": "hangul-rest-4.woff2",
+      "sameOutline": true
+    },
+    {
+      "char": "햏",
+      "file": "hangul-rest-8.woff2",
+      "sameOutline": true
+    },
+    {
+      "char": "힣",
+      "file": "hangul-rest-8.woff2",
+      "sameOutline": true
+    }
+  ],
+  "rareChars": {
+    "똠": "hangul-rest-2.woff2",
+    "햏": "hangul-rest-8.woff2",
+    "뷁": "hangul-rest-4.woff2",
+    "쀍": "hangul-rest-4.woff2"
+  },
+  "pass": true
+}
