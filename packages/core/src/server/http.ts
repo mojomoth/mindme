@@ -27,6 +27,8 @@ export async function parseRequest<S extends z.ZodType>(
   schema: S,
   opts: ParseOpts,
 ): Promise<{ data: z.infer<S>; error?: undefined } | { data?: undefined; error: Response }> {
+  // 다른 사이트가 방문자 브라우저로 AI 비용을 쓰게 하는 요청(text/plain simple POST 등)을 막는다. 브라우저만 이 헤더를 붙이므로 curl·테스트는 그대로다.
+  if (req.headers.get('sec-fetch-site') === 'cross-site') return { error: fail(403, 'forbidden', '다른 사이트에서 보낸 요청은 받을 수 없어요.') };
   const tooLarge = () => ({ error: fail(413, 'payload_too_large', opts.tooLarge ?? TOO_LARGE) });
   // UTF-16 한 글자는 UTF-8 로 최대 3바이트. 이보다 크면 읽지 않고 거른다.
   if (Number(req.headers.get('content-length') ?? 0) > opts.maxBody * 3) return tooLarge();
@@ -43,6 +45,9 @@ export async function parseRequest<S extends z.ZodType>(
 
   const parsed = schema.safeParse(body);
   if (parsed.success) return { data: parsed.data };
+  // 본문 상한 안이어도 text 가 글자 수 상한을 넘으면 413 (api.md)
+  const issue = parsed.error.issues[0];
+  if (issue?.code === 'too_big' && issue.origin === 'string' && issue.path[0] === 'text') return tooLarge();
   return { error: fail(400, 'invalid_request', opts.invalid ?? zodErrorMessage(parsed.error)) };
 }
 

@@ -102,7 +102,6 @@ export const PersonaRequestSchema = z.object({
   events: z.array(EventSchema).max(100).default([]),
   profile: ProfileSchema,
 });
-export const PersonaResponseSchema = z.object({ persona: PersonaSchema });
 
 // ── POST /api/persona/avatar ───────────────────────────────
 
@@ -148,7 +147,6 @@ export type Persona = z.infer<typeof PersonaSchema>;
 export type ChatMessage = z.infer<typeof ChatMessageSchema>;
 export type AnalyzeRequest = z.input<typeof AnalyzeRequestSchema>;
 export type AnalyzeResponse = z.infer<typeof AnalyzeResponseSchema>;
-export type PersonaResponse = z.infer<typeof PersonaResponseSchema>;
 export type AvatarRequest = z.infer<typeof AvatarRequestSchema>;
 export type AvatarResponse = z.infer<typeof AvatarResponseSchema>;
 export type ChatRequest = z.infer<typeof ChatRequestSchema>;

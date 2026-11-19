@@ -45,15 +45,19 @@ const CRISIS_PATTERNS = [
   // 돌려 말한 표현
   '다놓고싶', '다놓아버리고싶', '다내려놓고싶', '사라져버리고싶', '없어져버리고싶', '세상에서사라지',
   '다끝내고싶', '모든걸끝내고싶', '인생끝내', '삶을끝내', '끝내버리고싶',
-  '살이유가없', '살아갈이유가없', '사는의미가없', '태어나지말았', '태어나지않았으면',
-  '눈을안떴으면', '깨어나지않았으면', '영원히잠들', '죽는게낫', '죽는게나을',
-  'suicide', 'killmyself', 'wanttodie',
+  '태어나지말았', '태어나지않았으면',
+  '눈을안떴으면', '깨어나지않았으면', '영원히잠들', '영원히자고', '죽는게낫', '죽는게나', '차라리죽',
+  '죽어야겠', '죽을거야', '살아서뭐하', '사는게무슨의미',
+  'suicide', 'killmyself', 'wanttodie', 'endmylife',
 ];
+
+// '살 이유·사는 의미' 뒤 8자 안에 '없다·모르겠다·못 찾다·못 느끼다'가 올 때만 잡는다('살아야 할 이유를 찾았어', '사는 게 의미 있어'는 위기가 아니다).
+const NO_REASON_TO_LIVE = /(사는게|사는|살아야할|살아야하는|살아갈|살)(의미|이유).{0,8}?(없|모르|못찾|못느끼)/;
 
 /** 자해·자살 위기 신호(키워드) 한 문장. */
 export function detectCrisis(text: string): boolean {
   const t = text.toLowerCase().replace(/\s+/g, '');
-  return CRISIS_PATTERNS.some((p) => t.includes(p));
+  return CRISIS_PATTERNS.some((p) => t.includes(p)) || NO_REASON_TO_LIVE.test(t);
 }
 
 /** 최근 user 메시지 3개 중 하나라도 위기 신호면 true. 위기 신호 바로 뒤 '아니 그냥'처럼 넘겨도 계속 신경 쓴다. */

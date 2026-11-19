@@ -69,3 +69,13 @@ test('http: rateLimit 은 IP·이름별로 세고, 넘으면 429 + Retry-After',
   assert.equal((await rateLimit('u', 2, 60_000, async () => new Response('ok'))(from('1.1.1.1'))).status, 200); // 다른 이름도 따로
   assert.equal(called, 3);
 });
+
+test('http: 다른 사이트에서 브라우저로 보낸 요청은 403, 같은 출처·헤더 없음은 통과', async () => {
+  const withSite = (site: string) =>
+    new Request('http://x/api', { method: 'POST', body: '{"n":3}', headers: { 'content-type': 'text/plain', 'sec-fetch-site': site } });
+  const cross = await parseRequest(withSite('cross-site'), Schema, { maxBody: 100 });
+  assert.equal(cross.error?.status, 403);
+  assert.equal((await cross.error!.json()).error.code, 'forbidden');
+  assert.deepEqual((await parseRequest(withSite('same-origin'), Schema, { maxBody: 100 })).data, { n: 3 });
+  assert.deepEqual((await parseRequest(post('{"n":3}'), Schema, { maxBody: 100 })).data, { n: 3 });
+});

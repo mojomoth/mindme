@@ -9,6 +9,7 @@ import {
   PersonaGenerateRequestSchema,
   personaFromDraft,
   personaName,
+  PERSONA_SYSTEM,
   personaRequestError,
   selectedEvent,
   visibleEvents,
@@ -40,9 +41,13 @@ test('과거: 선택한 사건 나이와 맞지 않으면 400 문구 (미래 지
   assert.equal(check({ age: 14, phase: 'after' }), '선택한 사건은 15살 때 일이에요. 나이를 15살로 맞춰 주세요.');
   assert.equal(check({ age: 12 }), '선택한 사건은 15살 때 일이에요. 나이를 15살로 맞춰 주세요.');
   assert.equal(check({ age: 20 }), '선택한 사건은 15살 때 일이에요. 나이를 15살로 맞춰 주세요.');
-  assert.equal(check({ age: 15, eventId: 'nope' }), '선택한 사건을 events 에서 찾지 못했어요.');
+  assert.equal(check({ age: 15, eventId: 'nope' }), '선택한 사건을 찾지 못했어요. 사건을 다시 골라 주세요.');
+  assert.doesNotMatch(check({ age: 15, eventId: 'nope' }) ?? '', /events/);
   assert.equal(personaRequestError(req({ kind: 'past', age: 30 }), undefined), '과거의 나는 지금 나이보다 어려야 해요.');
   assert.equal(personaRequestError(req({ kind: 'future', age: 26 }), undefined), '미래의 나는 지금 나이보다 많아야 해요.');
+  // 지금의 나는 profile.currentAge(26)와 같은 나이만
+  assert.equal(personaRequestError(req({ kind: 'present', age: 70 }), undefined), '지금의 나는 지금 나이로만 만들 수 있어요.');
+  assert.equal(personaRequestError(req({ kind: 'present', age: 26 }), undefined), undefined);
   // 나이 없는 사건은 date 연도로 계산한다 (2015 → 지금 26살 기준)
   const r = PersonaGenerateRequestSchema.parse({
     profile: sample.profile, kind: 'past', age: 25, phase: 'after',
@@ -73,6 +78,20 @@ test('과거: 그 나이 이후 사건은 입력에서 빠진다 (미래 지식 
   assert.ok(input.includes('친구와 다툰 날'));
   assert.ok(!input.includes('수능') && !input.includes('출근') && !input.includes('퇴사'));
   assert.ok(input.includes('직후'));
+});
+
+test("과거: '나의 이야기' 원문은 넣지 않는다 (나이가 없어 미래 일일 수 있음), 현재·미래는 넣는다", () => {
+  // Gate 3 r2 Critic 재현: 이야기의 첫 출근 이야기를 17살 페르소나가 기억했다.
+  // 이야기는 apps/web 이 /api/analyze(prompt)로 사건으로 바꿔 events 에 넣으므로, 과거에는 나이로 거른 사건만 간다.
+  const story = '첫 출근 날 너무 떨려서 아침도 못 먹었던 게 기억나요. 사수가 말이 없어서 눈치를 많이 봤어요.';
+  const withStory = (extra: object) =>
+    PersonaGenerateRequestSchema.parse({ profile: { ...sample.profile, story }, events: sample.events, ...extra });
+  for (const r of [withStory({ kind: 'past', age: 17 }), withStory({ kind: 'past', age: 15, eventId: 'evt_fight' })]) {
+    const input = buildPersonaInput(r, selectedEvent(r));
+    assert.ok(!input.includes(story) && !input.includes('사수') && !input.includes('[나의 이야기]'), input);
+  }
+  assert.ok(buildPersonaInput(withStory({ kind: 'present', age: 26 })).includes(`[나의 이야기]\n${story}`));
+  assert.ok(buildPersonaInput(withStory({ kind: 'future', age: 30 })).includes(`[나의 이야기]\n${story}`));
 });
 
 test('과거·사건 전: 사건 내용은 넘기지 않고 제목만 분위기로', () => {
@@ -129,4 +148,41 @@ test('분석 결과의 selfAtTime 단서를 입력에 싣는다', () => {
   const r = PersonaGenerateRequestSchema.parse({ profile: sample.profile, events, kind: 'past', age: 15, eventId: 'evt_fight' });
   const input = buildPersonaInput(r, selectedEvent(r));
   assert.ok(input.includes('욱하는 편') && input.includes('"아 몰라 ㅡㅡ"'));
+});
+
+test('기록이 적을 때 설정 문구를 옮긴 기억은 뺀다', () => {
+  const r = req({ kind: 'past', age: 9, events: [] });
+  const p = personaFromDraft(
+    r,
+    {
+      traits: ['수줍음'],
+      speechStyle: '반말',
+      memories: [
+        '이름은 김서연이고 지금 아홉 살이다.',
+        '지금 이야기를 나눌 상대는 어른이 된 나다.',
+        '대화 상대가 어른이 된 나라는 건 알지만, 그동안 무슨 일을 겪었는지는 모른다.',
+        '아홉 살 이후에 어떤 일이 있었는지는 아직 모른다.',
+        '짝 이름은 민수였고 같이 떡볶이를 자주 먹었다',
+        '받아쓰기에서 처음 100점을 받아 엄마한테 자랑했다',
+        '전학 온 뒤 민수가 유일한 대화 상대였다',
+        '작문 시간에 어른이 된 나에게 편지를 썼다',
+        '상대가 미래의 나라는 건 알지만, 그동안 무슨 일이 있었는지는 모른다.',
+        '작문 시간에 어른이 된 나라는 주제로 글을 썼다',
+        '열 살 이후 연락이 끊긴 민수가 어디 사는지는 모른다',
+      ],
+      emotions: ['설렘'],
+      greeting: '진짜 어른이 된 나야?',
+    },
+    'per_test',
+  );
+  assert.deepEqual(p.memories, [
+    '짝 이름은 민수였고 같이 떡볶이를 자주 먹었다',
+    '받아쓰기에서 처음 100점을 받아 엄마한테 자랑했다',
+    '전학 온 뒤 민수가 유일한 대화 상대였다',
+    '작문 시간에 어른이 된 나에게 편지를 썼다',
+    '작문 시간에 어른이 된 나라는 주제로 글을 썼다',
+    '열 살 이후 연락이 끊긴 민수가 어디 사는지는 모른다',
+  ]);
+  assert.equal(p.greeting, '진짜 어른이 된 나야?');
+  assert.match(PERSONA_SYSTEM, /대화 상대에 대한 문장, 이름·나이를 소개하는 문장은 넣지 않는다/);
 });

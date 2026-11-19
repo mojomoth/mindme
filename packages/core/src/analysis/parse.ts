@@ -63,21 +63,24 @@ export function parseKakao(input: string, me?: string): KakaoChat {
   let title: string | undefined;
   let day: string | undefined; // PC 판은 메시지 줄에 날짜가 없어 구분선에서 가져온다
   let current: (KakaoMessage & { csv?: boolean }) | undefined;
+  let format: 'pc' | 'mobile' | undefined; // 처음 나온 형식으로 정한다. PC 판 구분선은 늘 '---- 날짜 ----' 라서 PC 파일의 맨 날짜 줄은 본문이다
 
-  for (const raw of lines) {
-    const line = raw.trimEnd();
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i]!.trimEnd();
     let m: RegExpMatchArray | null;
 
     if (!title && !messages.length && (m = line.match(TITLE))) {
       title = m[1]!.trim();
       continue;
     }
-    if ((m = line.match(PC_DATE)) || (m = line.match(MOBILE_DATE))) {
+    if ((m = line.match(PC_DATE)) || (format !== 'pc' && (m = line.match(MOBILE_DATE)) && opensDay(lines, i, m))) {
+      format ??= PC_DATE.test(line) ? 'pc' : 'mobile';
       day = ymd(m[1]!, m[2]!, m[3]!);
       current = undefined;
       continue;
     }
     if ((m = line.match(PC_MSG))) {
+      format ??= 'pc';
       current = day ? { date: day, time: hm(m[2], m[3]!, m[4]!), author: m[1]!.trim(), text: m[5]! } : undefined;
       if (current) messages.push(current);
       continue;
@@ -91,6 +94,7 @@ export function parseKakao(input: string, me?: string): KakaoChat {
       continue;
     }
     if ((m = line.match(MOBILE_LINE))) {
+      format ??= 'mobile';
       const date = ymd(m[1]!, m[2]!, m[3]!);
       const body = m[7]!.match(/^(.+?) : (.*)$/);
       current = date && body ? { date, time: hm(m[4], m[5]!, m[6]!), author: body[1]!.trim(), text: body[2]! } : undefined;
@@ -113,6 +117,18 @@ export function parseKakao(input: string, me?: string): KakaoChat {
 
   const participants = [...new Set(kept.map((x) => x.author))];
   return { title, participants, me: resolveMe(participants, title, me), messages: kept };
+}
+
+// 모바일 날짜 구분선 모양 줄은 다음 줄이 그날 메시지·시스템 줄·PC 날짜 구분선이거나 파일 끝일 때만 구분선이다.
+// 다음 줄이 일반 본문·PC 메시지·다른 날짜 메시지면 여러 줄 메시지의 한 줄이다.
+function opensDay(lines: string[], i: number, [, y, mo, d]: RegExpMatchArray): boolean {
+  let j = i + 1;
+  while (j < lines.length && !lines[j]!.trim()) j++;
+  if (j === lines.length) return true;
+  const line = lines[j]!.trimEnd();
+  const next = line.match(MOBILE_LINE);
+  if (next) return ymd(next[1]!, next[2]!, next[3]!) === ymd(y!, mo!, d!);
+  return PC_DATE.test(line) || SYSTEM.test(line.trim());
 }
 
 function resolveMe(participants: string[], title: string | undefined, me: string | undefined): string | undefined {

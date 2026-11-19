@@ -53,6 +53,7 @@ const DigestSchema = z.object({
       myWords: z.array(z.string()),
     }),
   ),
+  ownerClues: z.array(z.string()),
 });
 
 // ── 프롬프트 ──────────────────────────────────────────────
@@ -91,6 +92,7 @@ owner: 기록을 남긴 '나'.
 const DIGEST_SYSTEM = `너는 긴 기록의 한 구간을 읽고, 나중에 인생 사건 타임라인을 만들 수 있도록 사건 후보만 추린다.
 - '나'에게 의미 있는 일(관계 변화, 진학·졸업·입사·이사, 감정이 크게 움직인 일)만 남기고 잡담은 버린다. 없으면 빈 배열.
 - date 는 'YYYY-MM-DD'(구간의 '## 날짜' 머리줄 기준), what 은 무슨 일이었는지 한두 문장, myWords 는 '나'가 실제로 한 말 원문 최대 3개.
+- ownerClues: '나'의 나이·출생연도·학년을 알 수 있는 말은 잡담이어도 버리지 않고 'YYYY-MM-DD 원문' 꼴로 남긴다. 없으면 빈 배열.
 - 카카오톡에서 '(나)'가 붙은 사람이 '나'다. 모든 값은 한국어로 쓴다.`;
 
 // ── 파이프라인 ─────────────────────────────────────────────
@@ -158,7 +160,9 @@ export async function analyzeRecords(
           (m.myWords.length ? ` | 나의 말: ${m.myWords.map((w) => `"${w}"`).join(' ')}` : ''),
       ),
     );
+    const clues = digests.flatMap((d) => d.ownerClues);
     input = `${p.header}\n(긴 기록을 ${chunks}개 구간으로 나눠 사건 후보만 요약한 것이다)\n\n${lines.join('\n')}`;
+    if (clues.length) input += `\n\n나이 단서:\n${clues.map((c) => `- ${c}`).join('\n')}`;
   }
 
   const llm = await generate({ schema: LlmAnalysisSchema, system: ANALYZE_SYSTEM, input });

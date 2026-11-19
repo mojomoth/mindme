@@ -16,7 +16,7 @@ mock.module(new URL('../src/server/llm.ts', import.meta.url).href, {
       peak = Math.max(peak, ++inflight);
       await new Promise((r) => setTimeout(r, 5));
       inflight--;
-      return o.schema.parse((o.schema as unknown) === LlmAnalysisSchema ? llmOut : { moments: [] });
+      return o.schema.parse((o.schema as unknown) === LlmAnalysisSchema ? llmOut : { moments: [], ownerClues: [] });
     },
     streamText: () => new ReadableStream(),
     editImage: async () => '',
@@ -29,7 +29,9 @@ const KEY = 'OPENAI_API_KEY';
 
 test('routes: 키가 없으면 503, 사유는 숨기고 해요체 안내', async () => {
   const saved = process.env[KEY];
+  const savedAlt = process.env.OPENAI_KEY;
   delete process.env[KEY];
+  delete process.env.OPENAI_KEY;
   const orig = console.error;
   const logs: string[] = [];
   console.error = (...a: unknown[]) => void logs.push(a.join(' '));
@@ -41,7 +43,16 @@ test('routes: 키가 없으면 503, 사유는 숨기고 해요체 안내', async
   } finally {
     console.error = orig;
     if (saved !== undefined) process.env[KEY] = saved;
+    if (savedAlt !== undefined) process.env.OPENAI_KEY = savedAlt;
   }
+});
+
+test('routes: analyze text 가 30만 자를 넘으면 고정 400 문구보다 먼저 413 과 길이 안내', async () => {
+  const route = analyzeRoute({ invalid: '기록 내용을 읽지 못했어요.' });
+  const res = await route(post({ source: 'prompt', text: '가'.repeat(300_001) }));
+  assert.equal(res.status, 413);
+  assert.deepEqual(await res.json(), { error: { code: 'payload_too_large', message: '입력이 너무 길어요. 30만 자 이하로 줄여 주세요.' } });
+  assert.equal((await route(post({ source: 'prompt', text: ' ' }))).status, 400); // 빈 기록은 그대로 400
 });
 
 test('routes: analyze 는 meta.llm 을 빼고, includeLlm 이면 싣는다. 긴 기록의 구간 요약은 한꺼번에 보낸다', async () => {

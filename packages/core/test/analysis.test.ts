@@ -73,6 +73,92 @@ test('kakao Android · 24시간 표기 · Mac CSV · 오전 12시', () => {
   assert.deepEqual(csv.messages[0], { date: '2024-03-02', time: '14:30', author: '홍길동', text: '첫 줄\n둘째 줄 "인용"' });
 });
 
+test('kakao: 여러 줄 메시지 속 날짜 구분선 모양 줄은 본문으로 남고 다음 메시지 날짜를 바꾸지 않는다', () => {
+  const quote = ['2019년 3월 2일 토요일', '그날 비 왔잖아'];
+  const android = parseKakao(
+    ['2019년 3월 1일 금요일', '2019년 3월 1일 오후 9:00, 이지우 : 기억나?', ...quote, '', '2019년 3월 1일 오후 9:05, 박서진 : 응'].join('\n'),
+  );
+  const pc = parseKakao(
+    ['--------------- 2019년 3월 1일 금요일 ---------------', '[이지우] [오후 9:00] 기억나?', ...quote, '[박서진] [오후 9:05] 응'].join('\n'),
+  );
+  for (const chat of [android, pc]) {
+    assert.deepEqual(
+      chat.messages.map((m) => [m.date, m.text]),
+      [
+        ['2019-03-01', `기억나?\n${quote.join('\n')}`],
+        ['2019-03-01', '응'],
+      ],
+    );
+  }
+});
+
+test('kakao: (모바일) 날짜 구분선 뒤가 시간 없는 시스템 줄·파일 끝이어도 구분선으로 읽고, PC 파일의 맨 날짜 줄은 본문으로 남긴다', () => {
+  const night = '2019년 3월 1일 오후 11:50, 이지우 : 잘 자';
+  const divider = '2019년 3월 2일 토요일';
+  const system = parseKakao([night, divider, '박서진님이 들어왔습니다.', '2019년 3월 2일 오전 9:00, 박서진 : 안녕'].join('\n'));
+  assert.deepEqual(
+    system.messages.map((m) => [m.date, m.text]),
+    [
+      ['2019-03-01', '잘 자'],
+      ['2019-03-02', '안녕'],
+    ],
+  );
+  const eof = parseKakao([night, divider, ''].join('\n'));
+  assert.deepEqual(eof.messages.map((m) => [m.date, m.text]), [['2019-03-01', '잘 자']]);
+  const pc = parseKakao(
+    [
+      '--------------- 2019년 3월 1일 금요일 ---------------',
+      '[이지우] [오후 11:50] 잘 자',
+      divider,
+      '--------------- 2019년 3월 3일 일요일 ---------------',
+      '[박서진] [오전 9:00] 안녕',
+    ].join('\n'),
+  );
+  assert.deepEqual(
+    pc.messages.map((m) => [m.date, m.text]),
+    [
+      ['2019-03-01', `잘 자\n${divider}`],
+      ['2019-03-03', '안녕'],
+    ],
+  );
+  // PC: 여러 줄 메시지가 날짜 모양 줄로 끝나고 바로 시스템 줄이 와도 날짜를 바꾸지 않는다 (Gate 3 r2 recheck 회귀)
+  const pcSystem = parseKakao(
+    [
+      '--------------- 2019년 3월 1일 금요일 ---------------',
+      '[이지우] [오후 11:50] 일기 제목은',
+      '2010년 5월 8일 토요일',
+      '박서진님이 들어왔습니다.',
+      '[박서진] [오후 11:55] 안녕',
+    ].join('\n'),
+  );
+  assert.deepEqual(
+    pcSystem.messages.map((m) => [m.date, m.text]),
+    [
+      ['2019-03-01', '일기 제목은\n2010년 5월 8일 토요일'],
+      ['2019-03-01', '안녕'],
+    ],
+  );
+  // 모바일 파일 본문에 PC 모양 줄이 인용돼도 이후 모바일 구분선은 그대로 읽는다 (Codex r2)
+  const quoted = parseKakao(
+    [
+      '2019년 3월 1일 금요일',
+      '2019년 3월 1일 오후 9:00, 지우 : 친구가 이렇게 보냈어',
+      '[민수] [오후 8:30] 안녕',
+      '2019년 3월 2일 토요일',
+      '2019년 3월 2일 오전 9:00, 지우 : 오늘은 괜찮아',
+      '2019년 3월 3일 일요일',
+      '2019년 3월 3일 오전 9:00, 서진 : 학교 가자',
+    ].join('\n'),
+  );
+  assert.deepEqual(
+    quoted.messages.filter((m) => m.date >= '2019-03-02').map((m) => [m.date, m.text]),
+    [
+      ['2019-03-02', '오늘은 괜찮아'],
+      ['2019-03-03', '학교 가자'],
+    ],
+  );
+});
+
 test('kakao: 형식이 아니면 메시지 0개, 없는 이름은 me 없음', () => {
   assert.equal(parseKakao('그냥 메모입니다\n두 번째 줄').messages.length, 0);
   assert.equal(parseKakao(fixture('kakao-pc.txt'), '김철수').me, undefined);
@@ -159,7 +245,10 @@ test('analyzeRecords: 짧으면 한 번, 길면 구간 요약 후 분석', async
     const out =
       (o.schema as unknown) === LlmAnalysisSchema
         ? { events: [llmEvent({ title: '친구와 다툰 날', age: 15 })], owner: { name: null, currentAge: null } }
-        : { moments: [{ date: '2015-05-14', what: '다툼', people: ['박서진'], emotions: ['서운함'], myWords: ['됐어'] }] };
+        : {
+            moments: [{ date: '2015-05-14', what: '다툼', people: ['박서진'], emotions: ['서운함'], myWords: ['됐어'] }],
+            ownerClues: calls.length === 1 ? ['2015-01-03 나 2000년생이야'] : [],
+          };
     return o.schema.parse(out);
   };
 
@@ -185,6 +274,9 @@ test('analyzeRecords: 짧으면 한 번, 길면 구간 요약 후 분석', async
   assert.equal(calls.length, res.meta.chunks + 1);
   assert.ok(calls.slice(0, -1).every((c) => c.input.length <= CHUNK_CHARS + 200));
   assert.match(calls.at(-1)!.input, /## 2015-05-14 \| 다툼 \| 인물: 박서진 \| 감정: 서운함 \| 나의 말: "됐어"/);
+  // 구간 요약이 잡담 속 나이 단서를 따로 남기면 최종 분석 입력 끝에 붙는다 (단서가 있는 구간만)
+  assert.match(calls[0]!.system, /ownerClues: '나'의 나이·출생연도·학년/);
+  assert.ok(calls.at(-1)!.input.endsWith('\n\n나이 단서:\n- 2015-01-03 나 2000년생이야'));
 
   await assert.rejects(analyzeRecords({ source: 'kakao', text: '그냥 메모' }, fake), AnalyzeInputError);
 });

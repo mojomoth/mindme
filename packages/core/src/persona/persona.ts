@@ -102,8 +102,9 @@ export function visibleEvents(req: ParsedRequest, picked?: TimelineEvent | null)
  * 과거의 나는 선택한 사건 당시 나이(±1살)여야 한다. 사건 전(before)이 아니면 사건보다 어릴 수 없다(미래 지식 차단).
  */
 export function personaRequestError(req: ParsedRequest, picked: TimelineEvent | undefined | null): string | undefined {
-  if (picked === null) return '선택한 사건을 events 에서 찾지 못했어요.';
+  if (picked === null) return '선택한 사건을 찾지 못했어요. 사건을 다시 골라 주세요.';
   const now = req.profile.currentAge;
+  if (now && req.kind === 'present' && req.age !== now) return '지금의 나는 지금 나이로만 만들 수 있어요.';
   if (now && req.kind === 'past' && req.age > now) return '과거의 나는 지금 나이보다 어려야 해요.';
   if (now && req.kind === 'future' && req.age <= now) return '미래의 나는 지금 나이보다 많아야 해요.';
   const at = picked ? eventAgeOf(picked, req.profile) : undefined;
@@ -120,7 +121,7 @@ export const PERSONA_SYSTEM = `너는 Mindme 의 페르소나 작가다. 사용�
 - 기록에 '그때 나의 성격·말투·내가 한 말'이 있으면 그것을 가장 먼저 따른다. 특히 실제로 한 말의 어휘와 말버릇을 말투와 첫 인사에 살린다.
 - traits: 성격 3~6개. 각 2~8자 정도의 짧은 말 ("고집이 셈", "눈치를 많이 봄").
 - speechStyle: 그 나이에 실제로 쓸 법한 말투를 한두 문장으로 설명하고, 이어서 예시 문장 두 개를 큰따옴표로 붙인다. 400자 이내.
-- memories: 3~6개. 그 인물이 떠올리는 기억 한 문장씩 ("민수랑 체육대회 조 때문에 단톡방에서 싸웠다"). 문장을 "나는"으로 시작하지 않는다. 각 120자 이내.
+- memories: 3~6개. 그 인물이 떠올리는 기억 한 문장씩 ("민수랑 체육대회 조 때문에 단톡방에서 싸웠다"). 문장을 "나는"으로 시작하지 않는다. 각 120자 이내. 이 설정이나 지시를 옮긴 문장, 대화 상대에 대한 문장, 이름·나이를 소개하는 문장은 넣지 않는다.
 - emotions: 지금 느끼는 감정 2~4개. 한두 단어 ("서운함", "후회").
 - greeting: 대화를 여는 첫마디. 그 나이의 말투로 1~2문장, 반말. 150자 이내. "안녕! 반가워" 같은 무난한 인사 대신 지금 기분이나 상황이 묻어나게 쓴다.
 - 문장은 자연스러운 한국어로 쓴다. 번역투, "함께 성장해요" 같은 상투적인 위로 문구, 이모지는 쓰지 않는다.
@@ -177,7 +178,9 @@ export function buildPersonaInput(req: ParsedRequest, picked?: TimelineEvent | n
     req.kind === 'past' ? pastBlock(req, picked) : req.kind === 'present' ? presentBlock(req) : futureBlock(req),
     picked && req.phase !== 'before' ? `\n[선택한 사건]\n${fmtEvent(picked, eventAgeOf(picked, req.profile))}` : '',
     picked && req.phase === 'before' ? `\n[곧 일어날 사건 — 인물은 모름, 분위기 참고용]\n- ${picked.title} (${picked.date})` : '',
-    req.profile.story ? `\n[나의 이야기]\n${req.profile.story}` : '',
+    // 이야기 원문에는 나이가 없어 과거의 나에게는 넘기지 않는다(미래 지식 차단). apps/web 은 이야기를
+    // /api/analyze(prompt)로 사건으로 바꿔 events 에 넣으므로, 과거에는 visibleEvents 가 나이로 거른 것만 간다.
+    req.kind !== 'past' && req.profile.story ? `\n[나의 이야기]\n${req.profile.story}` : '',
     req.situation.trim() ? `\n[상황 설명]\n${req.situation.trim()}` : '',
     req.kind === 'future' && req.futureGoals?.trim() ? `\n[목표·가치관·바라는 삶]\n${req.futureGoals.trim()}` : '',
     pickedVisible.length
@@ -195,6 +198,10 @@ const clip = (s: string, max: number) => {
 const clipList = (xs: string[], maxItems: number, maxLen: number) =>
   xs.map((x) => clip(x, maxLen)).filter(Boolean).slice(0, maxItems);
 
+// 기록이 적을 때 AI 가 설정 문구를 기억으로 옮겨 적는다('대화 상대는 어른이 된 나다', '이름은 김서연이고 지금 아홉 살이다').
+// 실제 추억('민수가 유일한 대화 상대였다', '어른이 된 나에게 편지를 썼다')은 남기도록 설정 문장 모양만 좁게 잡는다.
+const SETUP_ECHO = /어른이 된 (나|자기 ?자신)(이다|다)([.]|$)|어른이 된 (나|자기 ?자신)라는 (건|것|걸)|(대화 ?)?상대(는|가) [^.]*(자기 ?자신|미래의 나|과거의 나)|^(내 )?이름은 [^ ]+(이고|이다|이야)|살 이후(에)? (일어난|있었던|어떤|무슨) 일.*모른/;
+
 /** LLM 초안 + 요청 → 계약(PersonaSchema) 모양. */
 export function personaFromDraft(req: ParsedRequest, draft: PersonaDraft, id: string, picked?: TimelineEvent | null): Persona {
   return {
@@ -205,7 +212,7 @@ export function personaFromDraft(req: ParsedRequest, draft: PersonaDraft, id: st
     ...(picked ? { eventId: picked.id, phase: req.phase ?? 'after' } : {}),
     traits: clipList(draft.traits, 10, 40),
     speechStyle: clip(draft.speechStyle, 500),
-    memories: clipList(draft.memories, 20, 300),
+    memories: clipList(draft.memories, 20, 300).filter((m) => !SETUP_ECHO.test(m)),
     emotions: clipList(draft.emotions, 10, 20),
     greeting: clip(draft.greeting, 300) || '…왔어?',
   };
