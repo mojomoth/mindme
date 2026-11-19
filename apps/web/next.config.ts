@@ -14,7 +14,20 @@ const nextConfig: NextConfig = {
   devIndicators: false,
   // 사진은 카메라·앨범 선택(<input accept="image/*">)으로만 받는다. 마이크·위치는 쓰지 않는다.
   async headers() {
-    return [{ source: '/:path*', headers: [{ key: 'Permissions-Policy', value: 'camera=(self), microphone=(), geolocation=()' }] }];
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          { key: 'Permissions-Policy', value: 'camera=(self), microphone=(), geolocation=()' },
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+          { key: 'X-Frame-Options', value: 'DENY' },
+          { key: 'Content-Security-Policy', value: "frame-ancestors 'none'" },
+        ],
+      },
+      // 기록 분석 결과처럼 개인 내용이 담긴 응답은 어디에도 캐시하지 않는다.
+      { source: '/api/:path*', headers: [{ key: 'Cache-Control', value: 'no-store' }] },
+    ];
   },
 };
 
